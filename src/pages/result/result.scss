@@ -1,0 +1,83 @@
+page-result {
+
+    ion-content  {
+        background-size: cover;
+        position: relative;
+        text-align: center;
+        
+        
+    }
+
+    .ios-arrow-dropright-circle{
+        color: red!important;
+    }
+    .card{
+        height: 70%;
+        border-top-right-radius: 10px !important;
+        border-top-left-radius: 10px !important;
+        border-bottom-left-radius: 10px !important; 
+        border-bottom-right-radius: 10px !important;
+        -webkit-box-shadow: 0 10px 30px 0 rgb(255, 255, 255);
+        box-shadow: 0 10px 30px 0  rgba(0, 0, 0, 0.247);
+
+    }
+    h1{
+        font-size: 30px;
+        color:  #3b3b3b;
+        position: relative;
+        text-align: center;
+    }
+
+    .table-result
+    
+    {   position: relative;
+        text-align: center;
+        -webkit-box-shadow: 0 10px 30px 0 rgb(255, 255, 255);
+        box-shadow: 0 10px 30px 0  rgba(0, 0, 0, 0.247);
+        position: relative;
+        text-align: center;
+        width: 120px;
+        background-color: #ffffff;
+        border-top-right-radius: 50px !important;
+        border-top-left-radius: 50px !important;
+        border-bottom-left-radius: 50px !important; 
+        border-bottom-right-radius: 50px !important;
+       
+    }
+
+    .table-a{
+        -webkit-box-shadow: 0 10px 30px 0 rgb(255, 255, 255);
+        box-shadow: 0 10px 30px 0  rgba(0, 0, 0, 0.247);
+        position: relative;
+        text-align: center;
+        background-color: #ffffff;
+
+        border-top-right-radius: 10px !important;
+        border-top-left-radius: 10px !important;
+        border-bottom-left-radius: 10px !important; 
+        border-bottom-right-radius: 10px !important;
+        
+       
+    }
+
+    .course{
+        
+        -webkit-box-shadow: 0 10px 30px 0 rgb(255, 255, 255);
+        box-shadow: 0 0px 30px 0  rgba(0, 0, 0, 0.151);
+        background-color: #ffffff;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-size: 13px;
+        transition: all 0.3s ease-in-out;
+        width: 85%;
+        height: 50px;
+        color:  #0068B7;
+          
+        border-top-right-radius: 30px !important;
+        border-top-left-radius: 30px !important;
+        border-bottom-left-radius: 30px !important; 
+        border-bottom-right-radius: 30px !important;
+    }
+
+
+}

@@ -29,19 +29,12 @@ page-result {
     }
 
     .table-result
-    
     {   position: relative;
         text-align: center;
-        -webkit-box-shadow: 0 10px 30px 0 rgb(255, 255, 255);
-        box-shadow: 0 10px 30px 0  rgba(0, 0, 0, 0.247);
         position: relative;
         text-align: center;
         width: 120px;
         background-color: #ffffff;
-        border-top-right-radius: 50px !important;
-        border-top-left-radius: 50px !important;
-        border-bottom-left-radius: 50px !important; 
-        border-bottom-right-radius: 50px !important;
        
     }
 
@@ -57,7 +50,6 @@ page-result {
         border-bottom-left-radius: 10px !important; 
         border-bottom-right-radius: 10px !important;
         
-       
     }
 
     .course{

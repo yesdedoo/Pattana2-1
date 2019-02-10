@@ -1,3 +1,83 @@
 page-home {
 
+    ion-content  {
+        background-size: cover;
+        position: relative;
+    text-align: center;
+
+    }
+
+    
+    .avai-font
+    {
+        font-size: 20px;
+        color:#f78710 ;
+        text-align: center;
+    }
+
+    .start
+    {
+        width: 200px;
+        height: 200px;
+        
+        
+
+        -webkit-box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.103);
+        box-shadow: 0 10px 30px 0  rgba(0, 0, 0, 0.103);
+
+        border-top-right-radius: 100px !important;
+        border-top-left-radius: 100px !important;
+        border-bottom-right-radius: 100px !important;
+        border-bottom-left-radius: 100px !important;
+    }
+    h1{
+        font-size: 20px;
+
+    }
+    .course{
+      
+        margin-top: 10px;
+        text-align: center;
+        border: 10px;
+        padding: 15px 80px;
+        text-decoration: none;
+        display: inline-block;
+        
+    
+        transition: all 0.3s ease-in-out;
+        width: 85%;
+        height: 45px;
+        color: #ffffff;
+        background-color:#f78710; 
+
+        border-top-right-radius: 20px !important;
+        border-top-left-radius: 20px !important;
+        border-bottom-right-radius: 20px !important;
+        border-bottom-left-radius: 20px !important;
+        -webkit-box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.103);
+        box-shadow: 0 10px 30px 0  rgba(0, 0, 0, 0.103);
+    }
+    .menu{
+        margin-top: 10px;
+        text-align: center;
+        border: 10px;
+        padding: 15px 80px;
+        text-decoration: none;
+        display: inline-block;
+        text-transform: uppercase;
+        font-size: 13px;
+        transition: all 0.3s ease-in-out;
+        width: 40%;
+        height: 45px;
+        color: #f78710;
+        background-color: white; 
+
+        border-top-right-radius: 20px !important;
+        border-top-left-radius: 20px !important;
+        border-bottom-right-radius: 20px !important;
+        border-bottom-left-radius: 20px !important;
+        -webkit-box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.103);
+        box-shadow: 0 10px 30px 0  rgba(0, 0, 0, 0.103);
+    }
+    
 }

@@ -1,3 +1,73 @@
 page-register {
 
+    ion-content  {
+        background-size: cover;  
+        
+    }
+    h1{
+        font-size: 20px;
+        color:#f6f6f6;
+        text-align: center;
+    }
+
+    button{
+        -webkit-box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.103);
+        box-shadow: 0 10px 30px 0  rgba(0, 0, 0, 0.103);
+      
+        width:85%;
+    
+    }
+    
+    input{
+        
+        background-color: #f6f6f6;
+        border:none;
+        color: #535353;
+        text-decoration: none;
+        font-size: 16px;
+        width:85%;
+        border: 2px sold #f6f6f6;
+        transition: all 0.5s ease-in-out;
+        height: 35px;
+        text-align: center;
+        margin: 0 auto;
+        margin-bottom: 10px;
+    }
+    .inform{
+        position: relative;
+        text-align: center;
+        background-color: white;
+        border-top-right-radius: 10px !important;
+        border-top-left-radius: 10px !important;
+        border-bottom-right-radius: 10px !important;
+        border-bottom-left-radius: 10px !important;
+
+        -webkit-box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.103);
+        box-shadow: 0 10px 30px 0  rgba(0, 0, 0, 0.103);
+      
+    }
+    .register{
+        width: 40%;
+        height: 45px;
+        
+
+        border-top-right-radius: 20px !important;
+        border-top-left-radius: 20px !important;
+        border-bottom-right-radius: 20px !important;
+        border-bottom-left-radius: 20px !important;
+        -webkit-box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.103);
+        box-shadow: 0 10px 30px 0  rgba(0, 0, 0, 0.103);
+    }
+    img{
+        width: 30%;
+        text-align: center;
+        
+    }
+    .inform2{
+        position: relative;
+        text-align: center;
+        
+    }
+
+
 }

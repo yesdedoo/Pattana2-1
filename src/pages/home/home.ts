@@ -9,9 +9,17 @@ import { SchedulePage } from '../schedule/schedule';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController) {
+  currentDate;
+  formattedDate;
 
+  constructor(public navCtrl: NavController) {
+    this.currentDate = new Date();
+    
   }
+
+  
+
+
   JoinCourse(){
     this.navCtrl.push(JoincoursePage);
   }

@@ -1,9 +1,29 @@
 page-resulthistperc {
 
     h1{
-        color:  #F78710;
-        font-size: 18px;
+        font-size: 20px;
+        color:  #666666;
+        position: relative;
+        text-align: left;
     }
 
+    h3{
+        font-size: 20px;
+        color:  #666666;
+        position: relative;
+        text-align: center;
+    }
+    .lesson{
+        position: relative;
+        text-align: center;
+        background-color: white;
+        border-top-right-radius: 10px !important;
+        border-top-left-radius: 10px !important;
+        border-bottom-right-radius: 10px !important;
+        border-bottom-left-radius: 10px !important;
 
+        -webkit-box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.103);
+        box-shadow: 0 10px 30px 0  rgba(0, 0, 0, 0.103);
+      
+    }
 }

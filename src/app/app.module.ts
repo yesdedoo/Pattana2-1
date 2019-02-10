@@ -1,6 +1,6 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
+import { IonicApp, IonicModule, IonicErrorHandler, Card } from 'ionic-angular';
 import { MyApp } from './app.component';
 
 import { HomePage } from '../pages/home/home';
@@ -16,7 +16,10 @@ import { JoincoursePage } from '../pages/joincourse/joincourse';
 import { SchedulePage } from '../pages/schedule/schedule';
 import { ResulthistpercPage } from '../pages/resulthistperc/resulthistperc';
 import { ResultPageModule } from '../pages/result/result.module';
-
+import { QuizPage } from '../pages/quiz/quiz';
+import { RankPage } from '../pages/rank/rank';
+import { CardPage } from '../pages/card/card';
+import { CountPage } from '../pages/count/count';
 @NgModule({
   declarations: [
     MyApp,
@@ -28,11 +31,15 @@ import { ResultPageModule } from '../pages/result/result.module';
     RegisterPage,
     JoincoursePage,
     SchedulePage,
-    ResulthistpercPage
+    ResulthistpercPage,
+    QuizPage,
+    RankPage,
+    CardPage,
+    CountPage
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp, {tabsHideOnSubPages: true,},),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -45,7 +52,11 @@ import { ResultPageModule } from '../pages/result/result.module';
     RegisterPage,
     JoincoursePage,
     SchedulePage,
-    ResulthistpercPage
+    ResulthistpercPage,
+    QuizPage,
+    RankPage,
+    CardPage,
+    CountPage
   ],
   providers: [
     StatusBar,

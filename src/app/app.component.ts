@@ -7,12 +7,20 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { LoginPage } from '../pages/login/login';
 import { HomePage } from '../pages/home/home';
 import { RegisterPage } from '../pages/register/register';
+import { QuizPage } from '../pages/quiz/quiz';
+import { RankPage } from '../pages/rank/rank';
+import { CardPage } from '../pages/card/card';
+import { CountPage } from '../pages/count/count';
+import { JoincoursePage } from '../pages/joincourse/joincourse';
+import { ResulthistpercPage } from '../pages/resulthistperc/resulthistperc';
+import { ResultPage } from '../pages/result/result';
+
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any =  TabsPage;
+  rootPage:any =   TabsPage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {

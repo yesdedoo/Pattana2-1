@@ -7,6 +7,10 @@ page-joincourse {
         
         
     }
+    ion-icon.add-circle
+    {
+        width : 200px;
+    }
 
     .ios-arrow-dropright-circle{
         color: red!important;
@@ -22,10 +26,10 @@ page-joincourse {
 
     }
     h1{
-        font-size: 30px;
-        color:  #3b3b3b;
+        font-size: 20px;
+        color:  #666666;
         position: relative;
-        text-align: center;
+        text-align: center  !important; 
     }
 
     .table-result
@@ -53,6 +57,8 @@ page-joincourse {
     }
 
     .course{
+        position: relative;
+        text-align: center;
         
         -webkit-box-shadow: 0 10px 30px 0 rgb(255, 255, 255);
         box-shadow: 0 0px 30px 0  rgba(0, 0, 0, 0.151);
@@ -69,6 +75,13 @@ page-joincourse {
         border-top-left-radius: 30px !important;
         border-bottom-left-radius: 30px !important; 
         border-bottom-right-radius: 30px !important;
+    }
+
+    .card
+    {
+        position: relative;
+        text-align: center;
+        
     }
 
 

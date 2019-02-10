@@ -26,7 +26,7 @@ export class LoginPage {
   }
 
   loggingin(){
-    this.navCtrl.setRoot(TabsPage)
+    this.navCtrl.push(TabsPage)
   }
 
   register()

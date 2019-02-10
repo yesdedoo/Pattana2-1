@@ -19,6 +19,7 @@ page-home {
     {
         width: 200px;
         height: 200px;
+        font-size: 30px;
         
         
 
@@ -34,29 +35,23 @@ page-home {
         font-size: 20px;
 
     }
+
+   
     .course{
       
         margin-top: 10px;
         text-align: center;
-        border: 10px;
-        padding: 15px 80px;
-        text-decoration: none;
-        display: inline-block;
+  
+    
+        font-size: 20px;
         
     
-        transition: all 0.3s ease-in-out;
-        width: 85%;
-        height: 45px;
-        color: #ffffff;
-        background-color:#f78710; 
-
-        border-top-right-radius: 20px !important;
-        border-top-left-radius: 20px !important;
-        border-bottom-right-radius: 20px !important;
-        border-bottom-left-radius: 20px !important;
-        -webkit-box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.103);
-        box-shadow: 0 10px 30px 0  rgba(0, 0, 0, 0.103);
+     
+        width: 100%;
+    
+        color: #f78710;
     }
+     
     .menu{
         margin-top: 10px;
         text-align: center;

@@ -4,6 +4,20 @@ page-quiz {
         
         position: relative;
         text-align: left;
-        
+        padding-bottom: 20px; 
+        height: 100px;
+    
     }
+    .List{
+        padding-top: 50px;
+        padding-bottom: 20px;
+    }
+    ion-card{
+        height: 400px;
+    }
+    .card1{
+        -webkit-box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.103);
+        box-shadow: 0 10px 30px 0  rgba(0, 0, 0, 0.103);
+    }
+    
 }

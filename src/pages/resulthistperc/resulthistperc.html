@@ -7,24 +7,69 @@
 
 
 
-<ion-content style="background-image: url('assets/imgs/Plain1.png')"> 
+<ion-content style="background-image: url('assets/imgs/Plain1.png')">
   <div class="table-b">
-     <h3> Lesson</h3>   <br>
+    <h3> Lesson</h3> <br>
   </div>
-  <br><br><br>
 
-<div class="lesson">
-    <h1><br><br>
-  
-        {{course[0]}} <br><br>
-        {{course[1]}} <br><br>
-        {{course[2]}} <br><br>
-        {{course[3]}} <br><br>
-        <br><br>
+  <div class="lesson" >
+    <h1>
 
-      </h1>
+      {{course[0]}} <br>
+      <div class="progress-wrapper">
+        <!-- [ngStyle]="getOverlayStyle()"-->
+        <div class="current">{{ current }}/{{ max }}</div> <br>
+        <round-progress [current]="current" [max]="max" [stroke]="stroke" [radius]="radius" [semicircle]="semicircle"
+          [rounded]="rounded" [responsive]="responsive" [clockwise]="clockwise"
+          [color]="gradient ? 'url(#gradient)' : color" [background]="background" [duration]="duration"
+          [animation]="animation" [animationDelay]="animationDelay">
 
-</div>
+        </round-progress>
+      </div><br>
+
+      {{course[1]}} <br>
+
+      <div class="progress-wrapper">
+        <!-- [ngStyle]="getOverlayStyle()"-->
+        <div class="current">{{ current }}/{{ max }}</div><br>
+        <round-progress [current]="current" [max]="max" [stroke]="stroke" [radius]="radius" [semicircle]="semicircle"
+          [rounded]="rounded" [responsive]="responsive" [clockwise]="clockwise"
+          [color]="gradient ? 'url(#gradient)' : color" [background]="background" [duration]="duration"
+          [animation]="animation" [animationDelay]="animationDelay">
+
+        </round-progress>
+      </div><br>
+
+      {{course[2]}} <br>
+
+      <div class="progress-wrapper">
+        <!-- [ngStyle]="getOverlayStyle()"-->
+        <div class="current">{{ current }}/{{ max }}</div><br>
+        <round-progress [current]="current" [max]="max" [stroke]="stroke" [radius]="radius" [semicircle]="semicircle"
+          [rounded]="rounded" [responsive]="responsive" [clockwise]="clockwise"
+          [color]="gradient ? 'url(#gradient)' : color" [background]="background" [duration]="duration"
+          [animation]="animation" [animationDelay]="animationDelay">
+
+        </round-progress>
+      </div><br>
+
+      {{course[3]}} <br>
+
+      <div class="progress-wrapper">
+        <!-- [ngStyle]="getOverlayStyle()"-->
+        <div class="current">{{ current }}/{{ max }}</div><br>
+        <round-progress [current]="current" [max]="max" [stroke]="stroke" [radius]="radius" [semicircle]="semicircle"
+          [rounded]="rounded" [responsive]="responsive" [clockwise]="clockwise"
+          [color]="gradient ? 'url(#gradient)' : color" [background]="background" [duration]="duration"
+          [animation]="animation" [animationDelay]="animationDelay">
+
+        </round-progress>
+      </div>
+      <br><br>
+
+    </h1>
+
+  </div>
 
 
 
@@ -48,6 +93,6 @@
 
 
 
-  
-    
+
+
 </ion-content>

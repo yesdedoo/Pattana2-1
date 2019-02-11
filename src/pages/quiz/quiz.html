@@ -1,10 +1,10 @@
 <ion-slides pager>
 
-    <ion-slide style="background-color: green">
+    <ion-slide (ionSlideTap)="ionSlidesDidLoad()" style="background-color: green">
       <h2> Question  </h2>
       
 
-      <ion-card>
+      <ion-card class="card1">
           <ion-card-header >
             <div text-wrap class="QuesDes">
               {{Ques[0]}}
@@ -14,29 +14,28 @@
           <br>
 
         
-          <ion-list>
-            <button ion-item>
+          <ion-list class="List">
+            <button ion-item (click)="Wrong11ButtonColor()" [ngStyle]="{'background-color' : W11buttonColor}">
               <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
               Shopping
             </button>
         
-            <button ion-item>
+            <button ion-item (click)="Correct1ButtonColor()" [ngStyle]="{'background-color' : C1buttonColor}">
               <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
               Hospital
             </button>
         
-            <button ion-item>
+            <button ion-item (click)="Wrong12ButtonColor()" [ngStyle]="{'background-color' : W21buttonColor}">
               <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
               Cafe
             </button>
         
-            <button ion-item>
+            <button ion-item (click)="Wrong13ButtonColor()" [ngStyle]="{'background-color' : W31buttonColor}">
               <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
               Dog Park
             </button>
         
-            
-        
+                  
           </ion-list>
         </ion-card>
 
@@ -47,29 +46,31 @@
   
     <ion-slide style="background-color: red">
       <h2>Slide 2</h2>
-      <ion-card>
+      <ion-card class="card2">
           <ion-card-header>
-            Question:
+            <div text-wrap class="QuesDes"> 
+              Question:
+            </div>            
           </ion-card-header>
-          <br><br><br><br><br>
+          
         
-          <ion-list>
-            <button ion-item>
+          <ion-list class="List">
+            <button ion-item (click)="Wrong12ButtonColor()" [ngStyle]="{'background-color' : W12buttonColor}">
               <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
               Shopping
             </button>
         
-            <button ion-item>
+            <button ion-item (click)="Correct2ButtonColor()" [ngStyle]="{'background-color' : C2buttonColor}">
               <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
               Hospital
             </button>
         
-            <button ion-item>
+            <button ion-item (click)="Wrong22ButtonColor()" [ngStyle]="{'background-color' : W22buttonColor}">
               <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
               Cafe
             </button>
         
-            <button ion-item>
+            <button ion-item (click)="Wrong32ButtonColor()" [ngStyle]="{'background-color' : W32buttonColor}">
               <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
               Dog Park
             </button>
@@ -86,29 +87,30 @@
       <h2>Slide 3</h2>
 
 
-      <ion-card>
+      <ion-card class="card3">
           <ion-card-header>
-            Question:
+            <div text-wrap class="QuesDes"> 
+              Question:
+            </div>
           </ion-card-header>
-          <br><br><br><br><br>
-        
-          <ion-list>
-            <button ion-item>
+              
+          <ion-list class="List">
+            <button ion-item (click)="Wrong13ButtonColor()" [ngStyle]="{'background-color' : W13buttonColor}">
               <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
               Shopping
             </button>
         
-            <button ion-item>
+            <button ion-item (click)="Correct3ButtonColor()" [ngStyle]="{'background-color' : C3buttonColor}">
               <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
               Hospital
             </button>
         
-            <button ion-item>
+            <button ion-item (click)="Wrong23ButtonColor()" [ngStyle]="{'background-color' : W23buttonColor}">
               <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
               Cafe
             </button>
         
-            <button ion-item>
+            <button ion-item (click)="Wrong33ButtonColor()" [ngStyle]="{'background-color' : W33buttonColor}">
               <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
               Dog Park
             </button>
@@ -122,10 +124,281 @@
     </ion-slide>
 
 
-
+    <ion-slide style="background-color: red">
+        <h2>Slide 4</h2>
+        <ion-card class="card4">
+            <ion-card-header>
+              <div text-wrap class="QuesDes"> 
+                Question:
+              </div>            
+            </ion-card-header>
+            
+          
+            <ion-list class="List">
+              <button ion-item (click)="Wrong14ButtonColor()" [ngStyle]="{'background-color' : W14buttonColor}">
+                <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
+                Shopping
+              </button>
+          
+              <button ion-item (click)="Correct4ButtonColor()" [ngStyle]="{'background-color' : C4buttonColor}">
+                <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
+                Hospital
+              </button>
+          
+              <button ion-item (click)="Wrong24ButtonColor()" [ngStyle]="{'background-color' : W24buttonColor}">
+                <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
+                Cafe
+              </button>
+          
+              <button ion-item (click)="Wrong34ButtonColor()" [ngStyle]="{'background-color' : W34buttonColor}">
+                <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
+                Dog Park
+              </button>
+          
+              
+          
+            </ion-list>
+          </ion-card>
+  
+  
+      </ion-slide>
+  
+      <ion-slide style="background-color: red">
+        <h2>Slide 5</h2>
+        <ion-card class="card5">
+            <ion-card-header>
+              <div text-wrap class="QuesDes"> 
+                Question:
+              </div>            
+            </ion-card-header>
+            
+          
+            <ion-list class="List">
+              <button ion-item (click)="Wrong15ButtonColor()" [ngStyle]="{'background-color' : W15buttonColor}">
+                <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
+                Shopping
+              </button>
+          
+              <button ion-item (click)="Correct5ButtonColor()" [ngStyle]="{'background-color' : C5buttonColor}">
+                <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
+                Hospital
+              </button>
+          
+              <button ion-item (click)="Wrong25ButtonColor()" [ngStyle]="{'background-color' : W25buttonColor}">
+                <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
+                Cafe
+              </button>
+          
+              <button ion-item (click)="Wrong35ButtonColor()" [ngStyle]="{'background-color' : W35buttonColor}">
+                <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
+                Dog Park
+              </button>
+          
+              
+          
+            </ion-list>
+          </ion-card>
+  
+  
+      </ion-slide>
+  
+      <ion-slide style="background-color: red">
+        <h2>Slide 6</h2>
+        <ion-card class="card6">
+            <ion-card-header>
+              <div text-wrap class="QuesDes"> 
+                Question:
+              </div>            
+            </ion-card-header>
+            
+          
+            <ion-list class="List">
+              <button ion-item (click)="Wrong16ButtonColor()" [ngStyle]="{'background-color' : W16buttonColor}">
+                <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
+                Shopping
+              </button>
+          
+              <button ion-item (click)="Correct6ButtonColor()" [ngStyle]="{'background-color' : C6buttonColor}">
+                <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
+                Hospital
+              </button>
+          
+              <button ion-item (click)="Wrong26ButtonColor()" [ngStyle]="{'background-color' : W26buttonColor}">
+                <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
+                Cafe
+              </button>
+          
+              <button ion-item (click)="Wrong36ButtonColor()" [ngStyle]="{'background-color' : W36buttonColor}">
+                <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
+                Dog Park
+              </button>
+          
+              
+          
+            </ion-list>
+          </ion-card>
+  
+  
+      </ion-slide>
+  
+      <ion-slide style="background-color: red">
+        <h2>Slide 7</h2>
+        <ion-card class="card7">
+            <ion-card-header>
+              <div text-wrap class="QuesDes"> 
+                Question:
+              </div>            
+            </ion-card-header>
+            
+          
+            <ion-list class="List">
+              <button ion-item (click)="Wrong17ButtonColor()" [ngStyle]="{'background-color' : W17buttonColor}">
+                <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
+                Shopping
+              </button>
+          
+              <button ion-item (click)="Correct7ButtonColor()" [ngStyle]="{'background-color' : C7buttonColor}">
+                <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
+                Hospital
+              </button>
+          
+              <button ion-item (click)="Wrong27ButtonColor()" [ngStyle]="{'background-color' : W27buttonColor}">
+                <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
+                Cafe
+              </button>
+          
+              <button ion-item (click)="Wrong37ButtonColor()" [ngStyle]="{'background-color' : W37buttonColor}">
+                <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
+                Dog Park
+              </button>
+          
+              
+          
+            </ion-list>
+          </ion-card>
+  
+  
+      </ion-slide>
+  
+      <ion-slide style="background-color: red">
+        <h2>Slide 8</h2>
+        <ion-card class="card8">
+            <ion-card-header>
+              <div text-wrap class="QuesDes"> 
+                Question:
+              </div>            
+            </ion-card-header>
+            
+          
+            <ion-list class="List">
+              <button ion-item (click)="Wrong18ButtonColor()" [ngStyle]="{'background-color' : W18buttonColor}">
+                <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
+                Shopping
+              </button>
+          
+              <button ion-item (click)="Correct8ButtonColor()" [ngStyle]="{'background-color' : C8buttonColor}">
+                <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
+                Hospital
+              </button>
+          
+              <button ion-item (click)="Wrong28ButtonColor()" [ngStyle]="{'background-color' : W28buttonColor}">
+                <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
+                Cafe
+              </button>
+          
+              <button ion-item (click)="Wrong38ButtonColor()" [ngStyle]="{'background-color' : W38buttonColor}">
+                <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
+                Dog Park
+              </button>
+          
+              
+          
+            </ion-list>
+          </ion-card>
+  
+  
+      </ion-slide>
+  
+      <ion-slide style="background-color: red">
+        <h2>Slide 9</h2>
+        <ion-card class="card9">
+            <ion-card-header>
+              <div text-wrap class="QuesDes"> 
+                Question:
+              </div>            
+            </ion-card-header>
+            
+          
+            <ion-list class="List">
+              <button ion-item (click)="Wrong19ButtonColor()" [ngStyle]="{'background-color' : W19buttonColor}">
+                <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
+                Shopping
+              </button>
+          
+              <button ion-item (click)="Correct9ButtonColor()" [ngStyle]="{'background-color' : C9buttonColor}">
+                <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
+                Hospital
+              </button>
+          
+              <button ion-item (click)="Wrong29ButtonColor()" [ngStyle]="{'background-color' : W29buttonColor}">
+                <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
+                Cafe
+              </button>
+          
+              <button ion-item (click)="Wrong39ButtonColor()" [ngStyle]="{'background-color' : W39buttonColor}">
+                <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
+                Dog Park
+              </button>
+          
+              
+          
+            </ion-list>
+          </ion-card>
+  
+  
+      </ion-slide>
+  
+      <ion-slide style="background-color: red">
+        <h2>Slide 10</h2>
+        <ion-card class="card10">
+            <ion-card-header>
+              <div text-wrap class="QuesDes"> 
+                Question:
+              </div>            
+            </ion-card-header>
+            
+          
+            <ion-list class="List">
+              <button ion-item (click)="Wrong10ButtonColor()" [ngStyle]="{'background-color' : W10buttonColor}">
+                <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
+                Shopping
+              </button>
+          
+              <button ion-item (click)="Correct0ButtonColor()" [ngStyle]="{'background-color' : C0buttonColor}">
+                <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
+                Hospital
+              </button>
+          
+              <button ion-item (click)="Wrong20ButtonColor()" [ngStyle]="{'background-color' : W20buttonColor}">
+                <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
+                Cafe
+              </button>
+          
+              <button ion-item (click)="Wrong30ButtonColor()" [ngStyle]="{'background-color' : W30buttonColor}">
+                <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
+                Dog Park
+              </button>
+          
+              
+          
+            </ion-list>
+          </ion-card>
+  
+  
+      </ion-slide>
 
     <ion-slide style="background-color: white">
-        <h2>Slide 4</h2>
+        <h2>Finish Slide</h2>
   
   
         <button ion-button color="light" ion-button class="finishquiz" (click)='finishquiz()'> Finish Quiz </button> <br><br>

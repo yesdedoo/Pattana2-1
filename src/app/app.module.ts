@@ -20,6 +20,7 @@ import { QuizPage } from '../pages/quiz/quiz';
 import { RankPage } from '../pages/rank/rank';
 import { CardPage } from '../pages/card/card';
 import { CountPage } from '../pages/count/count';
+import { RoundProgressModule } from 'angular-svg-round-progressbar';
 @NgModule({
   declarations: [
     MyApp,
@@ -39,7 +40,7 @@ import { CountPage } from '../pages/count/count';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp, {tabsHideOnSubPages: true,},),
+    IonicModule.forRoot(MyApp, {tabsHideOnSubPages: true,},),RoundProgressModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [

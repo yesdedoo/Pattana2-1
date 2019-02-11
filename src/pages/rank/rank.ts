@@ -20,8 +20,8 @@ export class RankPage {
   Rankingme: Array <any> =[];
 
   constructor(public alertCtrl: AlertController, private navCtrl: NavController, public navParams: NavParams) {
-    this.Rankingother= ["Kamonruk","bolle","Prakitchai"]
-    this.Rankingme = ["Namja"]
+    this.Rankingother= ["Kamonruk Sariyarsheeva","Suvijak Permpholphattana","Prakitchai Panphila"]
+    this.Rankingme = ["Pakpoom Rachtracho"]
   
   }
 

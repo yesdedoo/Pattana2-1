@@ -1,5 +1,10 @@
 page-schedule {
 
+    ion-slide  {
+        background-size: cover;
+        
+    }
+
     ion-card{
         //border-bottom: 200px;
         border-top-right-radius: 20px !important;
@@ -22,6 +27,6 @@ page-schedule {
         
         padding-bottom: 30px;
       
-        color: #f78710;
+        color: #ffffff;
     }
 }

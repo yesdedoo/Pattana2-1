@@ -13,6 +13,9 @@ export class HomePage {
 
   currentDate;
   formattedDate;
+  currentHour;
+  currentMinute;
+  currentTime;
   
   constructor(public navCtrl: NavController) {
     this.currentDate = new Date();

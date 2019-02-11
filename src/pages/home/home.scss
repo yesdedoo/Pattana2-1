@@ -10,15 +10,15 @@ page-home {
     
     .avai-font
     {
-        font-size: 20px;
-        color:#666666 ;
+        font-size: 40px;
+        color:#ffffff ;
         text-align: center;
     }
 
     .start
     {
-        width: 200px;
-        height: 200px;
+        width: 250px;
+        height: 250px;
         font-size: 30px;
         
         
@@ -26,10 +26,10 @@ page-home {
         -webkit-box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.103);
         box-shadow: 0 10px 30px 0  rgba(0, 0, 0, 0.103);
 
-        border-top-right-radius: 100px !important;
-        border-top-left-radius: 100px !important;
-        border-bottom-right-radius: 100px !important;
-        border-bottom-left-radius: 100px !important;
+        border-top-right-radius: 150px !important;
+        border-top-left-radius: 150px !important;
+        border-bottom-right-radius: 150px !important;
+        border-bottom-left-radius: 150px !important;
     }
     h1{
         font-size: 20px;
@@ -49,7 +49,7 @@ page-home {
      
         width: 100%;
     
-        color: #f78710;
+        color: #ffffff;
     }
      
     .menu{
@@ -64,8 +64,8 @@ page-home {
         transition: all 0.3s ease-in-out;
         width: 90%;
         height: 45px;
-        color: #666666;
-        background-color: white; 
+        color: #ffffff;
+        background-color:#f78710; 
 
         border-top-right-radius: 20px !important;
         border-top-left-radius: 20px !important;

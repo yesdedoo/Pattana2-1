@@ -1,5 +1,12 @@
 page-rank {
 
+    ion-content  {
+        background-size: cover;
+        position: relative;
+    }
+
+  
+
     .word{
         position: relative;
         text-align: center;
@@ -20,7 +27,7 @@ page-rank {
         
     }
     h1{
-        font-size: 20px !important; 
+        font-size: 16px !important; 
         color: #f78710 !important;
         
     }
@@ -61,17 +68,13 @@ page-rank {
     .ranking
     {
         font-size: 20px;
+        
     }
     
     
     .me
     {
-        -webkit-box-shadow: 0 10px 30px 0 rgb(255, 255, 255);
-        box-shadow: 0 10px 30px 0  rgba(0, 0, 0, 0.247);
-
-        background-color: #0068B7;
-        
-
+        background-color:#f78710;
     }
 
     

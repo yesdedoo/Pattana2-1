@@ -1,8 +1,15 @@
 page-schedule {
 
-    ion-slide  {
+    ion-content   {
         background-size: cover;
         
+    }
+
+    .Calendar{
+        font-size: 20px;
+        color:  #ffffff;
+        position: relative;
+        text-align: center  !important; 
     }
 
     ion-card{

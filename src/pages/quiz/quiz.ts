@@ -137,7 +137,7 @@ export class QuizPage {
   }
   Correct1ButtonColor(){
     if(this.checker1==true){
-      this.C1buttonColor = '#168400';
+      this.C1buttonColor = '#8cc63f';
       this.checker1=false;
     }
   }
@@ -163,7 +163,7 @@ export class QuizPage {
   }
   Correct2ButtonColor(){
     if(this.checker2==true){
-      this.C2buttonColor = '#168400';
+      this.C2buttonColor = '#8cc63f';
       this.checker2=false;
     }
   }
@@ -189,7 +189,7 @@ export class QuizPage {
   }
   Correct3ButtonColor(){
     if(this.checker3==true){
-      this.C3buttonColor = '#168400';
+      this.C3buttonColor = '#8cc63f';
       this.checker3=false;
     }
   }
@@ -216,7 +216,7 @@ export class QuizPage {
   }
   Correct4ButtonColor(){
     if(this.checker4==true){
-      this.C4buttonColor = '#168400';
+      this.C4buttonColor = '#8cc63f';
       this.checker4=false;
     }
   }
@@ -243,7 +243,7 @@ export class QuizPage {
   }
   Correct5ButtonColor(){
     if(this.checker5==true){
-      this.C5buttonColor = '#168400';
+      this.C5buttonColor = '#8cc63f';
       this.checker5=false;
     }
   }
@@ -270,7 +270,7 @@ export class QuizPage {
   }
   Correct6ButtonColor(){
     if(this.checker6==true){
-      this.C6buttonColor = '#168400';
+      this.C6buttonColor = '#8cc63f';
       this.checker6=false;
     }
   }
@@ -297,7 +297,7 @@ export class QuizPage {
   }
   Correct7ButtonColor(){
     if(this.checker7==true){
-      this.C7buttonColor = '#168400';
+      this.C7buttonColor = '#8cc63f';
       this.checker7=false;
     }
   }
@@ -324,7 +324,7 @@ export class QuizPage {
   }
   Correct8ButtonColor(){
     if(this.checker8==true){
-      this.C8buttonColor = '#168400';
+      this.C8buttonColor = '#8cc63f';
       this.checker8=false;
     }
   }
@@ -351,7 +351,7 @@ export class QuizPage {
   }
   Correct9ButtonColor(){
     if(this.checker9==true){
-      this.C9buttonColor = '#168400';
+      this.C9buttonColor = '#8cc63f';
       this.checker9=false;
     }
   }
@@ -378,7 +378,7 @@ export class QuizPage {
   }
   Correct0ButtonColor(){
     if(this.checker10==true){
-      this.C0buttonColor = '#168400';
+      this.C0buttonColor = '#8cc63f';
       this.checker10=false;
     }
   }

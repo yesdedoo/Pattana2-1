@@ -21,6 +21,7 @@ import { RankPage } from '../pages/rank/rank';
 import { CardPage } from '../pages/card/card';
 import { CountPage } from '../pages/count/count';
 import { RoundProgressModule } from 'angular-svg-round-progressbar';
+import { CalendarModule } from 'ion2-calendar';
 @NgModule({
   declarations: [
     MyApp,
@@ -40,6 +41,7 @@ import { RoundProgressModule } from 'angular-svg-round-progressbar';
   ],
   imports: [
     BrowserModule,
+    CalendarModule,
     IonicModule.forRoot(MyApp, {tabsHideOnSubPages: true,},),RoundProgressModule,
   ],
   bootstrap: [IonicApp],

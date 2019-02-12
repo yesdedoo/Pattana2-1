@@ -5,7 +5,25 @@ page-resulthistperc {
         position: relative;
         text-align: center;
         
+       
+    
+    }
+
+
+    .LessonHead
+    {    margin-top: 10px;
+        text-align: center;
+  
+    
+        font-size: 20px;
         
+    
+     
+        width: 100%;
+    
+        color: #ffffff;
+    
+       
     }
 
     .progress-warpper{
@@ -50,7 +68,11 @@ page-resulthistperc {
         box-shadow: 0 10px 30px 0  rgba(0, 0, 0, 0.103);
       
     }
-
+    round-progress{
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
    
     
 }

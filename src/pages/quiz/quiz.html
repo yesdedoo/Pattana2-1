@@ -1,13 +1,12 @@
 <ion-slides pager>
 
     <ion-slide (ionSlideTap)="ionSlidesDidLoad()" style="background-image: url('assets/imgs/Full1.png')">
-      <h2> Question  </h2>
-      
+      <h2> Question 1  </h2>
 
       <ion-card class="card1">
           <ion-card-header >
             <div text-wrap class="QuesDes">
-              {{Ques[0]}}
+                The type of diagram in which the operations are apecified on objects is considered as
             </div>
             
           </ion-card-header>
@@ -17,22 +16,22 @@
           <ion-list class="List">
             <button ion-item (click)="Wrong11ButtonColor()" [ngStyle]="{'background-color' : W11buttonColor}">
               <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
-              Shopping
+              functional diagrams
             </button>
         
             <button ion-item (click)="Correct1ButtonColor()" [ngStyle]="{'background-color' : C1buttonColor}">
               <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
-              Hospital
+              class diagrams
             </button>
         
             <button ion-item (click)="Wrong12ButtonColor()" [ngStyle]="{'background-color' : W21buttonColor}">
               <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
-              Cafe
+              attributes diagrams
             </button>
         
             <button ion-item (click)="Wrong13ButtonColor()" [ngStyle]="{'background-color' : W31buttonColor}">
               <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
-              Dog Park
+              entity diagrams
             </button>
         
                   
@@ -45,11 +44,11 @@
     </ion-slide>
   
     <ion-slide style="background-image: url('assets/imgs/Full1.png')">
-      <h2>Slide 2</h2>
+      <h2>Question 2</h2>
       <ion-card class="card2">
           <ion-card-header>
             <div text-wrap class="QuesDes"> 
-              Question:
+              Considering the binary relationships, the possible cardinality ratios are 
             </div>            
           </ion-card-header>
           
@@ -57,22 +56,22 @@
           <ion-list class="List">
             <button ion-item (click)="Wrong12ButtonColor()" [ngStyle]="{'background-color' : W12buttonColor}">
               <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
-              Shopping
-            </button>
-        
-            <button ion-item (click)="Correct2ButtonColor()" [ngStyle]="{'background-color' : C2buttonColor}">
-              <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
-              Hospital
-            </button>
-        
-            <button ion-item (click)="Wrong22ButtonColor()" [ngStyle]="{'background-color' : W22buttonColor}">
-              <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
-              Cafe
+              one : one
             </button>
         
             <button ion-item (click)="Wrong32ButtonColor()" [ngStyle]="{'background-color' : W32buttonColor}">
               <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
-              Dog Park
+              1 : N
+            </button>
+        
+            <button ion-item (click)="Wrong22ButtonColor()" [ngStyle]="{'background-color' : W22buttonColor}">
+              <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
+              M : N
+            </button>
+        
+            <button ion-item (click)="Correct2ButtonColor()" [ngStyle]="{'background-color' : C2buttonColor}">
+              <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
+              all of above
             </button>
         
             
@@ -84,30 +83,30 @@
     </ion-slide>
   
     <ion-slide style="background-image: url('assets/imgs/Full1.png')">
-      <h2>Slide 3</h2>
+      <h2>Question 3</h2>
 
 
       <ion-card class="card3">
           <ion-card-header>
             <div text-wrap class="QuesDes"> 
-              Question:
+              The attributes that can be arranged into hierarchy are called
             </div>
           </ion-card-header>
               
           <ion-list class="List">
-            <button ion-item (click)="Wrong13ButtonColor()" [ngStyle]="{'background-color' : W13buttonColor}">
-              <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
-              Shopping
-            </button>
-        
             <button ion-item (click)="Correct3ButtonColor()" [ngStyle]="{'background-color' : C3buttonColor}">
               <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
-              Hospital
+              composite attributes
+            </button>
+        
+            <button ion-item (click)="Wrong13ButtonColor()" [ngStyle]="{'background-color' : W13buttonColor}">
+              <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
+              atomic attributes
             </button>
         
             <button ion-item (click)="Wrong23ButtonColor()" [ngStyle]="{'background-color' : W23buttonColor}">
               <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
-              Cafe
+              derived attributes
             </button>
         
             <button ion-item (click)="Wrong33ButtonColor()" [ngStyle]="{'background-color' : W33buttonColor}">
@@ -125,34 +124,34 @@
 
 
     <ion-slide style="background-image: url('assets/imgs/Full1.png')">
-        <h2>Slide 4</h2>
+        <h2>Question 4</h2>
         <ion-card class="card4">
             <ion-card-header>
               <div text-wrap class="QuesDes"> 
-                Question:
+                The set of all the entities having same attributes is classified as
               </div>            
             </ion-card-header>
             
           
             <ion-list class="List">
-              <button ion-item (click)="Wrong14ButtonColor()" [ngStyle]="{'background-color' : W14buttonColor}">
-                <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
-                Shopping
-              </button>
-          
               <button ion-item (click)="Correct4ButtonColor()" [ngStyle]="{'background-color' : C4buttonColor}">
                 <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
-                Hospital
+                entity type
+              </button>
+          
+              <button ion-item (click)="Wrong14ButtonColor()" [ngStyle]="{'background-color' : W14buttonColor}">
+                <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
+                attribute type
               </button>
           
               <button ion-item (click)="Wrong24ButtonColor()" [ngStyle]="{'background-color' : W24buttonColor}">
                 <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
-                Cafe
+                function type
               </button>
           
               <button ion-item (click)="Wrong34ButtonColor()" [ngStyle]="{'background-color' : W34buttonColor}">
                 <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
-                Dog Park
+                hierarchy type
               </button>
           
               
@@ -164,34 +163,34 @@
       </ion-slide>
   
       <ion-slide style="background-image: url('assets/imgs/Full1.png')">
-        <h2>Slide 5</h2>
+        <h2>Quesstion 5</h2>
         <ion-card class="card5">
             <ion-card-header>
               <div text-wrap class="QuesDes"> 
-                Question:
+                The set of values which specifies which values are to be assigned to individual entities is considered as
               </div>            
             </ion-card-header>
             
           
             <ion-list class="List">
-              <button ion-item (click)="Wrong15ButtonColor()" [ngStyle]="{'background-color' : W15buttonColor}">
-                <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
-                Shopping
-              </button>
-          
               <button ion-item (click)="Correct5ButtonColor()" [ngStyle]="{'background-color' : C5buttonColor}">
                 <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
-                Hospital
+                domainof values
+              </button>
+          
+              <button ion-item (click)="Wrong15ButtonColor()" [ngStyle]="{'background-color' : W15buttonColor}">
+                <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
+                composition of values
               </button>
           
               <button ion-item (click)="Wrong25ButtonColor()" [ngStyle]="{'background-color' : W25buttonColor}">
                 <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
-                Cafe
+                attribution of values
               </button>
           
               <button ion-item (click)="Wrong35ButtonColor()" [ngStyle]="{'background-color' : W35buttonColor}">
                 <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
-                Dog Park
+                derivation of values
               </button>
           
               
@@ -203,11 +202,11 @@
       </ion-slide>
   
       <ion-slide style="background-image: url('assets/imgs/Full1.png')">
-        <h2>Slide 6</h2>
+        <h2>Question 6</h2>
         <ion-card class="card6">
             <ion-card-header>
               <div text-wrap class="QuesDes"> 
-                Question:
+                The type of attributes that can be divided into smaller parts is classified as
               </div>            
             </ion-card-header>
             
@@ -215,26 +214,24 @@
             <ion-list class="List">
               <button ion-item (click)="Wrong16ButtonColor()" [ngStyle]="{'background-color' : W16buttonColor}">
                 <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
-                Shopping
-              </button>
-          
-              <button ion-item (click)="Correct6ButtonColor()" [ngStyle]="{'background-color' : C6buttonColor}">
-                <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
-                Hospital
-              </button>
-          
-              <button ion-item (click)="Wrong26ButtonColor()" [ngStyle]="{'background-color' : W26buttonColor}">
-                <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
-                Cafe
+                multivalve attributes
               </button>
           
               <button ion-item (click)="Wrong36ButtonColor()" [ngStyle]="{'background-color' : W36buttonColor}">
                 <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
-                Dog Park
+                single valued attributed
               </button>
           
-              
+              <button ion-item (click)="Wrong26ButtonColor()" [ngStyle]="{'background-color' : W26buttonColor}">
+                <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
+                composite attributes
+              </button>
           
+              <button ion-item (click)="Correct6ButtonColor()" [ngStyle]="{'background-color' : C6buttonColor}">
+                <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
+                atomic attributes
+              </button>
+ 
             </ion-list>
           </ion-card>
   
@@ -242,11 +239,11 @@
       </ion-slide>
   
       <ion-slide style="background-image: url('assets/imgs/Full1.png')">
-        <h2>Slide 7</h2>
+        <h2>Question 7</h2>
         <ion-card class="card7">
             <ion-card-header>
               <div text-wrap class="QuesDes"> 
-                Question:
+                The particular database and the set of related programs which helps in implementation of updates and queries is called
               </div>            
             </ion-card-header>
             
@@ -254,22 +251,22 @@
             <ion-list class="List">
               <button ion-item (click)="Wrong17ButtonColor()" [ngStyle]="{'background-color' : W17buttonColor}">
                 <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
-                Shopping
-              </button>
-          
-              <button ion-item (click)="Correct7ButtonColor()" [ngStyle]="{'background-color' : C7buttonColor}">
-                <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
-                Hospital
-              </button>
-          
-              <button ion-item (click)="Wrong27ButtonColor()" [ngStyle]="{'background-color' : W27buttonColor}">
-                <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
-                Cafe
+                implemented applications
               </button>
           
               <button ion-item (click)="Wrong37ButtonColor()" [ngStyle]="{'background-color' : W37buttonColor}">
                 <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
-                Dog Park
+                backup applications
+              </button>
+          
+              <button ion-item (click)="Wrong27ButtonColor()" [ngStyle]="{'background-color' : W27buttonColor}">
+                <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
+                utility programs
+              </button>
+          
+              <button ion-item (click)="Correct7ButtonColor()" [ngStyle]="{'background-color' : C7buttonColor}">
+                <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
+                database application
               </button>
           
               
@@ -281,11 +278,11 @@
       </ion-slide>
   
       <ion-slide style="background-image: url('assets/imgs/Full1.png')">
-        <h2>Slide 8</h2>
+        <h2>Question 8</h2>
         <ion-card class="card8">
             <ion-card-header>
               <div text-wrap class="QuesDes"> 
-                Question:
+                The detailed description on entity constrains, entity relationships and entity types is expressed in
               </div>            
             </ion-card-header>
             
@@ -293,22 +290,22 @@
             <ion-list class="List">
               <button ion-item (click)="Wrong18ButtonColor()" [ngStyle]="{'background-color' : W18buttonColor}">
                 <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
-                Shopping
-              </button>
-          
-              <button ion-item (click)="Correct8ButtonColor()" [ngStyle]="{'background-color' : C8buttonColor}">
-                <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
-                Hospital
+                low level schema design
               </button>
           
               <button ion-item (click)="Wrong28ButtonColor()" [ngStyle]="{'background-color' : W28buttonColor}">
                 <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
-                Cafe
+                physical design
+              </button>
+          
+              <button ion-item (click)="Correct8ButtonColor()" [ngStyle]="{'background-color' : C8buttonColor}">
+                <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
+                conceptual design
               </button>
           
               <button ion-item (click)="Wrong38ButtonColor()" [ngStyle]="{'background-color' : W38buttonColor}">
                 <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
-                Dog Park
+                logical design
               </button>
           
               
@@ -320,34 +317,34 @@
       </ion-slide>
   
       <ion-slide style="background-image: url('assets/imgs/Full1.png')">
-        <h2>Slide 9</h2>
+        <h2>Question 9</h2>
         <ion-card class="card9">
             <ion-card-header>
               <div text-wrap class="QuesDes"> 
-                Question:
+                The types of partial constraints are
               </div>            
             </ion-card-header>
             
           
             <ion-list class="List">
-              <button ion-item (click)="Wrong19ButtonColor()" [ngStyle]="{'background-color' : W19buttonColor}">
-                <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
-                Shopping
-              </button>
-          
               <button ion-item (click)="Correct9ButtonColor()" [ngStyle]="{'background-color' : C9buttonColor}">
                 <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
-                Hospital
+                total and partial
+              </button>
+          
+              <button ion-item (click)="Wrong19ButtonColor()" [ngStyle]="{'background-color' : W19buttonColor}">
+                <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
+                intensive and extensive
               </button>
           
               <button ion-item (click)="Wrong29ButtonColor()" [ngStyle]="{'background-color' : W29buttonColor}">
                 <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
-                Cafe
+                minimum and maximum
               </button>
           
               <button ion-item (click)="Wrong39ButtonColor()" [ngStyle]="{'background-color' : W39buttonColor}">
                 <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
-                Dog Park
+                floating and string
               </button>
           
               
@@ -359,11 +356,11 @@
       </ion-slide>
   
       <ion-slide style="background-image: url('assets/imgs/Full1.png')">
-        <h2>Slide 10</h2>
+        <h2>Question 10</h2>
         <ion-card class="card10">
             <ion-card-header>
               <div text-wrap class="QuesDes"> 
-                Question:
+                The attributes which have only one value for a specific entity are called
               </div>            
             </ion-card-header>
             
@@ -371,22 +368,22 @@
             <ion-list class="List">
               <button ion-item (click)="Wrong10ButtonColor()" [ngStyle]="{'background-color' : W10buttonColor}">
                 <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
-                Shopping
+                multi-valued attributes
               </button>
           
               <button ion-item (click)="Correct0ButtonColor()" [ngStyle]="{'background-color' : C0buttonColor}">
                 <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
-                Hospital
+                single valued attributes
               </button>
           
               <button ion-item (click)="Wrong20ButtonColor()" [ngStyle]="{'background-color' : W20buttonColor}">
                 <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
-                Cafe
+                atomic attributes
               </button>
           
               <button ion-item (click)="Wrong30ButtonColor()" [ngStyle]="{'background-color' : W30buttonColor}">
                 <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
-                Dog Park
+                diatomic attributes
               </button>
           
               

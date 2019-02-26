@@ -8,7 +8,7 @@ page-storage {
     .storage{
         margin-top: 10px;
         text-align: center;
-  
+        margin-bottom: 18px;
     
         font-size: 20px;
         
@@ -19,5 +19,22 @@ page-storage {
         color: #ffffff;
     }
 
+    .Card
+    {
+        align-content: center;
+        align-items: center;
+        text-align: center;
+        width: 70%;
+        margin-top: 10px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    ion-header{
+        margin-bottom: 100px;
+        border-bottom: 0px;
+    }
+
+    
 
 }

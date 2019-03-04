@@ -22,6 +22,9 @@ import { CardPage } from '../pages/card/card';
 import { CountPage } from '../pages/count/count';
 import { RoundProgressModule } from 'angular-svg-round-progressbar';
 import { CalendarModule } from 'ion2-calendar';
+import { Login2Page } from '../pages/login2/login2';
+
+
 @NgModule({
   declarations: [
     MyApp,
@@ -37,7 +40,8 @@ import { CalendarModule } from 'ion2-calendar';
     QuizPage,
     RankPage,
     CardPage,
-    CountPage
+    CountPage,
+    Login2Page
   ],
   imports: [
     BrowserModule,
@@ -59,7 +63,8 @@ import { CalendarModule } from 'ion2-calendar';
     QuizPage,
     RankPage,
     CardPage,
-    CountPage
+    CountPage,
+    Login2Page
   ],
   providers: [
     StatusBar,

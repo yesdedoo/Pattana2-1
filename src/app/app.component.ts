@@ -14,13 +14,14 @@ import { CountPage } from '../pages/count/count';
 import { JoincoursePage } from '../pages/joincourse/joincourse';
 import { ResulthistpercPage } from '../pages/resulthistperc/resulthistperc';
 import { ResultPage } from '../pages/result/result';
+import { Login2Page } from '../pages/login2/login2';
 
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any =   HomePage;
+  rootPage:any =   Login2Page;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {

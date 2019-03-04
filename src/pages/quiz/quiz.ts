@@ -83,6 +83,8 @@ export class QuizPage {
   W30buttonColor: string;
   C0buttonColor: string;
 
+  ScoreCount: any;
+
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
@@ -102,11 +104,13 @@ export class QuizPage {
     this.checker9 = true;
     this.checker10 = true;
     this.WbuttonColor = '#ff0000';
-   
+    this.ScoreCount = 0;
   }
 
   finishquiz(){
-    this.navCtrl.push(RankPage)
+    this.navCtrl.push(RankPage,{
+      data: this.ScoreCount
+    });
   }
 
   ionViewDidLoad() {
@@ -139,6 +143,7 @@ export class QuizPage {
     if(this.checker1==true){
       this.C1buttonColor = '#8cc63f';
       this.checker1=false;
+      this.ScoreCount++;
     }
   }
   //Slide 2
@@ -165,6 +170,7 @@ export class QuizPage {
     if(this.checker2==true){
       this.C2buttonColor = '#8cc63f';
       this.checker2=false;
+      this.ScoreCount++;
     }
   }
   //Slide 3
@@ -191,6 +197,7 @@ export class QuizPage {
     if(this.checker3==true){
       this.C3buttonColor = '#8cc63f';
       this.checker3=false;
+      this.ScoreCount++;
     }
   }
 
@@ -218,6 +225,7 @@ export class QuizPage {
     if(this.checker4==true){
       this.C4buttonColor = '#8cc63f';
       this.checker4=false;
+      this.ScoreCount++;
     }
   }
 
@@ -245,6 +253,7 @@ export class QuizPage {
     if(this.checker5==true){
       this.C5buttonColor = '#8cc63f';
       this.checker5=false;
+      this.ScoreCount++;
     }
   }
 

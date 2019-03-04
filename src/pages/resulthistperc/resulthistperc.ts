@@ -15,7 +15,11 @@ import { NgStyle } from '@angular/common';
 })
 export class ResulthistpercPage {
 
-  current: number = 75;
+  current1: number = 60;
+  current2: number = 75;
+  current3: number = 80;
+  current4: number = 55;
+  
   max: number = 100;
   stroke: number = 20;
   radius: number = 75;

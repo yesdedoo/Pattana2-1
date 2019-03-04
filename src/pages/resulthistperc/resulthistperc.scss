@@ -9,11 +9,15 @@ page-resulthistperc {
     
     }
 
+    ion-header{
+        margin-bottom: 100px;
+        border-bottom: 0px;
+    }
 
-    .LessonHead
-    {    margin-top: 10px;
+    .storage{
+        margin-top: 10px;
         text-align: center;
-  
+        margin-bottom: 18px;
     
         font-size: 20px;
         
@@ -22,9 +26,9 @@ page-resulthistperc {
         width: 100%;
     
         color: #ffffff;
-    
-       
     }
+
+
 
     .progress-warpper{
         margin: 20px auto;

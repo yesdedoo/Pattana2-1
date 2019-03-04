@@ -6,8 +6,33 @@ page-home {
          text-align: center;
 
     }
+    ion-header{
+        height: 10%;
+        margin-bottom: 30px;
+        border-bottom: 0px;
+    }
 
+    .storage{
+        margin-top: 10px;
+        text-align: center;
+        margin-bottom: 18px;
     
+        font-size: 20px;
+        
+    
+     
+        width: 100%;
+    
+        color: #ffffff;
+    }
+
+    .text1
+    {
+        font-size: 40px;
+        color:#ffffff ;
+        text-align: center;
+
+    }
     
     .avai-font
     {
@@ -18,9 +43,9 @@ page-home {
 
     .start
     {
-        width: 220px;
-        height: 220px;
-        font-size: 30px;
+        width: 200px;
+        height: 200px;
+        font-size: 20px;
         
         
 
@@ -34,23 +59,64 @@ page-home {
     }
     h1{
         font-size: 20px;
+        color: #f78710;
+
+    }
+    h2{
+        font-size: 14px;
+        color: #666666;
+    }
+    h3{
+        font-size: 14px;
+        color: #f78710;
+
+    }
+
+    h4{
+        font-size: 20px;
+        color: #ffffff;
 
     }
 
    
-    .course{
-      
+    .course1{
         margin-top: 10px;
+        margin-left: 25px;
+
         text-align: center;
-  
+        font-size: 16px;
+        width: 85%;
     
-        font-size: 20px;
         
+        background-color: #ffffff;
+
+        border-top-right-radius: 5px !important;
+        border-top-left-radius: 5px !important;
+        border-bottom-right-radius: 5px !important;
+        border-bottom-left-radius: 5px !important;
+
+        -webkit-box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.103);
+        box-shadow: 0 10px 30px 0  rgba(0, 0, 0, 0.103);
+    }
+
+    .course2{
+        margin-top: 10px;
+        margin-left: 40px;
+
+        text-align: center;
+        font-size: 12px;
+        width: 60%;
     
-     
-        width: 100%;
-    
-        color: #ffffff;
+        color: #f78710;
+        background-color: #ffffff;
+
+        border-top-right-radius: 5px !important;
+        border-top-left-radius: 5px !important;
+        border-bottom-right-radius: 5px !important;
+        border-bottom-left-radius: 5px !important;
+
+        -webkit-box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.103);
+        box-shadow: 0 10px 30px 0  rgba(0, 0, 0, 0.103);
     }
      
     .menu{
@@ -74,6 +140,15 @@ page-home {
         border-bottom-left-radius: 20px !important;
         -webkit-box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.103);
         box-shadow: 0 10px 30px 0  rgba(0, 0, 0, 0.103);
+    }
+    .logo{
+        width: 10%;
+        height: 10%;
+
+    }
+
+    .time{
+        width: 70%;
     }
     
 }

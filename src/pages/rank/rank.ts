@@ -18,10 +18,12 @@ export class RankPage {
 
   Rankingother: Array <any> =[];
   Rankingme: Array <any> =[];
+  ScoreCount: any;
 
   constructor(public alertCtrl: AlertController, private navCtrl: NavController, public navParams: NavParams) {
     this.Rankingother= ["Kamonruk Sariyarsheeva","Suvijak Permpholphattana","Prakitchai Panphila"]
     this.Rankingme = ["Pakpoom Rachtracho"]
+    this.ScoreCount = navParams.get('data');
   
   }
 

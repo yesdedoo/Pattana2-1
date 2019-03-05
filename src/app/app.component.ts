@@ -17,6 +17,7 @@ import { ResultPage } from '../pages/result/result';
 import { Login2Page } from '../pages/login2/login2';
 
 
+
 @Component({
   templateUrl: 'app.html'
 })

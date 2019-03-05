@@ -28,28 +28,32 @@
 
           <ion-item>
             <ion-label floating>Userame</ion-label>
-            <ion-input formControlName="firstName" type="text"
-              [class.invalid]="!slideOneForm.controls.firstName.valid && (slideOneForm.controls.firstName.dirty || submitAttempt)">
+            <ion-input formControlName="userName" type="text"
+              [class.invalid]="!slideOneForm.controls.userName.valid && (slideOneForm.controls.userName.dirty || submitAttempt)">
             </ion-input>
           </ion-item>
 
           <ion-item
-            *ngIf="!slideOneForm.controls.firstName.valid  && (slideOneForm.controls.firstName.dirty || submitAttempt)">
-            <p>Please enter a valid name.</p>
+            *ngIf="!slideOneForm.controls.userName.valid  && (slideOneForm.controls.userName.dirty || submitAttempt)">
+            <p>Please enter a valid Username.</p>
           </ion-item>
 
           <ion-item>
             <ion-label floating>Password</ion-label>
-            <ion-input formControlName="lastName" type="Password"
-              [class.invalid]="!slideOneForm.controls.lastName.valid && (slideOneForm.controls.age.dirty || submitAttempt)">
+            <ion-input formControlName="password" type="Password"
+              [class.invalid]="!slideOneForm.controls.password.valid && (slideOneForm.controls.password.dirty || submitAttempt)">
             </ion-input>
           </ion-item>
 
-          <ion-item
+          <!--
+
+             <ion-item
             *ngIf="!slideOneForm.controls.lastName.valid  && (slideOneForm.controls.lastName.dirty || submitAttempt)">
-            <p>Please enter a valid name.</p>
+            <p>Password is not correct.</p>
           </ion-item>
 
+          -->
+         
          <br>
         
         </form>
@@ -89,23 +93,33 @@
             <p>Sorry, that username can not be used!</p>
           </ion-item>
 
-        
-
           <ion-item>
-            <ion-label floating>Privacy</ion-label>
-            <ion-select
-              [class.invalid]="!slideTwoForm.controls.privacy.valid && (slideTwoForm.controls.privacy.dirty || submitAttempt)"
-              formControlName="privacy">
-              <ion-option value="public" checked="true">Public</ion-option>
-              <ion-option value="friends">Friends Only</ion-option>
-              <ion-option value="private">Private</ion-option>
-            </ion-select>
-          </ion-item>
+              <ion-label floating>First Name</ion-label>
+              <ion-input
+                [class.invalid]="!slideTwoForm.controls.firstName.valid && (slideTwoForm.controls.firstName.dirty || submitAttempt)"
+                formControlName="firstName" type="text"></ion-input>
+            </ion-item>
 
-          <ion-item>
-            <ion-label floating>Bio</ion-label>
-            <ion-textarea formControlName="bio"></ion-textarea>
-          </ion-item>
+            <ion-item>
+              <ion-label floating>Last Name</ion-label>
+              <ion-input
+                [class.invalid]="!slideTwoForm.controls.lastName.valid && (slideTwoForm.controls.lastName.dirty || submitAttempt)"
+                formControlName="lastName" type="text"></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-label floating>Password</ion-label>
+                <ion-input formControlName="password" type="Password"
+                  [class.invalid]="!slideOneForm.controls.password.valid && (slideOneForm.controls.password.dirty || submitAttempt)">
+                </ion-input>
+              </ion-item>
+
+              <ion-item>
+                  <ion-label floating>Enter Password again</ion-label>
+                  <ion-input formControlName="password" type="Password"
+                    [class.invalid]="!slideOneForm.controls.password.valid && (slideOneForm.controls.password.dirty || submitAttempt)">
+                  </ion-input>
+                </ion-item>
 
         </form>
 

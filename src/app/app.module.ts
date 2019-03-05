@@ -23,6 +23,8 @@ import { CountPage } from '../pages/count/count';
 import { RoundProgressModule } from 'angular-svg-round-progressbar';
 import { CalendarModule } from 'ion2-calendar';
 import { Login2Page } from '../pages/login2/login2';
+import { UsernameValidator } from './validators/username';
+
 
 
 @NgModule({
@@ -70,6 +72,7 @@ import { Login2Page } from '../pages/login2/login2';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
+ 
   ]
 })
 export class AppModule {}

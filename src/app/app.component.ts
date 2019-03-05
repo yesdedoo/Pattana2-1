@@ -22,7 +22,7 @@ import { Login2Page } from '../pages/login2/login2';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any =   Login2Page;
+  rootPage:any =   LoginPage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {

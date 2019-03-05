@@ -4,7 +4,8 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
+<!--
+  <ion-header>
     <ion-navbar color="primary">
       <ion-title>
         Sign In
@@ -17,17 +18,64 @@
       </ion-buttons>
     </ion-navbar>
   </ion-header>
+-->
+
 
   
 <ion-content  style="background-image: url('assets/imgs/Login1.png')">
 
   
-  <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
-  <div  class="Com2" > 
+  
+  <div  class="Com2" ion-fixed> 
+<br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> 
 
-    <br><input type="text" placeholder="Username"> 
+      <p *ngIf="submitAttempt" style="color: #ea6153;">Please fill out all details accurately.</p>
+
+      <ion-list class="list" no-lines>
+
+        <form [formGroup]="slideOneForm">
+
+          <ion-item>
+            <ion-label floating>Userame</ion-label>
+            <ion-input formControlName="userName" type="text"
+              [class.invalid]="!slideOneForm.controls.userName.valid && (slideOneForm.controls.userName.dirty || submitAttempt)">
+            </ion-input>
+          </ion-item>
+
+          <ion-item
+            *ngIf="!slideOneForm.controls.userName.valid  && (slideOneForm.controls.userName.dirty || submitAttempt)">
+            <p>Please enter a valid Username.</p>
+          </ion-item>
+
+          <ion-item>
+            <ion-label floating>Password</ion-label>
+            <ion-input formControlName="password" type="Password"
+              [class.invalid]="!slideOneForm.controls.password.valid && (slideOneForm.controls.password.dirty || submitAttempt)">
+            </ion-input>
+          </ion-item>
+
+          <!--
+
+             <ion-item
+            *ngIf="!slideOneForm.controls.lastName.valid  && (slideOneForm.controls.lastName.dirty || submitAttempt)">
+            <p>Password is not correct.</p>
+          </ion-item>
+
+          -->
+         
+         
+        
+        </form>
+        
+      </ion-list>
+
+    <!--
+
+      
+      <br><input type="text" placeholder="Username"> 
     <input type="password" placeholder="Password"> 
 
+    -->
     <button color="blue" ion-button class="login" (click)='loggingin()'> LOGIN </button> <br>
     <h2> If you don't have any account </h2> 
     <button ion-button color="light" ion-button class="signup" (click)='register()'> REGISTER </button> <br><br>

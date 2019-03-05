@@ -6,6 +6,30 @@ page-login {
         
     }
 
+    p {
+        font-size: 0.8em;
+        color: #ffffff;
+    }
+
+    
+    ion-label, .select-text {
+        margin-left: 10px;
+    }
+
+
+
+    .invalid {
+        border: 1px solid #ea6153;
+    }
+
+    .list{
+        
+        border-top-right-radius: 10px !important;
+        border-top-left-radius: 10px !important;
+        border-bottom-right-radius: 10px !important;
+        border-bottom-left-radius: 10px !important;
+    }
+
     .Com1
     {
         position: relative;

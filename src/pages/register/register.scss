@@ -2,10 +2,24 @@ page-register {
 
     ion-content  {
         background-size: cover;  
-        ;
+    
     }
+    .item-inner {
+        border-bottom-color: transparent !important;
+        box-shadow: none !important;
+        }
 
+    form{
+        border-bottom-color: transparent !important;
+        box-shadow: none !important;
+    }
+    ion-item{
+        border-bottom-color: transparent !important;
+        box-shadow: none !important;
+    }
+    
 
+    
     .lista{
 
         
@@ -31,8 +45,15 @@ page-register {
 
 
     p {
+        font-size: 14px;
+        color: #494949;
+        text-align: center;
+    }
+
+    h2{
         font-size: 0.8em;
-        color: #f5dcdc;
+        color: #ce3232;
+
     }
 
     .swiper-slide {
@@ -40,13 +61,21 @@ page-register {
     }
 
     ion-label, .select-text {
-        margin-left: 10px;
+        margin-left: 50px   !important;  
     }
 
 
     ion-input, ion-select, ion-textarea {
         background-color: #f2f2f2;
-     
+        height: 40px;
+        width: 300px;
+   
+       margin-right:  10px;
+        text-align: center; 
+        align-content: center;
+        align-items: center;
+      
+        
         border-top-right-radius: 5px !important;
         border-top-left-radius: 5px !important;
         border-bottom-right-radius: 5px !important;
@@ -109,7 +138,7 @@ page-register {
         border: 2px sold #f6f6f6;
         transition: all 0.5s ease-in-out;
         height: 35px;
-        text-align: center;
+        text-align: left;
         margin: 0 auto;
         margin-bottom: 10px;
     }

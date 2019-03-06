@@ -14,7 +14,7 @@ import { CountPage } from '../pages/count/count';
 import { JoincoursePage } from '../pages/joincourse/joincourse';
 import { ResulthistpercPage } from '../pages/resulthistperc/resulthistperc';
 import { ResultPage } from '../pages/result/result';
-import { Login2Page } from '../pages/login2/login2';
+
 
 
 

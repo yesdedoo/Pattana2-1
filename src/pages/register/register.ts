@@ -1,9 +1,9 @@
 import { Component, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NavController } from 'ionic-angular';
-import { UsernameValidator } from '../../app/validators/username';
 import { LoginPage } from '../login/login';
-
+import { UsernameValidator } from '../../providers/username/username';
+import { PasswordProvider } from '../../providers/password/password';
 
 
 /**
@@ -26,37 +26,37 @@ export class RegisterPage {
   @ViewChild('signupSlider') signupSlider: any;
 
   slideOneForm: FormGroup;
-  slideTwoForm: FormGroup;
+  PasswordForm: FormGroup;
 
   submitAttempt: boolean = false;
 
   constructor(public navCtrl: NavController, public formBuilder: FormBuilder) {
 
-    this.slideOneForm = formBuilder.group({
-        userName: ['', Validators.compose([Validators.required, Validators.pattern('[a-zA-Z]*')]), UsernameValidator.checkUsername],
-        firstName: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
-        lastName: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
-        password: [''],
-        age: ['']
-    });
 
-    this.slideTwoForm = formBuilder.group({
+
+    this.slideOneForm = formBuilder.group({
       firstName: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
       lastName: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
       username: ['', Validators.compose([Validators.required, Validators.pattern('[a-zA-Z]*')]), UsernameValidator.checkUsername],
-      privacy: ['', Validators.required],
-      password: ['']
-  });
-}
+      privacy: ['', Validators.required]
 
-
-  next(){
-      this.signupSlider.slideNext();
+    });
+    this.PasswordForm = formBuilder.group({
+      password: ['',Validators.compose([Validators.minLength(6),Validators.required])],
+      confirmPassword: ['',Validators.compose([Validators.minLength(6),Validators.required])]
+      
+    },{
+      validator: PasswordProvider.MatchPassword //Pwd validation
+    });
   }
 
-  prev(){
-      this.signupSlider.slidePrev();
+  register()
+  {
+    this.navCtrl.push(LoginPage)
   }
+
+
+  
 
   save(){
 
@@ -66,7 +66,7 @@ export class RegisterPage {
 }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad Login2Page');
+    console.log('ionViewDidLoad LoginPage');
   }
 
 }

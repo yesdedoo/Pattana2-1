@@ -6,72 +6,84 @@
 -->
 
 
-<ion-content   padding style="background-image: url('assets/imgs/Full1.png')" >
+<ion-content   padding style="background-image: url('assets/imgs/Regist2.png')" >
 
-   <div class="div1"ion-fixed>
-    <br>
+  <div class="div1" ion-fixed>
+    <br><br><br>
     <h1>Register</h1>
     <br>
-  </div> 
+  </div>
   
   <div class="fixScroll" ion-fixed>
     <ion-list class="lista">
   
-      <form [formGroup]="slideTwoForm">
+      <form [formGroup]="slideOneForm">
   
-        <ion-item>
-          <ion-label floating>Username</ion-label>
-          <ion-input
-            [class.invalid]="!slideTwoForm.controls.username.valid && (slideTwoForm.controls.username.dirty || submitAttempt)"
-            formControlName="username" type="text"></ion-input>
+        <ion-item no-lines>
+          <ion-label floating no-lines>Username</ion-label>
+            <ion-input no-lines
+              [class.invalid]="!slideOneForm.controls.username.valid && (slideOneForm.controls.username.dirty || submitAttempt)"
+              formControlName="username" type="text"></ion-input>
         </ion-item>
-  
-        <ion-item *ngIf="slideTwoForm.controls.username.pending">
+     
+        <ion-item no-lines *ngIf="slideOneForm.controls.username.pending">
           <p>Checking username...</p>
         </ion-item>
   
-        <ion-item
-          *ngIf="!slideTwoForm.controls.username.valid && !slideTwoForm.controls.username.pending && (slideTwoForm.controls.username.dirty || submitAttempt)">
+        <ion-item no-lines
+          *ngIf="!slideOneForm.controls.username.valid && !slideOneForm.controls.username.pending && (slideOneForm.controls.username.dirty || submitAttempt)">
           <p>Sorry, that username can not be used!</p>
         </ion-item>
   
-        <ion-item>
-          <ion-label floating>First Name</ion-label>
-          <ion-input
-            [class.invalid]="!slideTwoForm.controls.firstName.valid && (slideTwoForm.controls.firstName.dirty || submitAttempt)"
+        <ion-item no-lines>
+          <ion-label floating no-lines >First Name</ion-label>
+          <ion-input no-lines
+            [class.invalid]="!slideOneForm.controls.firstName.valid && (slideOneForm.controls.firstName.dirty || submitAttempt)"
             formControlName="firstName" type="text"></ion-input>
         </ion-item>
   
-        <ion-item>
-          <ion-label floating>Last Name</ion-label>
-          <ion-input
-            [class.invalid]="!slideTwoForm.controls.lastName.valid && (slideTwoForm.controls.lastName.dirty || submitAttempt)"
-            formControlName="lastName" type="text"></ion-input>
+        <ion-item  no-lines>
+          <ion-label floating no-lines>Last Name</ion-label>
+          <ion-input no-lines
+            [class.invalid]="!slideOneForm.controls.lastName.valid && (slideOneForm.controls.lastName.dirty || submitAttempt)"
+            formControlName="lastName" type="text" ></ion-input>
         </ion-item>
-  
-        <ion-item>
-          <ion-label floating>Password</ion-label>
-          <ion-input formControlName="password" type="Password"
-            [class.invalid]="!slideOneForm.controls.password.valid && (slideOneForm.controls.password.dirty || submitAttempt)">
-          </ion-input>
-        </ion-item>
-  
-        <ion-item>
-          <ion-label floating>Enter Password again</ion-label>
-          <ion-input formControlName="password" type="Password"
-            [class.invalid]="!slideOneForm.controls.password.valid && (slideOneForm.controls.password.dirty || submitAttempt)">
-          </ion-input>
-        </ion-item>
-  
-      </form>
-  
-    </ion-list>
-    
-    <div class="Register"> 
-    <button color="blue" ion-button class="register" (click)='save()'>  Register  </button>
-    <br><br>
-  </div>
 
+      </form>
+            
+      <form [formGroup]="PasswordForm">
+        <ion-item no-lines>
+          <ion-label floating>Password</ion-label>
+          <ion-input formControlName="password" type="Password" [formGroup]="PasswordForm">
+          </ion-input>
+        </ion-item>
+  
+        <ion-item no-lines>
+          <ion-label floating>Enter Password again</ion-label>
+          <ion-input formControlName="confirmPassword" type="Password"[formGroup]="PasswordForm">
+          </ion-input>
+          <!--
+          <div *ngIf="PasswordForm.controls.confirmPassword.errors?.MatchPassword" style="color: red">
+            New password and Confirm password did not match
+          </div>
+          -->
+        </ion-item>
+        
+        <div class="alert alert-danger" [formGroup]="PasswordForm"
+        *ngIf="PasswordForm.controls.confirmPassword.errors?.MatchPassword">
+        <p>Password not match </p>
+        </div>
+        
+      </form>
+      
+    </ion-list>
+    <br>
+  
+    <div class="Register">
+      <button color="orange" ion-button class="register" (click)='register()'> Register </button>
+      <br><br>
+    </div>
+  
   
   </div>
   

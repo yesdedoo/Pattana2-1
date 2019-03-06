@@ -15,16 +15,15 @@ import { RegisterPage } from '../pages/register/register';
 import { JoincoursePage } from '../pages/joincourse/joincourse';
 import { SchedulePage } from '../pages/schedule/schedule';
 import { ResulthistpercPage } from '../pages/resulthistperc/resulthistperc';
-import { ResultPageModule } from '../pages/result/result.module';
 import { QuizPage } from '../pages/quiz/quiz';
 import { RankPage } from '../pages/rank/rank';
 import { CardPage } from '../pages/card/card';
 import { CountPage } from '../pages/count/count';
 import { RoundProgressModule } from 'angular-svg-round-progressbar';
 import { CalendarModule } from 'ion2-calendar';
-import { Login2Page } from '../pages/login2/login2';
-import { UsernameValidator } from './validators/username';
-
+import { TestapiProvider } from '../providers/testapi/testapi';
+import { UsernameValidator } from '../providers/username/username';
+import { PasswordProvider } from '../providers/password/password';
 
 
 @NgModule({
@@ -42,8 +41,7 @@ import { UsernameValidator } from './validators/username';
     QuizPage,
     RankPage,
     CardPage,
-    CountPage,
-    Login2Page
+    CountPage
   ],
   imports: [
     BrowserModule,
@@ -65,13 +63,16 @@ import { UsernameValidator } from './validators/username';
     QuizPage,
     RankPage,
     CardPage,
-    CountPage,
-    Login2Page
+    CountPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    UsernameValidator,
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    TestapiProvider,
+    PasswordProvider,
+    
  
   ]
 })

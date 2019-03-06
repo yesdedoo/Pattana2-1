@@ -23,7 +23,7 @@
           <ion-label floating no-lines>Username</ion-label>
             <ion-input no-lines
               [class.invalid]="!slideOneForm.controls.username.valid && (slideOneForm.controls.username.dirty || submitAttempt)"
-              formControlName="username" type="text"></ion-input>
+              formControlName="username" type="text" [(ngModel)]="username"></ion-input>
         </ion-item>
      
         <ion-item no-lines *ngIf="slideOneForm.controls.username.pending">
@@ -39,14 +39,14 @@
           <ion-label floating no-lines >First Name</ion-label>
           <ion-input no-lines
             [class.invalid]="!slideOneForm.controls.firstName.valid && (slideOneForm.controls.firstName.dirty || submitAttempt)"
-            formControlName="firstName" type="text"></ion-input>
+            formControlName="firstName" type="text" [(ngModel)]="firstname" ></ion-input>
         </ion-item>
   
         <ion-item  no-lines>
           <ion-label floating no-lines>Last Name</ion-label>
           <ion-input no-lines
             [class.invalid]="!slideOneForm.controls.lastName.valid && (slideOneForm.controls.lastName.dirty || submitAttempt)"
-            formControlName="lastName" type="text" ></ion-input>
+            formControlName="lastName" type="text" [(ngModel)]="lastname"></ion-input>
         </ion-item>
 
       </form>
@@ -60,7 +60,7 @@
   
         <ion-item no-lines>
           <ion-label floating>Enter Password again</ion-label>
-          <ion-input formControlName="confirmPassword" type="Password"[formGroup]="PasswordForm">
+          <ion-input formControlName="confirmPassword" [(ngModel)]="password" type="Password"[formGroup]="PasswordForm">
           </ion-input>
           <!--
           <div *ngIf="PasswordForm.controls.confirmPassword.errors?.MatchPassword" style="color: red">

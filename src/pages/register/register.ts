@@ -5,6 +5,10 @@ import { LoginPage } from '../login/login';
 import { UsernameValidator } from '../../providers/username/username';
 import { PasswordProvider } from '../../providers/password/password';
 
+//REST
+import { from } from 'rxjs/observable/from'
+import { TestapiProvider } from '../../providers/testapi/testapi';
+
 
 /**
  * 
@@ -27,10 +31,15 @@ export class RegisterPage {
 
   slideOneForm: FormGroup;
   PasswordForm: FormGroup;
-
+  SendRegister: any;
   submitAttempt: boolean = false;
 
-  constructor(public navCtrl: NavController, public formBuilder: FormBuilder) {
+  username: string;
+  firstname: string;
+  lastname: string;
+  password: string;
+
+  constructor(public navCtrl: NavController, public formBuilder: FormBuilder,public testapiProvider: TestapiProvider) {
 
 
 
@@ -52,6 +61,14 @@ export class RegisterPage {
 
   register()
   {
+    console.log(this.firstname);
+    console.log(this.lastname);
+    console.log(this.username);
+    console.log(this.password);
+    this.SendRegister = from(this.testapiProvider.PostRegister(this.firstname,this.lastname,this.username,this.password))
+    this.SendRegister.subscribe(val =>{
+      console.log(val)
+    })
     this.navCtrl.push(LoginPage)
   }
 

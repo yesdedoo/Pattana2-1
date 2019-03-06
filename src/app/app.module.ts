@@ -24,6 +24,7 @@ import { CalendarModule } from 'ion2-calendar';
 import { TestapiProvider } from '../providers/testapi/testapi';
 import { UsernameValidator } from '../providers/username/username';
 import { PasswordProvider } from '../providers/password/password';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -46,6 +47,7 @@ import { PasswordProvider } from '../providers/password/password';
   imports: [
     BrowserModule,
     CalendarModule,
+    HttpClientModule,
     IonicModule.forRoot(MyApp, {tabsHideOnSubPages: true,},),RoundProgressModule,
   ],
   bootstrap: [IonicApp],

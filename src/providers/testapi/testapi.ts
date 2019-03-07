@@ -91,12 +91,12 @@ export class TestapiProvider {
         headers:{
           'Content-Type': 'application/json'
         }
-      })
+      })/*
       .then(r=>{
         this.data = r.json()
         resolve(this.data)
       })
-      .catch(err => console.log(err))
+      .catch(err => console.log(err))*/
     });
   }
 

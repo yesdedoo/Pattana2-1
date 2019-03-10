@@ -17,6 +17,7 @@ export class TestapiProvider {
   restApiQuestion = 'http://104.196.19.248:5001/question'
   restApiChoice = 'http://104.196.19.248:5001/choice'
   restApiRegister = 'http://104.196.19.248:5002/register'
+  restApiLogin = 'http://104.196.19.248:5002/login'
 
   constructor(public http: HttpClient) {
     console.log('Hello TestapiProvider Provider');
@@ -98,6 +99,27 @@ export class TestapiProvider {
       })
       .catch(err => console.log(err))*/
     });
+  }
+  CheckLogin(Email, Password) {
+
+    //Check the login input from html page
+    var data = { login: { email: Email, pwd: Password, exist: this.check } }
+    //To check the existing account
+    return new Promise(resolve => {
+      fetch(this.restApiLogin, {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+          .then(r=>{
+            this.data = r.json()
+            resolve(this.data)
+          })
+          .catch(err => console.log(err))
+    });
+
   }
 
 }

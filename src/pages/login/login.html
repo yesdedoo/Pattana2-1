@@ -20,7 +20,7 @@
 
           <ion-item>
             <ion-label floating>Userame</ion-label>
-            <ion-input formControlName="userName" type="text"
+            <ion-input formControlName="userName" type="text" [(ngModel)]="username"
               [class.invalid]="!slideOneForm.controls.userName.valid && (slideOneForm.controls.userName.dirty || submitAttempt)">
             </ion-input>
           </ion-item>
@@ -32,7 +32,7 @@
 
           <ion-item>
             <ion-label floating>Password</ion-label>
-            <ion-input formControlName="password" type="Password"
+            <ion-input formControlName="password" type="Password" [(ngModel)]="password"
               [class.invalid]="!slideOneForm.controls.password.valid && (slideOneForm.controls.password.dirty || submitAttempt)">
             </ion-input>
           </ion-item>

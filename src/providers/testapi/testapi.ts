@@ -103,7 +103,7 @@ export class TestapiProvider {
   CheckLogin(Email, Password) {
 
     //Check the login input from html page
-    var data = { login: { email: Email, pwd: Password, exist: this.check } }
+    var data = { loginData: { email: Email, pwd: Password, exist: this.check } }
     //To check the existing account
     return new Promise(resolve => {
       fetch(this.restApiLogin, {

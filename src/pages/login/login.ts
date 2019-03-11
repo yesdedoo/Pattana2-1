@@ -34,6 +34,7 @@ export class LoginPage {
   SendLogin: any;
   username: string;
   password: string;
+  Stu_ID: any;
 
   submitAttempt: boolean = false;
 
@@ -65,14 +66,22 @@ export class LoginPage {
     console.log(this.password);
     this.SendLogin = from(this.testapiProvider.CheckLogin(this.username,this.password))
     this.SendLogin.subscribe(val =>{
-      console.log(val)
+      this.Stu_ID = val["Stu_ID"];
+      console.log(val["exist"])
+      console.log(this.Stu_ID)
+      if(val["exist"]==true){
+        //Need to think about the page that should send data to
+        this.navCtrl.push(TabsPage,{"tempStu_ID":this.Stu_ID})
+      }
+      else
+      {
+        console.log("Login fail// need to add alert in html")
+      }
     })
-
+    
   }
 
-  loggingin() {
-    this.navCtrl.push(TabsPage)
-  }
+ 
   register() {
     this.navCtrl.push(RegisterPage)
   }

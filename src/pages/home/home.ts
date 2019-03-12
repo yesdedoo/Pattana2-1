@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController} from 'ionic-angular';
+import { NavController, NavParams} from 'ionic-angular';
 import { JoincoursePage } from '../joincourse/joincourse';
 import { SchedulePage } from '../schedule/schedule';
 import { QuizPage } from '../quiz/quiz';
@@ -14,16 +14,13 @@ import { CountPage } from '../count/count';
 })
 export class HomePage {
 
-  currentDate;
-  formattedDate;
-  currentHour;
-  currentMinute;
-  currentTime;
+  currentDate: any;
+  Stu_ID:any;
   
-  
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.currentDate = new Date();
-    
+    this.Stu_ID = navParams.get('Stu_ID')
+    console.log(this.Stu_ID);
     
   }
 

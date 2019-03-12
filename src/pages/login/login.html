@@ -19,7 +19,7 @@
         <form [formGroup]="slideOneForm">
 
           <ion-item>
-            <ion-label floating>Userame</ion-label>
+            <ion-label floating>Username</ion-label>
             <ion-input formControlName="userName" type="text" [(ngModel)]="username"
               [class.invalid]="!slideOneForm.controls.userName.valid && (slideOneForm.controls.userName.dirty || submitAttempt)">
             </ion-input>

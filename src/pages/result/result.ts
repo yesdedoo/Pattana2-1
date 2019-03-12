@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { ResulthistpercPage } from '../resulthistperc/resulthistperc';
+
+//REST API
+import { from } from 'rxjs/observable/from';
+import { TestapiProvider } from '../../providers/testapi/testapi';
 
 /**
  * Generated class for the ResultPage page.
@@ -9,18 +13,26 @@ import { ResulthistpercPage } from '../resulthistperc/resulthistperc';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+
 @Component({
   selector: 'page-result',
   templateUrl: 'result.html',
 })
 export class ResultPage {
+  CourseInfo:any;
+  Stu_ID:any;
+  constructor(public navCtrl: NavController, public navParams: NavParams,public testapiProvider: TestapiProvider) {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.Stu_ID = this.navParams.get('Stu_ID');
+    console.log(this.Stu_ID);
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ResultPage');
+    this.CourseInfo = from(this.testapiProvider.DisplayCourse(this.Stu_ID));
+    this.CourseInfo.subscribe(val =>{
+      console.log(val)
+    })
   }
 
   Database()

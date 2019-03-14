@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, CardContent } from 'ionic-angular';
 import { ResulthistpercPage } from '../resulthistperc/resulthistperc';
 
 //REST API
@@ -25,11 +25,11 @@ export class ResultPage {
   CourseInfo:any;
   Stu_ID:any;
 
-  Course="";
+  Course=[];
   Course_ID:any;
   Course_Code:any;
   Course_Name:any;
-
+  
   constructor(public navCtrl: NavController, public navParams: NavParams,public testapiProvider: TestapiProvider) {
 
     this.Stu_ID = this.navParams.get('Stu_ID');
@@ -40,12 +40,18 @@ export class ResultPage {
     console.log('ionViewDidLoad ResultPage');
     this.CourseInfo = from(this.testapiProvider.DisplayCourse(this.Stu_ID));
     this.CourseInfo.subscribe(val =>{
+      
+      
       console.log(val)
-
+      
       var ParsedVal = JSON.stringify(val)
-      var root = JSON.parse(ParsedVal)
       console.log(ParsedVal)
-       
+      var root = JSON.parse(ParsedVal)      
+     
+      var cc = root[1]
+      console.log(cc)
+
+      
       var loopcheck = 0;
       for(var i in root[1]){
         if(loopcheck==0){
@@ -61,6 +67,8 @@ export class ResultPage {
         console.log(root[1][i])
       }
       console.log(this.Course_Code,this.Course_ID,this.Course_Name)
+          
+
       var PCID = JSON.stringify(this.Course_ID)
       var PCCODE = JSON.stringify(this.Course_Code)
       var PCNAME = JSON.stringify(this.Course_Name)
@@ -76,12 +84,14 @@ export class ResultPage {
 
       var conditionLength = SplitPCID.length
       
-      for(var j=0; j<=conditionLength;j++){
-
-        this.Course = this.Course.concat(SplitPCID[j]) 
-        console.log(this.Course)
-        j++;      
+      for(var j=0; j<conditionLength;j++){
+        var temp 
+        temp = "Course : " + SplitPCCODE[j] + " " + SplitPCNAME[j]
+        this.Course.push(temp)
+        console.log(this.Course[j])
+              
       }
+      console.log(this.Course)
     })
     
   }

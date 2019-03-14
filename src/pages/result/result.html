@@ -23,9 +23,9 @@
     </ion-card-header>
   
     <ion-list>
-      <button ion-item (click)='Database()'>
+      <button *ngFor="let element of Course; let i = index" ion-item (click)='Database()'>
         <ion-icon name="ios-arrow-dropright" item-start></ion-icon>
-        Course 1: Database
+        {{element}}
       </button>
   
       <button ion-item>

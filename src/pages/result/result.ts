@@ -29,6 +29,12 @@ export class ResultPage {
   Course_ID:any;
   Course_Code:any;
   Course_Name:any;
+
+  PushedPCID =[];
+  NPushedPCID: any;
+  SplitPCID:any;
+  SplitPCCODE:any;
+  SplitPCNAME:any;
   
   constructor(public navCtrl: NavController, public navParams: NavParams,public testapiProvider: TestapiProvider) {
 
@@ -77,16 +83,19 @@ export class ResultPage {
       PCID = PCID.substring(1,PCID.length-1)
       PCNAME = PCNAME.substring(1,PCNAME.length-1)
       console.log(PCID,PCCODE,PCNAME)
-      var SplitPCID  = PCID.split(",");
-      var SplitPCCODE = PCCODE.split(",");
-      var SplitPCNAME = PCNAME.split(",");
-      console.log(SplitPCID[0])
+      this.SplitPCID  = PCID.split(",");
+      this.SplitPCCODE = PCCODE.split(",");
+      this.SplitPCNAME = PCNAME.split(",");
+      console.log(this.SplitPCID[0])
 
-      var conditionLength = SplitPCID.length
+      
+      this.NPushedPCID = this.PushedPCID.push(PCID)
+
+      var conditionLength = this.SplitPCID.length
       
       for(var j=0; j<conditionLength;j++){
         var temp 
-        temp = "Course : " + SplitPCCODE[j] + " " + SplitPCNAME[j]
+        temp = "Course : " + this.SplitPCCODE[j] + " " + this.SplitPCNAME[j]
         this.Course.push(temp)
         console.log(this.Course[j])
               
@@ -97,10 +106,11 @@ export class ResultPage {
   }
 
   
-
-  Database()
+  ShowResult(index)
   {
-    this.navCtrl.push(ResulthistpercPage);
+    console.log(index)
+    var CourseID = this.SplitPCID[index]  
+    this.navCtrl.push(ResulthistpercPage,{'CourseID':CourseID});
   }
 
 

@@ -38,9 +38,13 @@ export class ResulthistpercPage {
   rate:number;
   course: Array <any> =[];
 
+  GetCourseID:any
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   
    this.course=["Data Modeling","Database Concept","Database Design","Database Management"]
+   this.GetCourseID = navParams.get('CourseID')
+   console.log(this.GetCourseID)
   }
 
   ionViewDidLoad() {

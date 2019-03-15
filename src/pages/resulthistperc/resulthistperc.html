@@ -21,8 +21,7 @@
 
 <br>
   <div class="lesson" >
-
-      
+     
     
 
       {{course[0]}} <br>
@@ -50,58 +49,10 @@
         </round-progress>
       </div><br>
 
-      {{course[2]}} <br>
-
-      <div class="progress-wrapper">
-        <!-- [ngStyle]="getOverlayStyle()"-->
-        <div class="current">{{ current3 }}/{{ max }}</div><br>
-        <round-progress [current]="current3" [max]="max" [stroke]="stroke" [radius]="radius" [semicircle]="semicircle"
-          [rounded]="rounded" [responsive]="responsive" [clockwise]="clockwise"
-          [color]="gradient ? 'url(#gradient)' : color" [background]="background" [duration]="duration"
-          [animation]="animation" [animationDelay]="animationDelay">
-
-        </round-progress>
-      </div><br>
-
-      {{course[3]}} <br>
-
-      <div class="progress-wrapper">
-        <!-- [ngStyle]="getOverlayStyle()"-->
-        <div class="current">{{ current4 }}/{{ max }}</div><br>
-        <round-progress [current]="current4" [max]="max" [stroke]="stroke" [radius]="radius" [semicircle]="semicircle"
-          [rounded]="rounded" [responsive]="responsive" [clockwise]="clockwise"
-          [color]="gradient ? 'url(#gradient)' : color" [background]="background" [duration]="duration"
-          [animation]="animation" [animationDelay]="animationDelay">
-
-        </round-progress>
-      </div>
-      <br><br>
+     
 
 
   </div>
-
-
-
-  <!--   
-    <ion-card>
-    <ion-card-content>
-      <div class="table-a">
-        <h1>
-  
-          {{course[0]}} <br>
-          {{course[1]}} <br>
-          {{course[2]}} <br>
-          {{course[3]}} <br>
-  
-        </h1>
-      </div>
-    </ion-card-content>
-  </ion-card>
-  -->
-
-
-
-
 
 
 </ion-content>

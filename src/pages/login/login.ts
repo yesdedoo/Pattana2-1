@@ -35,7 +35,7 @@ export class LoginPage {
   username: string;
   password: string;
   Stu_ID: any;
-
+   
   submitAttempt: boolean = false;
 
   constructor(public navCtrl: NavController, public formBuilder: FormBuilder, public testapiProvider: TestapiProvider) {

@@ -2,6 +2,10 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { RankPage } from '../rank/rank';
 
+//REST
+import { from } from 'rxjs/observable/from'
+import { TestapiProvider } from '../../providers/testapi/testapi';
+
 /**
  * Generated class for the QuizPage page.
  *
@@ -85,9 +89,10 @@ export class QuizPage {
 
   ScoreCount: any;
 
+ 
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,public testapiProvider: TestapiProvider) {
   
     this.Ques = [
       "The type of diagram in which the operations are apecified on objects is considered as"
@@ -105,7 +110,13 @@ export class QuizPage {
     this.checker10 = true;
     this.WbuttonColor = '#ff0000';
     this.ScoreCount = 0;
+
+    
+
+
   }
+
+  
 
   finishquiz(){
     this.navCtrl.push(RankPage,{
@@ -115,6 +126,9 @@ export class QuizPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad QuizPage');
+
+
+
   }
 
  

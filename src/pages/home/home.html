@@ -22,75 +22,35 @@
     <h1> Course: Database </h1>
     <h3> Lesson: Data Modeling </h3>
     <br>
-    <!--
-      <h2> Date: {{currentDate}} </h2>
-    -->
+
   </div>
-  <div class="table-a" padding>
-    <button color="secondary" ion-button class="start" (click)='readytoquiz()'> START </button><br>		
-  </div>
+  <ng-container *ngIf="hasFinished==true; then showbutton; else hidbutton" ></ng-container>
+  <ng-template #showbutton>
+      <div class="table-a" padding>
+          <button color="#ff0000" ion-button class="start" (click)='readytoquiz()'> START </button><br>    		
+      </div>
+  </ng-template>
+  <ng-template #hidbutton>
+      <div class="table-a" padding>
+          <button color="secondary" ion-button class="start"> START </button><br>
+      </div>
+  </ng-template>
+ 
   
-  <!--Decoration remaining-->
   <div class="avai-font" >
     <h4>Avaliable in</h4>
   </div>
   <img class="time"   src="assets/imgs/Time.png">
+  
+  <ion-item>
+    <h1 text-center>{{displayTime}}</h1>
+  </ion-item>
 
-
-<!--
-<div class="avai-font" >
-  <h4>Next Quiz</h4>
-</div>
-
-
-<ion-card>
-  <ion-card-header>
-    <ion-card-title>05:00 pm.</ion-card-title>
-  </ion-card-header>
-  <div class="course1">
-    <h1> Course: Database </h1>
-    <h3> Lesson: Database Concept </h3>
-    <h2> Date: 28/02/2019 05:00 pm. </h2>
-  </div>
-</ion-card>
-
-<div class="avai-font" >
-    <h4>Next Quiz</h4>
-  </div>
-
-<div class="course1">
-  <h1> Course: Database </h1>
-  <h3> Lesson: Database Concept </h3>
-  <h2> Date: 28/02/2019 05:00 pm. </h2>
-</div>
-
-<div class="course1">
-  <h1> Course: Artificial Intelligence </h1>
-  <h3> Lesson: Bayesian Networks </h3>
-  <h2> Date: 28/02/2019 05:30 pm. </h2>
-</div>
-
--->
- 
-
-
-
- 
-
-
- <!-- <div  class="tableDate" ><br>
-    {{currentDate}}<br><br>
-  </div>
-  <br>-->
- 
-<!--
-<div class="table-a" padding>
-  <button ion-button class="menu" (click)='JoinCourse()'> Join course </button>
-</div> 
-    
--->
-
-
+  <ion-item *ngFor="let element of Ass_ID; let i = index" color="primary">
+    <ion-label>
+      Assessment {{i+1}} {{Ass_Time[i]}}
+    </ion-label>
+  </ion-item>
 
 
 </ion-content>

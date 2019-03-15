@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, CardContent } from 'ionic-angular';
+import { NavController, NavParams, CardContent, LoadingController } from 'ionic-angular';
 import { ResulthistpercPage } from '../resulthistperc/resulthistperc';
 
 //REST API
@@ -31,19 +31,32 @@ export class ResultPage {
   Course_Name:any;
 
   PushedPCID =[];
-  NPushedPCID: any;
+  
   SplitPCID:any;
   SplitPCCODE:any;
   SplitPCNAME:any;
   
-  constructor(public navCtrl: NavController, public navParams: NavParams,public testapiProvider: TestapiProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,public testapiProvider: TestapiProvider,public loadingCtrl:LoadingController) {
 
     this.Stu_ID = this.navParams.get('Stu_ID');
     console.log(this.Stu_ID);
   }
 
+  presentLoadingDefault(){
+    
+  }
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad ResultPage');
+    let loading = this.loadingCtrl.create({
+      content: 'Please wait...'
+    });
+      loading.present();
+    setTimeout(() => {
+      loading.dismiss()
+    }, 1000);
+    
+
     this.CourseInfo = from(this.testapiProvider.DisplayCourse(this.Stu_ID));
     this.CourseInfo.subscribe(val =>{
       
@@ -89,7 +102,6 @@ export class ResultPage {
       console.log(this.SplitPCID[0])
 
       
-      this.NPushedPCID = this.PushedPCID.push(PCID)
 
       var conditionLength = this.SplitPCID.length
       

@@ -15,6 +15,7 @@ export class TestapiProvider {
 
   //Which IP and what is it purpose
   restApiQuestion = 'http://104.196.19.248:5001/question'
+  restApiAssessment = 'http://104.196.19.248:5001/assessment'
   restApiChoice = 'http://104.196.19.248:5001/choice'
   restApiRegister = 'http://104.196.19.248:5002/register'
   restApiLogin = 'http://104.196.19.248:5002/login'
@@ -39,7 +40,24 @@ export class TestapiProvider {
       .catch(err => console.log(err))
     });
   }
-  
+  GetAssessment(Date){
+    var data = {dateData : {date:Date}}
+    return new Promise(resolve =>{
+      fetch(this.restApiAssessment,{
+        method:'POST',
+        body:JSON.stringify(data),
+        headers:{
+          'Content-Type': 'application/json'
+        }
+      })
+      .then(r=>{
+        this.data = r.json()
+        resolve(this.data)
+      })
+      .catch(err => console.log(err))
+    });
+  }
+
   //Include data from DB
   ImportQuestion(Text)
   {
@@ -92,12 +110,7 @@ export class TestapiProvider {
         headers:{
           'Content-Type': 'application/json'
         }
-      })/*
-      .then(r=>{
-        this.data = r.json()
-        resolve(this.data)
       })
-      .catch(err => console.log(err))*/
     });
   }
   CheckLogin(Email, Password) {

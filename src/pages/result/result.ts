@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
+import { NavController, NavParams, LoadingController, AlertController, ToastController } from 'ionic-angular';
 import { ResulthistpercPage } from '../resulthistperc/resulthistperc';
+
 
 //REST API
 import { from } from 'rxjs/observable/from';
@@ -25,24 +26,51 @@ export class ResultPage {
   CourseInfo:any;
   Stu_ID:any;
 
+  //Display Course
   Course=[];
   Course_ID:any;
   Course_Code:any;
   Course_Name:any;
-  Coures_Exist:boolean
+  Course_Exist:boolean
 
-  PushedPCID =[];
-  
+  //Course input from Alert & API
+  InputCourseID:any;
+  SendCourseID:any;
+  CourseExist:any;
+  COSExist:any;
+   
   SplitPCID:any;
   SplitPCCODE:any;
   SplitPCNAME:any;
+
+  //Toast
+  ToastChecker:number =0; //0:Correect,1:ExistCOS,2:No course in system
+  SuccessToast:any;
+  RepeatCOSToast:any;
+  NoCourseToast:any;
+  
   
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public testapiProvider: TestapiProvider,public loadingCtrl:LoadingController,
-    public alertCtrl:AlertController) {
+    public alertCtrl:AlertController,public toastCtrl:ToastController) {
 
     this.Stu_ID = this.navParams.get('Stu_ID');
     console.log(this.Stu_ID);
+
+    this.SuccessToast = this.toastCtrl.create({
+      message: 'Join Course successful.',
+      duration: 3000
+    }); 
+    this.RepeatCOSToast = this.toastCtrl.create({
+      message:'This course was already joined by this student.',
+      duration: 3000
+    });
+    this.NoCourseToast = this.toastCtrl.create({
+      message:'This course is not available in the system.',
+      duration: 3000
+    });  
+   
+    
   }
 
  
@@ -64,7 +92,7 @@ export class ResultPage {
       this.Course_ID=val["Course_ID"]
       this.Course_Code=val["Course_Code"]
       this.Course_Name=val["Course_Name"]
-      this.Coures_Exist=val["Exist"]
+      this.Course_Exist=val["Exist"]
       console.log(this.Course_Code,this.Course_ID,this.Course_Name)
           
       /*
@@ -119,6 +147,23 @@ export class ResultPage {
             console.log('Saved clicked');
             CID = data.CID
             console.log(CID)
+            this.SuccessToast.present();
+            //JoinCourseAPI function()
+            switch(this.ToastChecker){
+              case 0:{
+                this.SuccessToast.present();
+                break;
+              }
+              case 1:{
+                this.RepeatCOSToast.present();
+                break;
+              }
+              case 2:{
+                this.NoCourseToast.present();
+                break;
+              }
+
+            }
           }
         }
       ]
@@ -126,12 +171,36 @@ export class ResultPage {
     prompt.present();
 
   }
+  InsertedCourse(courseID){
+    this.SendCourseID = from(this.testapiProvider.JoiningCourse(courseID,this.Stu_ID))
+    this.SendCourseID.subscribe(val =>{
+      this.COSExist = val["COSExist"]
+      this.CourseExist = val["CourseExist"]
+
+      //Check for the toast case
+      if(this.COSExist==false){
+        
+        if(this.CourseExist==true){
+          this.ToastChecker = 0;
+        }
+        else{
+          this.ToastChecker = 2;
+        }
+        
+      }
+      else{
+        this.ToastChecker = 1;
+      }
+
+
+    })
+  }
 
   
   ShowResult(index)
   {
     console.log(index)
-    var CourseID = this.SplitPCID[index]  
+    var CourseID = this.Course_ID[index]  
     this.navCtrl.push(ResulthistpercPage,{'CourseID':CourseID});
   }
 

@@ -20,10 +20,29 @@ export class TestapiProvider {
   restApiRegister = 'http://104.196.19.248:5002/register'
   restApiLogin = 'http://104.196.19.248:5002/login'
   restApiCourse = 'http://104.196.19.248:5003/course'
+  restApiJoinCourse = 'http://104.196.19.248:5003/joincourse'
   constructor(public http: HttpClient) {
     console.log('Hello TestapiProvider Provider');
   }
 
+
+  JoiningCourse(CourseID,Stu_ID){
+    var data = {CourseIDData : {courseid:CourseID,stuid:Stu_ID}}
+    return new Promise(resolve =>{
+      fetch(this.restApiJoinCourse,{
+        method:'POST',
+        body:JSON.stringify(data),
+        headers:{
+          'Content-Type': 'application/json'
+        }
+      })
+      .then(r=>{
+        this.data = r.json()
+        resolve(this.data)
+      })
+      .catch(err => console.log(err))
+    });
+  }
   //Get question & choice from DB
   GetQuestion()
   {

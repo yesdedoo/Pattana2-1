@@ -36,7 +36,7 @@ export class HomePage {
   Ass_Date:any;
   Ass_Time:any;
   Ass_QuesID:any;
-  Ass_Exist:Boolean;
+  Ass_Exist:boolean;
 
   //Data for countdown timer
   timeInSeconds:any

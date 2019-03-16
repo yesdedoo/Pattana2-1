@@ -21,33 +21,16 @@
          Course
       </div>
     </ion-card-header>
-  
+    <div style="color:green">
+        <ion-icon name="add-circle" style="zoom: 2.5"  (click)='JoinCourse()' ></ion-icon>
+    </div>
+
     <ion-list>
       <button *ngFor="let element of Course; let i = index" ion-item (click)='ShowResult(i)'>
         <ion-icon name="ios-arrow-dropright" item-start></ion-icon>
         {{element}}
       </button>
-      <!--
-      <button ion-item>
-        <ion-icon name="ios-arrow-dropright" item-start></ion-icon>
-        Course 2: Math
-      </button>
-  
-      <button ion-item>
-        <ion-icon name="ios-arrow-dropright" item-start></ion-icon>
-        Course 3: Data Structure
-      </button>
-  
-      <button ion-item>
-        <ion-icon name="ios-arrow-dropright" item-start></ion-icon>
-        Course 4: Image Processing
-      </button>
-  
-      <button ion-item>
-        <ion-icon name="ios-arrow-dropright" item-start></ion-icon>
-        Course 5: Computer Network
-      </button>
-      -->      
+     
   
     </ion-list>
   </ion-card>

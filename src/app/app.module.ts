@@ -25,6 +25,7 @@ import { TestapiProvider } from '../providers/testapi/testapi';
 import { UsernameValidator } from '../providers/username/username';
 import { PasswordProvider } from '../providers/password/password';
 import { HttpClientModule } from '@angular/common/http';
+import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 
 
 @NgModule({
@@ -74,6 +75,9 @@ import { HttpClientModule } from '@angular/common/http';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     TestapiProvider,
     PasswordProvider,
+    LocalNotifications,
+   
+    
     
  
   ]

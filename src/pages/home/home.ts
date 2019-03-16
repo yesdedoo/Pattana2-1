@@ -3,7 +3,7 @@ import { NavController, NavParams} from 'ionic-angular';
 import { JoincoursePage } from '../joincourse/joincourse';
 import { QuizPage } from '../quiz/quiz';
 import { CountPage } from '../count/count';
-
+import { LocalNotifications} from '@ionic-native/local-notifications/ngx';
 
 //REST
 import { from } from 'rxjs/observable/from'
@@ -17,8 +17,8 @@ import { TestapiProvider } from '../../providers/testapi/testapi';
 })
 export class HomePage {
   
-  
-  
+  tabBarElement: any;
+
   Stu_ID:any;
   currentDate: any;
   SendDate: any;
@@ -26,7 +26,6 @@ export class HomePage {
   HrTime:any
   MinTime:any
   SecTime:any
-  
   
   Time:any
   RTime:Date
@@ -37,9 +36,7 @@ export class HomePage {
   Ass_Date:any;
   Ass_Time:any;
   Ass_QuesID:any;
-
-  
-  
+  Ass_Exist:Boolean;
 
   //Data for countdown timer
   timeInSeconds:any
@@ -54,13 +51,17 @@ export class HomePage {
   countMin:number;
   countResult:number;
   
-  constructor(public navCtrl: NavController, public navParams: NavParams,public testapiProvider:TestapiProvider) {
-    this.currentDate = new Date();
+  constructor(public navCtrl: NavController, public navParams: NavParams,public testapiProvider:TestapiProvider,public localNotification:LocalNotifications) {
+    
+    //this.tabBarElement = document.querySelector('.tabbar#show-tabbar')
+    //this.tabBarElement = document.querySelector("ion-tabbar")
+    //this.tabBarElement = document.getElementsByClassName('tabs').item(1);
+    
     this.Stu_ID = navParams.get('Stu_ID')
     console.log(this.Stu_ID);
 
     //Get DATE&TIME
-    
+    this.currentDate = new Date();
     this.HrTime = this.currentDate.getHours()
     this.MinTime =this.currentDate.getMinutes()
     this.SecTime = this.currentDate.getSeconds()   
@@ -74,8 +75,19 @@ export class HomePage {
     console.log(this.Today)
     this.CheckAssessment();
 
-    
+  
   }
+  /* //Hide tab section
+  ionViewWillEnter() {
+    this.tabBarElement.style.display = 'none';
+    console.log('ionViewDidLoad AlldetailPage');
+  }
+  ionViewWillLeave() {
+    this.tabBarElement.style.display = 'flex';
+  }*/
+ 
+
+
   CheckAssessment(){
     this.SendDate = from(this.testapiProvider.GetAssessment(this.Today))
     this.SendDate.subscribe(val =>{
@@ -83,41 +95,70 @@ export class HomePage {
       this.Ass_Date=val["Date"]
       this.Ass_Time=val["Time"]
       this.Ass_QuesID=val["Ques_ID"]
+      this.Ass_Exist=val["Exist"]
       console.log(val) 
-      console.log(this.Ass_ID,this.Ass_Time[0])
+      console.log(this.Ass_ID,this.Ass_Time[0],this.Ass_Exist)
 
-      //Parse data JSON into number
-      let assHr:string,assHr2:string,assHr3:number
-      let assMin:string,assMin2:string,assMin3:number
-      assHr = JSON.stringify(this.Ass_Time[0])
-      assHr2 = assHr.slice(1,3)
-      assHr3 = parseInt(assHr2)
+      if(this.Ass_Exist==true){
+        //Parse data JSON into number
+        let assHr: string, assHr2: string, assHr3: number
+        let assMin: string, assMin2: string, assMin3: number
+        assHr = JSON.stringify(this.Ass_Time[0])
+        assHr2 = assHr.slice(1, 3)
+        assHr3 = parseInt(assHr2)
 
-      assMin = JSON.stringify(this.Ass_Time[0])
-      assMin2 = assMin.slice(4,6)
-      assMin3 = parseInt(assMin2)
-      console.log(assHr3,assMin3)
+        assMin = JSON.stringify(this.Ass_Time[0])
+        assMin2 = assMin.slice(4, 6)
+        assMin3 = parseInt(assMin2)
+        console.log(assHr3, assMin3)
+
+        this.countHr = assHr3 - this.HrTime
+        this.countMin = assMin3 - this.MinTime
+        console.log(this.countHr, this.countMin)
+
+        this.countResult = ((this.countHr * 60) + this.countMin) * 60
+        console.log(this.countResult)
+      }
+      else{
+        console.log("There is no assessment today")
+      }
       
-      this.countHr = assHr3-this.HrTime
-      this.countMin = assMin3-this.MinTime 
-      console.log(this.countHr,this.countMin)
       
-      this.countResult = ((this.countHr*60)+this.countMin)*60
-      console.log(this.countResult)
-      
+    })
+  }
+
+  //Create Notification
+  Notification(){
+    //Local Notification
+    this.localNotification.schedule({
+      title:'',
+      text:"",
+      sound: "",
+      vibrate:true,
+      trigger:{ at: new Date(new Date().getTime() +this.countResult)      }
+      //Date is the time that notify
     })
   }
 
   //Countdown timer
   ngOnInit(){
-    this.initTimer();
-    this.startTimer();
+
+    //if this.countResult > 0 then do
+    if(this.Ass_Exist==true){
+      this.initTimer();
+      this.startTimer();
+    }
+    else
+    {
+      console.log("There is no countdown clock")
+    }
+    
   }
   initTimer(){
 
     if(!this.timeInSeconds){
       //Initial time to countdown
-      this.timeInSeconds = 30; //1500
+      this.timeInSeconds = 60;//this.countResult; //1500
     }
     this.time = this.timeInSeconds;
     this.runTimer = false;
@@ -169,7 +210,7 @@ export class HomePage {
   //End of countdown timer
 
  readytoquiz(){
-    this.navCtrl.setRoot(CountPage);
+    this.navCtrl.setRoot(QuizPage);
   
     
   }

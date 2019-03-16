@@ -1,13 +1,15 @@
 import { Component, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NavController } from 'ionic-angular';
-import { UsernameValidator } from '../../app/validators/username';
+import { UsernameValidator } from '../../providers/username/username';
+
 import { RegisterPage } from '../register/register';
 import { TabsPage } from '../tabs/tabs';
 
 //REST
 import { from } from 'rxjs/observable/from'
 import { TestapiProvider } from '../../providers/testapi/testapi';
+
 
 
 

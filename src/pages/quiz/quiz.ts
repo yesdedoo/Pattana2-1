@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, LoadingController } from 'ionic-angular';
 import { RankPage } from '../rank/rank';
 
 //REST
@@ -92,7 +92,7 @@ export class QuizPage {
  
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,public testapiProvider: TestapiProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,public testapiProvider: TestapiProvider,public loadingCtrl: LoadingController) {
   
     this.Ques = [
       "The type of diagram in which the operations are apecified on objects is considered as"
@@ -126,7 +126,13 @@ export class QuizPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad QuizPage');
-
+    let loading = this.loadingCtrl.create({
+      content: 'Please wait...'
+    });
+      loading.present();
+    setTimeout(() => {
+      loading.dismiss()
+    }, 1000);
 
 
   }

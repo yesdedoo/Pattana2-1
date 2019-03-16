@@ -5,7 +5,7 @@ import { ResulthistpercPage } from '../resulthistperc/resulthistperc';
 //REST API
 import { from } from 'rxjs/observable/from';
 import { TestapiProvider } from '../../providers/testapi/testapi';
-import { stringify } from '@angular/core/src/render3/util';
+
 
 /**
  * Generated class for the ResultPage page.

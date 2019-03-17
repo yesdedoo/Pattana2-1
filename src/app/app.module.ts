@@ -26,6 +26,7 @@ import { UsernameValidator } from '../providers/username/username';
 import { PasswordProvider } from '../providers/password/password';
 import { HttpClientModule } from '@angular/common/http';
 import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
+import { IonicStorageModule } from '@ionic/storage';
 
 
 @NgModule({
@@ -49,7 +50,9 @@ import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
     BrowserModule,
     CalendarModule,
     HttpClientModule,
-    IonicModule.forRoot(MyApp, {tabsHideOnSubPages: true,},),RoundProgressModule,
+    IonicModule.forRoot(MyApp, {tabsHideOnSubPages: true}),
+    RoundProgressModule,
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [

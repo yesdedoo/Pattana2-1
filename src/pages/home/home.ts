@@ -8,6 +8,7 @@ import { LocalNotifications} from '@ionic-native/local-notifications/ngx';
 //REST
 import { from } from 'rxjs/observable/from'
 import { TestapiProvider } from '../../providers/testapi/testapi';
+import { Storage } from '@ionic/storage';
 
 
 @Component({
@@ -51,12 +52,16 @@ export class HomePage {
   countMin:number;
   countResult:number;
   
-  constructor(public navCtrl: NavController, public navParams: NavParams,public testapiProvider:TestapiProvider,public localNotification:LocalNotifications) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+    public testapiProvider:TestapiProvider,public localNotification:LocalNotifications,
+    public storage: Storage) {
     
     //this.tabBarElement = document.querySelector('.tabbar#show-tabbar')
+    //this.tabBarElement = document.querySelector('.tabs')
     //this.tabBarElement = document.querySelector("ion-tabbar")
     //this.tabBarElement = document.getElementsByClassName('tabs').item(1);
     
+
     this.Stu_ID = navParams.get('Stu_ID')
     console.log(this.Stu_ID);
 
@@ -135,9 +140,10 @@ export class HomePage {
       text:"",
       sound: "",
       vibrate:true,
-      trigger:{ at: new Date(new Date().getTime() +this.countResult)      }
+      //trigger:{ at: new Date(new Date().getTime() +this.countResult)      }
       //Date is the time that notify
     })
+    
   }
 
   //Countdown timer
@@ -210,8 +216,7 @@ export class HomePage {
   //End of countdown timer
 
  readytoquiz(){
-    this.navCtrl.setRoot(QuizPage);
-  
+    this.navCtrl.setRoot(QuizPage,{"Stu_ID":this.Stu_ID,"Today":this.Today}); 
     
   }
 

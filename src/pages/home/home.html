@@ -6,7 +6,7 @@
       </ion-title>
   
       <ion-buttons end>
-        <button (click)="myFunction()" ion-button icon-only>
+        <button (click)="Notification()" ion-button icon-only>
             <ion-icon name="notifications"></ion-icon>
         </button>
         <button (click)="myFunction()" ion-button icon-only>
@@ -24,7 +24,7 @@
     <br>
 
   </div>
-  <ng-container *ngIf="hasFinished==true; then showbutton; else hidbutton" ></ng-container>
+  <ng-container *ngIf="hasFinished==true; then hidbutton; else showbutton" ></ng-container>
   <ng-template #showbutton>
       <div class="table-a" padding>
           <button color="#ff0000" ion-button class="start" (click)='readytoquiz()'> START </button><br>    		
@@ -40,16 +40,29 @@
   <div class="avai-font" >
     <h4>Avaliable in</h4>
   </div>
-  <img class="time"   src="assets/imgs/Time.png">
+
   
   <ion-item>
     <h1 text-center>{{displayTime}}</h1>
   </ion-item>
 
   <ion-item *ngFor="let element of Ass_ID; let i = index" color="primary">
-    <ion-label>
-      Assessment {{i+1}} {{Ass_Time[i]}}
-    </ion-label>
+    <!--<ng-container *ngIf="countResult>0; then showClock; else hidClock"></ng-container>
+    <ng-template #showClock>-->
+      <ion-label>
+        Assessment {{i+1}} {{Ass_Time[i]}}
+      </ion-label>
+      <ion-item>
+        <h1 text-center>{{displayTime}}</h1>
+      </ion-item>
+    <!--</ng-template>
+    <ng-template #hidClock>
+      <ion-label>
+        Assessment {{i+1}} {{Ass_Time[i]}}
+      </ion-label>
+    </ng-template>-->
+
+
   </ion-item>
 
 

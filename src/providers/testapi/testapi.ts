@@ -43,22 +43,7 @@ export class TestapiProvider {
       .catch(err => console.log(err))
     });
   }
-  //Get question & choice from DB
-  GetQuestion()
-  {
-    //var that get data from DB
-    
-    return new Promise(resolve =>{
-      fetch(this.restApiQuestion,{
-        method:'GET',
-      })
-      .then(r=>{
-        this.data = r.json()
-        resolve(this.data)
-      })
-      .catch(err => console.log(err))
-    });
-  }
+  
   GetAssessment(Date){
     var data = {dateData : {date:Date}}
     return new Promise(resolve =>{
@@ -78,10 +63,10 @@ export class TestapiProvider {
   }
 
   //Include data from DB
-  ImportQuestion(Text)
+  ImportQuestion(Stu_id,Today)
   {
     //var that get data from DB
-    var data = {questionData : {text:Text}}
+    var data = {questionData : {stuid:Stu_id,today:Today}}
     return new Promise(resolve =>{
       fetch(this.restApiQuestion,{
         method:'POST',
@@ -98,13 +83,17 @@ export class TestapiProvider {
     });
   }
 
-  GetChoice()
+  GetChoice(Ques_ID)
   {
     //var that get data from DB
-    
+    var data = {choiceData : {choicequesid:Ques_ID}}
     return new Promise(resolve =>{
       fetch(this.restApiChoice,{
-        method:'GET',
+        method:'POST',
+        body:JSON.stringify(data),
+        headers:{
+          'Content-Type': 'application/json'
+        }
       })
       .then(r=>{
         this.data = r.json()

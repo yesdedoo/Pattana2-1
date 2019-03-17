@@ -89,8 +89,21 @@ export class QuizPage {
 
   ScoreCount: any;
 
- 
+  //Rest variable
+  Stu_ID:any;
+  Today:any;
+  SendQuestionRequest:any
+  SendChoiceRequest:any;
 
+  //Get Question
+  Ques_ID:any=[];
+  Ques_Name:any;
+  Ques_FB:any;
+
+  //Get Choice
+  Choice_ID:any=[];
+  Choice_Name:any=[];
+  Choice_Crr:any=[];
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public testapiProvider: TestapiProvider,public loadingCtrl: LoadingController) {
   
@@ -111,10 +124,11 @@ export class QuizPage {
     this.WbuttonColor = '#ff0000';
     this.ScoreCount = 0;
 
-    
-
-
+    this.Stu_ID = navParams.get('Stu_ID')
+    this.Today = navParams.get('Today')
+    console.log(this.Stu_ID,this.Today);
   }
+  
 
   
 
@@ -124,18 +138,68 @@ export class QuizPage {
     });
   }
 
-  ionViewDidLoad() {
+  ionViewDidLoad(){
     console.log('ionViewDidLoad QuizPage');
+    this.GetQuestion()
     let loading = this.loadingCtrl.create({
       content: 'Please wait...'
     });
       loading.present();
     setTimeout(() => {
       loading.dismiss()
-    }, 1000);
+    }, 3000);
 
+    
+    
+  }
+  GetQuestion(){
+    this.SendQuestionRequest = from(this.testapiProvider.ImportQuestion(this.Stu_ID,this.Today))
+    this.SendQuestionRequest.subscribe(val =>{
+      console.log(val)
+      this.Ques_ID = val["Ques_ID"]
+      this.Ques_Name = val["Ques_Name"]
+      this.Ques_FB = val["Ques_FB"]
+      console.log(this.Ques_ID,this.Ques_Name,this.Ques_FB)
+
+    })
+    setTimeout(()=>{
+      this.GetChoice()
+    },3000);
+    
+   
 
   }
+  GetChoice(){
+    
+    console.log(this.Ques_ID[0]) 
+    var conditionLength = this.Ques_ID.length
+
+
+    for(let i=0; i<conditionLength;i++){
+      
+      this.SendChoiceRequest = from(this.testapiProvider.GetChoice(this.Ques_ID[i]))
+      console.log(this.Ques_ID[i])
+      this.SendChoiceRequest.subscribe(val=>{
+        this.Choice_ID.push(val["Choice_ID"])
+        this.Choice_Name.push(val["Choice_Name"])
+        this.Choice_Crr.push(val["Choice_Crr"])
+      })
+      
+            
+    }
+   
+    console.log(this.Choice_ID,this.Choice_Name,this.Choice_Crr)
+    
+    
+
+  }
+  ShowResult(index)
+  {
+    console.log(index)
+    var QuesName = this.Ques_Name[index]  
+    
+  }
+
 
  
   //Slide 1

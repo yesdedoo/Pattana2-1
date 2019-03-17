@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NavController } from 'ionic-angular';
 import { UsernameValidator } from '../../providers/username/username';
+import { Storage } from '@ionic/storage';
 
 import { RegisterPage } from '../register/register';
 import { TabsPage } from '../tabs/tabs';
@@ -40,7 +41,8 @@ export class LoginPage {
    
   submitAttempt: boolean = false;
 
-  constructor(public navCtrl: NavController, public formBuilder: FormBuilder, public testapiProvider: TestapiProvider) {
+  constructor(public navCtrl: NavController, public formBuilder: FormBuilder,
+     public testapiProvider: TestapiProvider,public storage:Storage) {
 
     this.slideOneForm = formBuilder.group({
       userName: ['', Validators.compose([Validators.required, Validators.pattern('[a-zA-Z]*')]), UsernameValidator.checkUsername],
@@ -49,8 +51,13 @@ export class LoginPage {
       password: [''],
       age: ['']
     });
+    
+    this.storage.set('stuid',0)
+    this.storage.get('stuid').then((val) => {
+      console.log(val);
+      
+    });
 
-   
   }
 
 
@@ -73,7 +80,8 @@ export class LoginPage {
       console.log(this.Stu_ID)
       if(val["exist"]==true){
         //Need to think about the page that should send data to
-        this.navCtrl.push(TabsPage,{"tempStu_ID":this.Stu_ID})
+        this.storage.set('stuid', this.Stu_ID);
+        this.navCtrl.setRoot(TabsPage,{"tempStu_ID":this.Stu_ID})
       }
       else
       {

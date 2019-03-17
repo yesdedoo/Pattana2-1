@@ -104,6 +104,7 @@ export class QuizPage {
   Choice_ID:any=[];
   Choice_Name:any=[];
   Choice_Crr:any=[];
+  Choice_Quesid:any=[];
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public testapiProvider: TestapiProvider,public loadingCtrl: LoadingController) {
   
@@ -140,15 +141,20 @@ export class QuizPage {
 
   ionViewDidLoad(){
     console.log('ionViewDidLoad QuizPage');
+
     this.GetQuestion()
+    setTimeout(() => {
+    this.GetChoice() 
+    }, 3000);  
+    
     let loading = this.loadingCtrl.create({
       content: 'Please wait...'
     });
       loading.present();
     setTimeout(() => {
       loading.dismiss()
-    }, 3000);
-
+    }, 5000);
+    
     
     
   }
@@ -162,34 +168,42 @@ export class QuizPage {
       console.log(this.Ques_ID,this.Ques_Name,this.Ques_FB)
 
     })
-    setTimeout(()=>{
-      this.GetChoice()
-    },3000);
-    
-   
-
+ 
   }
   GetChoice(){
     
     console.log(this.Ques_ID[0]) 
     var conditionLength = this.Ques_ID.length
-
+    var tempCID,tempCNAME,tempCCRR,tempCQID
 
     for(let i=0; i<conditionLength;i++){
       
       this.SendChoiceRequest = from(this.testapiProvider.GetChoice(this.Ques_ID[i]))
       console.log(this.Ques_ID[i])
+     
       this.SendChoiceRequest.subscribe(val=>{
-        this.Choice_ID.push(val["Choice_ID"])
-        this.Choice_Name.push(val["Choice_Name"])
-        this.Choice_Crr.push(val["Choice_Crr"])
+        console.log(val)
+          tempCID = val["Choice_ID"]
+          tempCNAME = val["Choice_Name"]
+          tempCCRR = val["Choice_Crr"]
+          tempCQID = val["Choice_QuesID"]
+        
+                     
+
       })
+      setTimeout(() => {
+        this.Choice_ID = tempCID
+        this.Choice_Name = tempCNAME
+        this.Choice_Crr = tempCCRR
+        this.Choice_Quesid = tempCQID
+
+      }, 1000);
       
-            
+     
     }
-   
-    console.log(this.Choice_ID,this.Choice_Name,this.Choice_Crr)
-    
+    setTimeout(() => {
+      console.log(this.Choice_ID,this.Choice_Name,this.Choice_Crr,this.Choice_Quesid)  
+    }, 1000);    
     
 
   }

@@ -2,7 +2,7 @@
   
   <ion-slide *ngFor="let element of Ques_ID; let i = index"
   style = "background-image: url('assets/imgs/Full1.png') ">
-    <h2>Question {{i+1}}</h2>
+    <h1>Question {{i+1}}</h1>
     <ion-card class="card1">
       <ion-card-header>
         <div text-warp class="QuesDes">
@@ -11,11 +11,49 @@
       </ion-card-header>
       <br>
       <ion-list class="List">
-        <button ion-item *ngFor="let element of Choice_Name; let i = index">
+        <div (click)="MarkingScore(i,0)" > 
+          <button ion-item>
+            <ion-icon name="ios-arrow-dropright-circle" item-start>
+            </ion-icon>
+            {{Choice_Name[0]}}
+          </button>
+        </div>
+        <div (click)="MarkingScore(i,1)" > 
+          <button ion-item>
+            <ion-icon name="ios-arrow-dropright-circle" item-start>
+            </ion-icon>
+            {{Choice_Name[1]}}
+          </button>
+        </div>
+        <div (click)="MarkingScore(i,2)" > 
+          <button ion-item>
+            <ion-icon name="ios-arrow-dropright-circle" item-start>
+            </ion-icon>
+            {{Choice_Name[2]}}
+          </button>
+        </div>
+        <div (click)="MarkingScore(i,3)" > 
+          <button ion-item>
+            <ion-icon name="ios-arrow-dropright-circle" item-start>
+            </ion-icon>
+            {{Choice_Name[3]}}
+          </button>
+        </div>
+        <!--
+        <div *ngFor="let element of Choice_ID; let j = index" (click)="MarkingScore(i,j)" > 
+            <button ion-item>
+              <ion-icon name="ios-arrow-dropright-circle" item-start>
+              </ion-icon>
+              {{Choice_Name[j]}}
+            </button>
+        </div>-->
+        <!--
+        <button ion-item *ngFor="let element of Choice_ID; let j = index" (click)="MarkingScore(i,j)"
+        [ngStyle]="{'background-color' : ButtonColor}">
           <ion-icon name="ios-arrow-dropright-circle" item-start>
           </ion-icon>
-          {{element}}
-        </button>
+          {{Choice_Name[j]}}
+        </button>-->
       </ion-list>
     </ion-card>
 

@@ -30,7 +30,8 @@ export class HomePage {
   
   Time:any
   RTime:Date
-  utc = new Date().toJSON().slice(0,10).replace(/-/g,'/');
+  utc:any;
+ 
 
   //Data from rest
   Ass_ID:any;
@@ -66,18 +67,7 @@ export class HomePage {
     console.log(this.Stu_ID);
 
     //Get DATE&TIME
-    this.currentDate = new Date();
-    this.HrTime = this.currentDate.getHours()
-    this.MinTime =this.currentDate.getMinutes()
-    this.SecTime = this.currentDate.getSeconds()   
-    
-    this.Time = this.HrTime+":"+this.MinTime+":"+this.SecTime
-    this.RTime = this.Time
-    var re = '/'
-    var newstr = this.utc.replace(re,"-"); 
-    console.log(this.RTime)
-    this.Today = newstr.replace(re,"-")
-    console.log(this.Today)
+    this.GetDate();
     this.CheckAssessment();
 
   
@@ -90,7 +80,23 @@ export class HomePage {
   ionViewWillLeave() {
     this.tabBarElement.style.display = 'flex';
   }*/
- 
+  GetDate(){
+    this.currentDate = new Date();
+    this.HrTime = this.currentDate.getHours()
+    this.MinTime =this.currentDate.getMinutes()
+    this.SecTime = this.currentDate.getSeconds() 
+    this.utc = new Date().toJSON().slice(0,10).replace(/-/g,'/');  
+    
+    this.Time = this.HrTime+":"+this.MinTime+":"+this.SecTime
+    this.RTime = this.Time
+    var re = '/'
+    var newstr = this.utc.replace(re,"-"); 
+    console.log(this.RTime)
+    this.Today = newstr.replace(re,"-")
+    console.log(this.currentDate)
+    console.log(this.Today)
+
+  }
 
 
   CheckAssessment(){

@@ -106,12 +106,19 @@ export class QuizPage {
   Choice_Crr:any=[];
   Choice_Quesid:any=[];
 
+  //Marking Score 
+  MarkingResult={"MQuesNO":0,"MResult":0};
+  RepeatSelected={"Selected":false,"RQuesNO":11}
+  ButtonColor:any;
+  ButtonColorCorrect='#8cc63f';
+  ButtonColorWrong='#ff0000';
+
   constructor(public navCtrl: NavController, public navParams: NavParams,public testapiProvider: TestapiProvider,public loadingCtrl: LoadingController) {
   
     this.Ques = [
       "The type of diagram in which the operations are apecified on objects is considered as"
     ]
-
+    /*
     this.checker1 = true;
     this.checker2 = true;
     this.checker3 = true;
@@ -121,7 +128,7 @@ export class QuizPage {
     this.checker7 = true;
     this.checker8 = true;
     this.checker9 = true;
-    this.checker10 = true;
+    this.checker10 = true;*/
     this.WbuttonColor = '#ff0000';
     this.ScoreCount = 0;
 
@@ -207,6 +214,29 @@ export class QuizPage {
     
 
   }
+  MarkingScore(IndexQues,IndexChoice){
+    console.log(IndexQues,IndexChoice)
+    this.MarkingResult["MQuesNO"]=IndexQues
+    
+    if(this.RepeatSelected["RQuesNO"]!=IndexQues&&this.RepeatSelected["Selected"]==false){
+      console.log("Selected the choice")
+      if(this.Choice_Crr[IndexChoice]==1){
+        this.MarkingResult["MResult"] = 100;
+        this.ButtonColor=true
+      }
+      else{
+        this.MarkingResult["MResult"] = 0;
+        this.ButtonColor=false;
+      }
+      this.RepeatSelected["Selected"] = true;
+      console.log(this.MarkingResult)
+      
+    }
+    else{
+      this.RepeatSelected["RQuesNO"]=IndexQues
+      console.log("Unable to select multiple choice")
+    }
+  }
   ShowResult(index)
   {
     console.log(index)
@@ -215,7 +245,7 @@ export class QuizPage {
   }
 
 
- 
+  /*
   //Slide 1
   Wrong11ButtonColor(){
     if(this.checker1==true){
@@ -488,6 +518,6 @@ export class QuizPage {
       this.C0buttonColor = '#8cc63f';
       this.checker10=false;
     }
-  }
+  }*/
 
 }

@@ -10,7 +10,6 @@ import { RegisterPage } from '../pages/register/register';
 import { QuizPage } from '../pages/quiz/quiz';
 import { RankPage } from '../pages/rank/rank';
 import { CardPage } from '../pages/card/card';
-import { CountPage } from '../pages/count/count';
 import { JoincoursePage } from '../pages/joincourse/joincourse';
 import { ResulthistpercPage } from '../pages/resulthistperc/resulthistperc';
 import { ResultPage } from '../pages/result/result';
@@ -28,8 +27,6 @@ export class MyApp {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
-      //statusBar.styleDefault();
-      //splashScreen.hide();
     });
   }
 }

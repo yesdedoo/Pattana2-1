@@ -18,7 +18,6 @@ import { ResulthistpercPage } from '../pages/resulthistperc/resulthistperc';
 import { QuizPage } from '../pages/quiz/quiz';
 import { RankPage } from '../pages/rank/rank';
 import { CardPage } from '../pages/card/card';
-import { CountPage } from '../pages/count/count';
 import { RoundProgressModule } from 'angular-svg-round-progressbar';
 import { CalendarModule } from 'ion2-calendar';
 import { TestapiProvider } from '../providers/testapi/testapi';
@@ -43,8 +42,8 @@ import { IonicStorageModule } from '@ionic/storage';
     ResulthistpercPage,
     QuizPage,
     RankPage,
-    CardPage,
-    CountPage
+    CardPage
+    
   ],
   imports: [
     BrowserModule,
@@ -68,8 +67,8 @@ import { IonicStorageModule } from '@ionic/storage';
     ResulthistpercPage,
     QuizPage,
     RankPage,
-    CardPage,
-    CountPage
+    CardPage
+    
   ],
   providers: [
     StatusBar,

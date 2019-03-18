@@ -12,255 +12,39 @@
       <br>
       <ion-list class="List">
         <div (click)="MarkingScore(i,0)" > 
-          <button ion-item>
+          <button id="Butt1" class="button1" ion-item >
             <ion-icon name="ios-arrow-dropright-circle" item-start>
             </ion-icon>
             {{Choice_Name[0]}}
           </button>
         </div>
         <div (click)="MarkingScore(i,1)" > 
-          <button ion-item>
+          <button id="Butt2" class="button2" ion-item >
             <ion-icon name="ios-arrow-dropright-circle" item-start>
             </ion-icon>
             {{Choice_Name[1]}}
           </button>
         </div>
         <div (click)="MarkingScore(i,2)" > 
-          <button ion-item>
+          <button id="Butt3" class="button3" ion-item >
             <ion-icon name="ios-arrow-dropright-circle" item-start>
             </ion-icon>
             {{Choice_Name[2]}}
           </button>
         </div>
         <div (click)="MarkingScore(i,3)" > 
-          <button ion-item>
+          <button id="Butt4" class="button4" ion-item >
             <ion-icon name="ios-arrow-dropright-circle" item-start>
             </ion-icon>
             {{Choice_Name[3]}}
           </button>
         </div>
-        <!--
-        <div *ngFor="let element of Choice_ID; let j = index" (click)="MarkingScore(i,j)" > 
-            <button ion-item>
-              <ion-icon name="ios-arrow-dropright-circle" item-start>
-              </ion-icon>
-              {{Choice_Name[j]}}
-            </button>
-        </div>-->
-        <!--
-        <button ion-item *ngFor="let element of Choice_ID; let j = index" (click)="MarkingScore(i,j)"
-        [ngStyle]="{'background-color' : ButtonColor}">
-          <ion-icon name="ios-arrow-dropright-circle" item-start>
-          </ion-icon>
-          {{Choice_Name[j]}}
-        </button>-->
       </ion-list>
     </ion-card>
 
   </ion-slide>
-  <!--
-  <ion-slide (ionSlideTap)="ionSlidesDidLoad()" style="background-image: url('assets/imgs/Full1.png')">
-    <h2> Question 1 </h2>
-
-    <ion-card class="card1">
-      <ion-card-header>
-        <div text-wrap class="QuesDes">
-          The type of diagram in which the operations are apecified on objects is considered as
-        </div>
-
-      </ion-card-header>
-      <br>
-
-
-      <ion-list class="List">
-        <button ion-item (click)="Wrong11ButtonColor()" [ngStyle]="{'background-color' : W11buttonColor}">
-          <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
-          functional diagrams
-        </button>
-
-        <button ion-item (click)="Correct1ButtonColor()" [ngStyle]="{'background-color' : C1buttonColor}">
-          <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
-          class diagrams
-        </button>
-
-        <button ion-item (click)="Wrong12ButtonColor()" [ngStyle]="{'background-color' : W21buttonColor}">
-          <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
-          attributes diagrams
-        </button>
-
-        <button ion-item (click)="Wrong13ButtonColor()" [ngStyle]="{'background-color' : W31buttonColor}">
-          <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
-          entity diagrams
-        </button>
-
-
-      </ion-list>
-    </ion-card>
-
-
-
-
-  </ion-slide>
-
   <ion-slide style="background-image: url('assets/imgs/Full1.png')">
-    <h2>Question 2</h2>
-    <ion-card class="card2">
-      <ion-card-header>
-        <div text-wrap class="QuesDes">
-          Considering the binary relationships, the possible cardinality ratios are
-        </div>
-      </ion-card-header>
-
-
-      <ion-list class="List">
-        <button ion-item (click)="Wrong12ButtonColor()" [ngStyle]="{'background-color' : W12buttonColor}">
-          <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
-          one : one
-        </button>
-
-        <button ion-item (click)="Wrong32ButtonColor()" [ngStyle]="{'background-color' : W32buttonColor}">
-          <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
-          1 : N
-        </button>
-
-        <button ion-item (click)="Wrong22ButtonColor()" [ngStyle]="{'background-color' : W22buttonColor}">
-          <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
-          M : N
-        </button>
-
-        <button ion-item (click)="Correct2ButtonColor()" [ngStyle]="{'background-color' : C2buttonColor}">
-          <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
-          all of above
-        </button>
-
-
-
-      </ion-list>
-    </ion-card>
-
-
-  </ion-slide>
-
-  <ion-slide style="background-image: url('assets/imgs/Full1.png')">
-    <h2>Question 3</h2>
-
-
-    <ion-card class="card3">
-      <ion-card-header>
-        <div text-wrap class="QuesDes">
-          The attributes that can be arranged into hierarchy are called
-        </div>
-      </ion-card-header>
-
-      <ion-list class="List">
-        <button ion-item (click)="Correct3ButtonColor()" [ngStyle]="{'background-color' : C3buttonColor}">
-          <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
-          composite attributes
-        </button>
-
-        <button ion-item (click)="Wrong13ButtonColor()" [ngStyle]="{'background-color' : W13buttonColor}">
-          <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
-          atomic attributes
-        </button>
-
-        <button ion-item (click)="Wrong23ButtonColor()" [ngStyle]="{'background-color' : W23buttonColor}">
-          <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
-          derived attributes
-        </button>
-
-        <button ion-item (click)="Wrong33ButtonColor()" [ngStyle]="{'background-color' : W33buttonColor}">
-          <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
-          Dog Park
-        </button>
-
-
-
-      </ion-list>
-    </ion-card>
-
-
-  </ion-slide>
-
-
-  <ion-slide style="background-image: url('assets/imgs/Full1.png')">
-    <h2>Question 4</h2>
-    <ion-card class="card4">
-      <ion-card-header>
-        <div text-wrap class="QuesDes">
-          The set of all the entities having same attributes is classified as
-        </div>
-      </ion-card-header>
-
-
-      <ion-list class="List">
-        <button ion-item (click)="Correct4ButtonColor()" [ngStyle]="{'background-color' : C4buttonColor}">
-          <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
-          entity type
-        </button>
-
-        <button ion-item (click)="Wrong14ButtonColor()" [ngStyle]="{'background-color' : W14buttonColor}">
-          <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
-          attribute type
-        </button>
-
-        <button ion-item (click)="Wrong24ButtonColor()" [ngStyle]="{'background-color' : W24buttonColor}">
-          <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
-          function type
-        </button>
-
-        <button ion-item (click)="Wrong34ButtonColor()" [ngStyle]="{'background-color' : W34buttonColor}">
-          <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
-          hierarchy type
-        </button>
-
-
-
-      </ion-list>
-    </ion-card>
-
-
-  </ion-slide>
-
-  <ion-slide style="background-image: url('assets/imgs/Full1.png')">
-    <h2>Quesstion 5</h2>
-    <ion-card class="card5">
-      <ion-card-header>
-        <div text-wrap class="QuesDes">
-          The set of values which specifies which values are to be assigned to individual entities is considered as
-        </div>
-      </ion-card-header>
-
-
-      <ion-list class="List">
-        <button ion-item (click)="Correct5ButtonColor()" [ngStyle]="{'background-color' : C5buttonColor}">
-          <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
-          domainof values
-        </button>
-
-        <button ion-item (click)="Wrong15ButtonColor()" [ngStyle]="{'background-color' : W15buttonColor}">
-          <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
-          composition of values
-        </button>
-
-        <button ion-item (click)="Wrong25ButtonColor()" [ngStyle]="{'background-color' : W25buttonColor}">
-          <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
-          attribution of values
-        </button>
-
-        <button ion-item (click)="Wrong35ButtonColor()" [ngStyle]="{'background-color' : W35buttonColor}">
-          <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
-          derivation of values
-        </button>
-
-
-
-      </ion-list>
-    </ion-card>
-
-  </ion-slide>-->
-
-  <ion-slide style="background-image: url('assets/imgs/Full1.png')">
-    <h2>Finish Slide</h2>
+    <h1>Finish Slide</h1>
 
 
     <button ion-button color="light" ion-button class="finishquiz" (click)='finishquiz()'> Finish Quiz </button> <br><br>

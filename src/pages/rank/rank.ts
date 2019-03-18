@@ -18,12 +18,16 @@ export class RankPage {
 
   Rankingother: Array <any> =[];
   Rankingme: Array <any> =[];
+
+  //Get pushed from quiz.ts
   ScoreCount: any;
+  NOOfQues:any;
 
   constructor(public alertCtrl: AlertController, private navCtrl: NavController, public navParams: NavParams) {
     this.Rankingother= ["Kamonruk Sariyarsheeva","Suvijak Permpholphattana","Prakitchai Panphila"]
     this.Rankingme = ["Pakpoom Rachtracho"]
-    this.ScoreCount = navParams.get('data');
+    this.ScoreCount = navParams.get('scorecount');
+    this.NOOfQues = navParams.get('quesNO');
   
   }
 
@@ -35,7 +39,8 @@ export class RankPage {
 
   clickhome()
   {
-    this.navCtrl.push(HomePage)
+    //this.navCtrl.push(HomePage)
+    this.navCtrl.popToRoot();
   }
  
   clickrank()

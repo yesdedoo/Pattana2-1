@@ -2,13 +2,13 @@ import { Component } from '@angular/core';
 import { NavController, NavParams} from 'ionic-angular';
 import { JoincoursePage } from '../joincourse/joincourse';
 import { QuizPage } from '../quiz/quiz';
-import { CountPage } from '../count/count';
 import { LocalNotifications} from '@ionic-native/local-notifications/ngx';
 
 //REST
 import { from } from 'rxjs/observable/from'
 import { TestapiProvider } from '../../providers/testapi/testapi';
 import { Storage } from '@ionic/storage';
+
 
 
 @Component({
@@ -31,6 +31,9 @@ export class HomePage {
   Time:any
   RTime:Date
   utc:any;
+
+  tempTime:any;
+  
  
 
   //Data from rest
@@ -81,11 +84,13 @@ export class HomePage {
     this.tabBarElement.style.display = 'flex';
   }*/
   GetDate(){
+    
+    let utc2
     this.currentDate = new Date();
     this.HrTime = this.currentDate.getHours()
     this.MinTime =this.currentDate.getMinutes()
     this.SecTime = this.currentDate.getSeconds() 
-    this.utc = new Date().toJSON().slice(0,10).replace(/-/g,'/');  
+    this.utc = this.currentDate.toJSON().slice(0,10).replace(/-/g,'/');  
     
     this.Time = this.HrTime+":"+this.MinTime+":"+this.SecTime
     this.RTime = this.Time

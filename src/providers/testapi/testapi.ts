@@ -21,6 +21,7 @@ export class TestapiProvider {
   restApiLogin = 'http://104.196.19.248:5002/login'
   restApiCourse = 'http://104.196.19.248:5003/course'
   restApiJoinCourse = 'http://104.196.19.248:5003/joincourse'
+  restApiMarkingResult = 'http://104.196.19.248:5003/marking'
   constructor(public http: HttpClient) {
     console.log('Hello TestapiProvider Provider');
   }
@@ -103,6 +104,23 @@ export class TestapiProvider {
     });
   }
   
+  PostMarkingResult(Result,Ques_ID,Ques_Date,Stu_ID) {
+    //Registration data from register page
+    var data = { MarkingData: { result:Result,quesid:Ques_ID,quesdate:Ques_Date,stuid:Stu_ID} }
+    //To check the existing account
+    return new Promise(resolve => {
+      fetch(this.restApiMarkingResult, {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+    });
+
+
+  }
+
   //INSERT the registration
   
   PostRegister(fName,lName,Email,Password)

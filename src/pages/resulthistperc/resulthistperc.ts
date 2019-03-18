@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { NgStyle } from '@angular/common';
+
+//REST API
+import { from } from 'rxjs/observable/from';
+import { TestapiProvider } from '../../providers/testapi/testapi';
+
 
 /**
  * Generated class for the ResulthistpercPage page.
@@ -38,18 +42,40 @@ export class ResulthistpercPage {
   rate:number;
   course: Array <any> =[];
 
-  GetCourseID:any
+  //Get pushed data from ResultofCourse page
+  Stu_ID:any;
+  Course_ID:any
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  //Rest variable
+  SendLessonRequest:any;
+  Less_ID:any;
+  Less_Know:any;
+  Less_AVGResult:any;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams,public testapiProvider:TestapiProvider) {
   
    this.course=["Data Modeling","Database Concept","Database Design","Database Management"]
-   this.GetCourseID = navParams.get('CourseID')
-   console.log(this.GetCourseID)
+   this.Course_ID = navParams.get('courseid')
+   this.Stu_ID = navParams.get('stuid')
+   console.log(this.Course_ID,this.Stu_ID)
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ResulthistpercPage');
+    this.GetLesson();
   }
+  GetLesson(){
+    this.SendLessonRequest = from(this.testapiProvider.GetLesson(this.Course_ID,this.Stu_ID))
+    this.SendLessonRequest.subscribe(val =>{
+      console.log(val)
+      this.Less_ID = val["Less_ID"]
+      this.Less_Know = val["Less_Know"]
+      this.Less_AVGResult = val["Less_AVGResult"]
+
+      console.log(this.Less_ID,this.Less_Know,this.Less_AVGResult)
+    })
+  }
+  
 
   
 

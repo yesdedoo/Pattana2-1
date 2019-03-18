@@ -5,54 +5,36 @@
   Ionic pages and navigation.
 -->
 
- <ion-header>
-      <br>
-     <div class="storage" >
-          Lesson
-      </div>
-    
-    </ion-header>
+<ion-header>
+  <br>
+  <div class="storage">
+    Lesson
+  </div>
+
+</ion-header>
 
 
 <ion-content style="background-image: url('assets/imgs/Plain1.png')">
-
- 
-
-
-<br>
-  <div class="lesson" >
-     
+  <br>
+  <ion-list class="lesson">
+    <br>
+    <div class="progress-wrapper" *ngFor="let element in Less_ID; let i = index">
+      <h3>{{Less_Know[i]}}</h3>
+      <div class="current">{{ Less_AVGResult[i] }}/{{ max }}</div> <br>
+      <round-progress [current]="LessAVGResult[i]" [max]="max" [stroke]="stroke" [radius]="radius" [semicircle]="semicircle"
+        [rounded]="rounded" [responsive]="responsive" [clockwise]="clockwise" [color]="gradient ? 'url(#gradient)' : color"
+        [background]="background" [duration]="duration" [animation]="animation" [animationDelay]="animationDelay">
+      </round-progress>
+    </div><br>
+    <!--{{course[1]}} <br>
     
-
-      {{course[0]}} <br>
-      <div class="progress-wrapper">
-        <!-- [ngStyle]="getOverlayStyle()"-->
-        <div class="current">{{ current1 }}/{{ max }}</div> <br>
-        <round-progress [current]="current1" [max]="max" [stroke]="stroke" [radius]="radius" [semicircle]="semicircle"
-          [rounded]="rounded" [responsive]="responsive" [clockwise]="clockwise"
-          [color]="gradient ? 'url(#gradient)' : color" [background]="background" [duration]="duration"
-          [animation]="animation" [animationDelay]="animationDelay">
-
-        </round-progress>
-      </div><br>
-
-      {{course[1]}} <br>
-
-      <div class="progress-wrapper">
-        <!-- [ngStyle]="getOverlayStyle()"-->
-        <div class="current">{{ current2 }}/{{ max }}</div><br>
-        <round-progress [current]="current2" [max]="max" [stroke]="stroke" [radius]="radius" [semicircle]="semicircle"
-          [rounded]="rounded" [responsive]="responsive" [clockwise]="clockwise"
-          [color]="gradient ? 'url(#gradient)' : color" [background]="background" [duration]="duration"
-          [animation]="animation" [animationDelay]="animationDelay">
-
-        </round-progress>
-      </div><br>
-
-     
-
-
-  </div>
-
-
+    <div class="progress-wrapper">
+      
+      <div class="current">{{ current2 }}/{{ max }}</div><br>
+      <round-progress [current]="current2" [max]="max" [stroke]="stroke" [radius]="radius" [semicircle]="semicircle"
+        [rounded]="rounded" [responsive]="responsive" [clockwise]="clockwise" [color]="gradient ? 'url(#gradient)' : color"
+        [background]="background" [duration]="duration" [animation]="animation" [animationDelay]="animationDelay">
+    </round-progress>
+    </div><br>-->
+  </ion-list>
 </ion-content>

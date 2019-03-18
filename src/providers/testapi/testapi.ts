@@ -22,6 +22,7 @@ export class TestapiProvider {
   restApiCourse = 'http://104.196.19.248:5003/course'
   restApiJoinCourse = 'http://104.196.19.248:5003/joincourse'
   restApiMarkingResult = 'http://104.196.19.248:5003/marking'
+  restApiLesson = 'http://104.196.19.248:5003/lesson'
   constructor(public http: HttpClient) {
     console.log('Hello TestapiProvider Provider');
   }
@@ -160,7 +161,7 @@ export class TestapiProvider {
     });
 
   }
-  DisplayCourse(Stu_ID){
+  GetCourse(Stu_ID){
     var data = { stu_IDData: { stu_id: Stu_ID} }
     //To check the existing account
     return new Promise(resolve => {
@@ -179,5 +180,26 @@ export class TestapiProvider {
     });
 
   }
+
+  GetLesson(Course_ID,Stu_ID){
+    var data = { lessonData: { courseid: Course_ID,stuid:Stu_ID} }
+    //To check the existing account
+    return new Promise(resolve => {
+      fetch(this.restApiLesson, {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+          .then(r=>{
+            this.data = r.json()
+            resolve(this.data)
+          })
+          .catch(err => console.log(err))
+    });
+
+  }
+
 
 }

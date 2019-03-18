@@ -25,6 +25,7 @@ export class ResultPage {
   
   CourseInfo:any;
   Stu_ID:any;
+  SentStu_ID:any;
 
   //Display Course
   Course=[];
@@ -55,7 +56,8 @@ export class ResultPage {
     public alertCtrl:AlertController,public toastCtrl:ToastController) {
 
     this.Stu_ID = this.navParams.get('Stu_ID');
-    console.log(this.Stu_ID);
+    this.SentStu_ID = this.Stu_ID[0]
+    console.log(this.SentStu_ID);
 
     this.SuccessToast = this.toastCtrl.create({
       message: 'Join Course successful.',
@@ -85,7 +87,7 @@ export class ResultPage {
     }, 1000);
     
 
-    this.CourseInfo = from(this.testapiProvider.DisplayCourse(this.Stu_ID));
+    this.CourseInfo = from(this.testapiProvider.GetCourse(this.Stu_ID));
     this.CourseInfo.subscribe(val =>{
       
       console.log(val)
@@ -201,7 +203,7 @@ export class ResultPage {
   {
     console.log(index)
     var CourseID = this.Course_ID[index]  
-    this.navCtrl.push(ResulthistpercPage,{'CourseID':CourseID});
+    this.navCtrl.push(ResulthistpercPage,{'courseid':CourseID,'stuid':this.SentStu_ID});
   }
 
 

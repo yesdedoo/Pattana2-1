@@ -18,23 +18,149 @@
   <br>
   <div class="lesson" ngSwitch="{{LessLength}}">
     <br>
-    <div class="progress-wrapper" *ngSwitchCase="'1'">
-      <h3>{{Less_Know[0]}}</h3>
-      <div class="current">{{Less_AVGResult[0]}}/{{ max }}</div> <br>
-      <round-progress [current]="Less_AVGResult[0]" [max]="max" [stroke]="stroke" [radius]="radius" [semicircle]="semicircle"
-        [rounded]="rounded" [responsive]="responsive" [clockwise]="clockwise" [color]="gradient ? 'url(#gradient)' : color"
-        [background]="background" [duration]="duration" [animation]="animation" [animationDelay]="animationDelay">
-      </round-progress>
-    </div><br>
-    <!--{{course[1]}} <br>
-    
-    <div class="progress-wrapper">
-      
-      <div class="current">{{ current2 }}/{{ max }}</div><br>
-      <round-progress [current]="current2" [max]="max" [stroke]="stroke" [radius]="radius" [semicircle]="semicircle"
-        [rounded]="rounded" [responsive]="responsive" [clockwise]="clockwise" [color]="gradient ? 'url(#gradient)' : color"
-        [background]="background" [duration]="duration" [animation]="animation" [animationDelay]="animationDelay">
-    </round-progress>
-    </div><br>-->
+    <div *ngSwitchCase="'1'">
+      <div class="progress-wrapper">
+        <h3>{{Less_Know[0]}}</h3>
+        <div class="current">{{Less_AVGResult[0]}}/{{ max }}</div> <br>
+        <round-progress [current]="Less_AVGResult[0]" [max]="max" [stroke]="stroke" [radius]="radius" [semicircle]="semicircle"
+          [rounded]="rounded" [responsive]="responsive" [clockwise]="clockwise" [color]="gradient ? 'url(#gradient)' : color"
+          [background]="background" [duration]="duration" [animation]="animation" [animationDelay]="animationDelay">
+        </round-progress>
+      </div><br>
+    </div>
+    <br>
+    <div *ngSwitchCase="'2'">
+      <div class="progress-wrapper">
+        <h3>{{Less_Know[0]}}</h3>
+        <div class="current">{{Less_AVGResult[0]}}/{{ max }}</div> <br>
+        <round-progress [current]="Less_AVGResult[0]" [max]="max" [stroke]="stroke" [radius]="radius" [semicircle]="semicircle"
+          [rounded]="rounded" [responsive]="responsive" [clockwise]="clockwise" [color]="gradient ? 'url(#gradient)' : color"
+          [background]="background" [duration]="duration" [animation]="animation" [animationDelay]="animationDelay">
+        </round-progress>
+      </div><br>
+      <div class="progress-wrapper">
+        <h3>{{Less_Know[1]}}</h3>
+        <div class="current">{{Less_AVGResult[1]}}/{{ max }}</div> <br>
+        <round-progress [current]="Less_AVGResult[1]" [max]="max" [stroke]="stroke" [radius]="radius" [semicircle]="semicircle"
+          [rounded]="rounded" [responsive]="responsive" [clockwise]="clockwise" [color]="gradient ? 'url(#gradient)' : color"
+          [background]="background" [duration]="duration" [animation]="animation" [animationDelay]="animationDelay">
+        </round-progress>
+      </div><br>
+
+    </div>
+    <br>
+    <div *ngSwitchCase="'3'">
+      <div class="progress-wrapper">
+        <h3>{{Less_Know[0]}}</h3>
+        <div class="current">{{Less_AVGResult[0]}}/{{ max }}</div> <br>
+        <round-progress [current]="Less_AVGResult[0]" [max]="max" [stroke]="stroke" [radius]="radius" [semicircle]="semicircle"
+          [rounded]="rounded" [responsive]="responsive" [clockwise]="clockwise" [color]="gradient ? 'url(#gradient)' : color"
+          [background]="background" [duration]="duration" [animation]="animation" [animationDelay]="animationDelay">
+        </round-progress>
+      </div><br>
+      <div class="progress-wrapper">
+        <h3>{{Less_Know[1]}}</h3>
+        <div class="current">{{Less_AVGResult[1]}}/{{ max }}</div> <br>
+        <round-progress [current]="Less_AVGResult[1]" [max]="max" [stroke]="stroke" [radius]="radius" [semicircle]="semicircle"
+          [rounded]="rounded" [responsive]="responsive" [clockwise]="clockwise" [color]="gradient ? 'url(#gradient)' : color"
+          [background]="background" [duration]="duration" [animation]="animation" [animationDelay]="animationDelay">
+        </round-progress>
+      </div><br>
+      <div class="progress-wrapper">
+        <h3>{{Less_Know[2]}}</h3>
+        <div class="current">{{Less_AVGResult[2]}}/{{ max }}</div> <br>
+        <round-progress [current]="Less_AVGResult[2]" [max]="max" [stroke]="stroke" [radius]="radius" [semicircle]="semicircle"
+          [rounded]="rounded" [responsive]="responsive" [clockwise]="clockwise" [color]="gradient ? 'url(#gradient)' : color"
+          [background]="background" [duration]="duration" [animation]="animation" [animationDelay]="animationDelay">
+        </round-progress>
+      </div><br>
+    </div>
+    <br>
+    <div *ngSwitchCase="'4'">
+      <div class="progress-wrapper">
+        <h3>{{Less_Know[0]}}</h3>
+        <div class="current">{{Less_AVGResult[0]}}/{{ max }}</div> <br>
+        <round-progress [current]="Less_AVGResult[0]" [max]="max" [stroke]="stroke" [radius]="radius" [semicircle]="semicircle"
+          [rounded]="rounded" [responsive]="responsive" [clockwise]="clockwise" [color]="gradient ? 'url(#gradient)' : color"
+          [background]="background" [duration]="duration" [animation]="animation" [animationDelay]="animationDelay">
+        </round-progress>
+      </div><br>
+      <div class="progress-wrapper">
+        <h3>{{Less_Know[1]}}</h3>
+        <div class="current">{{Less_AVGResult[1]}}/{{ max }}</div> <br>
+        <round-progress [current]="Less_AVGResult[1]" [max]="max" [stroke]="stroke" [radius]="radius" [semicircle]="semicircle"
+          [rounded]="rounded" [responsive]="responsive" [clockwise]="clockwise" [color]="gradient ? 'url(#gradient)' : color"
+          [background]="background" [duration]="duration" [animation]="animation" [animationDelay]="animationDelay">
+        </round-progress>
+      </div><br>
+      <div class="progress-wrapper">
+        <h3>{{Less_Know[2]}}</h3>
+        <div class="current">{{Less_AVGResult[2]}}/{{ max }}</div> <br>
+        <round-progress [current]="Less_AVGResult[2]" [max]="max" [stroke]="stroke" [radius]="radius" [semicircle]="semicircle"
+          [rounded]="rounded" [responsive]="responsive" [clockwise]="clockwise" [color]="gradient ? 'url(#gradient)' : color"
+          [background]="background" [duration]="duration" [animation]="animation" [animationDelay]="animationDelay">
+        </round-progress>
+      </div><br>
+      <div class="progress-wrapper">
+        <h3>{{Less_Know[3]}}</h3>
+        <div class="current">{{Less_AVGResult[3]}}/{{ max }}</div> <br>
+        <round-progress [current]="Less_AVGResult[3]" [max]="max" [stroke]="stroke" [radius]="radius" [semicircle]="semicircle"
+          [rounded]="rounded" [responsive]="responsive" [clockwise]="clockwise" [color]="gradient ? 'url(#gradient)' : color"
+          [background]="background" [duration]="duration" [animation]="animation" [animationDelay]="animationDelay">
+        </round-progress>
+      </div><br>
+    </div>
+    <br>
+    <div *ngSwitchCase="'5'">
+      <div class="progress-wrapper">
+        <h3>{{Less_Know[0]}}</h3>
+        <div class="current">{{Less_AVGResult[0]}}/{{ max }}</div> <br>
+        <round-progress [current]="Less_AVGResult[0]" [max]="max" [stroke]="stroke" [radius]="radius" [semicircle]="semicircle"
+          [rounded]="rounded" [responsive]="responsive" [clockwise]="clockwise" [color]="gradient ? 'url(#gradient)' : color"
+          [background]="background" [duration]="duration" [animation]="animation" [animationDelay]="animationDelay">
+        </round-progress>
+      </div><br>
+      <div class="progress-wrapper">
+        <h3>{{Less_Know[1]}}</h3>
+        <div class="current">{{Less_AVGResult[1]}}/{{ max }}</div> <br>
+        <round-progress [current]="Less_AVGResult[1]" [max]="max" [stroke]="stroke" [radius]="radius" [semicircle]="semicircle"
+          [rounded]="rounded" [responsive]="responsive" [clockwise]="clockwise" [color]="gradient ? 'url(#gradient)' : color"
+          [background]="background" [duration]="duration" [animation]="animation" [animationDelay]="animationDelay">
+        </round-progress>
+      </div><br>
+      <div class="progress-wrapper">
+        <h3>{{Less_Know[2]}}</h3>
+        <div class="current">{{Less_AVGResult[2]}}/{{ max }}</div> <br>
+        <round-progress [current]="Less_AVGResult[2]" [max]="max" [stroke]="stroke" [radius]="radius" [semicircle]="semicircle"
+          [rounded]="rounded" [responsive]="responsive" [clockwise]="clockwise" [color]="gradient ? 'url(#gradient)' : color"
+          [background]="background" [duration]="duration" [animation]="animation" [animationDelay]="animationDelay">
+        </round-progress>
+      </div><br>
+      <div class="progress-wrapper">
+        <h3>{{Less_Know[3]}}</h3>
+        <div class="current">{{Less_AVGResult[3]}}/{{ max }}</div> <br>
+        <round-progress [current]="Less_AVGResult[3]" [max]="max" [stroke]="stroke" [radius]="radius" [semicircle]="semicircle"
+          [rounded]="rounded" [responsive]="responsive" [clockwise]="clockwise" [color]="gradient ? 'url(#gradient)' : color"
+          [background]="background" [duration]="duration" [animation]="animation" [animationDelay]="animationDelay">
+        </round-progress>
+      </div><br>
+      <div class="progress-wrapper">
+        <h3>{{Less_Know[4]}}</h3>
+        <div class="current">{{Less_AVGResult[4]}}/{{ max }}</div> <br>
+        <round-progress [current]="Less_AVGResult[4]" [max]="max" [stroke]="stroke" [radius]="radius" [semicircle]="semicircle"
+          [rounded]="rounded" [responsive]="responsive" [clockwise]="clockwise" [color]="gradient ? 'url(#gradient)' : color"
+          [background]="background" [duration]="duration" [animation]="animation" [animationDelay]="animationDelay">
+        </round-progress>
+      </div><br>
+
+    </div>
+    <br>
+
+
+
+
+
+
+
   </div>
 </ion-content>

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams} from 'ionic-angular';
 import { JoincoursePage } from '../joincourse/joincourse';
 import { QuizPage } from '../quiz/quiz';
-import { LocalNotifications} from '@ionic-native/local-notifications/ngx';
+//import { PhonegapLocalNotification } from '@ionic-native/phonegap-local-notification';
 
 //REST
 import { from } from 'rxjs/observable/from'
@@ -34,6 +34,7 @@ export class HomePage {
 
   tempTime:any;
   
+  notification:any;
  
 
   //Data from rest
@@ -57,7 +58,7 @@ export class HomePage {
   countResult:number;
   
   constructor(public navCtrl: NavController, public navParams: NavParams,
-    public testapiProvider:TestapiProvider,public localNotification:LocalNotifications,
+    public testapiProvider:TestapiProvider,
     public storage: Storage) {
     
     //this.tabBarElement = document.querySelector('.tabbar#show-tabbar')
@@ -65,14 +66,22 @@ export class HomePage {
     //this.tabBarElement = document.querySelector("ion-tabbar")
     //this.tabBarElement = document.getElementsByClassName('tabs').item(1);
     
+    
+      //trigger:{ at: new Date(new Date().getTime() +this.countResult)      }
+      //Date is the time that notify}*/
+   
 
     this.Stu_ID = navParams.get('Stu_ID')
     console.log(this.Stu_ID);
 
     //Get DATE&TIME
     this.GetDate();
+    
     this.CheckAssessment();
+    setTimeout(() => {
+      this.StartClock();
 
+    }, 1500);
   
   }
   /* //Hide tab section
@@ -145,20 +154,12 @@ export class HomePage {
 
   //Create Notification
   Notification(){
-    //Local Notification
-    this.localNotification.schedule({
-      title:'',
-      text:"",
-      sound: "",
-      vibrate:true,
-      //trigger:{ at: new Date(new Date().getTime() +this.countResult)      }
-      //Date is the time that notify
-    })
     
+   
   }
 
   //Countdown timer
-  ngOnInit(){
+  StartClock(){
 
     //if this.countResult > 0 then do
     if(this.Ass_Exist==true){
@@ -228,6 +229,7 @@ export class HomePage {
 
  readytoquiz(){
     this.navCtrl.setRoot(QuizPage,{"Stu_ID":this.Stu_ID,"Today":this.Today}); 
+    this.Notification();
     
   }
 

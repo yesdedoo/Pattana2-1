@@ -52,6 +52,7 @@ export class QuizPage {
   ButtonColorCorrect='#8cc63f';
   ButtonColorWrong='#ff0000';
   ButtonColorWhite='#ffffff';
+  QuestionTime:any=0;
   
   buttonToChange1:HTMLElement
   buttonToChange2:HTMLElement

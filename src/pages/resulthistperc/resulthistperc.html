@@ -16,12 +16,12 @@
 
 <ion-content style="background-image: url('assets/imgs/Plain1.png')">
   <br>
-  <ion-list class="lesson">
+  <div class="lesson" ngSwitch="{{LessLength}}">
     <br>
-    <div class="progress-wrapper" *ngFor="let element in Less_ID; let i = index">
-      <h3>{{Less_Know[i]}}</h3>
-      <div class="current">{{ Less_AVGResult[i] }}/{{ max }}</div> <br>
-      <round-progress [current]="LessAVGResult[i]" [max]="max" [stroke]="stroke" [radius]="radius" [semicircle]="semicircle"
+    <div class="progress-wrapper" *ngSwitchCase="'1'">
+      <h3>{{Less_Know[0]}}</h3>
+      <div class="current">{{Less_AVGResult[0]}}/{{ max }}</div> <br>
+      <round-progress [current]="Less_AVGResult[0]" [max]="max" [stroke]="stroke" [radius]="radius" [semicircle]="semicircle"
         [rounded]="rounded" [responsive]="responsive" [clockwise]="clockwise" [color]="gradient ? 'url(#gradient)' : color"
         [background]="background" [duration]="duration" [animation]="animation" [animationDelay]="animationDelay">
       </round-progress>
@@ -36,5 +36,5 @@
         [background]="background" [duration]="duration" [animation]="animation" [animationDelay]="animationDelay">
     </round-progress>
     </div><br>-->
-  </ion-list>
+  </div>
 </ion-content>

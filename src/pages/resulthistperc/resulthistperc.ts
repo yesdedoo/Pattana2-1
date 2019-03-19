@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, LoadingController } from 'ionic-angular';
 
 //REST API
 import { from } from 'rxjs/observable/from';
@@ -51,8 +51,9 @@ export class ResulthistpercPage {
   Less_ID:any;
   Less_Know:any;
   Less_AVGResult:any;
+  LessLength:any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,public testapiProvider:TestapiProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,public testapiProvider:TestapiProvider,public loadingCtrl:LoadingController) {
   
    this.course=["Data Modeling","Database Concept","Database Design","Database Management"]
    this.Course_ID = navParams.get('courseid')
@@ -62,8 +63,12 @@ export class ResulthistpercPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ResulthistpercPage');
-    this.GetLesson();
+    this.GetLesson();  
+
+    
   }
+
+
   GetLesson(){
     this.SendLessonRequest = from(this.testapiProvider.GetLesson(this.Course_ID,this.Stu_ID))
     this.SendLessonRequest.subscribe(val =>{
@@ -72,6 +77,7 @@ export class ResulthistpercPage {
       this.Less_Know = val["Less_Know"]
       this.Less_AVGResult = val["Less_AVGResult"]
 
+      this.LessLength = this.Less_ID.length
       console.log(this.Less_ID,this.Less_Know,this.Less_AVGResult)
     })
   }

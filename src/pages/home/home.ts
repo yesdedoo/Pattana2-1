@@ -81,7 +81,7 @@ export class HomePage {
     setTimeout(() => {
       this.StartClock();
 
-    }, 1500);
+    }, 3000);
   
   }
   /* //Hide tab section

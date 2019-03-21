@@ -38,7 +38,11 @@ export class LoginPage {
   username: string;
   password: string;
   Stu_ID: any;
-   
+  
+
+
+
+
   submitAttempt: boolean = false;
 
   constructor(public navCtrl: NavController, public formBuilder: FormBuilder,
@@ -52,13 +56,16 @@ export class LoginPage {
       age: ['']
     });
     
+  
+
+
     this.storage.set('stuid',0)
     this.storage.get('stuid').then((val) => {
       console.log(val);
       
     });
-
   }
+  
 
 
   registcomplete() {

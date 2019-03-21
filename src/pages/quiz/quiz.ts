@@ -20,12 +20,6 @@ import { TestapiProvider } from '../../providers/testapi/testapi';
 })
 export class QuizPage {
 
-
-  Ques: Array <any> =[];
-
-  
-  ScoreCount: any;
-
   //Rest variable
   Stu_ID:any;
   SentStu_ID:any;
@@ -52,7 +46,13 @@ export class QuizPage {
   ButtonColorCorrect='#8cc63f';
   ButtonColorWrong='#ff0000';
   ButtonColorWhite='#ffffff';
-  QuestionTime:any=0;
+  responseTime:number=0;
+  limitTime=30;
+  realScore:number=0;
+  ScoreCount: any;
+  ShowScore=0;
+
+
   
   buttonToChange1:HTMLElement
   buttonToChange2:HTMLElement
@@ -70,11 +70,10 @@ export class QuizPage {
     console.log(this.Stu_ID,this.Today,this.SentStu_ID);
   }
   
-
   
 
   finishquiz(){
-    this.navCtrl.push(RankPage,{scorecount: this.ScoreCount,quesNO:this.Ques_ID.length});
+    this.navCtrl.push(RankPage,{scorecount: this.ScoreCount,quesNO:this.Ques_ID.length,showscore:this.ShowScore});
   }
 
   ionViewDidLoad(){
@@ -92,7 +91,14 @@ export class QuizPage {
       loading.present();
     setTimeout(() => {
       loading.dismiss()
+      setInterval(() => {  // <-----
+          console.log("QUESTION TIME: " + this.responseTime); 
+          this.responseTime++
+  
+      }, 1000);
+  
     }, 5000);
+
     
     
     
@@ -170,27 +176,68 @@ export class QuizPage {
           switch (IndexChoice) {
             case 0:{
               this.buttonToChange1.style.backgroundColor=this.ButtonColorCorrect  
-              console.log(this.MarkingResult["MResult"])            
-              this.SendMarkResult = from(this.testapiProvider.PostMarkingResult(this.MarkingResult["MResult"],this.Ques_ID[IndexQues],this.Today,this.SentStu_ID))
+              console.log(this.MarkingResult["MResult"]) 
+              if(this.responseTime<this.limitTime){
+                this.realScore = (1000*(1-((this.responseTime/this.limitTime)/2)));
+              }
+              else{
+                this.realScore = 500;
+              }
+              console.log(this.realScore);
+              this.SendMarkResult = from(this.testapiProvider.PostMarkingResult(this.MarkingResult["MResult"],this.Ques_ID[IndexQues],this.Today,this.SentStu_ID,this.realScore))
               this.ScoreCount++;
+              this.ShowScore= this.ShowScore+this.realScore;
+              this.realScore=0;
+              IndexQues++;
               break;
             }
             case 1:{
               this.buttonToChange2.style.backgroundColor=this.ButtonColorCorrect
-              this.SendMarkResult = from(this.testapiProvider.PostMarkingResult(this.MarkingResult["MResult"],this.Ques_ID[IndexQues],this.Today,this.SentStu_ID))
+              if(this.responseTime<this.limitTime){
+                this.realScore = (1000*(1-((this.responseTime/this.limitTime)/2)));
+              }
+              else{
+                this.realScore = 500;
+              }       
+              console.log(this.realScore);
+              this.SendMarkResult = from(this.testapiProvider.PostMarkingResult(this.MarkingResult["MResult"],this.Ques_ID[IndexQues],this.Today,this.SentStu_ID,this.realScore))
               this.ScoreCount++;
+              this.ShowScore= this.ShowScore+this.realScore;
+              this.realScore=0;
+              IndexQues++;
               break;
             }
             case 2:{
               this.buttonToChange3.style.backgroundColor=this.ButtonColorCorrect
-              this.SendMarkResult = from(this.testapiProvider.PostMarkingResult(this.MarkingResult["MResult"],this.Ques_ID[IndexQues],this.Today,this.SentStu_ID))
+              if(this.responseTime<this.limitTime){
+                this.realScore = (1000*(1-((this.responseTime/this.limitTime)/2)));
+              }
+              else{
+                this.realScore = 500;
+              }       
+              console.log(this.realScore)
+              this.SendMarkResult = from(this.testapiProvider.PostMarkingResult(this.MarkingResult["MResult"],this.Ques_ID[IndexQues],this.Today,this.SentStu_ID,this.realScore))
               this.ScoreCount++;
+              this.ShowScore= this.ShowScore+this.realScore;
+              this.realScore=0;
+              IndexQues++;
               break;
             }
             case 3:{
               this.buttonToChange4.style.backgroundColor=this.ButtonColorCorrect
-              this.SendMarkResult = from(this.testapiProvider.PostMarkingResult(this.MarkingResult["MResult"],this.Ques_ID[IndexQues],this.Today,this.SentStu_ID))
+              if(this.responseTime<this.limitTime){
+                this.realScore = (1000*(1-((this.responseTime/this.limitTime)/2)));
+              }
+              else{
+                this.realScore = 500;
+              }       
+
+              console.log(this.realScore)
+              this.SendMarkResult = from(this.testapiProvider.PostMarkingResult(this.MarkingResult["MResult"],this.Ques_ID[IndexQues],this.Today,this.SentStu_ID,this.realScore))
               this.ScoreCount++;
+              this.ShowScore= this.ShowScore+this.realScore;
+              this.realScore=0;
+              IndexQues++;
               break;
             }
             
@@ -205,26 +252,30 @@ export class QuizPage {
           switch (IndexChoice) {
             case 0:{
               this.buttonToChange1.style.backgroundColor=this.ButtonColorWrong
-              this.SendMarkResult = from(this.testapiProvider.PostMarkingResult(this.MarkingResult["MResult"],this.Ques_ID[IndexQues],this.Today,this.SentStu_ID))
-
+              this.SendMarkResult = from(this.testapiProvider.PostMarkingResult(this.MarkingResult["MResult"],this.Ques_ID[IndexQues],this.Today,this.SentStu_ID,this.realScore))
+              this.ShowScore= this.ShowScore+this.realScore;
+              IndexQues++;
               break;
             }
             case 1:{
               this.buttonToChange2.style.backgroundColor=this.ButtonColorWrong
-              this.SendMarkResult = from(this.testapiProvider.PostMarkingResult(this.MarkingResult["MResult"],this.Ques_ID[IndexQues],this.Today,this.SentStu_ID))
-
+              this.SendMarkResult = from(this.testapiProvider.PostMarkingResult(this.MarkingResult["MResult"],this.Ques_ID[IndexQues],this.Today,this.SentStu_ID,this.realScore))
+              this.ShowScore= this.ShowScore+this.realScore;
+              IndexQues++;
               break;
             }
             case 2:{
               this.buttonToChange3.style.backgroundColor=this.ButtonColorWrong
-              this.SendMarkResult = from(this.testapiProvider.PostMarkingResult(this.MarkingResult["MResult"],this.Ques_ID[IndexQues],this.Today,this.SentStu_ID))
-
+              this.SendMarkResult = from(this.testapiProvider.PostMarkingResult(this.MarkingResult["MResult"],this.Ques_ID[IndexQues],this.Today,this.SentStu_ID,this.realScore))
+              this.ShowScore= this.ShowScore+this.realScore;
+              IndexQues++;
               break;
             }
             case 3:{
               this.buttonToChange4.style.backgroundColor=this.ButtonColorWrong
-              this.SendMarkResult = from(this.testapiProvider.PostMarkingResult(this.MarkingResult["MResult"],this.Ques_ID[IndexQues],this.Today,this.SentStu_ID))
-
+              this.SendMarkResult = from(this.testapiProvider.PostMarkingResult(this.MarkingResult["MResult"],this.Ques_ID[IndexQues],this.Today,this.SentStu_ID,this.realScore))
+              this.ShowScore= this.ShowScore+this.realScore;
+              IndexQues++;
               break;
             }
             

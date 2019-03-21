@@ -21,6 +21,7 @@ export class RankPage {
 
   //Get pushed from quiz.ts
   ScoreCount: any;
+  ShowScore:any;
   NOOfQues:any;
 
   constructor(public alertCtrl: AlertController, private navCtrl: NavController, public navParams: NavParams) {
@@ -28,6 +29,7 @@ export class RankPage {
     this.Rankingme = ["Pakpoom Rachtracho"]
     this.ScoreCount = navParams.get('scorecount');
     this.NOOfQues = navParams.get('quesNO');
+    this.ShowScore = navParams.get('showscore');
   
   }
 

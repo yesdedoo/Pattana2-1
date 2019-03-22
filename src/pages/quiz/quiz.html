@@ -10,35 +10,55 @@
         </div>
       </ion-card-header>
       <br>
-      <ion-list class="List">
+    
+      <ion-list class="List" *ngFor="let ele of Choice_Name[i]; let j = index">
+        <!--<div *ngFor="let obj of ele; let k = index">-->
+        <div (click)="MarkingScore(i,j)">
+            <button [attr.id]="'Butt'+ 'j+1'"  class="button1" ion-item >
+              <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
+                  {{ele}}
+              </button>
+        </div>
+      <!--<ion-list class="List">-->
+        <!--
+        <div (click)="MarkingScore(i,j)">
+          <button [attr.id]="'Butt'+ 'j+1'"  class="button1" ion-item >
+            <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
+              {{Choice_Name[i][j]}}
+          </button>
+        </div>-->
+        
+        <!--
         <div (click)="MarkingScore(i,0)" > 
           <button id="Butt1" class="button1" ion-item >
             <ion-icon name="ios-arrow-dropright-circle" item-start>
             </ion-icon>
-            {{Choice_Name[0]}}
+            {{Choice_Name[i]}}
           </button>
         </div>
         <div (click)="MarkingScore(i,1)" > 
           <button id="Butt2" class="button2" ion-item >
             <ion-icon name="ios-arrow-dropright-circle" item-start>
             </ion-icon>
-            {{Choice_Name[1]}}
+            {{Choice_Name[i]}}
           </button>
         </div>
         <div (click)="MarkingScore(i,2)" > 
           <button id="Butt3" class="button3" ion-item >
             <ion-icon name="ios-arrow-dropright-circle" item-start>
             </ion-icon>
-            {{Choice_Name[2]}}
+            {{Choice_Name[i]}}
           </button>
         </div>
         <div (click)="MarkingScore(i,3)" > 
           <button id="Butt4" class="button4" ion-item >
             <ion-icon name="ios-arrow-dropright-circle" item-start>
             </ion-icon>
-            {{Choice_Name[3]}}
+            {{Choice_Name[i]}}
           </button>
         </div>
+        -->
+        
       </ion-list>
     </ion-card>
 

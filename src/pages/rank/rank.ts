@@ -23,6 +23,7 @@ export class RankPage {
   ScoreCount: any;
   ShowScore:any;
   NOOfQues:any;
+  Today:any;
 
   constructor(public alertCtrl: AlertController, private navCtrl: NavController, public navParams: NavParams) {
     this.Rankingother= ["Kamonruk Sariyarsheeva","Suvijak Permpholphattana","Prakitchai Panphila"]
@@ -30,6 +31,7 @@ export class RankPage {
     this.ScoreCount = navParams.get('scorecount');
     this.NOOfQues = navParams.get('quesNO');
     this.ShowScore = navParams.get('showscore');
+    this.Today = navParams.get('today');
   
   }
 
@@ -45,10 +47,6 @@ export class RankPage {
     this.navCtrl.popToRoot();
   }
  
-  clickrank()
-  {
-    this.navCtrl.push(RankPage)
-  }
 
   ToPageCard() {
     this.navCtrl.push(CardPage)

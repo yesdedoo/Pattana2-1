@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { NavController } from 'ionic-angular';
+import { NavController, ToastController } from 'ionic-angular';
 import { UsernameValidator } from '../../providers/username/username';
 import { Storage } from '@ionic/storage';
 
@@ -38,6 +38,8 @@ export class LoginPage {
   username: string;
   password: string;
   Stu_ID: any;
+
+  FailToast:any;
   
 
 
@@ -46,7 +48,7 @@ export class LoginPage {
   submitAttempt: boolean = false;
 
   constructor(public navCtrl: NavController, public formBuilder: FormBuilder,
-     public testapiProvider: TestapiProvider,public storage:Storage) {
+     public testapiProvider: TestapiProvider,public storage:Storage,public toastCtrl:ToastController) {
 
     this.slideOneForm = formBuilder.group({
       userName: ['', Validators.compose([Validators.required, Validators.pattern('[a-zA-Z]*')]), UsernameValidator.checkUsername],
@@ -56,7 +58,10 @@ export class LoginPage {
       age: ['']
     });
     
-  
+    this.FailToast = this.toastCtrl.create({
+      message: 'Login failed',
+      duration: 3000
+    }); 
 
 
     this.storage.set('stuid',0)
@@ -93,6 +98,7 @@ export class LoginPage {
       else
       {
         console.log("Login fail// need to add alert in html")
+        this.FailToast.present()
       }
     })
     

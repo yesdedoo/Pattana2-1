@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { CalendarComponentOptions } from 'ion2-calendar';
 
 /**
@@ -9,7 +9,7 @@ import { CalendarComponentOptions } from 'ion2-calendar';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+
 @Component({
   selector: 'page-schedule',
   templateUrl: 'schedule.html',
@@ -24,6 +24,16 @@ export class SchedulePage {
     monthPickerFormat: ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC']
   };
 
+  posInterject = ["Oh!", "Ouch!", "Alas!"];
+  negInterject = ["Congratulation!", "Wowww!", "Yahoo!"];
+  alert = ["You have problems to remeber knowledge of ",
+                 "You should focus more about the topics "];
+  caution = ["You just forgot some details about ", 
+                   "You should review in the topic "];
+  compliment = ["You have improved about ", 
+                      "You got improvement of understanding "];
+  motivatedAd = ["Let’s try to against it next time ;)", "Push yourself ;)"];
+  praisedAd = ["Well done!", "Keep up the good work"];
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   

@@ -124,6 +124,8 @@ export class HomePage {
       console.log(val) 
       console.log(this.Ass_ID,this.Ass_Time[0],this.Ass_Exist)
 
+      //Check the Done of assessment;
+
       if(this.Ass_Exist==true){
         //Parse data JSON into number
         let assHr: string, assHr2: string, assHr3: number

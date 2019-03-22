@@ -23,6 +23,7 @@ export class TestapiProvider {
   restApiJoinCourse = 'http://104.196.19.248:5003/joincourse'
   restApiMarkingResult = 'http://104.196.19.248:5003/marking'
   restApiLesson = 'http://104.196.19.248:5003/lesson'
+  restApiRanking = 'http://104.196.19.248:5003/ranking'
   constructor(public http: HttpClient) {
     console.log('Hello TestapiProvider Provider');
   }
@@ -198,6 +199,26 @@ export class TestapiProvider {
           })
           .catch(err => console.log(err))
     });
+
+  }
+  GetRanking(Course_ID,DATE){
+    var data = { lessonData: { courseid: Course_ID,date:DATE} }
+    //To check the existing account
+    return new Promise(resolve => {
+      fetch(this.restApiRanking, {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+          .then(r=>{
+            this.data = r.json()
+            resolve(this.data)
+          })
+          .catch(err => console.log(err))
+    });
+
 
   }
 

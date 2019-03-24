@@ -46,4 +46,49 @@ export class SchedulePage {
     console.log('ionViewDidLoad SchedulePage');
   }
 
+  returnFeedback(){
+    var feedback=[]
+    var feedN =0;
+
+    var forgotenQ =[],improvedLess=[],dropedLess=[],dangerLess=[];
+    var forgotN=0,imLessN=0,drLessN=0,dangLessN=0;
+
+    var LessN=0;
+  }
+
+  RandPosInt(){
+    let posInterjectLen = this.posInterject.length
+    return this.posInterject[Math.floor(Math.random()*posInterjectLen)]
+  }
+  RandNegInt(){
+    let negInterjectLen = this.negInterject.length
+    return this.negInterject[Math.floor(Math.random()*negInterjectLen)]
+
+  }
+  RandAlert(){
+    let alertLen = this.alert.length
+    return this.alert[Math.floor(Math.random()*alertLen)]
+
+  }
+  RandCaution(){
+    let cautionLen = this.caution.length
+    return this.caution[Math.floor(Math.random()*cautionLen)]
+
+  }
+  RandCompliment(){
+    let complimentLen = this.compliment.length
+    return this.compliment[Math.floor(Math.random()*complimentLen)]
+
+  }
+  RandMotivatedAd(){
+    let motivatedAdLen = this.motivatedAd.length
+    return this.motivatedAd[Math.floor(Math.random()*motivatedAdLen)]
+
+  }
+  RandPraisedAd(){
+    let praisedAdLen = this.praisedAd.length
+    return this.praisedAd[Math.floor(Math.random()*praisedAdLen)]
+
+  }
+
 }

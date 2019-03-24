@@ -17,7 +17,7 @@
 <ion-content style="background-image: url('assets/imgs/Plain1.png')">
   <br>
   <div class="lesson" ngSwitch="{{LessLength}}">
-    <br>
+
     <div *ngSwitchCase="'1'">
       <div class="progress-wrapper">
         <h3>{{Less_Know[0]}}</h3>
@@ -26,9 +26,9 @@
           [rounded]="rounded" [responsive]="responsive" [clockwise]="clockwise" [color]="gradient ? 'url(#gradient)' : color"
           [background]="background" [duration]="duration" [animation]="animation" [animationDelay]="animationDelay">
         </round-progress>
-      </div><br>
+      </div>
     </div>
-    <br>
+    
     <div *ngSwitchCase="'2'">
       <div class="progress-wrapper">
         <h3>{{Less_Know[0]}}</h3>

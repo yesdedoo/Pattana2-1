@@ -48,7 +48,7 @@ import { IonicStorageModule } from '@ionic/storage';
     BrowserModule,
     CalendarModule,
     HttpClientModule,
-    IonicModule.forRoot(MyApp, {tabsHideOnSubPages: true}),
+    IonicModule.forRoot(MyApp, {tabsHideOnSubPages: "true"}),
     RoundProgressModule,
     IonicStorageModule.forRoot()
   ],

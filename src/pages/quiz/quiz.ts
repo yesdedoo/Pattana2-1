@@ -41,11 +41,13 @@ export class QuizPage {
   Choice_Name:any=[];
   Choice_Crr:any=[];
   Choice_Quesid:any=[];
+  ArrChoice=[];
 
   //Marking Score 
   MarkingResult={"MQuesNO":0,"MResult":0};
   RepeatSelected={"Selected":false,"RQuesNO":11}
-  RepeatCheck=[];
+  RepeatCCheck=[];
+  RepeatQCheck=[];
   ButtonColorCorrect='#8cc63f';
   ButtonColorWrong='#ff0000';
   ButtonColorWhite='#ffffff';
@@ -55,14 +57,17 @@ export class QuizPage {
   ScoreCount: any;
   ShowScore=0;
  
-
-  
+  buttonToChange1=[]
+  buttonToChange2=[]
+  buttonToChange3=[]
+  buttonToChange4=[]
+  /*
   buttonToChange1:HTMLElement
   buttonToChange2:HTMLElement
   buttonToChange3:HTMLElement
-  buttonToChange4:HTMLElement
+  buttonToChange4:HTMLElement*/
 
-  quizFlow:Promise<void>;
+  Timer:any;
 
  
 
@@ -75,6 +80,7 @@ export class QuizPage {
 
     this.Today = navParams.get('Today')
     console.log(this.Stu_ID,this.Today,this.SentStu_ID);
+
     
       
   }
@@ -83,6 +89,7 @@ export class QuizPage {
 
   finishquiz(){
     this.navCtrl.push(RankPage,{scorecount: this.ScoreCount,quesNO:this.Ques_ID.length,showscore:this.ShowScore,today:this.Today});
+    clearInterval(this.Timer)
   }
 
   ionViewDidLoad(){
@@ -96,7 +103,7 @@ export class QuizPage {
     setTimeout(() => {
       this.GetButtonID()
 
-      }, 3000);
+      }, 3500);
     }, 5000);  
     
     
@@ -106,11 +113,7 @@ export class QuizPage {
       loading.present();
     setTimeout(() => {
       loading.dismiss()
-      setInterval(() => {  // <-----
-          console.log("QUESTION TIME: " + this.responseTime); 
-          this.responseTime++
-  
-      }, 1000);
+      this.StartTimer();
   
     }, 7500);
 
@@ -135,7 +138,6 @@ export class QuizPage {
  
   }
 
-  //Need fix
   GetChoice(){
      
 
@@ -156,10 +158,6 @@ export class QuizPage {
           tempCNAME[i] = tempChoice[i]["Choice_Name"]
           tempCCRR[i] = tempChoice[i]["Choice_Crr"]
           tempCQID[i] = tempChoice[i]["Choice_QuesID"]
-          /*
-          tempCNAME[i] = val["Choice_Name"]
-          tempCCRR[i] = val["Choice_Crr"]
-          tempCQID[i] = val["Choice_QuesID"]*/
           
           console.log("temp :",tempCID[i],tempCNAME[i],tempCCRR[i],tempCQID[i])
           console.log(tempChoice)
@@ -178,12 +176,18 @@ export class QuizPage {
     setTimeout(() => {
       console.log("Choice: ",this.Choice_ID,this.Choice_Name,this.Choice_Crr,this.Choice_Quesid)  
       
+      
       for(let i=0;i<conditionLength;i++){
+        let stringifyChoiceName = JSON.stringify(this.Choice_Name[i])
+        let trimedSCN = stringifyChoiceName.substring(1,stringifyChoiceName.length-1)
+        let splitedSCN = trimedSCN.split(",");
+
+        for(let j=0;j<splitedSCN.length;j++){
+          this.ArrChoice.push(splitedSCN[j])
+        }
         
-        
-        this.ShowQues.push(this.Choice_Name[i]) 
       }
-      console.log(this.ShowQues)
+      console.log(this.ArrChoice)
   
   
     }, 2000);    
@@ -193,26 +197,38 @@ export class QuizPage {
   }
   GetButtonID(){
     
+    for(let i=0;i<this.Ques_ID.length;i++){
+      this.buttonToChange1[i] = document.querySelector('#Butt'+(4*(i+1)-4));
+      this.buttonToChange2[i] = document.querySelector('#Butt'+(4*(i+1)-3));
+      this.buttonToChange3[i] = document.querySelector('#Butt'+(4*(i+1)-2));
+      this.buttonToChange4[i] = document.querySelector('#Butt'+(4*(i+1)-1));
 
-    this.buttonToChange1 = document.querySelector('#Butt1');
-    this.buttonToChange2 = document.querySelector('#Butt2');
-    this.buttonToChange3 = document.querySelector('#Butt3');
-    this.buttonToChange4 = document.querySelector('#Butt4');
+      this.RepeatCCheck[i]= new Array(4)
+      this.RepeatCCheck[i][0]=false;
+      this.RepeatCCheck[i][1]=false;
+      this.RepeatCCheck[i][2]=false;
+      this.RepeatCCheck[i][3]=false;
+
+      this.RepeatQCheck[i]=false;
+    }
+    
     console.log(this.buttonToChange1)
     console.log(this.buttonToChange2)
     console.log(this.buttonToChange3)
     console.log(this.buttonToChange4)
+  
+  
 
   }
 
   //Need fix
-  MarkingScore(IndexQues,IndexChoice){
+  MarkingScore(IndexQues:number,IndexChoice:number){
     console.log(IndexQues,IndexChoice)
     this.MarkingResult["MQuesNO"]=IndexQues
-    this.RepeatSelected["Selected"]=false;
+    //this.RepeatSelected["Selected"]=false;
     
     //Create 2d for IndexChoice
-    if(this.RepeatSelected["RQuesNO"]!=IndexQues&&this.RepeatSelected["Selected"]==false){
+    if(this.RepeatSelected["RQuesNO"]!=IndexQues&&this.RepeatCCheck[IndexQues][IndexChoice]==false&&this.RepeatQCheck[IndexQues]==false){
       console.log("Selected the choice")
       if(this.Choice_Crr[IndexQues][IndexChoice]==1){
         this.MarkingResult["MResult"] = 100;
@@ -220,7 +236,7 @@ export class QuizPage {
         setTimeout(() => {
           switch (IndexChoice) {
             case 0:{
-              this.buttonToChange1.style.backgroundColor=this.ButtonColorCorrect  
+              this.buttonToChange1[IndexQues].style.backgroundColor=this.ButtonColorCorrect  
               console.log(this.MarkingResult["MResult"]) 
               if(this.responseTime<this.limitTime){
                 this.realScore = (1000*(1-((this.responseTime/this.limitTime)/2)));
@@ -233,11 +249,13 @@ export class QuizPage {
               this.ScoreCount++;
               this.ShowScore= this.ShowScore+this.realScore;
               this.realScore=0;
+              this.responseTime=0
+              
               
               break;
             }
             case 1:{
-              this.buttonToChange2.style.backgroundColor=this.ButtonColorCorrect
+              this.buttonToChange2[IndexQues].style.backgroundColor=this.ButtonColorCorrect
               if(this.responseTime<this.limitTime){
                 this.realScore = (1000*(1-((this.responseTime/this.limitTime)/2)));
               }
@@ -249,11 +267,11 @@ export class QuizPage {
               this.ScoreCount++;
               this.ShowScore= this.ShowScore+this.realScore;
               this.realScore=0;
-             
+              this.responseTime=0
               break;
             }
             case 2:{
-              this.buttonToChange3.style.backgroundColor=this.ButtonColorCorrect
+              this.buttonToChange3[IndexQues].style.backgroundColor=this.ButtonColorCorrect
               if(this.responseTime<this.limitTime){
                 this.realScore = (1000*(1-((this.responseTime/this.limitTime)/2)));
               }
@@ -265,11 +283,12 @@ export class QuizPage {
               this.ScoreCount++;
               this.ShowScore= this.ShowScore+this.realScore;
               this.realScore=0;
+              this.responseTime=0
               
               break;
             }
             case 3:{
-              this.buttonToChange4.style.backgroundColor=this.ButtonColorCorrect
+              this.buttonToChange4[IndexQues].style.backgroundColor=this.ButtonColorCorrect
               if(this.responseTime<this.limitTime){
                 this.realScore = (1000*(1-((this.responseTime/this.limitTime)/2)));
               }
@@ -282,53 +301,63 @@ export class QuizPage {
               this.ScoreCount++;
               this.ShowScore= this.ShowScore+this.realScore;
               this.realScore=0;
+              this.responseTime=0
               
               break;
             }
             
           }
         }, 500);
+        
         
       }
       else{
         this.MarkingResult["MResult"] = 0;
         
-        setTimeout(() => {
-          switch (IndexChoice) {
-            case 0:{
-              this.buttonToChange1.style.backgroundColor=this.ButtonColorWrong
-              this.SendMarkResult = from(this.testapiProvider.PostMarkingResult(this.MarkingResult["MResult"],this.Ques_ID[IndexQues],this.Today,this.SentStu_ID,this.realScore))
-              this.ShowScore= this.ShowScore+this.realScore;
+        
+          setTimeout(() => {
+            switch (IndexChoice) {
+              case 0:{
+                this.buttonToChange1[IndexQues].style.backgroundColor=this.ButtonColorWrong
+                this.SendMarkResult = from(this.testapiProvider.PostMarkingResult(this.MarkingResult["MResult"],this.Ques_ID[IndexQues],this.Today,this.SentStu_ID,this.realScore))
+                this.ShowScore= this.ShowScore+this.realScore;
+                this.responseTime=0
+                
+                break;
+              }
+              case 1:{
+                this.buttonToChange2[IndexQues].style.backgroundColor=this.ButtonColorWrong
+                this.SendMarkResult = from(this.testapiProvider.PostMarkingResult(this.MarkingResult["MResult"],this.Ques_ID[IndexQues],this.Today,this.SentStu_ID,this.realScore))
+                this.ShowScore= this.ShowScore+this.realScore;
+                this.responseTime=0
+                
+                break;
+              }
+              case 2:{
+                this.buttonToChange3[IndexQues].style.backgroundColor=this.ButtonColorWrong
+                this.SendMarkResult = from(this.testapiProvider.PostMarkingResult(this.MarkingResult["MResult"],this.Ques_ID[IndexQues],this.Today,this.SentStu_ID,this.realScore))
+                this.ShowScore= this.ShowScore+this.realScore;
+                this.responseTime=0
+                
+                break;
+              }
+              case 3:{
+                this.buttonToChange4[IndexQues].style.backgroundColor=this.ButtonColorWrong
+                this.SendMarkResult = from(this.testapiProvider.PostMarkingResult(this.MarkingResult["MResult"],this.Ques_ID[IndexQues],this.Today,this.SentStu_ID,this.realScore))
+                this.ShowScore= this.ShowScore+this.realScore;
+                this.responseTime=0
+                
+                break;
+              }
               
-              break;
             }
-            case 1:{
-              this.buttonToChange2.style.backgroundColor=this.ButtonColorWrong
-              this.SendMarkResult = from(this.testapiProvider.PostMarkingResult(this.MarkingResult["MResult"],this.Ques_ID[IndexQues],this.Today,this.SentStu_ID,this.realScore))
-              this.ShowScore= this.ShowScore+this.realScore;
-              
-              break;
-            }
-            case 2:{
-              this.buttonToChange3.style.backgroundColor=this.ButtonColorWrong
-              this.SendMarkResult = from(this.testapiProvider.PostMarkingResult(this.MarkingResult["MResult"],this.Ques_ID[IndexQues],this.Today,this.SentStu_ID,this.realScore))
-              this.ShowScore= this.ShowScore+this.realScore;
-              
-              break;
-            }
-            case 3:{
-              this.buttonToChange4.style.backgroundColor=this.ButtonColorWrong
-              this.SendMarkResult = from(this.testapiProvider.PostMarkingResult(this.MarkingResult["MResult"],this.Ques_ID[IndexQues],this.Today,this.SentStu_ID,this.realScore))
-              this.ShowScore= this.ShowScore+this.realScore;
-              
-              break;
-            }
-            
-          }
-        }, 500);
+          }, 500);
+  
+        
 
       }
-      this.RepeatSelected["Selected"] = true;
+      this.RepeatCCheck[IndexQues][IndexChoice]=true;
+      this.RepeatQCheck[IndexQues]=true;
       console.log(this.MarkingResult)
       
     }
@@ -336,6 +365,14 @@ export class QuizPage {
       this.RepeatSelected["RQuesNO"]=IndexQues
       console.log("Unable to select multiple choice")
     }
+  }
+  StartTimer(){
+    this.Timer=setInterval(() => {  // <-----
+      console.log("QUESTION TIME: " + this.responseTime); 
+      this.responseTime++
+
+  }, 1000);
+
   }
 
 

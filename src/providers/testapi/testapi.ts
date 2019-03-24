@@ -201,8 +201,8 @@ export class TestapiProvider {
     });
 
   }
-  GetRanking(Course_ID,DATE){
-    var data = { lessonData: { courseid: Course_ID,date:DATE} }
+  GetRanking(DATE){
+    var data = { rankingData: { date:DATE} }
     //To check the existing account
     return new Promise(resolve => {
       fetch(this.restApiRanking, {

@@ -35,15 +35,17 @@ page-resulthistperc {
         font-size: 20px;
         position: relative  !important;
         text-align: center !important;
-
+        z-index: -1;
     }
 
 
     .current{
         position: absolute;
         font-weight: 100;
-        position: relative  !important;
+        //position: relative  !important;
         text-align: center  !important;
+        top: 50%;
+        width: 100%;
     }
 
     h1{
@@ -58,6 +60,7 @@ page-resulthistperc {
         color:  #666666;
         position: relative;
         text-align: center;
+       
     }
     .lesson{
         position: relative;
@@ -75,6 +78,8 @@ page-resulthistperc {
     round-progress{
         margin-left: auto;
         margin-right: auto;
+        position: relative;
+        z-index: 10;
     }
     
    

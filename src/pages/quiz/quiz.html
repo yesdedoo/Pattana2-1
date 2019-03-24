@@ -10,16 +10,16 @@
         </div>
       </ion-card-header>
       <br>
-    
-      <ion-list class="List" *ngFor="let ele of Choice_Name[i]; let j = index">
+      
+      <!--<ion-list class="List" *ngFor="let ele of ArrChoice; let j = index">-->
         <!--<div *ngFor="let obj of ele; let k = index">-->
-        <div (click)="MarkingScore(i,j)">
-            <button [attr.id]="'Butt'+ 'j+1'"  class="button1" ion-item >
+        <!--<div (click)="MarkingScore(i,j)">
+            <button id="Butt{{i+j}}"  class="button1" ion-item >
               <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
                   {{ele}}
               </button>
-        </div>
-      <!--<ion-list class="List">-->
+        </div>-->
+      <ion-list class="List">
         <!--
         <div (click)="MarkingScore(i,j)">
           <button [attr.id]="'Butt'+ 'j+1'"  class="button1" ion-item >
@@ -28,36 +28,36 @@
           </button>
         </div>-->
         
-        <!--
+        
         <div (click)="MarkingScore(i,0)" > 
-          <button id="Butt1" class="button1" ion-item >
+          <button id="Butt{{(4*(i+1)-4)}}" ion-item >
             <ion-icon name="ios-arrow-dropright-circle" item-start>
             </ion-icon>
-            {{Choice_Name[i]}}
+            {{ArrChoice[4*(i+1)-4]}}
           </button>
         </div>
         <div (click)="MarkingScore(i,1)" > 
-          <button id="Butt2" class="button2" ion-item >
+          <button id="Butt{{(4*(i+1)-3)}}" ion-item >
             <ion-icon name="ios-arrow-dropright-circle" item-start>
             </ion-icon>
-            {{Choice_Name[i]}}
+            {{ArrChoice[4*(i+1)-3]}}
           </button>
         </div>
         <div (click)="MarkingScore(i,2)" > 
-          <button id="Butt3" class="button3" ion-item >
+          <button id="Butt{{(4*(i+1)-2)}}" ion-item >
             <ion-icon name="ios-arrow-dropright-circle" item-start>
             </ion-icon>
-            {{Choice_Name[i]}}
+            {{ArrChoice[4*(i+1)-2]}}
           </button>
         </div>
         <div (click)="MarkingScore(i,3)" > 
-          <button id="Butt4" class="button4" ion-item >
+          <button id="Butt{{(4*(i+1)-1)}}" ion-item >
             <ion-icon name="ios-arrow-dropright-circle" item-start>
             </ion-icon>
-            {{Choice_Name[i]}}
+            {{ArrChoice[4*(i+1)-1]}}
           </button>
         </div>
-        -->
+        
         
       </ion-list>
     </ion-card>

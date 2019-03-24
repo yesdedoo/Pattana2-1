@@ -43,6 +43,7 @@ export class HomePage {
   Ass_Time:any;
   Ass_QuesID:any;
   Ass_Exist:boolean;
+  Ass_Done:any;
 
   //Data for countdown timer
   timeInSeconds:any
@@ -69,10 +70,13 @@ export class HomePage {
     
       //trigger:{ at: new Date(new Date().getTime() +this.countResult)      }
       //Date is the time that notify}*/
-   
-
+    this.storage.get('stuid').then((val) => {
+      console.log('storage stuid', val);
+      this.Stu_ID=val
+    });
+    /*
     this.Stu_ID = navParams.get('Stu_ID')
-    console.log(this.Stu_ID);
+    console.log("NavParam Stu_ID",this.Stu_ID);*/
 
     //Get DATE&TIME
     this.GetDate();
@@ -94,8 +98,8 @@ export class HomePage {
   }*/
   GetDate(){
     
-    let utc2
     this.currentDate = new Date();
+    console.log("currentDate// new Date()",this.currentDate)
     this.HrTime = this.currentDate.getHours()
     this.MinTime =this.currentDate.getMinutes()
     this.SecTime = this.currentDate.getSeconds() 
@@ -105,11 +109,11 @@ export class HomePage {
     this.RTime = this.Time
     var re = '/'
     var newstr = this.utc.replace(re,"-"); 
-    console.log(this.RTime)
+    console.log("RTime",this.RTime)
     this.Today = newstr.replace(re,"-")
-    console.log(this.currentDate)
-    console.log(this.Today)
-
+    
+    console.log("Today",this.Today)
+    this.storage.set('today',this.Today)
   }
 
 
@@ -121,8 +125,9 @@ export class HomePage {
       this.Ass_Time=val["Time"]
       this.Ass_QuesID=val["Ques_ID"]
       this.Ass_Exist=val["Exist"]
-      console.log(val) 
-      console.log(this.Ass_ID,this.Ass_Time[0],this.Ass_Exist)
+      this.Ass_Done=val["Done"]
+      console.log("REST assessment",val) 
+      console.log("Splited val",this.Ass_ID,this.Ass_Time[0],this.Ass_Exist,this.Ass_Done)
 
       //Check the Done of assessment;
 
@@ -137,14 +142,14 @@ export class HomePage {
         assMin = JSON.stringify(this.Ass_Time[0])
         assMin2 = assMin.slice(4, 6)
         assMin3 = parseInt(assMin2)
-        console.log(assHr3, assMin3)
+        console.log("assHR",assHr3,"assMin", assMin3)
 
         this.countHr = assHr3 - this.HrTime
         this.countMin = assMin3 - this.MinTime
-        console.log(this.countHr, this.countMin)
+        console.log("countdown time",this.countHr, this.countMin)
 
         this.countResult = ((this.countHr * 60) + this.countMin) * 60
-        console.log(this.countResult)
+        console.log("Remaining Start",this.countResult)
       }
       else{
         console.log("There is no assessment today")
@@ -235,9 +240,6 @@ export class HomePage {
     
   }
 
-  JoinCourse(){
-    this.navCtrl.push(JoincoursePage);
-  }
   
 
 }

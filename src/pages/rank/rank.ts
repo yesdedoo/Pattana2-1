@@ -35,8 +35,10 @@ export class RankPage {
   //REST variables
   SendRankingRequest:any;
   RankStu_ID:any;
-  RankName:any;
-  RankScore:any;
+  RankName:any=[];
+  RankScore:any=[];
+
+  RankSlot=[0,1,2,3];
 
   constructor(public alertCtrl: AlertController, private navCtrl: NavController, public navParams: NavParams,
     public testapiProvider:TestapiProvider,public storage:Storage) {

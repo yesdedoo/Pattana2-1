@@ -17,6 +17,7 @@ export class TestapiProvider {
   restApiQuestion = 'http://104.196.19.248:5001/question'
   restApiAssessment = 'http://104.196.19.248:5001/assessment'
   restApiChoice = 'http://104.196.19.248:5001/choice'
+  restApiFeedback = 'http://104.196.19.248:5001/feedback'
   restApiRegister = 'http://104.196.19.248:5002/register'
   restApiLogin = 'http://104.196.19.248:5002/login'
   restApiCourse = 'http://104.196.19.248:5003/course'
@@ -220,6 +221,9 @@ export class TestapiProvider {
     });
 
 
+  }
+  GetFeedback(){
+    
   }
 
 

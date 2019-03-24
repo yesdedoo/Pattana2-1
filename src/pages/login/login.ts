@@ -48,7 +48,7 @@ export class LoginPage {
      public testapiProvider: TestapiProvider,public storage:Storage,public toastCtrl:ToastController) {
 
     this.slideOneForm = formBuilder.group({
-      userName: ['', Validators.compose([Validators.required, Validators.pattern('[a-zA-Z]*')]), UsernameValidator.checkUsername],
+      userName: ['', Validators.compose([Validators.required, Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')]), UsernameValidator.checkUsername],
       firstName: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
       lastName: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
       password: [''],
@@ -71,6 +71,18 @@ export class LoginPage {
   Login(){
     console.log("username",this.username);
     console.log("password",this.password);
+    if(this.FailToast){
+      this.FailToast.dismiss();
+      this.FailToast=null;
+  
+    }
+    if(this.EmptyToast){
+      this.EmptyToast.dismiss();
+      this.EmptyToast=null;
+      
+  
+    }
+
     if(this.username||this.password){
       this.SendLogin = from(this.testapiProvider.CheckLogin(this.username,this.password))
       this.SendLogin.subscribe(val =>{
@@ -105,17 +117,6 @@ export class LoginPage {
         }); 
         this.EmptyToast.present();
       }
-    }
-    if(this.FailToast){
-      this.FailToast.dismiss();
-      this.FailToast=null;
-  
-    }
-    if(this.EmptyToast){
-      this.EmptyToast.dismiss();
-      this.EmptyToast=null;
-      
-  
     }
   }
 

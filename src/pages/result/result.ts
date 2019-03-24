@@ -45,10 +45,12 @@ export class ResultPage {
   SplitPCNAME:any;
 
   //Toast
-  ToastChecker:number =0; //0:Correect,1:ExistCOS,2:No course in system
+  ToastChecker:number =3; //0:Correect,1:ExistCOS,2:No course in system
   SuccessToast:any;
   RepeatCOSToast:any;
   NoCourseToast:any;
+  EmptyInputToast:any;
+  prompt:any;
   
   
   constructor(public navCtrl: NavController, public navParams: NavParams,
@@ -59,18 +61,6 @@ export class ResultPage {
     this.SentStu_ID = this.Stu_ID[0]
     console.log(this.SentStu_ID);
 
-    this.SuccessToast = this.toastCtrl.create({
-      message: 'Join Course successful.',
-      duration: 3000
-    }); 
-    this.RepeatCOSToast = this.toastCtrl.create({
-      message:'This course was already joined by this student.',
-      duration: 3000
-    });
-    this.NoCourseToast = this.toastCtrl.create({
-      message:'This course is not available in the system.',
-      duration: 3000
-    });  
    
     
   }
@@ -127,7 +117,12 @@ export class ResultPage {
   }
   JoinCourse(){
     let CID:any;
-    const prompt = this.alertCtrl.create({
+    if(this.prompt){
+      this.prompt.dismiss();
+      this.prompt=null;
+    }
+
+    this.prompt = this.alertCtrl.create({
       title: 'Join Course',
       message: "Enter a ID of the course that you receieved from the instructor",
       inputs: [
@@ -149,19 +144,43 @@ export class ResultPage {
             console.log('Saved clicked');
             CID = data.CID
             console.log(CID)
-            this.SuccessToast.present();
             //JoinCourseAPI function()
+            this.InsertedCourse(CID);
             switch(this.ToastChecker){
               case 0:{
+                this.SuccessToast = this.toastCtrl.create({
+                  message: 'Join Course successful.',
+                  duration: 3000
+                }); 
+            
                 this.SuccessToast.present();
                 break;
               }
               case 1:{
+                this.RepeatCOSToast = this.toastCtrl.create({
+                  message:'This course was already joined by this student.',
+                  duration: 3000
+                });
+            
                 this.RepeatCOSToast.present();
                 break;
               }
               case 2:{
+                this.NoCourseToast = this.toastCtrl.create({
+                  message:'This course is not available in the system.',
+                  duration: 3000
+                });  
+            
                 this.NoCourseToast.present();
+                break;
+              }
+              case 3:{
+                this.EmptyInputToast = this.toastCtrl.create({
+                  message:'Empty course input.',
+                  duration: 3000
+                });  
+            
+                this.EmptyInputToast.present();
                 break;
               }
 
@@ -170,7 +189,7 @@ export class ResultPage {
         }
       ]
     });
-    prompt.present();
+    this.prompt.present();
 
   }
   InsertedCourse(courseID){

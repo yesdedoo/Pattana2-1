@@ -7,98 +7,62 @@
 
 <ion-content padding style="background-image: url('assets/imgs/Full1.png')">
 
-  <ng-container *ngIf="!RankName;then Loading; else Loaded">
-    <ng-template #Loading>
-      <div class="lds-roller">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
-    </ng-template>
-    <ng-template>
-      <div class="word">
-        <h3>Hoorey! </h3>
 
+  <div class="word">
+    <h3>Hoorey! </h3>
+  </div>
+  <div class="score" padding>
+    <h4>{{ScoreCount}} / {{NOOfQues}} </h4>
+  </div>
+  <h2 class="yourscore">Your score is</h2>
+  <h2 class="yourscore">{{ShowScore}}</h2>
+  <ion-card>
+
+    <ion-card-header>
+      <b>Student rank</b>
+    </ion-card-header>
+
+    <ion-card-content>
+      <div *ngFor="let element of RankSlot; let i = index">
+
+        <ng-container *ngIf="RankName[i];then ShowScore;else EmptyScore"></ng-container>
+        <ng-template #ShowScore>
+          <div class="ranking" padding>
+            <table>
+              <tr>
+                <td>
+                  <h5>{{i+1}}.{{RankName[i]}}</h5>
+                </td>
+                <td>
+                  &emsp;&emsp;&emsp;&emsp;&emsp;            
+                </td>
+                <td class="rankscore" style="text-align:right">
+                  <h5>{{RankScore[i]}}</h5>
+                </td>
+
+              </tr>
+            </table>
+
+          </div>
+        </ng-template>
+        <ng-template #EmptyScore>
+          <div class="ranking" padding>
+            <h5>{{i+1}}.- - - -</h5>
+          </div>
+
+        </ng-template>
       </div>
       <br>
-      <div class="score" padding>
-        <h4>{{ScoreCount}} / {{NOOfQues}} </h4>
-      </div>
-      <br>
-      <h2 class="yourscore">Your score is</h2>
-      <h2 class="yourscore">{{ShowScore}}</h2>
-      <br>
-      <ion-card>
 
-        <ion-card-header>
-          Your rank
-        </ion-card-header>
+      <h1>This will be the rank of the current Username student</h1>
+    </ion-card-content>
 
-        <ion-card-content>
-          <ng-container *ngIf="!RankName[0];then BlankScore; else Score">
-            <ng-template #BlankScore>
-              <div class="ranking" padding>
-                <h1>1.---- </h1>
-              </div>
-            </ng-template>
-            <ng-template #Score>
-              <div class="me" padding>
-                <h5>1.{{RankName[0]}} </h5>
-              </div>
-            </ng-template>
-          </ng-container>
+  </ion-card>
+  <div class="gotofb">
+    <button color="light" ion-button class="Feedback" (click)='ToPageCard()'> Get Card </button> <br>
+    <button color="light" ion-button class="Feedback" (click)='clickhome()'> Home </button> <br>
+  </div>
 
-          <ng-container *ngIf="!RankName[1];then BlankScore; else Score">
-            <ng-template #BlankScore>
-              <div class="ranking" padding>
-                <h1>2.---- </h1>
-              </div>
-            </ng-template>
-            <ng-template #Score>
-              <div class="me" padding>
-                <h5>2.{{RankName[1]}} </h5>
-              </div>
-            </ng-template>
-          </ng-container>
-          <ng-container *ngIf="!RankName[2];then BlankScore; else Score">
-            <ng-template #BlankScore>
-              <div class="ranking" padding>
-                <h1>3.---- </h1>
-              </div>
-            </ng-template>
-            <ng-template #Score>
-              <div class="me" padding>
-                <h5>3.{{RankName[2]}} </h5>
-              </div>
-            </ng-template>
-          </ng-container>
-          <ng-container *ngIf="!RankName[3];then BlankScore; else Score">
-            <ng-template #BlankScore>
-              <div class="ranking" padding>
-                <h1>4.---- </h1>
-              </div>
-            </ng-template>
-            <ng-template #Score>
-              <div class="me" padding>
-                <h5>4.{{RankName[3]}} </h5>
-              </div>
-            </ng-template>
-          </ng-container>
-
-        </ion-card-content>
-
-      </ion-card>
-      <div class="gotofb">
-        <button color="light" ion-button class="Feedback" (click)='ToPageCard()'> Get Card </button> <br>
-        <button color="light" ion-button class="Feedback" (click)='clickhome()'> Home </button> <br>
-      </div>
-    </ng-template>
-  </ng-container>
 
 
 

@@ -5,6 +5,7 @@ import { RankPage } from '../rank/rank';
 //REST
 import { from } from 'rxjs/observable/from'
 import { TestapiProvider } from '../../providers/testapi/testapi';
+import { Storage } from '@ionic/storage';
 
 /**
  * Generated class for the QuizPage page.
@@ -25,6 +26,7 @@ export class QuizPage {
   SentStu_ID:any;
  
   Today:any;
+  TodayStorage:any;
   SendQuestionRequest:any
   SendChoiceRequest:any;
   SendMarkResult:any;
@@ -71,15 +73,28 @@ export class QuizPage {
 
  
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,public testapiProvider: TestapiProvider,public loadingCtrl: LoadingController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,public testapiProvider: TestapiProvider,
+    public loadingCtrl: LoadingController,public storage:Storage) {
   
     this.ScoreCount = 0;
 
     this.Stu_ID = navParams.get('Stu_ID')
     this.SentStu_ID = this.Stu_ID[0]
 
+    
+    
+    /*this.storage.get('today').then((val)=>{
+      this.TodayStorage=val
+    });*/
+    this.storage.ready().then(() =>this.storage.get('today')
+        .then(res => {
+          console.log('res:', res);
+          this.TodayStorage = res;
+        }).then(()=>console.log("Todaystorage: ", this.TodayStorage))
+      );
+    
     this.Today = navParams.get('Today')
-    console.log(this.Stu_ID,this.Today,this.SentStu_ID);
+    console.log("Pushed data",this.Stu_ID,this.Today,this.SentStu_ID);
 
     
       
@@ -126,12 +141,12 @@ export class QuizPage {
   GetQuestion(){
     this.SendQuestionRequest = from(this.testapiProvider.ImportQuestion(this.Stu_ID,this.Today))
     this.SendQuestionRequest.subscribe(val =>{
-      console.log(val)
+      console.log("REST Question",val)
       this.Ques_ID = val["Ques_ID"]
       this.Ques_Name = val["Ques_Name"]
       this.Ques_FB = val["Ques_FB"]
       
-      console.log(this.Ques_ID,this.Ques_Name,this.Ques_FB)
+      console.log("Splited REST",this.Ques_ID,this.Ques_Name,this.Ques_FB)
       
     })
     
@@ -141,7 +156,7 @@ export class QuizPage {
   GetChoice(){
      
 
-    console.log(this.Ques_ID[0]) 
+     
     var conditionLength = this.Ques_ID.length
     var tempCID=[],tempCNAME=[],tempCCRR=[],tempCQID=[],tempChoice=[]
     
@@ -149,10 +164,10 @@ export class QuizPage {
     for(let i=0; i<conditionLength;i++){
       
       this.SendChoiceRequest = from(this.testapiProvider.GetChoice(this.Ques_ID[i]))
-      console.log(this.Ques_ID[i])
+      console.log("Lopp Choice",this.Ques_ID[i])
      
       this.SendChoiceRequest.subscribe(val=>{
-        console.log(val)
+        console.log("REST Choice",val)
           tempChoice[i] = val
           tempCID[i] = tempChoice[i]["Choice_ID"]
           tempCNAME[i] = tempChoice[i]["Choice_Name"]
@@ -187,7 +202,7 @@ export class QuizPage {
         }
         
       }
-      console.log(this.ArrChoice)
+      console.log("Merged choice",this.ArrChoice)
   
   
     }, 2000);    
@@ -223,7 +238,7 @@ export class QuizPage {
 
   //Need fix
   MarkingScore(IndexQues:number,IndexChoice:number){
-    console.log(IndexQues,IndexChoice)
+    console.log("Selectd Q&C",IndexQues,IndexChoice)
     this.MarkingResult["MQuesNO"]=IndexQues
     //this.RepeatSelected["Selected"]=false;
     
@@ -366,15 +381,15 @@ export class QuizPage {
       console.log("Unable to select multiple choice")
     }
   }
-  StartTimer(){
-    this.Timer=setInterval(() => {  // <-----
-      console.log("QUESTION TIME: " + this.responseTime); 
+  StartTimer() {
+    this.Timer = setInterval(() => {  // <-----
+      console.log("QUESTION TIME: " + this.responseTime);
       this.responseTime++
 
-  }, 1000);
+    }, 1000);
 
   }
-
+  
 
 
 }

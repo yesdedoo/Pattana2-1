@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams} from 'ionic-angular';
-import { JoincoursePage } from '../joincourse/joincourse';
 import { QuizPage } from '../quiz/quiz';
 //import { PhonegapLocalNotification } from '@ionic-native/phonegap-local-notification';
 
@@ -8,6 +7,7 @@ import { QuizPage } from '../quiz/quiz';
 import { from } from 'rxjs/observable/from'
 import { TestapiProvider } from '../../providers/testapi/testapi';
 import { Storage } from '@ionic/storage';
+import { LoginPage } from '../login/login';
 
 
 
@@ -238,6 +238,10 @@ export class HomePage {
     this.navCtrl.setRoot(QuizPage,{"Stu_ID":this.Stu_ID,"Today":this.Today}); 
     this.Notification();
     
+  }
+
+  Logout(){
+    this.navCtrl.setRoot(LoginPage)
   }
 
   

@@ -5,9 +5,9 @@
     <h1>Question {{i+1}}</h1>
     <ion-card class="card1">
       <ion-card-header>
-        <div text-warp class="QuesDes">
+        <ion-item text-warp class="QuesDes">
           {{Ques_Name[i]}}
-        </div>
+        </ion-item>
       </ion-card-header>
       <br>
       
@@ -19,15 +19,8 @@
                   {{ele}}
               </button>
         </div>-->
+      <ng-container *ngIf="ArrChoice"></ng-container>
       <ion-list class="List">
-        <!--
-        <div (click)="MarkingScore(i,j)">
-          <button [attr.id]="'Butt'+ 'j+1'"  class="button1" ion-item >
-            <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
-              {{Choice_Name[i][j]}}
-          </button>
-        </div>-->
-        
         
         <div (click)="MarkingScore(i,0)" > 
           <button id="Butt{{(4*(i+1)-4)}}" ion-item >

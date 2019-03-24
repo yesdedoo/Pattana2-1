@@ -13,8 +13,9 @@ page-quiz {
         font-size: 20px;
 
         width: 100%;
-        word-break:break-all; 
-    
+        word-break:normal; 
+        white-space: pre-line !important;
+        
     }
     .List{
         padding-top: 50px;

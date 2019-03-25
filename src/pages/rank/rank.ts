@@ -35,6 +35,9 @@ export class RankPage {
   RankStu_ID: any;
   RankName: any = [];
   RankScore: any = [];
+  OwnRank:any;
+  OwnName:any;
+  OwnScore:any;
 
   RankSlot = [0, 1, 2];
 
@@ -92,14 +95,18 @@ export class RankPage {
 
   GetRanking() {
     console.log(this.Ass_IDStorage);
-    this.SendRankingRequest = from(this.testapiProvider.GetRanking(this.Today, this.Ass_IDStorage))
+    this.SendRankingRequest = from(this.testapiProvider.GetRanking(this.Today, this.Ass_IDStorage,this.Stu_IDStorage))
     this.SendRankingRequest.subscribe(val => {
       console.log(val)
       this.RankStu_ID = val["Stu_ID"]
       this.RankName = val["Name"]
       this.RankScore = val["RankedScore"]
+      this.OwnRank = val["OwnRank"]
+      this.OwnName = val["OwnName"]
+      this.OwnScore = val["OwnScore"]
 
-      console.log(this.RankStu_ID, this.RankName, this.RankScore)
+      console.log("REST Rank",this.RankStu_ID, this.RankName, this.RankScore)
+      console.log("REST Ownrank",this.OwnRank,this.OwnName,this.OwnScore)
       
 
     })

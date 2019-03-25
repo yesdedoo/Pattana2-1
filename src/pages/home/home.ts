@@ -104,7 +104,7 @@ export class HomePage {
     this.MinTime =this.currentDate.getMinutes()
     this.SecTime = this.currentDate.getSeconds() 
     this.utc = this.currentDate.toJSON().slice(0,10).replace(/-/g,'/');  
-    
+    console.log("utctime",this.utc)
     this.Time = this.HrTime+":"+this.MinTime+":"+this.SecTime
     this.RTime = this.Time
     var re = '/'

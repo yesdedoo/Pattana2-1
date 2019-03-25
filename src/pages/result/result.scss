@@ -1,93 +1,90 @@
 page-result {
 
-    ion-content  {
-        background-size: cover;
-        position: relative;
-        text-align: center;
-        
-        
-    }
+  ion-content {
+    background-size: cover;
+    position: relative;
+    text-align: center;
 
-    .ios-arrow-dropright-circle{
-        color: red!important;
-    }
-    .card{
-        height: 70%;
-        border-top-right-radius: 10px !important;
-        border-top-left-radius: 10px !important;
-        border-bottom-left-radius: 10px !important; 
-        border-bottom-right-radius: 10px !important;
-        -webkit-box-shadow: 0 10px 30px 0 rgb(255, 255, 255);
-        box-shadow: 0 10px 30px 0  rgba(0, 0, 0, 0.247);
 
-    }
-    h1{
-        font-size: 20px;
-        color:  #ffffff;
-        position: relative;
-        text-align: center;
-    }
-    .button{
-        margin: 200px;
-    }
+  }
 
-    .table-result
-    {    margin-top: 10px;
-        text-align: center;
-  
-    
-        font-size: 20px;
-        
-    
-     
-        width: 100%;
-    
-        color: #ffffff;
-    
-       
-    }
+  .ios-arrow-dropright-circle {
+    color: red !important;
+  }
 
-    .table-a{
-        -webkit-box-shadow: 0 10px 30px 0 rgb(255, 255, 255);
-        box-shadow: 0 10px 30px 0  rgba(0, 0, 0, 0.247);
-        position: relative;
-        text-align: center;
-        background-color: #ffffff;
+  .card {
+    height: 70%;
+    border-top-right-radius: 10px !important;
+    border-top-left-radius: 10px !important;
+    border-bottom-left-radius: 10px !important;
+    border-bottom-right-radius: 10px !important;
+    -webkit-box-shadow: 0 10px 30px 0 rgb(255, 255, 255);
+    box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.247);
 
-        border-top-right-radius: 10px !important;
-        border-top-left-radius: 10px !important;
-        border-bottom-left-radius: 10px !important; 
-        border-bottom-right-radius: 10px !important;
-        
-    }
+  }
 
-    .course{
-        
-        -webkit-box-shadow: 0 10px 30px 0 rgb(255, 255, 255);
-        box-shadow: 0 0px 30px 0  rgba(0, 0, 0, 0.151);
-        background-color: #ffffff;
-        text-decoration: none;
-        text-transform: uppercase;
-        font-size: 13px;
-        transition: all 0.3s ease-in-out;
-        width: 85%;
-        height: 50px;
-        color:  #0068B7;
-          
-        border-top-right-radius: 30px !important;
-        border-top-left-radius: 30px !important;
-        border-bottom-left-radius: 30px !important; 
-        border-bottom-right-radius: 30px !important;
-    }
-    .head
-    {
-        font-size: 24px;
-        color:  #f78710;
-    }
+  h1 {
+    font-size: 20px;
+    color: #ffffff;
+    position: relative;
+    text-align: center;
+  }
 
-    .ios-arrow-dropright{
-        color: red !important;
-    }
+  .button {
+    margin: 200px;
+  }
+
+  .table-result {
+    margin-top: 10px;
+    text-align: center;
+    font-size: 20px;
+    width: 100%;
+    color: #ffffff;
+
+
+  }
+
+  .table-a {
+    -webkit-box-shadow: 0 10px 30px 0 rgb(255, 255, 255);
+    box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.247);
+    position: relative;
+    text-align: center;
+    background-color: #ffffff;
+
+    border-top-right-radius: 10px !important;
+    border-top-left-radius: 10px !important;
+    border-bottom-left-radius: 10px !important;
+    border-bottom-right-radius: 10px !important;
+
+  }
+
+  .course {
+
+    -webkit-box-shadow: 0 10px 30px 0 rgb(255, 255, 255);
+    box-shadow: 0 0px 30px 0 rgba(0, 0, 0, 0.151);
+    background-color: #ffffff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 13px;
+    transition: all 0.3s ease-in-out;
+    width: 85%;
+    height: 50px;
+    color: #0068B7;
+
+    border-top-right-radius: 30px !important;
+    border-top-left-radius: 30px !important;
+    border-bottom-left-radius: 30px !important;
+    border-bottom-right-radius: 30px !important;
+  }
+
+  .head {
+    font-size: 24px;
+    color: #f78710;
+  }
+
+  .ios-arrow-dropright {
+    color: red !important;
+  }
 
 
 }

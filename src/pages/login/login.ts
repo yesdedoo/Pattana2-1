@@ -11,6 +11,7 @@ import { TabsPage } from '../tabs/tabs';
 import { from } from 'rxjs/observable/from'
 import { TestapiProvider } from '../../providers/testapi/testapi';
 
+import { LocalNotifications } from '@ionic-native/local-notifications';
 
 
 
@@ -44,7 +45,7 @@ export class LoginPage {
   
   submitAttempt: boolean = false;
 
-  constructor(public navCtrl: NavController, public formBuilder: FormBuilder,
+  constructor(public navCtrl: NavController, public formBuilder: FormBuilder,public localNotification:LocalNotifications,
      public testapiProvider: TestapiProvider,public storage:Storage,public toastCtrl:ToastController) {
 
     this.slideOneForm = formBuilder.group({
@@ -67,10 +68,20 @@ export class LoginPage {
     console.log('ionViewDidLoad Login2Page');
     this.storage.clear();
   }
+  ShowNoti(){
+    this.localNotification.schedule({
+      id: 1,
+      text: 'Single ILocalNotification',
+      data: { secret: "Test Noti" }
+    });
+
+  }
 
   Login(){
     console.log("username",this.username);
     console.log("password",this.password);
+        // Schedule a single notification
+
     if(this.FailToast){
       this.FailToast.dismiss();
       this.FailToast=null;

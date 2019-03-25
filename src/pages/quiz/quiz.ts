@@ -70,6 +70,7 @@ export class QuizPage {
   buttonToChange4:HTMLElement*/
 
   Timer:any;
+  
 
  
 
@@ -90,8 +91,9 @@ export class QuizPage {
         .then(res => {
           console.log('res:', res);
           this.TodayStorage = res;
-        }).then(()=>console.log("Todaystorage: ", this.TodayStorage))
-      );
+          
+        }).then(()=>console.log("Todaystorage: ", this.TodayStorage)        
+        ));
     
     this.Today = navParams.get('Today')
     console.log("Pushed data",this.Stu_ID,this.Today,this.SentStu_ID);
@@ -118,7 +120,7 @@ export class QuizPage {
     setTimeout(() => {
       this.GetButtonID()
 
-      }, 3500);
+      }, 5000);
     }, 5000);  
     
     
@@ -131,11 +133,10 @@ export class QuizPage {
       this.StartTimer();
   
     }, 7500);
-
-    
-    
+   
     
   }
+  
   
 
   GetQuestion(){
@@ -145,12 +146,14 @@ export class QuizPage {
       this.Ques_ID = val["Ques_ID"]
       this.Ques_Name = val["Ques_Name"]
       this.Ques_FB = val["Ques_FB"]
-      
-      console.log("Splited REST",this.Ques_ID,this.Ques_Name,this.Ques_FB)
+      setTimeout(() => {
+        console.log("Splited REST",this.Ques_ID,this.Ques_Name,this.Ques_FB)
+  
+      }, 3500);
+  
       
     })
     
- 
   }
 
   GetChoice(){
@@ -184,7 +187,7 @@ export class QuizPage {
         this.Choice_Crr[i] = tempCCRR[i]
         this.Choice_Quesid[i] = tempCQID[i]
         
-      }, 2000);
+      }, 3000);
       
      
     }
@@ -205,12 +208,21 @@ export class QuizPage {
       console.log("Merged choice",this.ArrChoice)
   
   
-    }, 2000);    
+    }, 4000);    
 
     
-
   }
+  async GetDataFlow(){
+    let funcques = await this.GetQuestion();
+    let funcchoice = await this.GetChoice();
+    let funcbuttonid = await this.GetButtonID();
+    let setreturn = await console.log("Flow success")
+
+    return setreturn
+  }
+
   GetButtonID(){
+
     
     for(let i=0;i<this.Ques_ID.length;i++){
       this.buttonToChange1[i] = document.querySelector('#Butt'+(4*(i+1)-4));
@@ -232,8 +244,7 @@ export class QuizPage {
     console.log(this.buttonToChange3)
     console.log(this.buttonToChange4)
   
-  
-
+    
   }
 
   //Need fix

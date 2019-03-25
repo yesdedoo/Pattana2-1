@@ -19,6 +19,7 @@
     <preference name="SplashShowOnlyFirstTime" value="false" />
     <preference name="SplashScreen" value="screen" />
     <preference name="SplashScreenDelay" value="3000" />
+    <preference name="phonegap-version" value="4.20.0">
     <platform name="android">
         <allow-intent href="market:*" />
         <icon density="ldpi" src="resources/android/icon/drawable-ldpi-icon.png" />
@@ -83,9 +84,11 @@
     <plugin name="cordova-plugin-ionic-webview" spec="^3.0.0" />
     <plugin name="cordova-plugin-ionic-keyboard" spec="^2.0.5" />
     <plugin name="cordova-plugin-x-toast" spec="2.7.2" />
-    <plugin name="de.appplant.cordova.plugin.local-notification" spec="^0.8.5" />
     <plugin name="cordova-android-support-gradle-release" spec="^2.0.1">
         <variable name="ANDROID_SUPPORT_VERSION" value="27.+" />
     </plugin>
+    <plugin name="de.appplant.cordova.plugin.local-notification" spec="^0.8.5" />
+    <gap:plugin name="de.appplant.cordova.plugin.local-notification" />
+    <plugin name="de.appplant.cordova.plugin.local-notification" source="pgb" />
     <engine name="android" spec="7.1.4" />
 </widget>

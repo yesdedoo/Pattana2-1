@@ -25,6 +25,7 @@ import { UsernameValidator } from '../providers/username/username';
 import { PasswordProvider } from '../providers/password/password';
 import { HttpClientModule } from '@angular/common/http';
 import { IonicStorageModule } from '@ionic/storage';
+import { LocalNotifications } from '@ionic-native/local-notifications';
 
 
 @NgModule({
@@ -76,6 +77,7 @@ import { IonicStorageModule } from '@ionic/storage';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     TestapiProvider,
     PasswordProvider,
+    LocalNotifications,
     
    
     

@@ -135,6 +135,7 @@ export class HomePage {
         //Parse data JSON into number
         let assHr: string, assHr2: string, assHr3: number
         let assMin: string, assMin2: string, assMin3: number
+        this.storage.set('assid',this.Ass_ID[0])
         assHr = JSON.stringify(this.Ass_Time[0])
         assHr2 = assHr.slice(1, 3)
         assHr3 = parseInt(assHr2)

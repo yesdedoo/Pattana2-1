@@ -27,27 +27,33 @@
 
         <ng-container *ngIf="RankName[i];then ShowScore;else EmptyScore"></ng-container>
         <ng-template #ShowScore>
-          <div class="ranking" padding>
-            <table>
-              <tr>
-                <td>
+          <div class="ranking" >
+            <ion-grid>
+              <ion-row>
+                <ion-col>
                   <h5>{{i+1}}.{{RankName[i]}}</h5>
-                </td>
-                <td>
-                  &emsp;&emsp;&emsp;&emsp;&emsp;            
-                </td>
-                <td class="rankscore" style="text-align:right">
+                </ion-col>
+                
+                <ion-col class="rankscore" style="text-align:right">
                   <h5>{{RankScore[i]}}</h5>
-                </td>
+                </ion-col>
 
-              </tr>
-            </table>
+              </ion-row>
+            </ion-grid>
 
           </div>
         </ng-template>
         <ng-template #EmptyScore>
-          <div class="ranking" padding>
-            <h5>{{i+1}}.- - - -</h5>
+          <div class="ranking" >
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <h5>{{i+1}}.- - - -</h5>
+
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+            
           </div>
 
         </ng-template>

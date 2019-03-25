@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, AlertController } from 'ionic-angular';
+import { NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { CardPage } from '../card/card';
 import { Storage } from '@ionic/storage';
@@ -22,63 +22,112 @@ import { TabsPage } from '../tabs/tabs';
 })
 export class RankPage {
 
-  Rankingother: Array <any> =[];
-  Rankingme: Array <any> =[];
 
   //Get pushed from quiz.ts
   ScoreCount: any;
-  ShowScore:any;
-  NOOfQues:any;
-  
-  Today:any;
+  ShowScore: any;
+  NOOfQues: any;
+
+  Today: any;
 
   //REST variables
-  SendRankingRequest:any;
-  RankStu_ID:any;
-  RankName:any=[];
-  RankScore:any=[];
+  SendRankingRequest: any;
+  RankStu_ID: any;
+  RankName: any = [];
+  RankScore: any = [];
 
-  RankSlot=[0,1,2,3];
+  RankSlot = [0, 1, 2];
+
+  //Storage variable
+  TodayStorage: any;
+  Ass_IDStorage: any;
+  Stu_IDStorage:any;
 
   constructor(public alertCtrl: AlertController, private navCtrl: NavController, public navParams: NavParams,
-    public testapiProvider:TestapiProvider,public storage:Storage) {
-    this.Rankingother= ["Kamonruk Sariyarsheeva","Suvijak Permpholphattana","Prakitchai Panphila"]
-    this.Rankingme = ["Pakpoom Rachtracho"]
+    public testapiProvider: TestapiProvider, public storage: Storage,public loadingCtrl:LoadingController) {
+
     this.ScoreCount = navParams.get('scorecount');
     this.NOOfQues = navParams.get('quesNO');
     this.ShowScore = navParams.get('showscore');
     this.Today = navParams.get('today');
     
+    this.storage.ready().then(() => this.storage.get('stuid')
+      .then(res => {
+        console.log('stuid got:', res);
+        this.Stu_IDStorage = res;
+      }).then(() => console.log("Stuidstorage: ", this.Stu_IDStorage))
+    );
+    this.storage.ready().then(() => this.storage.get('today')
+      .then(res => {
+        console.log('today got:', res);
+        this.TodayStorage = res;
+      }).then(() => console.log("Todaystorage: ", this.TodayStorage))
+    );
+    this.storage.ready().then(() => this.storage.get('assid')
+      .then(res => {
+        console.log('assid got:', res);
+        this.Ass_IDStorage = res;
+        this.GetRanking();
+      }).then(() => console.log("Assstorage: ", this.Ass_IDStorage))
+    );
 
-  
+
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad RankPage');
-    this.GetRanking();
+    
+    //this.GetRanking();
+    let loading = this.loadingCtrl.create({
+      content: 'Please wait...'
+    });
+      loading.present();
+    setTimeout(() => {
+      loading.dismiss()
+  
+    }, 3000);
+
+    
   }
 
-  GetRanking(){
-    this.SendRankingRequest = from(this.testapiProvider.GetRanking(this.Today))
-    this.SendRankingRequest.subscribe(val =>{
+  GetRanking() {
+    console.log(this.Ass_IDStorage);
+    this.SendRankingRequest = from(this.testapiProvider.GetRanking(this.Today, this.Ass_IDStorage))
+    this.SendRankingRequest.subscribe(val => {
       console.log(val)
       this.RankStu_ID = val["Stu_ID"]
       this.RankName = val["Name"]
       this.RankScore = val["RankedScore"]
+
+      console.log(this.RankStu_ID, this.RankName, this.RankScore)
       
-      console.log(this.RankStu_ID,this.RankName,this.RankScore)
-      
+
     })
 
   }
+  /*
+  GetData() {
+    this.storage.ready().then(() => this.storage.get('today')
+      .then(res => {
+        console.log('today got:', res);
+        this.TodayStorage = res;
+      }).then(() => console.log("Todaystorage: ", this.TodayStorage))
+    );
+    this.storage.ready().then(() => this.storage.get('assid')
+      .then(res => {
+        console.log('assid got:', res);
+        this.Ass_IDStorage = res;
+      }).then(() => console.log("Todaystorage: ", this.Ass_IDStorage))
+    );
+
+  }*/
 
 
-  clickhome()
-  {
+  clickhome() {
     //this.navCtrl.push(HomePage)
     this.navCtrl.setRoot(TabsPage)
   }
- 
+
 
   ToPageCard() {
     this.navCtrl.push(CardPage)

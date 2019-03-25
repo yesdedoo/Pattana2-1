@@ -17,7 +17,7 @@ export class TestapiProvider {
   restApiQuestion = 'http://104.196.19.248:5001/question'
   restApiAssessment = 'http://104.196.19.248:5001/assessment'
   restApiChoice = 'http://104.196.19.248:5001/choice'
-  restApiFeedback = 'http://104.196.19.248:5001/feedback'
+  restApiShowFeedback = 'http://104.196.19.248:5001/showfeedback'
   restApiRegister = 'http://104.196.19.248:5002/register'
   restApiLogin = 'http://104.196.19.248:5002/login'
   restApiCourse = 'http://104.196.19.248:5003/course'
@@ -48,8 +48,8 @@ export class TestapiProvider {
     });
   }
   
-  GetAssessment(Date){
-    var data = {dateData : {date:Date}}
+  GetAssessment(Date,Stu_ID){
+    var data = {dateData : {date:Date,stuid:Stu_ID}}
     return new Promise(resolve =>{
       fetch(this.restApiAssessment,{
         method:'POST',
@@ -223,7 +223,19 @@ export class TestapiProvider {
 
   }
   GetFeedback(){
-    
+    return new Promise(resolve => {
+      fetch(this.restApiShowFeedback, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }).then(r=>{
+        this.data = r.json()
+        resolve(this.data)
+      })
+      .catch(err => console.log(err))
+    });
+
   }
 
 

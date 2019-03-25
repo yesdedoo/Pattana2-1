@@ -21,6 +21,7 @@ export class HomePage {
   tabBarElement: any;
 
   Stu_ID:any;
+  SStu_ID:any;
   currentDate: any;
   SendDate: any;
   Today:any
@@ -73,29 +74,24 @@ export class HomePage {
     this.storage.get('stuid').then((val) => {
       console.log('storage stuid', val);
       this.Stu_ID=val
+      this.SStu_ID=val[0]
+      this.GetDate();
+      this.CheckAssessment();
     });
     /*
     this.Stu_ID = navParams.get('Stu_ID')
     console.log("NavParam Stu_ID",this.Stu_ID);*/
 
     //Get DATE&TIME
-    this.GetDate();
+    //this.GetDate();
     
-    this.CheckAssessment();
+    //this.CheckAssessment();
     setTimeout(() => {
       this.StartClock();
 
     }, 3000);
   
   }
-  /* //Hide tab section
-  ionViewWillEnter() {
-    this.tabBarElement.style.display = 'none';
-    console.log('ionViewDidLoad AlldetailPage');
-  }
-  ionViewWillLeave() {
-    this.tabBarElement.style.display = 'flex';
-  }*/
   GetDate(){
     
     this.currentDate = new Date();
@@ -118,7 +114,7 @@ export class HomePage {
 
 
   CheckAssessment(){
-    this.SendDate = from(this.testapiProvider.GetAssessment(this.Today))
+    this.SendDate = from(this.testapiProvider.GetAssessment(this.Today,this.SStu_ID))
     this.SendDate.subscribe(val =>{
       this.Ass_ID=val["Assess_ID"]
       this.Ass_Date=val["Date"]

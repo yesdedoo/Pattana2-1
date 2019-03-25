@@ -11,13 +11,11 @@
     Feedback
   </div>
   <br>
-  <ion-card class="card">
-    <ion-list>
-      <div>
-        <button>Small</button>
-      </div>
-
-    </ion-list>
+  <ion-card class="card" *ngFor="let element of FBId; let i = index"> 
+    <ion-title>
+      <h1>{{FBName[i]}}</h1>
+    </ion-title>
+    
 
   </ion-card>
 

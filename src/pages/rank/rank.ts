@@ -28,6 +28,9 @@ export class RankPage {
   ShowScore: any;
   NOOfQues: any;
 
+  ParseSC:number;
+  DecimalSC:any;
+
   Today: any;
 
   //REST variables
@@ -39,7 +42,7 @@ export class RankPage {
   OwnName:any;
   OwnScore:any;
 
-  RankSlot = [0, 1, 2];
+  RankSlot = [0, 1, 2, 3, 4];
 
   //Storage variable
   TodayStorage: any;
@@ -52,12 +55,17 @@ export class RankPage {
     this.ScoreCount = navParams.get('scorecount');
     this.NOOfQues = navParams.get('quesNO');
     this.ShowScore = navParams.get('showscore');
+    this.ParseSC = parseFloat(this.ShowScore);
+    this.DecimalSC = this.ParseSC.toFixed(2);
+    
+    
+   
     this.Today = navParams.get('today');
     
     this.storage.ready().then(() => this.storage.get('stuid')
       .then(res => {
         console.log('stuid got:', res);
-        this.Stu_IDStorage = res;
+        this.Stu_IDStorage = res[0];
       }).then(() => console.log("Stuidstorage: ", this.Stu_IDStorage))
     );
     this.storage.ready().then(() => this.storage.get('today')

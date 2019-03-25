@@ -2,6 +2,11 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { CalendarComponentOptions } from 'ion2-calendar';
 
+//REST
+import { from } from 'rxjs/observable/from'
+import { TestapiProvider } from '../../providers/testapi/testapi';
+
+
 /**
  * Generated class for the SchedulePage page.
  *
@@ -34,10 +39,18 @@ export class SchedulePage {
     "You got improvement of understanding "];
   motivatedAd = ["Let’s try to against it next time ;)", "Push yourself ;)"];
   praisedAd = ["Well done!", "Keep up the good work"];
-
+  
+  
   fb: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {
+  //REST Variable
+  SendFBRequest:any;
+  FBId:any=[];
+  FBName:any=[];
+  FBDate:any=[];
+  
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController,public testapiProvider:TestapiProvider) {
 
 
 
@@ -46,6 +59,22 @@ export class SchedulePage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SchedulePage');
+    this.ShowFeedback();
+
+  }
+
+  ShowFeedback(){
+    this.SendFBRequest = from(this.testapiProvider.GetFeedback())
+    this.SendFBRequest.subscribe(val=>{
+      this.FBId = val["FBId"]
+      this.FBName = val["FBName"]
+      this.FBDate = val["FBDate"]
+
+      setTimeout(() => {
+        console.log("FB",this.FBId,this.FBName,this.FBDate)  
+      }, 2000);
+      
+    })
   }
 
   returnFeedback() {
@@ -92,7 +121,7 @@ export class SchedulePage {
     return this.praisedAd[Math.floor(Math.random() * praisedAdLen)]
 
   }
-  ShowFeedback() {
+  AlertFeedback() {
     let CID: any;
     if (this.fb) {
       this.fb.dismiss();

@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
-import { HomePage } from '../home/home';
 import { CardPage } from '../card/card';
 import { Storage } from '@ionic/storage';
 //REST
@@ -120,22 +119,6 @@ export class RankPage {
     })
 
   }
-  /*
-  GetData() {
-    this.storage.ready().then(() => this.storage.get('today')
-      .then(res => {
-        console.log('today got:', res);
-        this.TodayStorage = res;
-      }).then(() => console.log("Todaystorage: ", this.TodayStorage))
-    );
-    this.storage.ready().then(() => this.storage.get('assid')
-      .then(res => {
-        console.log('assid got:', res);
-        this.Ass_IDStorage = res;
-      }).then(() => console.log("Todaystorage: ", this.Ass_IDStorage))
-    );
-
-  }*/
 
 
   clickhome() {

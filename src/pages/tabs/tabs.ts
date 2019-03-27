@@ -32,7 +32,7 @@ export class TabsPage {
     this.tab1Params={Stu_ID:this.TempStu_ID};
     this.tab2Params={Stu_ID:this.TempStu_ID};
     this.tab3Params={Stu_ID:this.TempStu_ID};
-    this.tab4Params={Stu_ID:this.TempStu_ID};
+    //this.tab4Params={Stu_ID:this.TempStu_ID};
 
 
   }

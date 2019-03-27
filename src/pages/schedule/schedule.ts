@@ -37,7 +37,7 @@ export class SchedulePage {
     "You should review in the topic "];
   compliment = ["You have improved about ",
     "You got improvement of understanding "];
-  motivatedAd = ["Let’s try to against it next time ;)", "Push yourself ;)"];
+  motivatedAd = ["Let’s try to against it next time", "Push yourself"];
   praisedAd = ["Well done!", "Keep up the good work"];
   
   

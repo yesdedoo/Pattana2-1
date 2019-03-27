@@ -237,6 +237,26 @@ export class TestapiProvider {
     });
 
   }
+  PostFeedbackCal(Stu_ID,Today){
+    var data = { postFBData: { stuid:Stu_ID,today:Today} }
+    //To check the existing account
+    return new Promise(resolve => {
+      fetch(this.restApiShowFeedback, {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+          .then(r=>{
+            this.data = r.json()
+            resolve(this.data)
+          })
+          .catch(err => console.log(err))
+    });
+
+
+  }
 
 
 }

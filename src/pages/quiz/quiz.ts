@@ -2,6 +2,10 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, LoadingController } from 'ionic-angular';
 import { RankPage } from '../rank/rank';
 
+//Slide
+import { ViewChild } from '@angular/core';
+import { Slides } from 'ionic-angular';
+
 //REST
 import { from } from 'rxjs/observable/from'
 import { TestapiProvider } from '../../providers/testapi/testapi';
@@ -20,7 +24,7 @@ import { Storage } from '@ionic/storage';
   templateUrl: 'quiz.html',
 })
 export class QuizPage {
-
+  @ViewChild(Slides) slides: Slides;
   //Rest variable
   Stu_ID:any;
   SentStu_ID:any;
@@ -106,6 +110,7 @@ export class QuizPage {
 
   finishquiz(){
     this.navCtrl.push(RankPage,{scorecount: this.ScoreCount,quesNO:this.Ques_ID.length,showscore:this.ShowScore,today:this.Today});
+    //
     clearInterval(this.Timer)
   }
 
@@ -276,7 +281,7 @@ export class QuizPage {
               this.ShowScore= this.ShowScore+this.realScore;
               this.realScore=0;
               this.responseTime=0
-              
+              this.GotoNextSlide();
               
               break;
             }
@@ -294,6 +299,7 @@ export class QuizPage {
               this.ShowScore= this.ShowScore+this.realScore;
               this.realScore=0;
               this.responseTime=0
+              this.GotoNextSlide();
               break;
             }
             case 2:{
@@ -310,7 +316,7 @@ export class QuizPage {
               this.ShowScore= this.ShowScore+this.realScore;
               this.realScore=0;
               this.responseTime=0
-              
+              this.GotoNextSlide();
               break;
             }
             case 3:{
@@ -328,7 +334,7 @@ export class QuizPage {
               this.ShowScore= this.ShowScore+this.realScore;
               this.realScore=0;
               this.responseTime=0
-              
+              this.GotoNextSlide();
               break;
             }
             
@@ -348,6 +354,7 @@ export class QuizPage {
                 this.SendMarkResult = from(this.testapiProvider.PostMarkingResult(this.MarkingResult["MResult"],this.Ques_ID[IndexQues],this.Today,this.SentStu_ID,this.realScore))
                 this.ShowScore= this.ShowScore+this.realScore;
                 this.responseTime=0
+                this.GotoNextSlide();
                 
                 break;
               }
@@ -356,7 +363,7 @@ export class QuizPage {
                 this.SendMarkResult = from(this.testapiProvider.PostMarkingResult(this.MarkingResult["MResult"],this.Ques_ID[IndexQues],this.Today,this.SentStu_ID,this.realScore))
                 this.ShowScore= this.ShowScore+this.realScore;
                 this.responseTime=0
-                
+                this.GotoNextSlide();
                 break;
               }
               case 2:{
@@ -364,7 +371,7 @@ export class QuizPage {
                 this.SendMarkResult = from(this.testapiProvider.PostMarkingResult(this.MarkingResult["MResult"],this.Ques_ID[IndexQues],this.Today,this.SentStu_ID,this.realScore))
                 this.ShowScore= this.ShowScore+this.realScore;
                 this.responseTime=0
-                
+                this.GotoNextSlide();
                 break;
               }
               case 3:{
@@ -372,7 +379,7 @@ export class QuizPage {
                 this.SendMarkResult = from(this.testapiProvider.PostMarkingResult(this.MarkingResult["MResult"],this.Ques_ID[IndexQues],this.Today,this.SentStu_ID,this.realScore))
                 this.ShowScore= this.ShowScore+this.realScore;
                 this.responseTime=0
-                
+                this.GotoNextSlide();
                 break;
               }
               
@@ -399,6 +406,11 @@ export class QuizPage {
 
     }, 1000);
 
+  }
+
+  GotoNextSlide()
+  {
+    this.slides.slideNext();
   }
   
 

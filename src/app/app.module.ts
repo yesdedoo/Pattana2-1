@@ -27,7 +27,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { IonicStorageModule } from '@ionic/storage';
 import { LocalNotifications } from '@ionic-native/local-notifications';
 import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
-
+import { NativeAudio } from '@ionic-native/native-audio/ngx';
 
 @NgModule({
   declarations: [
@@ -79,7 +79,8 @@ import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
     TestapiProvider,
     PasswordProvider,
     LocalNotifications,
-    AndroidPermissions
+    AndroidPermissions,
+    NativeAudio
     
    
     

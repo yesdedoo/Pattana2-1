@@ -13,6 +13,7 @@ import { TestapiProvider } from '../../providers/testapi/testapi';
 
 import { LocalNotifications } from '@ionic-native/local-notifications';
 import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
+import { NativeAudio } from '@ionic-native/native-audio/ngx';
 
 
 /**
@@ -49,8 +50,13 @@ export class LoginPage {
 
   constructor(public navCtrl: NavController, public formBuilder: FormBuilder,public localNotification:LocalNotifications,
      public testapiProvider: TestapiProvider,public storage:Storage,public toastCtrl:ToastController, public androidPermission:AndroidPermissions,
-     public platform:Platform) {
+     public platform:Platform, public nativeAudio:NativeAudio) {
     
+    /*this.nativeAudio.preloadSimple('clickSound','assets/sound/Click.mp3').then(() => {     
+        console.log("Success preloading");
+    });*/
+
+
     //var permissions = cordova.plugins.Permissions
     this.PermText="AndroidPermission: ";
     this.slideOneForm = formBuilder.group({
@@ -72,6 +78,12 @@ export class LoginPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad Login2Page');
     this.storage.clear();
+    /*this.platform.ready().then(()=>{
+      this.nativeAudio.preloadSimple('clickSound','assets/sound/Click.mp3')    
+    });*/
+    	
+    
+    
   }
 
 

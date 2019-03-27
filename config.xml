@@ -90,4 +90,5 @@
     <plugin name="phonegap-plugin-local-notification" spec="^1.0.1" />
     <plugin name="cordova-plugin-android-permissions" spec="1.0.0" />
     <engine name="android" spec="7.1.4" />
+    <plugin name="cordova-plugin-nativeaudio" spec="3.0.9" />
 </widget>

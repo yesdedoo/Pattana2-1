@@ -26,6 +26,7 @@ import { PasswordProvider } from '../providers/password/password';
 import { HttpClientModule } from '@angular/common/http';
 import { IonicStorageModule } from '@ionic/storage';
 import { LocalNotifications } from '@ionic-native/local-notifications';
+import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
 
 
 @NgModule({
@@ -78,6 +79,7 @@ import { LocalNotifications } from '@ionic-native/local-notifications';
     TestapiProvider,
     PasswordProvider,
     LocalNotifications,
+    AndroidPermissions
     
    
     

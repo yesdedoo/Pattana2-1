@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { NavController, ToastController } from 'ionic-angular';
+import { NavController, ToastController, AlertController,Platform } from 'ionic-angular';
 import { UsernameValidator } from '../../providers/username/username';
 import { Storage } from '@ionic/storage';
 
@@ -12,7 +12,7 @@ import { from } from 'rxjs/observable/from'
 import { TestapiProvider } from '../../providers/testapi/testapi';
 
 import { LocalNotifications } from '@ionic-native/local-notifications';
-
+import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
 
 
 /**
@@ -42,12 +42,17 @@ export class LoginPage {
 
   FailToast:any;
   EmptyToast:any;
-  
+  PermText:any;
+ 
+  cordova:any;
   submitAttempt: boolean = false;
 
   constructor(public navCtrl: NavController, public formBuilder: FormBuilder,public localNotification:LocalNotifications,
-     public testapiProvider: TestapiProvider,public storage:Storage,public toastCtrl:ToastController) {
-
+     public testapiProvider: TestapiProvider,public storage:Storage,public toastCtrl:ToastController, public androidPermission:AndroidPermissions,
+     public platform:Platform) {
+    
+    //var permissions = cordova.plugins.Permissions
+    this.PermText="AndroidPermission: ";
     this.slideOneForm = formBuilder.group({
       userName: ['', Validators.compose([Validators.required, Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')]), UsernameValidator.checkUsername],
       firstName: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
@@ -68,12 +73,19 @@ export class LoginPage {
     console.log('ionViewDidLoad Login2Page');
     this.storage.clear();
   }
+
+
   ShowNoti(){
+  
     this.localNotification.schedule({
       id: 1,
       text: 'Single ILocalNotification',
       data: { secret: "Test Noti" }
     });
+    
+    
+     
+    
 
   }
 

@@ -127,6 +127,7 @@ export class QuizPage {
 
       }, 5000);
     }, 5000);  
+
     
     
     let loading = this.loadingCtrl.create({

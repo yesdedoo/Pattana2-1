@@ -6,19 +6,11 @@
     <ion-card class="card1">
       <ion-card-header>
         <ion-item text-wrap class="QuesDes">
-          {{Ques_Name[i]}}
+          <b>{{Ques_Name[i]}} ?</b>
         </ion-item>
       </ion-card-header>
       <br>
       
-      <!--<ion-list class="List" *ngFor="let ele of ArrChoice; let j = index">-->
-        <!--<div *ngFor="let obj of ele; let k = index">-->
-        <!--<div (click)="MarkingScore(i,j)">
-            <button id="Butt{{i+j}}"  class="button1" ion-item >
-              <ion-icon name="ios-arrow-dropright-circle" item-start></ion-icon>
-                  {{ele}}
-              </button>
-        </div>-->
       <ng-container *ngIf="ArrChoice"></ng-container>
       <ion-list class="List">
         

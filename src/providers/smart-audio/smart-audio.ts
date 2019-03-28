@@ -49,6 +49,32 @@ export class SmartAudioProvider {
     }
 
   }
+  preloadComplex(key, asset) {
+
+    if (this.audioType === 'html5') {
+
+      let audio = {
+        key: key,
+        asset: asset,
+        type: 'html5'
+      };
+
+      this.sounds.push(audio);
+
+    } else {
+
+      this.nativeAudio.preloadComplex(key, asset,1,1,0);
+
+      let audio = {
+        key: key,
+        asset: key,
+        type: 'native'
+      };
+
+      this.sounds.push(audio);
+    }
+
+  }
 
   play(key) {
 

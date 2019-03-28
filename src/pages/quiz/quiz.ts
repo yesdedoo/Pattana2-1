@@ -84,7 +84,7 @@ export class QuizPage {
     this.SentStu_ID = this.Stu_ID[0]
     this.loading = loadingCtrl.create({
       content: 'Please wait...',
-      spinner: 'hide',
+      spinner: 'circles'
     });
 
 
@@ -213,7 +213,10 @@ export class QuizPage {
         let splitedSCN = trimedSCN.split(",");
 
         for (let j = 0; j < splitedSCN.length; j++) {
-          this.ArrChoice.push(splitedSCN[j])
+          //this.ArrChoice.push(splitedSCN[j])
+          let temp = splitedSCN[j].substr(1,splitedSCN[j].length-2);
+          let temp2 = temp.charAt(0).toUpperCase()+temp.slice(1);
+          this.ArrChoice.push(temp2);
         }
 
       }

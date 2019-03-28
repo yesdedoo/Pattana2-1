@@ -63,7 +63,7 @@ export class SmartAudioProvider {
 
     } else {
 
-      this.nativeAudio.preloadComplex(key, asset,1,1,0);
+      this.nativeAudio.preloadComplex(key, asset, 1, 1, 0);
 
       let audio = {
         key: key,
@@ -98,5 +98,65 @@ export class SmartAudioProvider {
     }
 
   }
+  loop(key) {
+    let audio = this.sounds.find((sound) => {
+      return sound.key === key;
+    });
 
+    if (audio.type === 'html5') {
+
+      let audioAsset = new Audio(audio.asset);
+      audioAsset.play();
+
+    } else {
+
+      this.nativeAudio.loop(audio.asset).then((res) => {
+        console.log(res);
+      }, (err) => {
+        console.log(err);
+      });
+
+    }
+
+  }
+  stop(key) {
+    let audio = this.sounds.find((sound) => {
+      return sound.key === key;
+    });
+
+    if (audio.type === 'html5') {
+
+      let audioAsset = new Audio(audio.asset);
+      audioAsset.pause();
+
+    } else {
+
+      this.nativeAudio.stop(key).then((res) => {
+        console.log(res);
+        
+      }, (err) => {
+        console.log(err);
+      })
+    }
+  }
+  unload(key) {
+    let audio = this.sounds.find((sound) => {
+      return sound.key === key;
+    });
+
+    if (audio.type === 'html5') {
+
+      let audioAsset = new Audio(audio.asset);
+      audioAsset.pause();
+
+    } else {
+
+      this.nativeAudio.unload(key).then((res) => {
+        console.log(res);
+        
+      }, (err) => {
+        console.log(err);
+      })
+    }
+  }
 }

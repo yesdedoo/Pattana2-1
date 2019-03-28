@@ -109,7 +109,8 @@ export class QuizPage {
     setTimeout(() => {
       this.GetChoice();
       this.GetButtonID();
-      
+      this.StartTimer();
+      this.smartAudio.loop('bg7Sound');
     }, 1000);
 
   }
@@ -145,8 +146,11 @@ export class QuizPage {
 
 
   finishquiz() {
-    this.navCtrl.push(RankPage, { scorecount: this.ScoreCount, quesNO: this.Ques_ID.length, showscore: this.ShowScore, today: this.Today });
     clearInterval(this.Timer)
+    this.smartAudio.stop('bg7Sound');
+    this.smartAudio.unload('bg7Sound');
+    this.navCtrl.push(RankPage, { scorecount: this.ScoreCount, quesNO: this.Ques_ID.length, showscore: this.ShowScore, today: this.Today });
+   
   }
 
   GetQuestion() {
@@ -291,6 +295,7 @@ export class QuizPage {
               this.ShowScore = this.ShowScore + this.realScore;
               this.realScore = 0;
               this.responseTime = 0
+              this.correctSound();
               this.GotoNextSlide();
 
               break;
@@ -309,6 +314,7 @@ export class QuizPage {
               this.ShowScore = this.ShowScore + this.realScore;
               this.realScore = 0;
               this.responseTime = 0
+              this.correctSound();
               this.GotoNextSlide();
               break;
             }
@@ -326,6 +332,7 @@ export class QuizPage {
               this.ShowScore = this.ShowScore + this.realScore;
               this.realScore = 0;
               this.responseTime = 0
+              this.correctSound();
               this.GotoNextSlide();
               break;
             }
@@ -344,6 +351,7 @@ export class QuizPage {
               this.ShowScore = this.ShowScore + this.realScore;
               this.realScore = 0;
               this.responseTime = 0
+              this.correctSound();
               this.GotoNextSlide();
               break;
             }
@@ -364,6 +372,7 @@ export class QuizPage {
               this.SendMarkResult = from(this.testapiProvider.PostMarkingResult(this.MarkingResult["MResult"], this.Ques_ID[IndexQues], this.Today, this.SentStu_ID, this.realScore))
               this.ShowScore = this.ShowScore + this.realScore;
               this.responseTime = 0
+              this.incorrectSound();
               this.GotoNextSlide();
 
               break;
@@ -373,6 +382,7 @@ export class QuizPage {
               this.SendMarkResult = from(this.testapiProvider.PostMarkingResult(this.MarkingResult["MResult"], this.Ques_ID[IndexQues], this.Today, this.SentStu_ID, this.realScore))
               this.ShowScore = this.ShowScore + this.realScore;
               this.responseTime = 0
+              this.incorrectSound();
               this.GotoNextSlide();
               break;
             }
@@ -381,6 +391,7 @@ export class QuizPage {
               this.SendMarkResult = from(this.testapiProvider.PostMarkingResult(this.MarkingResult["MResult"], this.Ques_ID[IndexQues], this.Today, this.SentStu_ID, this.realScore))
               this.ShowScore = this.ShowScore + this.realScore;
               this.responseTime = 0
+              this.incorrectSound();
               this.GotoNextSlide();
               break;
             }
@@ -389,6 +400,7 @@ export class QuizPage {
               this.SendMarkResult = from(this.testapiProvider.PostMarkingResult(this.MarkingResult["MResult"], this.Ques_ID[IndexQues], this.Today, this.SentStu_ID, this.realScore))
               this.ShowScore = this.ShowScore + this.realScore;
               this.responseTime = 0
+              this.incorrectSound();
               this.GotoNextSlide();
               break;
             }
@@ -423,9 +435,13 @@ export class QuizPage {
   }
 
   clickSound(){
-    this.smartAudio.play('clickSound')
+    this.smartAudio.play('clickSound');
   }
-
-
+  correctSound(){
+    this.smartAudio.play('correctSound');
+  }
+  incorrectSound(){
+    this.smartAudio.play('incorrectSound');
+  }
 
 }

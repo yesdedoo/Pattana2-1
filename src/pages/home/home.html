@@ -9,7 +9,7 @@
         <button (click)="Notification()" ion-button icon-only>
             <ion-icon name="notifications"></ion-icon>
         </button>
-        <button (click)="Logout()" ion-button icon-only>
+        <button (click)="Logout();clickSound();" ion-button icon-only>
             <ion-icon name="log-out" ></ion-icon>
           </button>
       </ion-buttons>
@@ -28,7 +28,7 @@
   <ng-container *ngIf="hasFinished==true; then hidbutton; else showbutton" ></ng-container>
   <ng-template #showbutton>
       <div class="table-a" padding>
-          <button color="#ff0000" ion-button class="start" (click)='readytoquiz()'> START </button><br>    		
+          <button color="#ff0000" ion-button class="start" (click)='readytoquiz();clickSound();'> START </button><br>    		
       </div>
   </ng-template>
   <ng-template #hidbutton>

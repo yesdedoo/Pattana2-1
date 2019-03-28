@@ -28,6 +28,7 @@ import { IonicStorageModule } from '@ionic/storage';
 import { LocalNotifications } from '@ionic-native/local-notifications';
 import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
 import { NativeAudio } from '@ionic-native/native-audio/ngx';
+import { SmartAudioProvider } from '../providers/smart-audio/smart-audio';
 
 @NgModule({
   declarations: [
@@ -80,7 +81,8 @@ import { NativeAudio } from '@ionic-native/native-audio/ngx';
     PasswordProvider,
     LocalNotifications,
     AndroidPermissions,
-    NativeAudio
+    NativeAudio,
+    SmartAudioProvider
     
    
     

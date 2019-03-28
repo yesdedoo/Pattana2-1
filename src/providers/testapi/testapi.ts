@@ -14,17 +14,17 @@ export class TestapiProvider {
   check:any
 
   //Which IP and what is it purpose
-  restApiQuestion = 'http://104.196.19.248:5001/question'
-  restApiAssessment = 'http://104.196.19.248:5001/assessment'
-  restApiChoice = 'http://104.196.19.248:5001/choice'
-  restApiShowFeedback = 'http://104.196.19.248:5001/showfeedback'
-  restApiRegister = 'http://104.196.19.248:5002/register'
-  restApiLogin = 'http://104.196.19.248:5002/login'
-  restApiCourse = 'http://104.196.19.248:5003/course'
-  restApiJoinCourse = 'http://104.196.19.248:5003/joincourse'
-  restApiMarkingResult = 'http://104.196.19.248:5003/marking'
-  restApiLesson = 'http://104.196.19.248:5003/lesson'
-  restApiRanking = 'http://104.196.19.248:5003/ranking'
+  restApiQuestion = 'http://35.247.168.241:5001/question'
+  restApiAssessment = 'http://35.247.168.241:5001/assessment'
+  restApiChoice = 'http://35.247.168.241:5001/choice'
+  restApiShowFeedback = 'http://35.247.168.241:5001/showfeedback'
+  restApiRegister = 'http://35.247.168.241:5002/register'
+  restApiLogin = 'http://35.247.168.241:5002/login'
+  restApiCourse = 'http://35.247.168.241:5003/course'
+  restApiJoinCourse = 'http://35.247.168.241:5003/joincourse'
+  restApiMarkingResult = 'http://35.247.168.241:5003/marking'
+  restApiLesson = 'http://35.247.168.241:5003/lesson'
+  restApiRanking = 'http://35.247.168.241:5003/ranking'
   constructor(public http: HttpClient) {
     console.log('Hello TestapiProvider Provider');
   }

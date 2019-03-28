@@ -8,6 +8,7 @@ import { PasswordProvider } from '../../providers/password/password';
 //REST
 import { from } from 'rxjs/observable/from'
 import { TestapiProvider } from '../../providers/testapi/testapi';
+import { SmartAudioProvider } from '../../providers/smart-audio/smart-audio';
 
 
 /**
@@ -26,7 +27,7 @@ import { TestapiProvider } from '../../providers/testapi/testapi';
 })
 export class RegisterPage {
 
-  
+
   @ViewChild('signupSlider') signupSlider: any;
 
   slideOneForm: FormGroup;
@@ -39,7 +40,8 @@ export class RegisterPage {
   lastname: string;
   password: string;
 
-  constructor(public navCtrl: NavController, public formBuilder: FormBuilder,public testapiProvider: TestapiProvider) {
+  constructor(public navCtrl: NavController, public formBuilder: FormBuilder,
+    public testapiProvider: TestapiProvider, public smartAudio: SmartAudioProvider) {
 
 
 
@@ -51,36 +53,32 @@ export class RegisterPage {
 
     });
     this.PasswordForm = formBuilder.group({
-      password: ['',Validators.compose([Validators.minLength(6),Validators.required])],
-      confirmPassword: ['',Validators.compose([Validators.minLength(6),Validators.required])]
-      
-    },{
-      validator: PasswordProvider.MatchPassword //Pwd validation
-    });
+      password: ['', Validators.compose([Validators.minLength(6), Validators.required])],
+      confirmPassword: ['', Validators.compose([Validators.minLength(6), Validators.required])]
+
+    }, {
+        validator: PasswordProvider.MatchPassword //Pwd validation
+      });
   }
 
-  register()
-  {
+  register() {
     console.log(this.firstname);
     console.log(this.lastname);
     console.log(this.username);
     console.log(this.password);
-    this.SendRegister = from(this.testapiProvider.PostRegister(this.firstname,this.lastname,this.username,this.password))
-    this.SendRegister.subscribe(val =>{
+    this.SendRegister = from(this.testapiProvider.PostRegister(this.firstname, this.lastname, this.username, this.password))
+    this.SendRegister.subscribe(val => {
       console.log(val)
     })
-    this.navCtrl.push(LoginPage)
+    this.navCtrl.push(LoginPage, { animate: true, animation: 'transition', direction: 'back', duration: 300 })
+  }
+
+  clickSound() {
+    this.smartAudio.play('clickSound');
   }
 
 
-  
 
-  save(){
-
-    this.submitAttempt = true;
-    this.navCtrl.push(LoginPage)
-
-}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');

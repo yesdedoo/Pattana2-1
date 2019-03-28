@@ -34,6 +34,7 @@
     "angular-svg-round-progressbar": "^2.0.0",
     "cordova-android": "7.1.4",
     "cordova-android-support-gradle-release": "^2.0.1",
+    "cordova-browser": "5.0.4",
     "cordova-plugin-android-permissions": "1.0.0",
     "cordova-plugin-app-event": "^1.2.1",
     "cordova-plugin-device": "^2.0.2",
@@ -52,7 +53,8 @@
     "phonegap-plugin-local-notification": "^1.0.1",
     "rxjs": "5.5.11",
     "sw-toolbox": "3.6.0",
-    "zone.js": "0.8.29"
+    "zone.js": "0.8.29",
+    "de.appplant.cordova.plugin.local-notification": "https://github.com/katzer/cordova-plugin-local-notifications\\#0.8"
   },
   "devDependencies": {
     "@ionic/app-scripts": "3.2.1",
@@ -79,7 +81,8 @@
       "cordova-plugin-nativeaudio": {}
     },
     "platforms": [
-      "android"
+      "android",
+      "browser"
     ]
   }
 }

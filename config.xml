@@ -89,6 +89,7 @@
     <plugin name="de.appplant.cordova.plugin.local-notification" spec="https://github.com/katzer/cordova-plugin-local-notifications\#0.8" />
     <plugin name="phonegap-plugin-local-notification" spec="^1.0.1" />
     <plugin name="cordova-plugin-android-permissions" spec="1.0.0" />
-    <engine name="android" spec="7.1.4" />
     <plugin name="cordova-plugin-nativeaudio" spec="3.0.9" />
+    <engine name="android" spec="7.1.4" />
+    <engine name="browser" spec="5.0.4" />
 </widget>

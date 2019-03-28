@@ -27,9 +27,9 @@ export class RankPage {
   ShowScore: any;
   NOOfQues: any;
 
-  ParseSC:number;
-  DecimalSC:any;
-
+  ParseSC: number;
+  DecimalSC: any;
+  loading:any;
   Today: any;
 
   //REST variables
@@ -37,30 +37,39 @@ export class RankPage {
   RankStu_ID: any;
   RankName: any = [];
   RankScore: any = [];
-  OwnRank:any;
-  OwnName:any;
-  OwnScore:any;
+  OwnRank: any;
+  OwnName: any;
+  OwnScore: any;
 
   RankSlot = [0, 1, 2, 3, 4];
 
   //Storage variable
   TodayStorage: any;
   Ass_IDStorage: any;
-  Stu_IDStorage:any;
+  Stu_IDStorage: any;
 
   constructor(public alertCtrl: AlertController, private navCtrl: NavController, public navParams: NavParams,
-    public testapiProvider: TestapiProvider, public storage: Storage,public loadingCtrl:LoadingController) {
+    public testapiProvider: TestapiProvider, public storage: Storage, public loadingCtrl: LoadingController) {
 
     this.ScoreCount = navParams.get('scorecount');
     this.NOOfQues = navParams.get('quesNO');
     this.ShowScore = navParams.get('showscore');
     this.ParseSC = parseFloat(this.ShowScore);
     this.DecimalSC = this.ParseSC.toFixed(2);
-    
-    
-   
     this.Today = navParams.get('today');
-    
+    this.loading = this.loadingCtrl.create({
+      content: 'Please wait...',
+      spinner:'hide'
+    });
+
+
+  }
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad RankPage');
+
+    //this.GetRanking();
+
     this.storage.ready().then(() => this.storage.get('stuid')
       .then(res => {
         console.log('stuid got:', res);
@@ -77,32 +86,23 @@ export class RankPage {
       .then(res => {
         console.log('assid got:', res);
         this.Ass_IDStorage = res;
-        this.GetRanking();
+        //this.GetRanking();
       }).then(() => console.log("Assstorage: ", this.Ass_IDStorage))
     );
-
-
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad RankPage');
-    
-    //this.GetRanking();
-    let loading = this.loadingCtrl.create({
-      content: 'Please wait...'
-    });
-      loading.present();
+         
+    this.loading.present();
     setTimeout(() => {
-      loading.dismiss()
-  
-    }, 3000);
+      this.GetRanking();
+      this.loading.dismiss();
 
-    
+    }, 1000);
+
+
   }
 
   GetRanking() {
     console.log(this.Ass_IDStorage);
-    this.SendRankingRequest = from(this.testapiProvider.GetRanking(this.Today, this.Ass_IDStorage,this.Stu_IDStorage))
+    this.SendRankingRequest = from(this.testapiProvider.GetRanking(this.Today, this.Ass_IDStorage, this.Stu_IDStorage))
     this.SendRankingRequest.subscribe(val => {
       console.log(val)
       this.RankStu_ID = val["Stu_ID"]
@@ -112,9 +112,9 @@ export class RankPage {
       this.OwnName = val["OwnName"]
       this.OwnScore = val["OwnScore"]
 
-      console.log("REST Rank",this.RankStu_ID, this.RankName, this.RankScore)
-      console.log("REST Ownrank",this.OwnRank,this.OwnName,this.OwnScore)
-      
+      console.log("REST Rank", this.RankStu_ID, this.RankName, this.RankScore)
+      //console.log("REST Ownrank", this.OwnRank, this.OwnName, this.OwnScore)
+
 
     })
 
@@ -127,9 +127,6 @@ export class RankPage {
   }
 
 
-  ToPageCard() {
-    this.navCtrl.push(CardPage)
-  }
 
 
 }

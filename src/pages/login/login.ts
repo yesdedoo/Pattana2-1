@@ -13,7 +13,7 @@ import { TestapiProvider } from '../../providers/testapi/testapi';
 
 import { LocalNotifications } from '@ionic-native/local-notifications';
 import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
-import { NativeAudio } from '@ionic-native/native-audio/ngx';
+import { SmartAudioProvider } from '../../providers/smart-audio/smart-audio';
 
 
 /**
@@ -48,17 +48,13 @@ export class LoginPage {
   cordova:any;
   submitAttempt: boolean = false;
 
-  constructor(public navCtrl: NavController, public formBuilder: FormBuilder,public localNotification:LocalNotifications,
-     public testapiProvider: TestapiProvider,public storage:Storage,public toastCtrl:ToastController, public androidPermission:AndroidPermissions,
-     public platform:Platform, public nativeAudio:NativeAudio) {
-    
-    /*this.nativeAudio.preloadSimple('clickSound','assets/sound/Click.mp3').then(() => {     
-        console.log("Success preloading");
-    });*/
+  constructor(public navCtrl: NavController, public formBuilder: FormBuilder, public localNotification: LocalNotifications,
+    public testapiProvider: TestapiProvider, public storage: Storage, public toastCtrl: ToastController, public androidPermission: AndroidPermissions,
+    public platform: Platform, public smartAudio:SmartAudioProvider) {
 
 
     //var permissions = cordova.plugins.Permissions
-    this.PermText="AndroidPermission: ";
+    this.PermText = "AndroidPermission: ";
     this.slideOneForm = formBuilder.group({
       userName: ['', Validators.compose([Validators.required, Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')]), UsernameValidator.checkUsername],
       firstName: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
@@ -66,24 +62,23 @@ export class LoginPage {
       password: [''],
       age: ['']
     });
-    
+
   }
   
 
-  registcomplete() {
-    this.navCtrl.push(LoginPage)
-  }
+  /*registcomplete() {
+    this.navCtrl.push(LoginPage,{animate:true,direction:'transitions'})
+  }*/
 
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad Login2Page');
     this.storage.clear();
-    /*this.platform.ready().then(()=>{
-      this.nativeAudio.preloadSimple('clickSound','assets/sound/Click.mp3')    
-    });*/
-    	
-    
-    
+    	      
+  }
+
+  clickSound(){
+    this.smartAudio.play('clickSound');
   }
 
 
@@ -126,7 +121,7 @@ export class LoginPage {
         if(val["exist"]==true){
           //Need to think about the page that should send data to
           this.storage.set('stuid', this.Stu_ID);
-          this.navCtrl.setRoot(TabsPage,{"tempStu_ID":this.Stu_ID.valueOf()})
+          this.navCtrl.setRoot(TabsPage,{"tempStu_ID":this.Stu_ID.valueOf()},{animate:true,animation:'transition',direction:'forward',duration:500})
         }
         else
         {
@@ -157,7 +152,7 @@ export class LoginPage {
 
  
   register() {
-    this.navCtrl.push(RegisterPage)
+    this.navCtrl.push(RegisterPage,{animate:true,animation:'transition',direction:'forward',duration:300})
   }
 
 }

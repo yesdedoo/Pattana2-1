@@ -131,32 +131,13 @@ export class SmartAudioProvider {
 
     } else {
 
-      this.nativeAudio.stop(key).then((res) => {
+      this.nativeAudio.stop(audio.asset).then((res) => {
         console.log(res);
-        
+                
       }, (err) => {
         console.log(err);
       })
     }
   }
-  unload(key) {
-    let audio = this.sounds.find((sound) => {
-      return sound.key === key;
-    });
-
-    if (audio.type === 'html5') {
-
-      let audioAsset = new Audio(audio.asset);
-      audioAsset.pause();
-
-    } else {
-
-      this.nativeAudio.unload(key).then((res) => {
-        console.log(res);
-        
-      }, (err) => {
-        console.log(err);
-      })
-    }
-  }
+  
 }

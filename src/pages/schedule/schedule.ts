@@ -5,6 +5,8 @@ import { CalendarComponentOptions } from 'ion2-calendar';
 //REST
 import { from } from 'rxjs/observable/from'
 import { TestapiProvider } from '../../providers/testapi/testapi';
+import { Storage } from '@ionic/storage';
+import { LessonfeedlistsPage } from '../lessonfeedlists/lessonfeedlists';
 
 
 /**
@@ -29,29 +31,30 @@ export class SchedulePage {
     monthPickerFormat: ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC']
   };
 
-  posInterject = ["Oh!", "Ouch!", "Alas!"];
-  negInterject = ["Congratulation!", "Wowww!", "Yahoo!"];
-  alert = ["You have problems to remeber knowledge of ",
-    "You should focus more about the topics "];
-  caution = ["You just forgot some details about ",
-    "You should review in the topic "];
-  compliment = ["You have improved about ",
-    "You got improvement of understanding "];
-  motivatedAd = ["Let’s try to against it next time", "Push yourself"];
-  praisedAd = ["Well done!", "Keep up the good work"];
-  
-  
+
   fb: any;
 
   //REST Variable
-  SendFBRequest:any;
-  FBId:any=[];
-  FBName:any=[];
-  FBDate:any=[];
-  
+  SendFBRequest: any;
+  FBId: any = [];
+  FBName: any = [];
+  FBDate: any = [];
+  CourseInfo: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController,public testapiProvider:TestapiProvider) {
+  //Display Course
+  Course = [];
+  Course_ID: any;
+  Course_Code: any;
+  Course_Name: any;
+  Course_Exist: boolean
 
+  //Storage Variable
+  Stu_IDStorage: any;
+
+
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController,
+    public testapiProvider: TestapiProvider,public storage:Storage) {
 
 
 
@@ -59,68 +62,57 @@ export class SchedulePage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SchedulePage');
-    this.ShowFeedback();
+    this.storage.ready().then(() => this.storage.get('stuid')
+      .then(res => {
+        console.log('stuid got:', res);
+        this.Stu_IDStorage = res[0];
+        this.ShowCourse();
+
+      }).then(() => console.log("Stuidstorage: ", this.Stu_IDStorage))
+
+
+    );
+
+
 
   }
+  ShowCourse() {
+    this.CourseInfo = from(this.testapiProvider.GetCourse(this.Stu_IDStorage));
+    this.CourseInfo.subscribe(val => {
 
-  ShowFeedback(){
+      console.log(val)
+      this.Course_ID = val["Course_ID"]
+      this.Course_Code = val["Course_Code"]
+      this.Course_Name = val["Course_Name"]
+      this.Course_Exist = val["Exist"]
+      console.log(this.Course_Code, this.Course_ID, this.Course_Name)
+
+      var conditionLength = this.Course_ID.length
+      for (var j = 0; j < conditionLength; j++) {
+        let temp: string
+        temp = "Course : " + this.Course_Code[j] + " " + this.Course_Name[j]
+        this.Course.push(temp)
+        console.log(this.Course[j])
+
+      }
+      console.log(this.Course)
+    })
+  }
+  /*
+  ShowFeedback() {
     this.SendFBRequest = from(this.testapiProvider.GetFeedback())
-    this.SendFBRequest.subscribe(val=>{
+    this.SendFBRequest.subscribe(val => {
       this.FBId = val["FBId"]
       this.FBName = val["FBName"]
       this.FBDate = val["FBDate"]
 
-      setTimeout(() => {
-        console.log("FB",this.FBId,this.FBName,this.FBDate)  
-      }, 2000);
-      
+
+      console.log("FB", this.FBId, this.FBName, this.FBDate)
+
+
     })
-  }
+  }*/
 
-  returnFeedback() {
-    var feedback = []
-    var feedN = 0;
-
-    var forgotenQ = [], improvedLess = [], dropedLess = [], dangerLess = [];
-    var forgotN = 0, imLessN = 0, drLessN = 0, dangLessN = 0;
-
-    var LessN = 0;
-  }
-
-  RandPosInt() {
-    let posInterjectLen = this.posInterject.length
-    return this.posInterject[Math.floor(Math.random() * posInterjectLen)]
-  }
-  RandNegInt() {
-    let negInterjectLen = this.negInterject.length
-    return this.negInterject[Math.floor(Math.random() * negInterjectLen)]
-
-  }
-  RandAlert() {
-    let alertLen = this.alert.length
-    return this.alert[Math.floor(Math.random() * alertLen)]
-
-  }
-  RandCaution() {
-    let cautionLen = this.caution.length
-    return this.caution[Math.floor(Math.random() * cautionLen)]
-
-  }
-  RandCompliment() {
-    let complimentLen = this.compliment.length
-    return this.compliment[Math.floor(Math.random() * complimentLen)]
-
-  }
-  RandMotivatedAd() {
-    let motivatedAdLen = this.motivatedAd.length
-    return this.motivatedAd[Math.floor(Math.random() * motivatedAdLen)]
-
-  }
-  RandPraisedAd() {
-    let praisedAdLen = this.praisedAd.length
-    return this.praisedAd[Math.floor(Math.random() * praisedAdLen)]
-
-  }
   AlertFeedback() {
     let CID: any;
     if (this.fb) {
@@ -148,6 +140,13 @@ export class SchedulePage {
     });
     this.fb.present();
 
+  }
+
+  ShowLessonFeedList(index)
+  {
+    console.log(index)
+    var CourseID = this.Course_ID[index]  
+    this.navCtrl.push(LessonfeedlistsPage,{'courseid':CourseID,'coursename':this.Course_Name[index],'stuid':this.Stu_IDStorage});
   }
 
 }

@@ -45,6 +45,9 @@ export class ResulthistpercPage {
   //Get pushed data from ResultofCourse page
   Stu_ID:any;
   Course_ID:any
+  Course_Name:any;
+
+  
 
   //Rest variable
   SendLessonRequest:any;
@@ -57,6 +60,7 @@ export class ResulthistpercPage {
   
    this.course=["Data Modeling","Database Concept","Database Design","Database Management"]
    this.Course_ID = navParams.get('courseid')
+   this.Course_Name = navParams.get('coursename')
    this.Stu_ID = navParams.get('stuid')
    console.log(this.Course_ID,this.Stu_ID)
   }
@@ -65,6 +69,7 @@ export class ResulthistpercPage {
     console.log('ionViewDidLoad ResulthistpercPage');
     this.GetLesson();  
 
+    
     
   }
 

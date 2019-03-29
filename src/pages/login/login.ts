@@ -52,7 +52,6 @@ export class LoginPage {
     public testapiProvider: TestapiProvider, public storage: Storage, public toastCtrl: ToastController, public androidPermission: AndroidPermissions,
     public platform: Platform, public smartAudio:SmartAudioProvider) {
 
-
     //var permissions = cordova.plugins.Permissions
     this.PermText = "AndroidPermission: ";
     this.slideOneForm = formBuilder.group({
@@ -74,7 +73,7 @@ export class LoginPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad Login2Page');
     this.storage.clear();
-    	      
+    
   }
 
   clickSound(){

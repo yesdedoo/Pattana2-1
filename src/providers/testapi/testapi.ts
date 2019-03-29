@@ -14,17 +14,26 @@ export class TestapiProvider {
   check:any
 
   //Which IP and what is it purpose
+  //Port 5001
   restApiQuestion = 'http://35.247.168.241:5001/question'
   restApiAssessment = 'http://35.247.168.241:5001/assessment'
   restApiChoice = 'http://35.247.168.241:5001/choice'
-  restApiShowFeedback = 'http://35.247.168.241:5001/showfeedback'
+  //Port 5002
   restApiRegister = 'http://35.247.168.241:5002/register'
   restApiLogin = 'http://35.247.168.241:5002/login'
+  //Port 5003
   restApiCourse = 'http://35.247.168.241:5003/course'
   restApiJoinCourse = 'http://35.247.168.241:5003/joincourse'
-  restApiMarkingResult = 'http://35.247.168.241:5003/marking'
   restApiLesson = 'http://35.247.168.241:5003/lesson'
   restApiRanking = 'http://35.247.168.241:5003/ranking'
+  //Port 5004
+  restApiShowFeedback = 'http://35.247.168.241:5004/showfeedback'
+  restApiLessonFeed = 'http://35.247.168.241:5004/lessonFeed' 
+  restApiMarkingResult = 'http://35.247.168.241:5004/marking'
+
+  ///////////////////////////
+
+
   constructor(public http: HttpClient) {
     console.log('Hello TestapiProvider Provider');
   }
@@ -183,11 +192,11 @@ export class TestapiProvider {
 
   }
 
-  GetLesson(Course_ID,Stu_ID){
-    var data = { lessonData: { courseid: Course_ID,stuid:Stu_ID} }
+  GetLessonFeed(DATE,Course_ID,Stu_ID){ //////////////////////////////////////////////
+    var data = { lessonData: { date:DATE,courseid: Course_ID,stuid:Stu_ID} }
     //To check the existing account
     return new Promise(resolve => {
-      fetch(this.restApiLesson, {
+      fetch(this.restApiLessonFeed, {
         method: 'POST',
         body: JSON.stringify(data),
         headers: {
@@ -255,6 +264,25 @@ export class TestapiProvider {
           .catch(err => console.log(err))
     });
 
+
+  }
+  GetLesson(Course_ID,Stu_ID){
+    var data = { lessonData: { courseid: Course_ID,stuid:Stu_ID} }
+    //To check the existing account
+    return new Promise(resolve => {
+      fetch(this.restApiLesson, {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+          .then(r=>{
+            this.data = r.json()
+            resolve(this.data)
+          })
+          .catch(err => console.log(err))
+    });
 
   }
 

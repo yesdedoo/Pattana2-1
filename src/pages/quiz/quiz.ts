@@ -148,7 +148,7 @@ export class QuizPage {
   finishquiz() {
     clearInterval(this.Timer)
     this.smartAudio.stop('bg7Sound');
-    this.smartAudio.unload('bg7Sound');
+   
     this.navCtrl.push(RankPage, { scorecount: this.ScoreCount, quesNO: this.Ques_ID.length, showscore: this.ShowScore, today: this.Today });
    
   }
@@ -227,7 +227,7 @@ export class QuizPage {
       console.log("Merged choice", this.ArrChoice)
 
       this.loading.dismiss();
-    }, 1000);
+    }, 2000);
 
 
   }

@@ -29,6 +29,8 @@ import { LocalNotifications } from '@ionic-native/local-notifications';
 import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
 import { NativeAudio } from '@ionic-native/native-audio/ngx';
 import { SmartAudioProvider } from '../providers/smart-audio/smart-audio';
+import { LessonfeedlistsPage } from '../pages/lessonfeedlists/lessonfeedlists';
+import { ShowlessonfeedPage } from '../pages/showlessonfeed/showlessonfeed';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,9 @@ import { SmartAudioProvider } from '../providers/smart-audio/smart-audio';
     ResulthistpercPage,
     QuizPage,
     RankPage,
-    CardPage
+    CardPage,
+    LessonfeedlistsPage,
+    ShowlessonfeedPage
     
   ],
   imports: [
@@ -69,7 +73,10 @@ import { SmartAudioProvider } from '../providers/smart-audio/smart-audio';
     ResulthistpercPage,
     QuizPage,
     RankPage,
-    CardPage
+    CardPage,
+    LessonfeedlistsPage,
+    ShowlessonfeedPage
+
     
   ],
   providers: [

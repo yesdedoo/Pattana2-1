@@ -11,12 +11,19 @@
     Feedback
   </div>
   <br>
-  <ion-card class="card" *ngFor="let element of FBId; let i = index"> 
-    <ion-title>
-      <h1>{{FBName[i]}}</h1>
-    </ion-title>
-    
-
+  <ion-card class="card">
+    <ion-card-header>
+     
+    </ion-card-header>
+   
+    <ion-list>
+      <button *ngFor="let element of Course; let i = index" ion-item (click)='ShowLessonFeedList(i)'>
+        <ion-icon name="ios-arrow-dropright" item-start></ion-icon>
+        {{element}}
+      </button>
+     
+  
+    </ion-list>
   </ion-card>
 
   <!--<ion-calendar [(ngModel)]="dateMulti"

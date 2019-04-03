@@ -1,88 +1,90 @@
 page-lessonfeedlists {
-    ion-content  {
-        background-size: cover;
-        position: relative;
-        text-align: center;
-    }
+  ion-content {
+    background-size: cover;
+    position: relative;
+    text-align: center;
+  }
 
-    ion-header{
-        margin-bottom: 100px;
-        border-bottom: 0px;
-    }
+  ion-header {
+    margin-bottom: 100px;
+    border-bottom: 0px;
+  }
 
-    .storage{
-        margin-top: 10px;
-        text-align: center;
-        margin-bottom: 18px;
-        font-size: 20px;
-        width: 100%;
-        color: #ffffff;
-    }
+  .storage {
+    margin-top: 10px;
+    text-align: center;
+    margin-bottom: 18px;
+    font-size: 20px;
+    width: 100%;
+    color: #ffffff;
+  }
 
-    .progress-warpper{
-        margin: 20px auto;
-        font-size: 20px;
-        position: relative  !important;
-        text-align: center !important;
-        z-index: -1;
-    }
+  .progress-warpper {
+    margin: 20px auto;
+    font-size: 20px;
+    position: relative !important;
+    text-align: center !important;
+    z-index: -1;
+  }
 
-    .current{
-        position: absolute;
-        font-weight: 100;
-        //position: relative  !important;
-        text-align: center  !important;
-        top: 50%;
-        width: 100%;
-    }
+  .current {
+    position: absolute;
+    font-weight: 100;
+    //position: relative  !important;
+    text-align: center !important;
+    top: 50%;
+    width: 100%;
+  }
 
-    h1{
-        font-size: 20px;
-        color:  #666666;
-        position: relative;
-        text-align: left;
-    }
+  h1 {
+    font-size: 20px;
+    color: #666666;
+    position: relative;
+    text-align: left;
+  }
 
-    h3{
-        font-size: 20px;
-        color:  #666666;
-        position: relative;
-        text-align: center;
-       
-    }
-    .lesson{
-        position: relative;
-        text-align: center;
-    
-        border-top-right-radius: 10px !important;
-        border-top-left-radius: 10px !important;
-        border-bottom-right-radius: 10px !important;
-        border-bottom-left-radius: 10px !important;
+  h3 {
+    font-size: 20px;
+    color: #666666;
+    position: relative;
+    text-align: center;
 
-        -webkit-box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.103);
-        box-shadow: 0 10px 30px 0  rgba(0, 0, 0, 0.103);
-      
-    }
-    round-progress{
-        margin-left: auto;
-        margin-right: auto;
-        position: relative;
-        z-index: 10;
-    }
+  }
 
-    .NoneButt{
-        background-color: rgb(255, 255, 255);
-    }
-    
-   .DangerButt{
-       background-color: rgb(255, 92, 92);
-   }
+  .lesson {
+    position: relative;
+    text-align: center;
 
-   .RemindrButt{
-        background-color: rgb(243, 177, 115);
-    }
+    border-top-right-radius: 10px !important;
+    border-top-left-radius: 10px !important;
+    border-bottom-right-radius: 10px !important;
+    border-bottom-left-radius: 10px !important;
 
-    .ImproveButt{
-        background-color: rgb(126, 243, 115);
-    }
+    -webkit-box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.103);
+    box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.103);
+
+  }
+
+  round-progress {
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    z-index: 10;
+  }
+
+  .NoneButt {
+    background-color: rgb(255, 255, 255);
+  }
+
+  .DangerButt {
+    background-color: rgb(255, 92, 92);
+  }
+
+  .RemindrButt {
+    background-color: rgb(243, 177, 115);
+  }
+
+  .ImproveButt {
+    background-color: rgb(126, 243, 115);
+  }
 }

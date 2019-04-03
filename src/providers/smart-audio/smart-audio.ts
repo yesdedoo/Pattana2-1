@@ -133,7 +133,11 @@ export class SmartAudioProvider {
       let audioAsset = new Audio(audio.asset);
       audioAsset.pause();
 
-      this.nativeAudio.stop(audio.asset)
+      this.nativeAudio.stop(audio.asset).then((res) => {
+        console.log(res);
+      }, (err) => {
+        console.log(err);
+      });
     }
   }
   

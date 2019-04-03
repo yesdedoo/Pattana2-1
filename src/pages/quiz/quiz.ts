@@ -107,6 +107,7 @@ export class QuizPage {
     
     this.GetQuestion();
     setTimeout(() => {
+      this.loading.present();
       this.GetChoice();
       this.GetButtonID();
       this.StartTimer();
@@ -154,7 +155,7 @@ export class QuizPage {
 
   GetChoice() {
 
-    this.loading.present();
+    
     var conditionLength = this.Ques_ID.length
     var tempCID = [], tempCNAME = [], tempCCRR = [], tempCQID = [], tempChoice = []
 
@@ -203,10 +204,13 @@ export class QuizPage {
         }
 
       }
-      console.log("Merged choice", this.ArrChoice)
+      setTimeout(() => {
+        console.log("Merged choice", this.ArrChoice)
+        this.loading.dismiss();
 
-      this.loading.dismiss();
-    }, 2000);
+      }, 1000);
+
+    }, 1000);
 
 
   }

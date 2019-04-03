@@ -9,7 +9,7 @@ import { TestapiProvider } from '../../providers/testapi/testapi';
 import { Storage } from '@ionic/storage';
 import { LoginPage } from '../login/login';
 import { SmartAudioProvider } from '../../providers/smart-audio/smart-audio';
-
+import { LocalNotifications } from '@ionic-native/local-notifications';
 
 
 @Component({
@@ -64,16 +64,14 @@ export class HomePage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public testapiProvider: TestapiProvider, public smartAudio: SmartAudioProvider,
-    public storage: Storage, public loadingCtrl: LoadingController) {
+    public storage: Storage, public loadingCtrl: LoadingController, public localnotification: LocalNotifications) {
 
     //this.tabBarElement = document.querySelector('.tabbar#show-tabbar')
     //this.tabBarElement = document.querySelector('.tabs')
     //this.tabBarElement = document.querySelector("ion-tabbar")
     //this.tabBarElement = document.getElementsByClassName('tabs').item(1);
 
-
-    //trigger:{ at: new Date(new Date().getTime() +this.countResult)      }
-    //Date is the time that notify}*/
+   
 
     this.loading = loadingCtrl.create({
       content: 'Please wait...',
@@ -96,7 +94,7 @@ export class HomePage {
       this.SStu_ID = val[0]
       this.GetDate();
       this.CheckAssessment();
-      
+
 
     });
 
@@ -170,8 +168,12 @@ export class HomePage {
 
   //Create Notification
   Notification() {
-
-
+    this.localnotification.schedule({
+      id: 1,
+      text: 'Single ILocalNotification'
+      //data: { secret: key }
+    });
+    
   }
 
   //Countdown timer
@@ -200,7 +202,10 @@ export class HomePage {
     this.remainingTime = this.timeInSeconds
 
     this.displayTime = this.getSecondsAsDigitalClock(this.remainingTime)
+    
   }
+
+  
   startTimer() {
     this.runTimer = true;
     this.hasStarted = true;
@@ -243,8 +248,8 @@ export class HomePage {
   //End of countdown timer
 
   readytoquiz() {
-    this.navCtrl.setRoot(QuizPage, { "Stu_ID": this.Stu_ID, "Today": this.Today }, { animate: true, direction: 'forward' });
     this.Notification();
+    this.navCtrl.setRoot(QuizPage, { "Stu_ID": this.Stu_ID, "Today": this.Today }, { animate: true, direction: 'forward' });
 
   }
 

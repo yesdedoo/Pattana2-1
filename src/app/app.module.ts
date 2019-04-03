@@ -32,6 +32,7 @@ import { SmartAudioProvider } from '../providers/smart-audio/smart-audio';
 import { LessonfeedlistsPage } from '../pages/lessonfeedlists/lessonfeedlists';
 import { ShowlessonfeedPage } from '../pages/showlessonfeed/showlessonfeed';
 
+
 @NgModule({
   declarations: [
     MyApp,
@@ -89,7 +90,8 @@ import { ShowlessonfeedPage } from '../pages/showlessonfeed/showlessonfeed';
     LocalNotifications,
     AndroidPermissions,
     NativeAudio,
-    SmartAudioProvider
+    SmartAudioProvider,
+    
     
    
     

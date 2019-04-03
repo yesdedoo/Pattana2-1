@@ -78,8 +78,8 @@ export class QuizPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public testapiProvider: TestapiProvider,
     public loadingCtrl: LoadingController, public storage: Storage, public smartAudio: SmartAudioProvider) {
 
+    //var Yanap = window.cordova
     this.ScoreCount = 0;
-
     this.Stu_ID = navParams.get('Stu_ID')
     this.SentStu_ID = this.Stu_ID[0]
     this.loading = loadingCtrl.create({
@@ -110,45 +110,24 @@ export class QuizPage {
       this.GetChoice();
       this.GetButtonID();
       this.StartTimer();
-      this.smartAudio.loop('bg7Sound');
+      this.smartAudio.play('bg7Sound');
     }, 1000);
+
+  }
+  ionViewWillLeave(){
+    this.smartAudio.stop('bg7Sound');
 
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad QuizPage');
-
-
-    /*
-    this.GetQuestion()
-    setTimeout(() => {
-    this.GetChoice() 
-    setTimeout(() => {
-      this.GetButtonID()
-
-      }, 5000);
-    }, 5000);  
-
-    
-    
-    let loading = this.loadingCtrl.create({
-      content: 'Please wait...'
-    });
-      loading.present();
-    setTimeout(() => {
-      loading.dismiss()
-      this.StartTimer();
-  
-    }, 7500);*/
-
+    this.slides.lockSwipes(true);
 
   }
 
 
   finishquiz() {
     clearInterval(this.Timer)
-    this.smartAudio.stop('bg7Sound');
-   
     this.navCtrl.push(RankPage, { scorecount: this.ScoreCount, quesNO: this.Ques_ID.length, showscore: this.ShowScore, today: this.Today });
    
   }
@@ -431,7 +410,11 @@ export class QuizPage {
   }
 
   GotoNextSlide() {
-    this.slides.slideNext();
+    setTimeout(() => {
+      this.slides.lockSwipes(false);
+      this.slides.slideNext();
+      this.slides.lockSwipes(true);
+    }, 1000);
   }
 
   clickSound(){

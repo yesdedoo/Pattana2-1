@@ -11,6 +11,17 @@ page-login {
         border-bottom-color: transparent !important;
         box-shadow: none !important;
     }
+    .logoimg{
+        position: relative;
+        height: auto !important;
+	    width: auto !important;
+        text-align: center;
+        
+    }
+    .sizeimg{
+        height: 100px;
+        width: 100px;
+    }
     	
     form {
       border-bottom-color: transparent !important;
@@ -82,7 +93,7 @@ page-login {
        
         font-size: 10px;
        
-        color: #ffffff;
+        color: #f78710;
    }
 
    img{
@@ -143,12 +154,15 @@ page-login {
         transition: all 0.3s ease-in-out;
         width: 40%;
         height: 45px;
-        color: #1a62ce;
+        color: #f78710;
 
         border-top-right-radius: 20px !important;
         border-top-left-radius: 20px !important;
         border-bottom-right-radius: 20px !important;
         border-bottom-left-radius: 20px !important;
+
+        -webkit-box-shadow: 0 0px 30px 0 rgba(0, 0, 0, 0.123);
+        box-shadow: 0 0px 30px 0  rgba(0, 0, 0, 0.185);
         
     }
     

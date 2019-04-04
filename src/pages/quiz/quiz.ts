@@ -214,14 +214,7 @@ export class QuizPage {
 
 
   }
-  async GetDataFlow() {
-    let funcques = await this.GetQuestion();
-    let funcchoice = await this.GetChoice();
-    let funcbuttonid = await this.GetButtonID();
-    let setreturn = await console.log("Flow success")
-
-    return setreturn
-  }
+ 
 
   GetButtonID() {
 

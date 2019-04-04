@@ -61,6 +61,7 @@ export class HomePage {
   countResult: number;
 
   loading: any;
+  SendLogLogout:any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public testapiProvider: TestapiProvider, public smartAudio: SmartAudioProvider,
@@ -254,6 +255,7 @@ export class HomePage {
   }
 
   Logout() {
+    this.SendLogLogout = from(this.testapiProvider.PushLogLogout(this.SStu_ID))
     this.navCtrl.setRoot(LoginPage, { animate: true, animation: 'transition', direction: 'back', duration: 500 })
   }
 

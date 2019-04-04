@@ -21,6 +21,7 @@ export class TestapiProvider {
   //Port 5002
   restApiRegister = 'http://35.247.168.241:5002/register'
   restApiLogin = 'http://35.247.168.241:5002/login'
+  restApiLogout = 'http://35.247.168.241:5002/logout'
   //Port 5003
   restApiCourse = 'http://35.247.168.241:5003/course'
   restApiJoinCourse = 'http://35.247.168.241:5003/joincourse'
@@ -172,6 +173,19 @@ export class TestapiProvider {
     });
 
   }
+  PushLogLogout(Stu_ID){
+    var data = {logoutData : {stuid:Stu_ID}}
+    return new Promise(resolve =>{
+      fetch(this.restApiLogout,{
+        method:'POST',
+        body:JSON.stringify(data),
+        headers:{
+          'Content-Type': 'application/json'
+        }
+      })
+    });
+  }
+
   GetCourse(Stu_ID){
     var data = { stu_IDData: { stu_id: Stu_ID} }
     //To check the existing account
@@ -285,6 +299,7 @@ export class TestapiProvider {
     });
 
   }
+
 
 
 }

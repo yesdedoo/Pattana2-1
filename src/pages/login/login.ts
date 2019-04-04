@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { NavController, ToastController, AlertController,Platform } from 'ionic-angular';
+import { NavController, ToastController, AlertController, Platform } from 'ionic-angular';
 import { UsernameValidator } from '../../providers/username/username';
 import { Storage } from '@ionic/storage';
 
@@ -41,16 +41,17 @@ export class LoginPage {
   password: string;
   Stu_ID: any;
 
-  FailToast:any;
-  EmptyToast:any;
-  PermText:any;
- 
-  cordova:any;
+  FailToast: any;
+  EmptyToast: any;
+  PermText: any;
+
   submitAttempt: boolean = false;
+
+  requestSendEmail : any;
 
   constructor(public navCtrl: NavController, public formBuilder: FormBuilder, public localNotification: LocalNotifications,
     public testapiProvider: TestapiProvider, public storage: Storage, public toastCtrl: ToastController, public androidPermission: AndroidPermissions,
-    public platform: Platform, public smartAudio:SmartAudioProvider) {
+    public platform: Platform, public smartAudio: SmartAudioProvider) {
 
     //var permissions = cordova.plugins.Permissions
     this.PermText = "AndroidPermission: ";
@@ -63,7 +64,7 @@ export class LoginPage {
     });
 
   }
-  
+
 
   /*registcomplete() {
     this.navCtrl.push(LoginPage,{animate:true,direction:'transitions'})
@@ -73,85 +74,82 @@ export class LoginPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad Login2Page');
     this.storage.clear();
-    
+
   }
 
-  clickSound(){
+  clickSound() {
     this.smartAudio.play('clickSound');
   }
 
 
-  ShowNoti(){
-  
+  ShowNoti() {
+
     this.localNotification.schedule({
       id: 1,
       text: 'Single ILocalNotification',
       data: { secret: "Test Noti" }
     });
-    
-    
-     
-    
+
+
 
   }
 
-  Login(){
-    console.log("username",this.username);
-    console.log("password",this.password);
-        // Schedule a single notification
+  Login() {
+    console.log("username", this.username);
+    console.log("password", this.password);
+    // Schedule a single notification
 
-    if(this.FailToast){
+    if (this.FailToast) {
       this.FailToast.dismiss();
-      this.FailToast=null;
-  
+      this.FailToast = null;
+
     }
-    if(this.EmptyToast){
+    if (this.EmptyToast) {
       this.EmptyToast.dismiss();
-      this.EmptyToast=null;
-      
-  
+      this.EmptyToast = null;
+
+
     }
 
-    if(this.username||this.password){
-      this.SendLogin = from(this.testapiProvider.CheckLogin(this.username,this.password))
-      this.SendLogin.subscribe(val =>{
+    if (this.username || this.password) {
+      this.SendLogin = from(this.testapiProvider.CheckLogin(this.username, this.password))
+      this.SendLogin.subscribe(val => {
         this.Stu_ID = val["Stu_ID"];
-        console.log("Stu_ID: ",this.Stu_ID)
-        if(val["exist"]==true){
+        console.log("Stu_ID: ", this.Stu_ID)
+        if (val["exist"] == true) {
           //Need to think about the page that should send data to
           this.storage.set('stuid', this.Stu_ID);
-          this.navCtrl.setRoot(TabsPage,{"tempStu_ID":this.Stu_ID.valueOf()},{animate:true,animation:'transition',direction:'forward',duration:500})
+          this.navCtrl.setRoot(TabsPage, { "tempStu_ID": this.Stu_ID.valueOf() }, { animate: true, animation: 'transition', direction: 'forward', duration: 500 })
         }
-        else
-        {
+        else {
           console.log("Login fail// need to add alert in html")
-          if(!this.FailToast){
+          if (!this.FailToast) {
             this.FailToast = this.toastCtrl.create({
               message: 'Login failed',
               duration: 3000
-            }); 
+            });
             this.FailToast.present()
 
           }
         }
       })
-  
+
     }
-    else{
+    else {
       console.log("Empty input")
-      if(!this.EmptyToast){
+      if (!this.EmptyToast) {
         this.EmptyToast = this.toastCtrl.create({
           message: 'Login failed',
           duration: 3000
-        }); 
+        });
         this.EmptyToast.present();
       }
     }
   }
 
- 
+
   register() {
-    this.navCtrl.push(RegisterPage,{animate:true,animation:'transition',direction:'forward',duration:300})
+    this.navCtrl.push(RegisterPage, { animate: true, animation: 'transition', direction: 'forward', duration: 300 })
   }
 
 }

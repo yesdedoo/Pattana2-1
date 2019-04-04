@@ -10,7 +10,6 @@ import { SmartAudioProvider } from '../providers/smart-audio/smart-audio';
 
 
 
-
 @Component({
   templateUrl: 'app.html'
 })
@@ -24,7 +23,6 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
       splashScreen.hide();
-
       smartAudio.preload('clickSound','assets/sound/Click.mp3');
       smartAudio.preload('correctSound','assets/sound/Correct.mp3');
       smartAudio.preload('incorrectSound','assets/sound/Incorrect.mp3');

@@ -59,6 +59,7 @@ export class HomePage {
   countHr: number;
   countMin: number;
   countResult: number;
+  
 
   loading: any;
   SendLogLogout:any;
@@ -230,6 +231,9 @@ export class HomePage {
       else {
         this.hasFinished = true;
       }
+      /*else if(this.remainingTime<300){
+        this.hasFinished = true;
+      } */
     }, 1000);
   }
 

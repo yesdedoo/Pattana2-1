@@ -29,6 +29,12 @@
         <ion-icon name="ios-arrow-dropright" item-start></ion-icon>
         {{element}}
       </button>
+      <ion-item>
+          <ion-label>Join Course</ion-label>
+          <ion-select [(ngModel)]="local" (cancel)="onCancel()" (change)="abrirLocal()">
+              <ion-option *ngFor="let element of JCourse" >{{element}}</ion-option>
+          </ion-select>
+      </ion-item>
      
   
     </ion-list>

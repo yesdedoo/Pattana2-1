@@ -205,8 +205,8 @@ export class QuizPage {
 
       }
       setTimeout(() => {
-        console.log("Merged choice", this.ArrChoice)
         this.loading.dismiss();
+        console.log("Merged choice", this.ArrChoice)
 
       }, 1000);
 
@@ -401,7 +401,10 @@ export class QuizPage {
     this.Timer = setInterval(() => {  // <-----
       console.log("QUESTION TIME: " + this.responseTime);
       this.responseTime++
-
+      if(this.responseTime>=60){
+        this.GotoNextSlide();
+        this.responseTime=0;
+      }
     }, 1000);
 
   }

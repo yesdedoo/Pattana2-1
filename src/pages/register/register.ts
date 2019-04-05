@@ -39,6 +39,7 @@ export class RegisterPage {
   firstname: string;
   lastname: string;
   password: string;
+  telephone: string;
 
   constructor(public navCtrl: NavController, public formBuilder: FormBuilder,
     public testapiProvider: TestapiProvider, public smartAudio: SmartAudioProvider) {
@@ -48,8 +49,8 @@ export class RegisterPage {
     this.slideOneForm = formBuilder.group({
       firstName: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
       lastName: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
-      username: ['', Validators.compose([Validators.required, Validators.pattern('[a-zA-Z]*')]), UsernameValidator.checkUsername],
-      privacy: ['', Validators.required]
+      username: ['', Validators.compose([Validators.required, Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')]), UsernameValidator.checkUsername],
+      telephone: ['', Validators.compose([Validators.minLength(10),Validators.maxLength(12),Validators.required])]
 
     });
     this.PasswordForm = formBuilder.group({
@@ -66,7 +67,8 @@ export class RegisterPage {
     console.log(this.lastname);
     console.log(this.username);
     console.log(this.password);
-    this.SendRegister = from(this.testapiProvider.PostRegister(this.firstname, this.lastname, this.username, this.password))
+    console.log(this.telephone);
+    this.SendRegister = from(this.testapiProvider.PostRegister(this.firstname, this.lastname, this.username, this.password,this.telephone))
     this.SendRegister.subscribe(val => {
       console.log(val)
     })

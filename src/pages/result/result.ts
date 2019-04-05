@@ -21,72 +21,79 @@ import { TestapiProvider } from '../../providers/testapi/testapi';
   templateUrl: 'result.html',
 })
 export class ResultPage {
-  
-  
-  CourseInfo:any;
-  Stu_ID:any;
-  SentStu_ID:any;
+
+
+  CourseInfo: any;
+  Stu_ID: any;
+  SentStu_ID: any;
 
   //Display Course
-  Course=[];
-  Course_ID:any;
-  Course_Code:any;
-  Course_Name:any;
-  Course_Exist:boolean
+  Course = [];
+  Course_ID: any;
+  Course_Code: any;
+  Course_Name: any;
+  Course_Exist: boolean
+
+  //Display Course in Joining
+
+  JCourse = []
+  JCourse_ID: any;
+  JCourse_Code: any;
+  JCourse_Name: any;
 
   //Course input from Alert & API
-  InputCourseID:any;
-  SendCourseID:any;
-  CourseExist:any;
-  COSExist:any;
-   
-  SplitPCID:any;
-  SplitPCCODE:any;
-  SplitPCNAME:any;
+  InputCourseID: any;
+  SendCourseID: any;
+  CourseExist: any;
+  COSExist: any;
+  SendRequestGetJoinCourse: any;
+
+
+  SplitPCID: any;
+  SplitPCCODE: any;
+  SplitPCNAME: any;
 
   //Toast
-  ToastChecker:number =3; //0:Correect,1:ExistCOS,2:No course in system
-  SuccessToast:any;
-  RepeatCOSToast:any;
-  NoCourseToast:any;
-  EmptyInputToast:any;
-  prompt:any;
-  
-  
+  ToastChecker: number = 3; //0:Correect,1:ExistCOS,2:No course in system
+  SuccessToast: any;
+  RepeatCOSToast: any;
+  NoCourseToast: any;
+  EmptyInputToast: any;
+  prompt: any;
+  loading:any;
+
+
   constructor(public navCtrl: NavController, public navParams: NavParams,
-    public testapiProvider: TestapiProvider,public loadingCtrl:LoadingController,
-    public alertCtrl:AlertController,public toastCtrl:ToastController) {
+    public testapiProvider: TestapiProvider, public loadingCtrl: LoadingController,
+    public alertCtrl: AlertController, public toastCtrl: ToastController) {
 
     this.Stu_ID = this.navParams.get('Stu_ID');
     this.SentStu_ID = this.Stu_ID[0]
     console.log(this.SentStu_ID);
-
-   
-    
-  }
-
- 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ResultPage');
-    let loading = this.loadingCtrl.create({
+    this.loading = this.loadingCtrl.create({
       content: 'Please wait...'
     });
-      loading.present();
-    setTimeout(() => {
-      loading.dismiss()
-    }, 1000);
-    
+
+
+
+  }
+
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad ResultPage');
+    this.loading.present();
+
 
     this.CourseInfo = from(this.testapiProvider.GetCourse(this.Stu_ID));
-    this.CourseInfo.subscribe(val =>{
-      
+    this.CourseInfo.subscribe(val => {
+
       console.log(val)
-      this.Course_ID=val["Course_ID"]
-      this.Course_Code=val["Course_Code"]
-      this.Course_Name=val["Course_Name"]
-      this.Course_Exist=val["Exist"]
-      console.log(this.Course_Code,this.Course_ID,this.Course_Name)
-          
+      this.Course_ID = val["Course_ID"]
+      this.Course_Code = val["Course_Code"]
+      this.Course_Name = val["Course_Name"]
+      this.Course_Exist = val["Exist"]
+      console.log(this.Course_Code, this.Course_ID, this.Course_Name)
+
       /*
       var PCID = JSON.stringify(this.Course_ID)
       var PCCODE = JSON.stringify(this.Course_Code)
@@ -101,25 +108,48 @@ export class ResultPage {
       this.SplitPCNAME = PCNAME.split(",");
       console.log(this.SplitPCID[0])
       */
-      
+
       var conditionLength = this.Course_ID.length
-      for(var j=0; j<conditionLength;j++){
-        let temp:string
+      for (var j = 0; j < conditionLength; j++) {
+        let temp: string
         temp = "Course : " + this.Course_Code[j] + " " + this.Course_Name[j]
         this.Course.push(temp)
         console.log(this.Course[j])
-              
+
       }
       console.log(this.Course)
-      
+
     })
-    
+    this.GetJoinCourse();
+
   }
-  JoinCourse(){
-    let CID:any;
-    if(this.prompt){
+  GetJoinCourse() {
+    this.SendRequestGetJoinCourse = from(this.testapiProvider.GetJoinCourse())
+    this.SendRequestGetJoinCourse.subscribe(val => {
+      console.log(val)
+      this.JCourse_ID = val['Course_ID']
+      this.JCourse_Code = val["Course_Code"]
+      this.JCourse_Name = val["Course_Name"]
+      console.log(this.JCourse_ID, this.JCourse_Code, this.JCourse_Name);
+
+      let conditionLength = this.JCourse_ID.length
+      for (let j = 0; j < conditionLength; j++) {
+        let temp: string
+        temp = this.JCourse_Code[j] + " " + this.JCourse_Name[j]
+        this.JCourse.push(temp)
+        console.log(this.JCourse[j])
+
+      }
+      console.log(this.JCourse)
+      this.loading.dismiss()
+
+    })
+  }
+  JoinCourse() {
+    let CID: any;
+    if (this.prompt) {
       this.prompt.dismiss();
-      this.prompt=null;
+      this.prompt = null;
     }
 
     this.prompt = this.alertCtrl.create({
@@ -146,40 +176,40 @@ export class ResultPage {
             console.log(CID)
             //JoinCourseAPI function()
             this.InsertedCourse(CID);
-            switch(this.ToastChecker){
-              case 0:{
+            switch (this.ToastChecker) {
+              case 0: {
                 this.SuccessToast = this.toastCtrl.create({
                   message: 'Join Course successful.',
                   duration: 3000
-                }); 
-            
+                });
+
                 this.SuccessToast.present();
                 break;
               }
-              case 1:{
+              case 1: {
                 this.RepeatCOSToast = this.toastCtrl.create({
-                  message:'This course was already joined by this student.',
+                  message: 'This course was already joined by this student.',
                   duration: 3000
                 });
-            
+
                 this.RepeatCOSToast.present();
                 break;
               }
-              case 2:{
+              case 2: {
                 this.NoCourseToast = this.toastCtrl.create({
-                  message:'This course is not available in the system.',
+                  message: 'This course is not available in the system.',
                   duration: 3000
-                });  
-            
+                });
+
                 this.NoCourseToast.present();
                 break;
               }
-              case 3:{
+              case 3: {
                 this.EmptyInputToast = this.toastCtrl.create({
-                  message:'Empty course input.',
+                  message: 'Empty course input.',
                   duration: 3000
-                });  
-            
+                });
+
                 this.EmptyInputToast.present();
                 break;
               }
@@ -192,24 +222,24 @@ export class ResultPage {
     this.prompt.present();
 
   }
-  InsertedCourse(courseID){
-    this.SendCourseID = from(this.testapiProvider.JoiningCourse(courseID,this.Stu_ID))
-    this.SendCourseID.subscribe(val =>{
+  InsertedCourse(courseID) {
+    this.SendCourseID = from(this.testapiProvider.JoiningCourse(courseID, this.Stu_ID))
+    this.SendCourseID.subscribe(val => {
       this.COSExist = val["COSExist"]
       this.CourseExist = val["CourseExist"]
 
       //Check for the toast case
-      if(this.COSExist==false){
-        
-        if(this.CourseExist==true){
+      if (this.COSExist == false) {
+
+        if (this.CourseExist == true) {
           this.ToastChecker = 0;
         }
-        else{
+        else {
           this.ToastChecker = 2;
         }
-        
+
       }
-      else{
+      else {
         this.ToastChecker = 1;
       }
 
@@ -217,12 +247,11 @@ export class ResultPage {
     })
   }
 
-  
-  ShowResult(index)
-  {
+
+  ShowResult(index) {
     console.log(index)
-    var CourseID = this.Course_ID[index]  
-    this.navCtrl.push(ResulthistpercPage,{'courseid':CourseID,'coursename':this.Course_Name[index],'stuid':this.SentStu_ID});
+    var CourseID = this.Course_ID[index]
+    this.navCtrl.push(ResulthistpercPage, { 'courseid': CourseID, 'coursename': this.Course_Name[index], 'stuid': this.SentStu_ID });
   }
 
 

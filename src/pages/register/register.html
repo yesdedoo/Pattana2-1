@@ -48,6 +48,11 @@
             [class.invalid]="!slideOneForm.controls.lastName.valid && (slideOneForm.controls.lastName.dirty || submitAttempt)"
             formControlName="lastName" type="text" [(ngModel)]="lastname"></ion-input>
         </ion-item>
+        <ion-item  no-lines>
+          <ion-label floating no-lines>Telephone</ion-label>
+          <ion-input no-lines formControlName="telephone" type="text" [(ngModel)]="telephone"></ion-input>
+        </ion-item>
+  
 
       </form>
             

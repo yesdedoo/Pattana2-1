@@ -57,6 +57,21 @@ export class TestapiProvider {
       .catch(err => console.log(err))
     });
   }
+  GetJoinCourse(){
+    return new Promise(resolve => {
+      fetch(this.restApiJoinCourse, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }).then(r=>{
+        this.data = r.json()
+        resolve(this.data)
+      })
+      .catch(err => console.log(err))
+    });
+  }
+
   
   GetAssessment(Date,Stu_ID){
     var data = {dateData : {date:Date,stuid:Stu_ID}}
@@ -136,11 +151,11 @@ export class TestapiProvider {
 
   //INSERT the registration
   
-  PostRegister(fName,lName,Email,Password)
+  PostRegister(fName,lName,Email,Password,Telephone)
   {
     
     //Registration data from register page
-    var data = {registerData : {fname:fName,lname:lName,email:Email,pwd:Password,exist:this.check}}
+    var data = {registerData : {fname:fName,lname:lName,email:Email,pwd:Password,tel:Telephone,exist:this.check}}
     //To check the existing account
     return new Promise(resolve =>{
       fetch(this.restApiRegister,{

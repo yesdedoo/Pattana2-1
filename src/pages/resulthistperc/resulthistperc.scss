@@ -14,6 +14,16 @@ page-resulthistperc {
         border-bottom: 0px;
     }
 
+    .toolbar-background {
+        background-color:#f78710;
+      }
+
+
+    h1{
+        font-size: 16px;
+        color: #ffffff;
+      }
+
     .storage{
         margin-top: 10px;
         text-align: center;
@@ -49,14 +59,14 @@ page-resulthistperc {
     }
 
     h1{
-        font-size: 20px;
-        color:  #666666;
+        font-size: 16px;
+        color:  #ffffff;
         position: relative;
         text-align: left;
     }
 
     h3{
-        font-size: 20px;
+        font-size: 14px;
         color:  #666666;
         position: relative;
         text-align: center;
@@ -65,6 +75,10 @@ page-resulthistperc {
     .lesson{
         position: relative;
         text-align: center;
+        color: #ffffff;
+        background-color: #ffffff;
+        width: 90%;
+        margin-left: 5%;
     
         border-top-right-radius: 10px !important;
         border-top-left-radius: 10px !important;

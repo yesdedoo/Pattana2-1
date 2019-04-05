@@ -5,30 +5,32 @@
   Ionic pages and navigation.
 -->
 
-<ion-content style="background-image: url('assets/imgs/Full1.png')">
+<ion-header>
+    <ion-navbar primary>
+      <ion-title>
+        <h3>Course</h3> 
+      </ion-title>
+  
+  
+    </ion-navbar>
+  </ion-header>
 
-  <br>
-  <div class="headname">
-    Course
-  </div>
+<ion-content style="background-image: url('assets/imgs/CloudResult.png')">
 
-  <br>
+  <br><br>
+  
  
   <ion-card class="card">
-    <ion-card-header>
-      <!--<div class="head">
-         Course
-      </div>-->
-    </ion-card-header>
-    <div style="color:green">
-        <ion-icon name="add-circle" style="zoom: 2.5"  (click)='JoinCourse()' ></ion-icon>
-    </div>
+   
 
-    <ion-list>
+    <ion-list >
       <button *ngFor="let element of Course; let i = index" ion-item (click)='ShowResult(i)'>
-        <ion-icon name="ios-arrow-dropright" item-start></ion-icon>
-        {{element}}
+      
+       <h2>{{element}}</h2> 
       </button>
+     
+     
+     
       <ion-item>
           <ion-label>Join Course</ion-label>
           <ion-select [(ngModel)]="local" (cancel)="onCancel()" (change)="abrirLocal()">
@@ -39,7 +41,5 @@
   
     </ion-list>
   </ion-card>
-  
-
 
 </ion-content>

@@ -6,16 +6,17 @@
 -->
 
 <ion-header>
-  <br>
-  <div class="storage">
-    {{Course_Name}}
-  </div>
-
+    <ion-navbar>
+      <ion-title>
+        <h1>{{Course_Name}}</h1> 
+      </ion-title>
+      </ion-navbar>
 </ion-header>
 
-<ion-content style="background-image: url('assets/imgs/Plain1.png')">
+<ion-content style="background-image: url('assets/imgs/CloudResult.png')">
   <br>
   <div class="lesson">
+    <br>
 
     <div>
       <div *ngFor="let element of Less_Know; let i = index" class="progress-wrapper">

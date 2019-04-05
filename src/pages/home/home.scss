@@ -11,8 +11,14 @@ page-home {
         margin-bottom: 30px;
         border-bottom: 0px;
     }
+
+    .toolbar-background {
+        background-color:#f78710;
+      }
+
+
     .logo{
-        height: 30px !important;	        
+        height: 30px !important;         
         width: auto !important;
     }
 
@@ -62,23 +68,28 @@ page-home {
         border-bottom-left-radius: 150px !important;
     }
     h1{
-        font-size: 18px;
-        color: #f78710;
+        font-size: 28px;
+        color: #3877ec;
 
     }
     h2{
         font-size: 14px;
-        color: #666666;
+        color: #3b3b3a;
     }
     h3{
-        font-size: 16px;
+        font-size: 12px;
         color: #686868;
 
     }
 
     h4{
-        font-size: 20px;
+        font-size: 14px;
         color: #3b3b3a;
+
+    }
+    h5{
+        font-size: 36px;
+        color: #3877ec;
 
     }
 
@@ -91,16 +102,7 @@ page-home {
         font-size: 16px;
         width: 85%;
     
-        
-        background-color: #ffffff;
-
-        border-top-right-radius: 5px !important;
-        border-top-left-radius: 5px !important;
-        border-bottom-right-radius: 5px !important;
-        border-bottom-left-radius: 5px !important;
-
-        -webkit-box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.103);
-        box-shadow: 0 10px 30px 0  rgba(0, 0, 0, 0.103);
+    
     }
 
     .course2{

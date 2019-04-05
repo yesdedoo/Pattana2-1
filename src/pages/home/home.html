@@ -1,10 +1,11 @@
-
-<ion-header>
+<!--<ion-header>
     <ion-navbar primary>
       <ion-title>
           <img class="logo"   src="assets/imgs/Logo2.png">
-        attana
       </ion-title>
+
+
+
   
       <ion-buttons end>
         <button (click)="Notification()" ion-button icon-only>
@@ -16,50 +17,56 @@
       </ion-buttons>
     </ion-navbar>
   </ion-header>
+-->
+<ion-content style="background-image: url('assets/imgs/bgHome.png')">
 
-<ion-content style="background-image: url('assets/imgs/CloudHome.png')">
+  <!--<div class="course1">
+   <h1> Course: Database </h1>
+   <h3> Lesson: Data Modeling </h3>
+   -->
 
    <div class="course1">
-    <h1> Course: Database </h1>
-    <h3> Lesson: Data Modeling </h3>
-    
+     <br>
+     <h1> Hi Airi !</h1>
+     <h2>Welcome to Pattana</h2>
+     <h3>a Course Learning Outcomes Assessment System</h3>
+   </div>
 
-    </div>
-    <br><br>
-  <ng-container *ngIf="hasFinished==true; then hidbutton; else showbutton" ></ng-container>
-  <ng-template #showbutton>
-      <div class="table-a" padding>
-          <button color="#ff0000" ion-button class="start" (click)='readytoquiz();clickSound();'> START </button><br>    		
-      </div>
-  </ng-template>
-  <ng-template #hidbutton>
-      <div class="table-a" padding>
-          <button color="secondary" ion-button class="start"> START </button><br>
-      </div>
-  </ng-template>
+ <ng-container *ngIf="hasFinished==true; then hidbutton; else showbutton" ></ng-container>
+ <ng-template #showbutton>
+     <div class="table-a" padding>
+         <button color="orange" ion-button class="start" (click)='readytoquiz();clickSound();'> START </button><br>      
+     </div>
+ </ng-template>
+ <ng-template #hidbutton>
+     <div class="table-a" padding>
+         <button color="secondary" ion-button class="start"> START </button><br>
+     </div>
+ </ng-template>
+
  
-  
-  <div class="avai-font" >
-    <h4>Avaliable in</h4>
-  </div>
+ <div class="avai-font" >
+   <br>
+   <h4>Avaliable in</h4>
+ </div>
 
-  
-  <ion-item>
-    <h1 text-center>{{displayTime}}</h1>
-  </ion-item>
+ 
+ <ion-item>
+   <h1 text-center>{{displayTime}}</h1>
+ </ion-item>
 
-  <ion-item *ngFor="let element of Ass_Time; let i = index" color="primary">
-    <!--<ng-container *ngIf="countResult>0; then showClock; else hidClock"></ng-container>
-    <ng-template #showClock>-->
-      <ion-label>
-        Assessment : {{i+1}} will be in {{Ass_Time[i]}}
-      </ion-label>
-      <ion-item>
-        <h1 text-center>{{displayTime}}</h1>
-      </ion-item>
+ <ion-item *ngFor="let element of Ass_Time; let i = index" color="orange">
+   <!--<ng-container *ngIf="countResult>0; then showClock; else hidClock"></ng-container>
+   <ng-template #showClock>-->
+     <ion-label>
+       Assessment : {{i+1}} will be in {{Ass_Time[i]}}
+     </ion-label>
+     <ion-item>
+       <h1 text-center>{{displayTime}}</h1>
+     </ion-item>
 
 
-  </ion-item>
+ </ion-item>
 
 
 </ion-content>

@@ -21,6 +21,34 @@ page-quiz {
     white-space: pre-line !important;
 
   }
+  .frame{
+    color:#f78710;
+    background-color: #f78710;
+    height: 80%;
+
+  }
+  .circle{
+
+    position: relative;
+    text-align: center;
+    width: 60px;
+    height: 60px;
+    font-size: 20px;
+    color: #f78710;
+    background-color: #f78710;
+    margin-left: 45%;
+  
+    
+    
+
+    -webkit-box-shadow: 0 10px 30px 0 rgba(8, 24, 5, 0.342);
+    box-shadow: 0 10px 30px 0  rgba(0, 0, 0, 0.103);
+
+    border-top-right-radius: 150px !important;
+    border-top-left-radius: 150px !important;
+    border-bottom-right-radius: 150px !important;
+    border-bottom-left-radius: 150px !important;
+  }
 
   .List {
     padding-top: 50px;
@@ -36,10 +64,24 @@ page-quiz {
     box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.103);
   }
 
+  h1 {
+    font-size: 18px;
+    color: #ffffff;
+    position: relative;
+    text-align: center;
+  }
+
+
   h2 {
     font-size: 18px;
     color: white;
   }
+
+  h5{
+    font-size: 18px;
+    color: white;
+
+}
 
   #Butt0 {
     background-color: white;
@@ -56,5 +98,30 @@ page-quiz {
   #Butt3 {
     background-color: white;
   }
+
+  .Finish {
+        
+    margin-top: 10px;
+    text-align: center;
+    border: 10px;
+    padding: 15px 80px;
+    text-decoration: none;
+    display: inline-block;
+    text-transform: uppercase;
+    font-size: 13px;
+    transition: all 0.3s ease-in-out;
+    width: 40%;
+    height: 45px;
+    color: #f78710;
+
+    border-top-right-radius: 20px !important;
+    border-top-left-radius: 20px !important;
+    border-bottom-right-radius: 20px !important;
+    border-bottom-left-radius: 20px !important;
+
+    -webkit-box-shadow: 0 0px 30px 0 rgba(0, 0, 0, 0.123);
+    box-shadow: 0 0px 30px 0  rgba(0, 0, 0, 0.185);
+    
+}
 
 }

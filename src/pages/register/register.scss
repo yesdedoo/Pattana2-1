@@ -45,9 +45,9 @@ page-register {
 
 
     p {
-        font-size: 14px;
+        //font-size: 14px;
         color: #494949;
-        text-align: center;
+        //text-align: center;
     }
 
     h2{
@@ -80,6 +80,10 @@ page-register {
         border-top-left-radius: 5px !important;
         border-bottom-right-radius: 5px !important;
         border-bottom-left-radius: 5px !important;
+    }
+
+    .alertDialog{
+        text-align: center;
     }
 
     .invalid {

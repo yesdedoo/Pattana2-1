@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, LoadingController, AlertController, ToastController } from 'ionic-angular';
+import { NavController, NavParams, LoadingController, AlertController, ToastController, ActionSheetController } from 'ionic-angular';
 import { ResulthistpercPage } from '../resulthistperc/resulthistperc';
 
 
@@ -65,14 +65,11 @@ export class ResultPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public testapiProvider: TestapiProvider, public loadingCtrl: LoadingController,
-    public alertCtrl: AlertController, public toastCtrl: ToastController) {
+    public alertCtrl: AlertController, public toastCtrl: ToastController,public actionSheetController:ActionSheetController) {
 
     this.Stu_ID = this.navParams.get('Stu_ID');
     this.SentStu_ID = this.Stu_ID[0]
     console.log(this.SentStu_ID);
-    this.loading = this.loadingCtrl.create({
-      content: 'Please wait...'
-    });
 
 
 
@@ -81,7 +78,7 @@ export class ResultPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ResultPage');
-    this.loading.present();
+    
 
 
     this.CourseInfo = from(this.testapiProvider.GetCourse(this.Stu_ID));
@@ -141,11 +138,12 @@ export class ResultPage {
 
       }
       console.log(this.JCourse)
-      this.loading.dismiss()
+      
 
     })
   }
-  JoinCourse() {
+  
+  /*JoinCourse() {
     let CID: any;
     if (this.prompt) {
       this.prompt.dismiss();
@@ -221,10 +219,44 @@ export class ResultPage {
     });
     this.prompt.present();
 
+  }*/
+  async presentActionSheet(){
+    const actionSheet = await this.actionSheetController.create({
+      buttons: [{
+        text: this.JCourse[0],
+        icon: 'arrow-dropright-circle',
+        handler: () => {
+          console.log('Course[0] clicked');
+          this.InsertedCourse(this.JCourse_ID[0]);
+        }
+      }, {
+        text: 'Cancel',
+        icon: 'close',
+        role: 'cancel',
+        handler: () => {
+          console.log('Cancel clicked');
+        }
+      }]
+    });
+    await actionSheet.present();
   }
+
   InsertedCourse(courseID) {
+    if (this.RepeatCOSToast) {
+      this.RepeatCOSToast.dismiss();
+      this.RepeatCOSToast = null;      
+    }
+    if(this.loading){
+      this.loading.dismiss();
+      this.loading = null;
+    }
+    this.loading = this.loadingCtrl.create({
+      content: 'Please wait...'
+    });
+    this.loading.present();
     this.SendCourseID = from(this.testapiProvider.JoiningCourse(courseID, this.Stu_ID))
     this.SendCourseID.subscribe(val => {
+      console.log(val);
       this.COSExist = val["COSExist"]
       this.CourseExist = val["CourseExist"]
 
@@ -233,17 +265,26 @@ export class ResultPage {
 
         if (this.CourseExist == true) {
           this.ToastChecker = 0;
+          this.loading.dismiss();
         }
         else {
           this.ToastChecker = 2;
+          this.loading.dismiss();
         }
 
       }
       else {
         this.ToastChecker = 1;
+        this.loading.dismiss();
+        this.RepeatCOSToast = this.toastCtrl.create({
+          message: 'This course was already joined by this student.',
+          duration: 3000
+        });
+
+        this.RepeatCOSToast.present();
       }
 
-
+      
     })
   }
 

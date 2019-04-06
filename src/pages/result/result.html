@@ -29,17 +29,21 @@
        <h2>{{element}}</h2> 
       </button>
      
-     
-     
-      <ion-item>
-          <ion-label>Join Course</ion-label>
-          <ion-select [(ngModel)]="local" (cancel)="onCancel()" (change)="abrirLocal()">
-              <ion-option *ngFor="let element of JCourse" >{{element}}</ion-option>
-          </ion-select>
-      </ion-item>
-     
+      <!--
+        [(ngModel)]="local"
+      -->
+         
   
     </ion-list>
+    <ion-item>
+        <ion-label>Join Course</ion-label>
+        <ion-select  (cancel)="onCancel()" (change)="abrirLocal()">
+            <ion-option *ngFor="let element of JCourse" >{{element}}</ion-option>
+        </ion-select>
+    </ion-item>
+    <button color="orange"(click)="presentActionSheet()">
+      Join Course
+    </button>
   </ion-card>
 
 </ion-content>

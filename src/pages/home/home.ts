@@ -111,14 +111,21 @@ export class HomePage {
     this.HrTime = this.currentDate.getHours()
     this.MinTime = this.currentDate.getMinutes()
     this.SecTime = this.currentDate.getSeconds()
-    this.utc = this.currentDate.toJSON().slice(0, 10).replace(/-/g, '/');
-    console.log("utctime", this.utc)
     this.Time = this.HrTime + ":" + this.MinTime + ":" + this.SecTime
     this.RTime = this.Time
-    var re = '/'
-    var newstr = this.utc.replace(re, "-");
     console.log("RTime", this.RTime)
-    this.Today = newstr.replace(re, "-")
+
+    var YYYY = this.currentDate.getFullYear()
+    var mm = this.currentDate.getMonth() + 1
+    var dd = this.currentDate.getDate()
+    if( mm < 10){
+      mm = "0" + mm
+    }
+    if( dd < 10){
+      dd = "0" + dd
+    }
+    this.Today = YYYY + "-" + mm + "-" + dd
+    //this.Today = newstr.replace(re, "-")
 
     console.log("Today", this.Today)
     this.storage.set('today', this.Today)

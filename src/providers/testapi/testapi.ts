@@ -132,9 +132,9 @@ export class TestapiProvider {
     });
   }
   
-  PostMarkingResult(Result,Ques_ID,Ques_Date,Stu_ID,Testscore) {
+  PostMarkingResult(Result,Ques_ID,Ques_Date,Stu_ID,Testscore,Ass_ID) {
     //Registration data from register page
-    var data = { MarkingData: { result:Result,quesid:Ques_ID,quesdate:Ques_Date,stuid:Stu_ID,testscore:Testscore} }
+    var data = { MarkingData: { result:Result,quesid:Ques_ID,quesdate:Ques_Date,stuid:Stu_ID,testscore:Testscore,assid:Ass_ID} }
     //To check the existing account
     return new Promise(resolve => {
       fetch(this.restApiMarkingResult, {

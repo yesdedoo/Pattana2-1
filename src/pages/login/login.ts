@@ -47,7 +47,7 @@ export class LoginPage {
 
   submitAttempt: boolean = false;
 
-  requestSendEmail : any;
+  requestSendEmail: any;
 
   constructor(public navCtrl: NavController, public formBuilder: FormBuilder, public localNotification: LocalNotifications,
     public testapiProvider: TestapiProvider, public storage: Storage, public toastCtrl: ToastController, public androidPermission: AndroidPermissions,
@@ -111,7 +111,7 @@ export class LoginPage {
 
     }
 
-    if (this.username || this.password) {
+    if (this.username && this.password) {
       this.SendLogin = from(this.testapiProvider.CheckLogin(this.username, this.password))
       this.SendLogin.subscribe(val => {
         this.Stu_ID = val["Stu_ID"];
@@ -122,28 +122,28 @@ export class LoginPage {
           this.navCtrl.setRoot(TabsPage, { "tempStu_ID": this.Stu_ID.valueOf() }, { animate: true, animation: 'transition', direction: 'forward', duration: 500 })
         }
         else {
-          console.log("Login fail// need to add alert in html")
-          if (!this.FailToast) {
-            this.FailToast = this.toastCtrl.create({
-              message: 'Login failed',
-              duration: 3000
-            });
-            this.FailToast.present()
+          console.log("Login fail// no account")
 
-          }
+          this.FailToast = this.toastCtrl.create({
+            message: 'Login failed no existed account',
+            duration: 2000
+          });
+          this.FailToast.present()
+
+
         }
       })
 
     }
     else {
       console.log("Empty input")
-      if (!this.EmptyToast) {
-        this.EmptyToast = this.toastCtrl.create({
-          message: 'Login failed',
-          duration: 3000
-        });
-        this.EmptyToast.present();
-      }
+
+      this.EmptyToast = this.toastCtrl.create({
+        message: 'Login failed empty input',
+        duration: 2000
+      });
+      this.EmptyToast.present();
+
     }
   }
 

@@ -40,6 +40,7 @@ export class QuizPage {
   Ques_ID: any = [];
   Ques_Name: any;
   Ques_FB: any;
+  Ques_Ass: any;
 
   ShowQues: any = []
 
@@ -73,8 +74,6 @@ export class QuizPage {
   loading: any;
 
 
-
-
   constructor(public navCtrl: NavController, public navParams: NavParams, public testapiProvider: TestapiProvider,
     public loadingCtrl: LoadingController, public storage: Storage, public smartAudio: SmartAudioProvider) {
 
@@ -94,7 +93,8 @@ export class QuizPage {
         this.TodayStorage = res;
 
       }).then(() => console.log("Todaystorage: ", this.TodayStorage)
-      ));
+    ));
+
 
     this.Today = navParams.get('Today')
     console.log("Pushed data", this.Stu_ID, this.Today, this.SentStu_ID);
@@ -104,7 +104,7 @@ export class QuizPage {
   }
 
   ionViewWillEnter() {
-    
+
     this.GetQuestion();
     setTimeout(() => {
       this.loading.present();
@@ -115,7 +115,7 @@ export class QuizPage {
     }, 1000);
 
   }
-  ionViewWillLeave(){
+  ionViewWillLeave() {
     this.smartAudio.stop('bg7Sound');
 
   }
@@ -130,7 +130,7 @@ export class QuizPage {
   finishquiz() {
     clearInterval(this.Timer)
     this.navCtrl.push(RankPage, { scorecount: this.ScoreCount, quesNO: this.Ques_ID.length, showscore: this.ShowScore, today: this.Today });
-   
+
   }
 
   GetQuestion() {
@@ -138,11 +138,12 @@ export class QuizPage {
     this.SendQuestionRequest = from(this.testapiProvider.ImportQuestion(this.Stu_ID, this.Today))
 
     this.SendQuestionRequest.subscribe(val => {
-    
+
       console.log("REST Question", val)
       this.Ques_ID = val["Ques_ID"]
       this.Ques_Name = val["Ques_Name"]
       this.Ques_FB = val["Ques_FB"]
+      this.Ques_Ass = val["Ques_Ass"]
       //setTimeout(() => {
       console.log("Splited REST", this.Ques_ID, this.Ques_Name, this.Ques_FB)
 
@@ -155,7 +156,7 @@ export class QuizPage {
 
   GetChoice() {
 
-    
+
     var conditionLength = this.Ques_ID.length
     var tempCID = [], tempCNAME = [], tempCCRR = [], tempCQID = [], tempChoice = []
 
@@ -198,8 +199,8 @@ export class QuizPage {
 
         for (let j = 0; j < splitedSCN.length; j++) {
           //this.ArrChoice.push(splitedSCN[j])
-          let temp = splitedSCN[j].substr(1,splitedSCN[j].length-2);
-          let temp2 = temp.charAt(0).toUpperCase()+temp.slice(1);
+          let temp = splitedSCN[j].substr(1, splitedSCN[j].length - 2);
+          let temp2 = temp.charAt(0).toUpperCase() + temp.slice(1);
           this.ArrChoice.push(temp2);
         }
 
@@ -214,7 +215,7 @@ export class QuizPage {
 
 
   }
- 
+
 
   GetButtonID() {
 
@@ -266,7 +267,7 @@ export class QuizPage {
                 this.realScore = 500;
               }
               console.log(this.realScore);
-              this.SendMarkResult = from(this.testapiProvider.PostMarkingResult(this.MarkingResult["MResult"], this.Ques_ID[IndexQues], this.Today, this.SentStu_ID, this.realScore))
+              this.SendMarkResult = from(this.testapiProvider.PostMarkingResult(this.MarkingResult["MResult"], this.Ques_ID[IndexQues], this.Today, this.SentStu_ID, this.realScore, this.Ques_Ass[IndexQues]))
               this.ScoreCount++;
               this.ShowScore = this.ShowScore + this.realScore;
               this.realScore = 0;
@@ -285,7 +286,7 @@ export class QuizPage {
                 this.realScore = 500;
               }
               console.log(this.realScore);
-              this.SendMarkResult = from(this.testapiProvider.PostMarkingResult(this.MarkingResult["MResult"], this.Ques_ID[IndexQues], this.Today, this.SentStu_ID, this.realScore))
+              this.SendMarkResult = from(this.testapiProvider.PostMarkingResult(this.MarkingResult["MResult"], this.Ques_ID[IndexQues], this.Today, this.SentStu_ID, this.realScore, this.Ques_Ass[IndexQues]))
               this.ScoreCount++;
               this.ShowScore = this.ShowScore + this.realScore;
               this.realScore = 0;
@@ -303,7 +304,7 @@ export class QuizPage {
                 this.realScore = 500;
               }
               console.log(this.realScore)
-              this.SendMarkResult = from(this.testapiProvider.PostMarkingResult(this.MarkingResult["MResult"], this.Ques_ID[IndexQues], this.Today, this.SentStu_ID, this.realScore))
+              this.SendMarkResult = from(this.testapiProvider.PostMarkingResult(this.MarkingResult["MResult"], this.Ques_ID[IndexQues], this.Today, this.SentStu_ID, this.realScore, this.Ques_Ass[IndexQues]))
               this.ScoreCount++;
               this.ShowScore = this.ShowScore + this.realScore;
               this.realScore = 0;
@@ -322,7 +323,7 @@ export class QuizPage {
               }
 
               console.log(this.realScore)
-              this.SendMarkResult = from(this.testapiProvider.PostMarkingResult(this.MarkingResult["MResult"], this.Ques_ID[IndexQues], this.Today, this.SentStu_ID, this.realScore))
+              this.SendMarkResult = from(this.testapiProvider.PostMarkingResult(this.MarkingResult["MResult"], this.Ques_ID[IndexQues], this.Today, this.SentStu_ID, this.realScore, this.Ques_Ass[IndexQues]))
               this.ScoreCount++;
               this.ShowScore = this.ShowScore + this.realScore;
               this.realScore = 0;
@@ -345,7 +346,7 @@ export class QuizPage {
           switch (IndexChoice) {
             case 0: {
               this.buttonToChange1[IndexQues].style.backgroundColor = this.ButtonColorWrong
-              this.SendMarkResult = from(this.testapiProvider.PostMarkingResult(this.MarkingResult["MResult"], this.Ques_ID[IndexQues], this.Today, this.SentStu_ID, this.realScore))
+              this.SendMarkResult = from(this.testapiProvider.PostMarkingResult(this.MarkingResult["MResult"], this.Ques_ID[IndexQues], this.Today, this.SentStu_ID, this.realScore, this.Ques_Ass[IndexQues]))
               this.ShowScore = this.ShowScore + this.realScore;
               this.responseTime = 0
               this.incorrectSound();
@@ -355,7 +356,7 @@ export class QuizPage {
             }
             case 1: {
               this.buttonToChange2[IndexQues].style.backgroundColor = this.ButtonColorWrong
-              this.SendMarkResult = from(this.testapiProvider.PostMarkingResult(this.MarkingResult["MResult"], this.Ques_ID[IndexQues], this.Today, this.SentStu_ID, this.realScore))
+              this.SendMarkResult = from(this.testapiProvider.PostMarkingResult(this.MarkingResult["MResult"], this.Ques_ID[IndexQues], this.Today, this.SentStu_ID, this.realScore, this.Ques_Ass[IndexQues]))
               this.ShowScore = this.ShowScore + this.realScore;
               this.responseTime = 0
               this.incorrectSound();
@@ -364,7 +365,7 @@ export class QuizPage {
             }
             case 2: {
               this.buttonToChange3[IndexQues].style.backgroundColor = this.ButtonColorWrong
-              this.SendMarkResult = from(this.testapiProvider.PostMarkingResult(this.MarkingResult["MResult"], this.Ques_ID[IndexQues], this.Today, this.SentStu_ID, this.realScore))
+              this.SendMarkResult = from(this.testapiProvider.PostMarkingResult(this.MarkingResult["MResult"], this.Ques_ID[IndexQues], this.Today, this.SentStu_ID, this.realScore, this.Ques_Ass[IndexQues]))
               this.ShowScore = this.ShowScore + this.realScore;
               this.responseTime = 0
               this.incorrectSound();
@@ -373,7 +374,7 @@ export class QuizPage {
             }
             case 3: {
               this.buttonToChange4[IndexQues].style.backgroundColor = this.ButtonColorWrong
-              this.SendMarkResult = from(this.testapiProvider.PostMarkingResult(this.MarkingResult["MResult"], this.Ques_ID[IndexQues], this.Today, this.SentStu_ID, this.realScore))
+              this.SendMarkResult = from(this.testapiProvider.PostMarkingResult(this.MarkingResult["MResult"], this.Ques_ID[IndexQues], this.Today, this.SentStu_ID, this.realScore, this.Ques_Ass[IndexQues]))
               this.ShowScore = this.ShowScore + this.realScore;
               this.responseTime = 0
               this.incorrectSound();
@@ -401,9 +402,9 @@ export class QuizPage {
     this.Timer = setInterval(() => {  // <-----
       console.log("QUESTION TIME: " + this.responseTime);
       this.responseTime++
-      if(this.responseTime>=60){
+      if (this.responseTime >= 60) {
         this.GotoNextSlide();
-        this.responseTime=0;
+        this.responseTime = 0;
       }
     }, 1000);
 
@@ -417,13 +418,13 @@ export class QuizPage {
     }, 1000);
   }
 
-  clickSound(){
+  clickSound() {
     this.smartAudio.play('clickSound');
   }
-  correctSound(){
+  correctSound() {
     this.smartAudio.play('correctSound');
   }
-  incorrectSound(){
+  incorrectSound() {
     this.smartAudio.play('incorrectSound');
   }
 

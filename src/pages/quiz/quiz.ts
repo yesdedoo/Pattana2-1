@@ -53,7 +53,7 @@ export class QuizPage {
 
   //Marking Score 
   MarkingResult = { "MQuesNO": 0, "MResult": 0 };
-  RepeatSelected = { "Selected": false, "RQuesNO": 11 }
+  RepeatSelected = { "Selected": false, "RQuesNO": 20 }
   RepeatCCheck = [];
   RepeatQCheck = [];
   ButtonColorCorrect = '#8cc63f';
@@ -226,7 +226,7 @@ export class QuizPage {
 
       }, 1000);
 
-    }, 1000);
+    }, 2000);
 
 
   }

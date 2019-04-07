@@ -1,175 +1,204 @@
 page-home {
 
-    ion-content  {
-        background-size: cover;
-        position: relative;
-         text-align: center;
+  ion-content {
+    background-size: cover;
+    position: relative;
+    text-align: center;
 
-    }
-    ion-header{
-        //height: 10%;
-        margin-bottom: 30px;
-        border-bottom: 0px;
-    }
+  }
 
-    .toolbar-background {
-        background-color:#f78710;
-      }
+  ion-header {
+    //height: 10%;
+    margin-bottom: 30px;
+    border-bottom: 0px;
+  }
 
+  ion-fab {
+    //margin-right: 5% !important; 
+    //position: absolute;
+    //z-index: -1;
+    //margin-top: 5% !important;
+    //text-align: right;
+    //align-items: left;
+    position: relative;
 
-    .logo{
-        height: 30px !important;         
-        width: auto !important;
-    }
-
-    .storage{
-        margin-top: 10px;
-        text-align: center;
-        margin-bottom: 18px;
     
-        font-size: 20px;
-        
-    
-     
-        width: 100%;
-    
-        color: #ffffff;
-    }
-
-    .text1
-    {
-        font-size: 40px;
-        color:#ffffff ;
-        text-align: center;
-
-    }
-    
-    .avai-font
-    {
-        font-size: 40px;
-        color:#ffffff ;
-        text-align: center;
-    }
-
-    .start
-    {
-        width: 150px;
-        height: 150px;
-        font-size: 20px;
-        
-        
-
-        -webkit-box-shadow: 0 10px 30px 0 rgba(54, 247, 16, 0.103);
-        box-shadow: 0 10px 30px 0  rgba(0, 0, 0, 0.103);
-
-        border-top-right-radius: 150px !important;
-        border-top-left-radius: 150px !important;
-        border-bottom-right-radius: 150px !important;
-        border-bottom-left-radius: 150px !important;
-    }
-    h1{
-        font-size: 28px;
-        color: #3877ec;
-
-    }
-    h2{
-        font-size: 14px;
-        color: #3b3b3a;
-    }
-    h3{
-        font-size: 12px;
-        color: #686868;
-
-    }
-
-    h4{
-        font-size: 14px;
-        color: #3b3b3a;
-
-    }
-    h5{
-        font-size: 32px;
-        color: #3877ec;
-
-    }
-    h6
-    {
-        font-size: 16px;
-        color: #f78710;
-
-    }
-    .timetable
-    {
-        background-color: #ffffff;
-    }
-
-
    
-    .course1{
-        margin-top: 10px;
-        margin-left: 25px;
+   
+  }
 
-        text-align: center;
-        font-size: 16px;
-        width: 85%;
-    
-    
-    }
+  .fab {
+    margin-top: 5%;
+    margin-left: 80%;
+    position: absolute;
+    //z-index: -1;
+  }
+  .fabbutt{
+    z-index: inherit;  
+  }
 
-    .course2{
-        margin-top: 10px;
-        margin-left: 40px;
+  
 
-        text-align: center;
-        font-size: 12px;
-        width: 60%;
-    
-        color: #f78710;
-        background-color: #ffffff;
+  .toolbar-background {
+    background-color: #f78710;
+  }
 
-        border-top-right-radius: 5px !important;
-        border-top-left-radius: 5px !important;
-        border-bottom-right-radius: 5px !important;
-        border-bottom-left-radius: 5px !important;
 
-        -webkit-box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.103);
-        box-shadow: 0 10px 30px 0  rgba(0, 0, 0, 0.103);
-    }
-     
-    .menu{
-        margin-top: 10px;
-        text-align: center;
-        border: 10px;
-        padding: 15px 80px;
-        text-decoration: none;
-        display: inline-block;
-        text-transform: uppercase;
-        font-size: 13px;
-        transition: all 0.3s ease-in-out;
-        width: 90%;
-        height: 45px;
-        color: #ffffff;
-        background-color:#f78710; 
+  .logo {
+    height: 30px !important;
+    width: auto !important;
+  }
 
-        border-top-right-radius: 20px !important;
-        border-top-left-radius: 20px !important;
-        border-bottom-right-radius: 20px !important;
-        border-bottom-left-radius: 20px !important;
-        -webkit-box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.103);
-        box-shadow: 0 10px 30px 0  rgba(0, 0, 0, 0.103);
-    }
-    .logo{
-        width: 10%;
-        height: 10%;
+  .storage {
+    margin-top: 10px;
+    text-align: center;
+    margin-bottom: 18px;
 
-    }
+    font-size: 20px;
 
-    .time{
-        width: 70%;
-    }
-    .invalidtime{
-        font-size: 18px;
-        color: #ff0000;
-    }
-    
+
+
+    width: 100%;
+
+    color: #ffffff;
+  }
+
+  .text1 {
+    font-size: 40px;
+    color: #ffffff;
+    text-align: center;
+
+  }
+
+  .avai-font {
+    font-size: 40px;
+    color: #ffffff;
+    text-align: center;
+  }
+
+  .start {
+    width: 150px;
+    height: 150px;
+    font-size: 20px;
+
+
+
+    -webkit-box-shadow: 0 10px 30px 0 rgba(54, 247, 16, 0.103);
+    box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.103);
+
+    border-top-right-radius: 150px !important;
+    border-top-left-radius: 150px !important;
+    border-bottom-right-radius: 150px !important;
+    border-bottom-left-radius: 150px !important;
+  }
+
+  h1 {
+    font-size: 28px;
+    color: #3877ec;
+
+  }
+
+  h2 {
+    font-size: 14px;
+    color: #3b3b3a;
+  }
+
+  h3 {
+    font-size: 12px;
+    color: #686868;
+
+  }
+
+  h4 {
+    font-size: 14px;
+    color: #3b3b3a;
+
+  }
+
+  h5 {
+    font-size: 32px;
+    color: #3877ec;
+
+  }
+
+  h6 {
+    font-size: 16px;
+    color: #f78710;
+
+  }
+
+  .timetable {
+    background-color: #ffffff;
+  }
+
+
+
+  .course1 {
+    margin-top: 10px;
+
+    text-align: center;
+    font-size: 16px;
+    //width: 85%;
+
+
+  }
+
+  .course2 {
+    margin-top: 10px;
+    margin-left: 40px;
+
+    text-align: center;
+    font-size: 12px;
+    width: 60%;
+
+    color: #f78710;
+    background-color: #ffffff;
+
+    border-top-right-radius: 5px !important;
+    border-top-left-radius: 5px !important;
+    border-bottom-right-radius: 5px !important;
+    border-bottom-left-radius: 5px !important;
+
+    -webkit-box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.103);
+    box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.103);
+  }
+
+  .menu {
+    margin-top: 10px;
+    text-align: center;
+    border: 10px;
+    padding: 15px 80px;
+    text-decoration: none;
+    display: inline-block;
+    text-transform: uppercase;
+    font-size: 13px;
+    transition: all 0.3s ease-in-out;
+    width: 90%;
+    height: 45px;
+    color: #ffffff;
+    background-color: #f78710;
+
+    border-top-right-radius: 20px !important;
+    border-top-left-radius: 20px !important;
+    border-bottom-right-radius: 20px !important;
+    border-bottom-left-radius: 20px !important;
+    -webkit-box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.103);
+    box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.103);
+  }
+
+  .logo {
+    width: 10%;
+    height: 10%;
+
+  }
+
+  .time {
+    width: 70%;
+  }
+
+  .invalidtime {
+    font-size: 18px;
+    color: #ff0000;
+  }
+
 }

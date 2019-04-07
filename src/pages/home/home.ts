@@ -59,6 +59,8 @@ export class HomePage {
   displayTime: any
   refreshTime: any = 300;
 
+  decreaseTime:any;
+
   countHr: number;
   countMin: number;
   countSec:number;
@@ -247,7 +249,7 @@ export class HomePage {
     this.startTimer();
   }
   timerTick() {
-    setTimeout(() => {
+    this.decreaseTime = setTimeout(() => {
       if (!this.runTimer) { return; }
       this.remainingTime--;
       console.log(this.remainingTime)
@@ -263,6 +265,7 @@ export class HomePage {
         this.timerTick();
       }
       if (this.remainingTime == -300) {
+        clearTimeout(this.decreaseTime);
         this.navCtrl.setRoot(TabsPage)
       }
     }, 1000);
@@ -290,7 +293,7 @@ export class HomePage {
   }
 
   Logout() {
-    this.SendLogLogout = from(this.testapiProvider.PushLogLogout(this.SStu_ID))
+    this.SendLogLogout = from(this.testapiProvider.PushLogLogout(this.Stu_ID))
     this.navCtrl.setRoot(LoginPage, { animate: true, animation: 'transition', direction: 'back', duration: 500 })
   }
 

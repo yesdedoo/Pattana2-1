@@ -79,8 +79,13 @@ export class ResultPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad ResultPage');
     
+  }
+  ionViewWillEnter(){
+    this.GetCourse();
+    this.GetJoinCourse();
 
-
+  }
+  GetCourse(){
     this.CourseInfo = from(this.testapiProvider.GetCourse(this.Stu_ID));
     this.CourseInfo.subscribe(val => {
 
@@ -117,7 +122,6 @@ export class ResultPage {
       console.log(this.Course)
 
     })
-    this.GetJoinCourse();
 
   }
   GetJoinCourse() {

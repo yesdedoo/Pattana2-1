@@ -6,42 +6,31 @@
 -->
 
 <ion-header>
-    <ion-navbar primary>
-      <ion-title>
-        <h3>Course</h3> 
-      </ion-title>
-  
-  
-    </ion-navbar>
-  </ion-header>
+  <ion-navbar primary>
+    <ion-title>
+      <h3>Course</h3>
+    </ion-title>
+
+
+  </ion-navbar>
+</ion-header>
 
 <ion-content style="background-image: url('assets/imgs/CloudResult.png')">
 
-  <br><br>
-  
- 
+  <br>
   <ion-card class="card">
-   
-
-    <ion-list >
-      <button *ngFor="let element of Course; let i = index" ion-item (click)='ShowResult(i)'>
-      
-       <h2>{{element}}</h2> 
+    <ion-list>
+      <button class="butt" no-lines *ngFor="let element of Course; let i = index" ion-item (click)='ShowResult(i)'>
+        <h2>{{element}}</h2>
       </button>
-     
-      <!--
-        [(ngModel)]="local"
-      -->
-         
-  
     </ion-list>
-    <ion-item>
+    <!--<ion-item>
         <ion-label>Join Course</ion-label>
         <ion-select  (cancel)="onCancel()" (change)="abrirLocal()">
             <ion-option *ngFor="let element of JCourse" >{{element}}</ion-option>
         </ion-select>
-    </ion-item>
-    <button color="orange"(click)="presentActionSheet()">
+    </ion-item>-->
+    <button color="orange" (click)="presentActionSheet()">
       Join Course
     </button>
   </ion-card>

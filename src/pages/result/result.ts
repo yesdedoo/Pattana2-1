@@ -292,7 +292,7 @@ export class ResultPage {
   ShowResult(index) {
     console.log(index)
     var CourseID = this.Course_ID[index]
-    this.navCtrl.push(ResulthistpercPage, { 'courseid': CourseID, 'coursename': this.Course_Name[index], 'stuid': this.SentStu_ID });
+    this.navCtrl.push(ResulthistpercPage, { 'courseid': CourseID, 'coursename': this.Course_Name[index], 'stuid': this.Stu_ID });
   }
 
 

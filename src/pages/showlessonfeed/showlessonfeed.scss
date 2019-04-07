@@ -2,39 +2,116 @@ page-showlessonfeed {
     ion-content  {
         background-size: cover;
         position: relative;
-        text-align: center;
+     
         
        
     
     }
-
     ion-header{
-        margin-bottom: 100px;
+    
+        //margin-bottom: 100px;
         border-bottom: 0px;
+       
     }
-
-    .storage{
-        margin-top: 10px;
-        text-align: center;
-        margin-bottom: 18px;
-    
-        font-size: 20px;
+    h1{
+            font-size: 12px;
+              color: #ffffff;
         
-    
-     
-        width: 100%;
-    
-        color: #ffffff;
     }
-
-
-
-    .progress-warpper{
-        margin: 20px auto;
+    
+    h3{
+        font-size: 20px;
+        color: #2d56df;
+        position: relative;
+        text-align: center;
+    }
+    h4{
+        font-size: 14px;
+          color: #666666;
+      }
+ h5{
+        font-size: 22px;
+          color: #f78710;
+      }
+    
+    .toolbar-background {
+      background-color:#f78710;
+    }
+    
+    h6{
+        font-size: 14px;
+          color: #666666;
+      }
+    .lastup
+    {
+        float: right;
+        margin-right: 3%;
+    }
+    .nottoday
+    {
+        margin-left: 10%;
+    }
+   
+    
+    .progress-wrapper{
+        margin-left: auto;
+        margin-right: auto;
         font-size: 20px;
         position: relative  !important;
         text-align: center !important;
         z-index: -1;
+        background-color: #ffffff;
+        color: #ffffff;
+        width: 50%;
+        border-top-right-radius: 5px !important;
+        border-top-left-radius: 5px !important;
+        border-bottom-right-radius: 5px !important;
+        border-bottom-left-radius: 5px !important;
+
+        -webkit-box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.103);
+        box-shadow: 0 10px 30px 0  rgba(0, 0, 0, 0.103);
+    }
+    .progress-wrapper1{
+        float: left;
+        margin-left: 3%;
+        font-size: 20px;
+        position: relative  !important;
+        text-align: center !important;
+        z-index: -1;
+        background-color: #ffffff;
+        color: #ffffff;
+        width: 45%;
+        border-top-right-radius: 5px !important;
+        border-top-left-radius: 5px !important;
+        border-bottom-right-radius: 5px !important;
+        border-bottom-left-radius: 5px !important;
+
+        -webkit-box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.103);
+        box-shadow: 0 10px 30px 0  rgba(0, 0, 0, 0.103);
+    }
+    .progress-wrapper2{
+        float: right;
+        margin-right: 3%;
+    
+        font-size: 20px;
+        position: relative  !important;
+        text-align: center !important;
+        z-index: -1;
+        background-color: #ffffff;
+        color: #ffffff;
+        width: 45%;
+        border-top-right-radius: 5px !important;
+        border-top-left-radius: 5px !important;
+        border-bottom-right-radius: 5px !important;
+        border-bottom-left-radius: 5px !important;
+
+        -webkit-box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.103);
+        box-shadow: 0 10px 30px 0  rgba(0, 0, 0, 0.103);
+    }
+    .suggession
+    {   
+        width: 92%;
+        margin-left: 3%;
     }
 
 
@@ -46,21 +123,7 @@ page-showlessonfeed {
         top: 50%;
         width: 100%;
     }
-
-    h1{
-        font-size: 20px;
-        color:  #666666;
-        position: relative;
-        text-align: left;
-    }
-
-    h3{
-        font-size: 20px;
-        color:  #666666;
-        position: relative;
-        text-align: center;
-       
-    }
+    
     .lesson{
         position: relative;
         text-align: center;
@@ -75,9 +138,11 @@ page-showlessonfeed {
       
     }
     round-progress{
+    
         margin-left: auto;
         margin-right: auto;
         position: relative;
         z-index: 10;
     }
+   
 }

@@ -28,15 +28,18 @@ page-quiz {
 
   }
   .circle{
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
 
     position: relative;
     text-align: center;
     width: 60px;
     height: 60px;
     font-size: 20px;
-    color: #f78710;
+    
     background-color: #f78710;
-    margin-left: 45%;
+    align-items: center;
   
     
     

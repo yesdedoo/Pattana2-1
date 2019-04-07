@@ -5,42 +5,47 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-  <br>
-  <div class="storage">
-    Lesson
-  </div>
+  <ion-navbar primary>
+    <ion-title>
+      <h4>{{Course_Name}}</h4>
+    </ion-title>
+  </ion-navbar>
 
 </ion-header>
 
 
-<ion-content style="background-image: url('assets/imgs/Plain1.png')">
+<ion-content style="background-image: url('assets/imgs/CloudResult.png')">
   <br>
   <ion-list>
-    <div *ngFor="let element of Less_Know; let i = index" >
+    <div class="align" *ngFor="let element of Less_Know; let i = index">
       <div ngSwitch="{{Feed_Type[i]}}">
         <div *ngSwitchCase="0">
-            <button class="NoneButt" ion-item (click)='ShowLessFeed(i)'>
-                <ion-icon name="ios-arrow-dropright" item-start></ion-icon>
-                {{element}}
-              </button>
+          <button no-lines class="NoneButt" ion-item (click)='ShowLessFeed(i)'>
+            <ion-icon name="ios-arrow-dropright" item-start></ion-icon>
+            {{element}}
+          </button>
+          <br>
         </div>
         <div *ngSwitchCase="1">
-            <button class="DangerButt" ion-item (click)='ShowLessFeed(i)'>
-                <ion-icon name="ios-arrow-dropright" item-start></ion-icon>
-                {{element}}
-              </button>
+          <button no-lines class="DangerButt" ion-item (click)='ShowLessFeed(i)'>
+            <ion-icon name="ios-arrow-dropright" item-start></ion-icon>
+            {{element}}
+          </button>
+          <br>
         </div>
         <div *ngSwitchCase="2">
-            <button class="RemindButt" ion-item (click)='ShowLessFeed(i)'>
-                <ion-icon name="ios-arrow-dropright" item-start></ion-icon>
-                {{element}}
-              </button>
+          <button  no-lines class="RemindButt" ion-item (click)='ShowLessFeed(i)'>
+            <ion-icon name="ios-arrow-dropright" item-start></ion-icon>
+            {{element}}
+          </button>
+          <br>
         </div>
         <div *ngSwitchCase="3">
-            <button class="ImproveButt" ion-item (click)='ShowLessFeed(i)'>
-                <ion-icon name="ios-arrow-dropright" item-start></ion-icon>
-                {{element}}
-              </button>
+          <button no-lines class="ImproveButt" ion-item (click)='ShowLessFeed(i)'>
+            <ion-icon name="ios-arrow-dropright" item-start></ion-icon>
+            {{element}}
+          </button>
+          <br>
         </div>
         <div *ngSwitchDefault>...</div>
       </div>

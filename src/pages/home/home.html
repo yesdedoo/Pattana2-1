@@ -26,7 +26,7 @@
    -->
 
    <div class="course1">
-     <br>
+    
      <h1> Hi {{SStu_Fname}} !</h1>
      <h2>Welcome to Pattana</h2>
      <h3>a Course Learning Outcomes Assessment System</h3>
@@ -35,34 +35,30 @@
  <ng-container *ngIf="hasFinished==true; then hidbutton; else showbutton" ></ng-container>
  <ng-template #showbutton>
      <div class="table-a" padding>
-         <button color="orange" ion-button class="start" (click)='readytoquiz();clickSound();'> START </button><br>      
+         <button color="orange" ion-button class="start" (click)='readytoquiz();clickSound();'> START </button>     
      </div>
  </ng-template>
  <ng-template #hidbutton>
      <div class="table-a" padding>
-         <button color="secondary" ion-button class="start"> START </button><br>
+         <button color="secondary" ion-button class="start"> START </button>
      </div>
  </ng-template>
 
  
  <div class="avai-font" >
-   <br>
+   
    <h4>Avaliable in</h4>
+   <h1 text-center>{{displayTime}}</h1>
  </div>
 
- 
- <ion-item>
-   <h1 text-center>{{displayTime}}</h1>
- </ion-item>
-
- <ion-item *ngFor="let element of Ass_Time; let i = index" color="orange">
+ <ion-item *ngFor="let element of Ass_Time; let i = index" class="timetable">
    <!--<ng-container *ngIf="countResult>0; then showClock; else hidClock"></ng-container>
    <ng-template #showClock>-->
      <ion-label>
-       Assessment : {{i+1}} will be in {{Ass_Time[i]}}
+       <h6> Assessment : {{i+1}} will start at {{Ass_Time[i]}}</h6>
      </ion-label>
      <ion-item>
-       <h1 text-center>{{displayTime}}</h1>
+       <h6 text-center>{{displayTime}}</h6>
      </ion-item>
 
 

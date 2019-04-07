@@ -5,79 +5,91 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-  <br>
-  <div class="storage">
-    {{Less_Know}}
-  </div>
+  <ion-navbar primary>
+    <ion-title>
+      <h1>{{Less_Know}}</h1>
+    </ion-title>
+  </ion-navbar>
 
 </ion-header>
 
 
-<ion-content style="background-image: url('assets/imgs/Plain1.png')">
-  <br>
-  <div class="lesson" ngSwitch="{{Feed_Type}}">
+<ion-content style="background-image: url('assets/imgs/bgFeedback.png')">
+   <div ngSwitch="{{Feed_Type}}">
 
     <div *ngSwitchCase="0">
-      <div class="progress-wrapper">
-        <h3>This Lesson Does Not Have a Feedback Yet.</h3>
+      <br><br><br><br><br><br><br>
+      <div class="nottoday">
+        <h4>This Lesson Does Not Have a Feedback Today.</h4>
       </div>
     </div><br>
 
     <div *ngSwitchCase="1">
+      <h3>{{Feed_Text}}</h3>
       <div class="progress-wrapper">
+        <h4>Score is lower than 50%</h4>
+        <round-progress [current]="Feed_New" [max]="max" [stroke]="stroke" [radius]="radius" [semicircle]="semicircle"
+          [rounded]="rounded" [responsive]="responsive" [clockwise]="clockwise" [color]="'#F71010'"
+          [background]="background" [duration]="duration" [animation]="animation" [animationDelay]="animationDelay">
+        </round-progress>
+        <h5>{{Feed_New}} % </h5>
+      </div>
+      <div class="lastup">
+        <h6>The last updated: {{Feed_Date}}</h6>
+      </div>
+    </div><br>
+
+    <div *ngSwitchCase="2" class="all">
+      <div class="suggession">
         <h3>{{Feed_Text}}</h3>
-        <round-progress [current]="Feed_New" [max]="max" [stroke]="stroke" [radius]="radius" [semicircle]="semicircle"
-          [rounded]="rounded" [responsive]="responsive" [clockwise]="clockwise"
-          [color]="'#F71010'" [background]="background" [duration]="duration"
-          [animation]="animation" [animationDelay]="animationDelay">
-        </round-progress>
-        <h5>{{Feed_New}} % ({{Feed_Date}})</h5>
       </div>
-    </div><br>
-
-    <div *ngSwitchCase="2">
-      <h3>{{Feed_Text}}</h3>
-      <div class="progress-wrapper">
-        <h3>The Old Score Average</h3>
+      <br>
+      <div class="progress-wrapper1">
+        <h4>Old Score</h4>
         <round-progress [current]="Feed_Old" [max]="max" [stroke]="stroke" [radius]="radius" [semicircle]="semicircle"
-          [rounded]="rounded" [responsive]="responsive" [clockwise]="clockwise"
-          [color]="'#49F710'" [background]="background" [duration]="duration"
-          [animation]="animation" [animationDelay]="animationDelay">
+          [rounded]="rounded" [responsive]="responsive" [clockwise]="clockwise" [color]="'#49F710'"
+          [background]="background" [duration]="duration" [animation]="animation" [animationDelay]="animationDelay">
         </round-progress>
-        <h5>{{Feed_Old}} % ({{Feed_Date}})</h5>
+        <h5>{{Feed_Old}} %</h5>
       </div>
-      <div class="progress-wrapper">
-        <h3>The New Score Average</h3>
+      <div class="progress-wrapper2">
+        <h4>New Score!</h4>
         <round-progress [current]="Feed_New" [max]="max" [stroke]="stroke" [radius]="radius" [semicircle]="semicircle"
-          [rounded]="rounded" [responsive]="responsive" [clockwise]="clockwise"
-          [color]="'#F7EC10'" [background]="background" [duration]="duration"
-          [animation]="animation" [animationDelay]="animationDelay">
+          [rounded]="rounded" [responsive]="responsive" [clockwise]="clockwise" [color]="'#F7EC10'"
+          [background]="background" [duration]="duration" [animation]="animation" [animationDelay]="animationDelay">
         </round-progress>
-        <h5>{{Feed_New}} % ({{Feed_Date}})</h5>
+        <h5>{{Feed_New}} %</h5>
       </div>
-    </div><br>
+      <div class="lastup">
+        <h6>The last updated: {{Feed_Date}}</h6>
+      </div>
+    </div>
 
-    <div *ngSwitchCase="'3'">
-      <h3>{{Feed_Text}}</h3>
-      <div class="progress-wrapper">
-        <h3>The Old Score Average</h3>
+    <div *ngSwitchCase="'3'" class="all">
+      <div class="suggession">
+        <h3>{{Feed_Text}}</h3>
+      </div>
+      <br>
+      <div class="progress-wrapper1">
+        <h4>Old Score</h4>
         <round-progress [current]="Feed_Old" [max]="max" [stroke]="stroke" [radius]="radius" [semicircle]="semicircle"
-          [rounded]="rounded" [responsive]="responsive" [clockwise]="clockwise"
-          [color]="'#F7EC10'" [background]="background" [duration]="duration"
-          [animation]="animation" [animationDelay]="animationDelay">
+          [rounded]="rounded" [responsive]="responsive" [clockwise]="clockwise" [color]="'#F7EC10'"
+          [background]="background" [duration]="duration" [animation]="animation" [animationDelay]="animationDelay">
         </round-progress>
-        <h5>{{Feed_Old}} % ({{Feed_Date}})</h5>
+        <h5>{{Feed_Old}} %</h5>
       </div>
-      <div class="progress-wrapper">
-        <h3>The New Score Average</h3>
+      <div class="progress-wrapper2">
+        <h4>New Score!</h4>
         <round-progress [current]="Feed_New" [max]="max" [stroke]="stroke" [radius]="radius" [semicircle]="semicircle"
-          [rounded]="rounded" [responsive]="responsive" [clockwise]="clockwise"
-          [color]="'#49F710'" [background]="background" [duration]="duration"
-          [animation]="animation" [animationDelay]="animationDelay">
+          [rounded]="rounded" [responsive]="responsive" [clockwise]="clockwise" [color]="'#49F710'"
+          [background]="background" [duration]="duration" [animation]="animation" [animationDelay]="animationDelay">
         </round-progress>
-        <h5>{{Feed_New}} % ({{Feed_Date}})</h5>
+        <h5>{{Feed_New}} %</h5>
+      </div>
+      <div class="lastup">
+        <h6>The last updated: {{Feed_Date}}</h6>
       </div>
     </div><br>
 
-  </div>
+    </div>
 </ion-content>

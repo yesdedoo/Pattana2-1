@@ -10,6 +10,10 @@ page-lessonfeedlists {
     border-bottom: 0px;
   }
 
+  .toolbar-background {
+    background-color: #f78710;
+  }
+
   .storage {
     margin-top: 10px;
     text-align: center;
@@ -51,6 +55,11 @@ page-lessonfeedlists {
 
   }
 
+  h4 {
+    font-size: 16px;
+    color: #ffffff;
+  }
+
   .lesson {
     position: relative;
     text-align: center;
@@ -72,19 +81,67 @@ page-lessonfeedlists {
     z-index: 10;
   }
 
+  .align {
+    position: relative;
+    text-align: center;
+    align-items: center;
+    align-content: center;
+
+
+  }
+
   .NoneButt {
     background-color: rgb(255, 255, 255);
+    margin-left: 5%;
+    width: 90%;
+    border-top-right-radius: 5px !important;
+    border-top-left-radius: 5px !important;
+    border-bottom-right-radius: 5px !important;
+    border-bottom-left-radius: 5px !important;
+
+    -webkit-box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.103);
+    box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.103);
   }
 
   .DangerButt {
     background-color: rgb(255, 92, 92);
+    margin-left: 5%;
+    width: 90%;
+    border-top-right-radius: 5px !important;
+    border-top-left-radius: 5px !important;
+    border-bottom-right-radius: 5px !important;
+    border-bottom-left-radius: 5px !important;
+
+    -webkit-box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.103);
+    box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.103);
+
   }
 
   .RemindrButt {
     background-color: rgb(243, 177, 115);
+    margin-left: 5%;
+    width: 90%;
+    border-top-right-radius: 5px !important;
+    border-top-left-radius: 5px !important;
+    border-bottom-right-radius: 5px !important;
+    border-bottom-left-radius: 5px !important;
+
+    -webkit-box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.103);
+    box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.103);
+
   }
 
   .ImproveButt {
     background-color: rgb(126, 243, 115);
+    margin-left: 5%;
+    width: 90%;
+    border-top-right-radius: 5px !important;
+    border-top-left-radius: 5px !important;
+    border-bottom-right-radius: 5px !important;
+    border-bottom-left-radius: 5px !important;
+
+    -webkit-box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.103);
+    box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.103);
+
   }
 }

@@ -1,66 +1,70 @@
 <ion-slides pager>
-  
-    <ion-slide *ngFor="let element of Ques_ID; let i = index"
-    style = "background-image: url('assets/imgs/Cloud.png') ">
-      <div color="orange" class="circle">
-        <h1> <br> {{i+1}}</h1>
-      </div>
-  
-      
-     
-      <ion-card class="card1">
-        <ion-card-header>
-          <ion-item text-wrap class="QuesDes">
-            <b>{{Ques_Name[i]}} ?</b>
-          </ion-item>
-        </ion-card-header>
-      
-        
-        <ng-container *ngIf="ArrChoice"></ng-container>
-        <ion-list class="List">
-          
-          <div (click)="MarkingScore(i,0)" > 
-            <button id="Butt{{(4*(i+1)-4)}}" ion-item >
-              <ion-icon name="ios-arrow-dropright-circle" item-start>
-              </ion-icon>
-              {{ArrChoice[4*(i+1)-4]}}
-            </button>
-          </div>
-          <div (click)="MarkingScore(i,1)" > 
-            <button id="Butt{{(4*(i+1)-3)}}" ion-item >
-              <ion-icon name="ios-arrow-dropright-circle" item-start>
-              </ion-icon>
-              {{ArrChoice[4*(i+1)-3]}}
-            </button>
-          </div>
-          <div (click)="MarkingScore(i,2)" > 
-            <button id="Butt{{(4*(i+1)-2)}}" ion-item >
-              <ion-icon name="ios-arrow-dropright-circle" item-start>
-              </ion-icon>
-              {{ArrChoice[4*(i+1)-2]}}
-            </button>
-          </div>
-          <div (click)="MarkingScore(i,3)" > 
-            <button id="Butt{{(4*(i+1)-1)}}" ion-item >
-              <ion-icon name="ios-arrow-dropright-circle" item-start>
-              </ion-icon>
-              {{ArrChoice[4*(i+1)-1]}}
-            </button>
-          </div>
-          
-          
-        </ion-list>
-      </ion-card>
-   
-  
-    </ion-slide>
-    <ion-slide style="background-image: url('assets/imgs/bgFinish.png')">
-  
-      <button ion-button color="light" ion-button class="Finish" (click)='finishquiz();clickSound();'> Finish Quiz </button> <br><br>
-  
-  
-    </ion-slide>
-  
-  
-  
-  </ion-slides>
+
+  <ion-slide *ngFor="let element of Ques_ID; let i = index" style="background-image: url('assets/imgs/Cloud.png') ">
+    <div color="orange" class="circle">
+      <h1> <br> {{i+1}}</h1>
+    </div>
+    <div color="secondary" class="circle">
+      <h1> <br> {{minuteTimer}}</h1>
+    </div>
+
+
+
+
+    <ion-card class="card1">
+      <ion-card-header>
+        <ion-item text-wrap class="QuesDes">
+          <b>{{Ques_Name[i]}} ?</b>
+        </ion-item>
+      </ion-card-header>
+
+
+      <ng-container *ngIf="ArrChoice"></ng-container>
+      <ion-list class="List">
+
+        <div (click)="MarkingScore(i,0)">
+          <button id="Butt{{(4*(i+1)-4)}}" ion-item>
+            <ion-icon name="ios-arrow-dropright-circle" item-start>
+            </ion-icon>
+            {{ArrChoice[4*(i+1)-4]}}
+          </button>
+        </div>
+        <div (click)="MarkingScore(i,1)">
+          <button id="Butt{{(4*(i+1)-3)}}" ion-item>
+            <ion-icon name="ios-arrow-dropright-circle" item-start>
+            </ion-icon>
+            {{ArrChoice[4*(i+1)-3]}}
+          </button>
+        </div>
+        <div (click)="MarkingScore(i,2)">
+          <button id="Butt{{(4*(i+1)-2)}}" ion-item>
+            <ion-icon name="ios-arrow-dropright-circle" item-start>
+            </ion-icon>
+            {{ArrChoice[4*(i+1)-2]}}
+          </button>
+        </div>
+        <div (click)="MarkingScore(i,3)">
+          <button id="Butt{{(4*(i+1)-1)}}" ion-item>
+            <ion-icon name="ios-arrow-dropright-circle" item-start>
+            </ion-icon>
+            {{ArrChoice[4*(i+1)-1]}}
+          </button>
+        </div>
+
+
+      </ion-list>
+    </ion-card>
+
+
+  </ion-slide>
+  <ion-slide style="background-image: url('assets/imgs/bgFinish.png')">
+
+    <button ion-button color="light" ion-button class="Finish" (click)='finishquiz();clickSound();'> Finish Quiz
+    </button> <br><br>
+
+
+  </ion-slide>
+
+
+
+</ion-slides>

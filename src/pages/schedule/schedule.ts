@@ -65,7 +65,7 @@ export class SchedulePage {
     this.storage.ready().then(() => this.storage.get('stuid')
       .then(res => {
         console.log('stuid got:', res);
-        this.Stu_IDStorage = res[0];
+        this.Stu_IDStorage = res;
         this.ShowCourse();
 
       }).then(() => console.log("Stuidstorage: ", this.Stu_IDStorage))

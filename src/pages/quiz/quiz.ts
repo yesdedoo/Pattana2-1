@@ -59,19 +59,23 @@ export class QuizPage {
   ButtonColorCorrect = '#8cc63f';
   ButtonColorWrong = '#ff0000';
   ButtonColorWhite = '#ffffff';
+  
+  //Timer
   responseTime: number = 0;
   limitTime = 30;
   realScore: number = 0;
   ScoreCount: any;
   ShowScore = 0;
+  Timer: any;
+  minuteTimer:number;
 
   buttonToChange1 = []
   buttonToChange2 = []
   buttonToChange3 = []
   buttonToChange4 = []
 
-  Timer: any;
   loading: any;
+  musicChecker:boolean=true;
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public testapiProvider: TestapiProvider,
@@ -80,7 +84,7 @@ export class QuizPage {
     //var Yanap = window.cordova
     this.ScoreCount = 0;
     this.Stu_ID = navParams.get('Stu_ID')
-    this.SentStu_ID = this.Stu_ID[0]
+    //this.SentStu_ID = this.Stu_ID[0]
     this.loading = loadingCtrl.create({
       content: 'Please wait...',
       spinner: 'circles'
@@ -94,6 +98,14 @@ export class QuizPage {
 
       }).then(() => console.log("Todaystorage: ", this.TodayStorage)
     ));
+    this.storage.ready().then(() => this.storage.get('stuid')
+    .then(res => {
+      console.log('res:', res);
+      this.SentStu_ID = res;
+
+    }).then(() => console.log("Stuidstorage: ", this.SentStu_ID)
+  ));
+
 
 
     this.Today = navParams.get('Today')
@@ -111,12 +123,14 @@ export class QuizPage {
       this.GetChoice();
       this.GetButtonID();
       this.StartTimer();
-      this.smartAudio.play('bg7Sound');
+      this.smartAudio.play('bg8Sound');
+      setInterval(()=>{
+        if(this.musicChecker==true){
+          this.smartAudio.play('bg8Sound');
+        }
+      },11000)
+      
     }, 1000);
-
-  }
-  ionViewWillLeave() {
-    this.smartAudio.stop('bg7Sound');
 
   }
 
@@ -129,6 +143,7 @@ export class QuizPage {
 
   finishquiz() {
     clearInterval(this.Timer)
+    this.musicChecker=false;
     this.navCtrl.push(RankPage, { scorecount: this.ScoreCount, quesNO: this.Ques_ID.length, showscore: this.ShowScore, today: this.Today });
 
   }
@@ -402,6 +417,7 @@ export class QuizPage {
     this.Timer = setInterval(() => {  // <-----
       console.log("QUESTION TIME: " + this.responseTime);
       this.responseTime++
+      this.minuteTimer = Math.abs(this.responseTime-60);
       if (this.responseTime >= 60) {
         this.GotoNextSlide();
         this.responseTime = 0;

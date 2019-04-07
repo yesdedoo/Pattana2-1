@@ -27,6 +27,7 @@ export class MyApp {
       smartAudio.preload('correctSound','assets/sound/Correct.mp3');
       smartAudio.preload('incorrectSound','assets/sound/Incorrect.mp3');
       smartAudio.preloadComplex('bg7Sound','assets/sound/BG7.mp3');
+      smartAudio.preloadComplex('bg8Sound','assets/sound/BG8.mp3');
     });
   }
 }

@@ -6,6 +6,7 @@ import { Storage } from '@ionic/storage';
 import { from } from 'rxjs/observable/from'
 import { TestapiProvider } from '../../providers/testapi/testapi';
 import { TabsPage } from '../tabs/tabs';
+import { SmartAudioProvider } from '../../providers/smart-audio/smart-audio';
 
 
 /**
@@ -49,7 +50,8 @@ export class RankPage {
   Stu_IDStorage: any;
 
   constructor(public alertCtrl: AlertController, private navCtrl: NavController, public navParams: NavParams,
-    public testapiProvider: TestapiProvider, public storage: Storage, public loadingCtrl: LoadingController) {
+    public testapiProvider: TestapiProvider, public storage: Storage, public loadingCtrl: LoadingController,
+    public smartAudio:SmartAudioProvider) {
 
     this.ScoreCount = navParams.get('scorecount');
     this.NOOfQues = navParams.get('quesNO');
@@ -73,7 +75,7 @@ export class RankPage {
     this.storage.ready().then(() => this.storage.get('stuid')
       .then(res => {
         console.log('stuid got:', res);
-        this.Stu_IDStorage = res[0];
+        this.Stu_IDStorage = res;
       }).then(() => console.log("Stuidstorage: ", this.Stu_IDStorage))
     );
     this.storage.ready().then(() => this.storage.get('today')
@@ -98,6 +100,10 @@ export class RankPage {
     }, 1000);
 
 
+  }
+
+  ionViewWillEnter(){
+    this.smartAudio.stop('bg7Sound');
   }
 
   GetRanking() {

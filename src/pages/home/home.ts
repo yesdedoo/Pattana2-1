@@ -23,6 +23,7 @@ export class HomePage {
 
   Stu_ID: any;
   SStu_ID: any;
+  SStu_Fname:any;
   currentDate: any;
   SendDate: any;
   Today: any
@@ -90,13 +91,17 @@ export class HomePage {
     console.log('ionViewDidLoad HomePage');
 
     this.loading.present();
+    this.storage.get('stufname').then((val) => {
+      console.log('storage stufname', val);
+      this.SStu_Fname = val;
+    });
+
     this.storage.get('stuid').then((val) => {
       console.log('storage stuid', val);
       this.Stu_ID = val
       this.SStu_ID = val[0]
       this.GetDate();
       this.CheckAssessment();
-
 
     });
 
@@ -133,7 +138,7 @@ export class HomePage {
 
 
   CheckAssessment() {
-    this.SendDate = from(this.testapiProvider.GetAssessment(this.Today, this.SStu_ID))
+    this.SendDate = from(this.testapiProvider.GetAssessment(this.Today, this.Stu_ID))
     this.SendDate.subscribe(val => {
       this.Ass_ID = val["Assess_ID"]
       this.Ass_Date = val["Date"]

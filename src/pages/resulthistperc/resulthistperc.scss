@@ -38,14 +38,34 @@ page-resulthistperc {
         color: #ffffff;
     }
 
+    .ele
+    {
+        width:90%;
+        align-items: center;
+        position: relative;
+        text-align: center;
+        position: relative  !important;
+        text-align: center !important;
+        margin-left: auto;
+    margin-right: auto;
+    }
 
-
-    .progress-warpper{
+    .progress-wrapper{
         margin: 20px auto;
+        background-color: #ffffff;
         font-size: 20px;
         position: relative  !important;
         text-align: center !important;
         z-index: -1;
+        width: 70%;
+
+        border-top-right-radius: 5px !important;
+        border-top-left-radius: 5px !important;
+        border-bottom-right-radius: 5px !important;
+        border-bottom-left-radius: 5px !important;
+
+        -webkit-box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.103);
+        box-shadow: 0 10px 30px 0  rgba(0, 0, 0, 0.103);
     }
 
 
@@ -72,21 +92,20 @@ page-resulthistperc {
         text-align: center;
        
     }
+    h5{
+        font-size: 18px;
+        color:  #f78710;
+        position: relative;
+        text-align: center;
+       
+    }
     .lesson{
         position: relative;
         text-align: center;
-        color: #ffffff;
-        background-color: #ffffff;
+       
         width: 90%;
         margin-left: 5%;
     
-        border-top-right-radius: 10px !important;
-        border-top-left-radius: 10px !important;
-        border-bottom-right-radius: 10px !important;
-        border-bottom-left-radius: 10px !important;
-
-        -webkit-box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.103);
-        box-shadow: 0 10px 30px 0  rgba(0, 0, 0, 0.103);
       
     }
     round-progress{

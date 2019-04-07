@@ -6,29 +6,35 @@
 -->
 
 <ion-header>
-    <ion-navbar>
-      <ion-title>
-        <h1>{{Course_Name}}</h1> 
-      </ion-title>
-      </ion-navbar>
+  <ion-navbar>
+    <ion-title>
+      <h1>{{Course_Name}}</h1>
+    </ion-title>
+  </ion-navbar>
 </ion-header>
 
 <ion-content style="background-image: url('assets/imgs/CloudResult.png')">
-  <br>
+
   <div class="lesson">
+
+
+
+    <div *ngFor="let element of Less_Know; let i = index" class="progress-wrapper">
+       
+      <br>
+      <div class="ele" alt="">
+      <h3>{{element}}</h3>
+    </div>
+      <round-progress [current]="Less_AVGResult[i]" [max]="max" [stroke]="stroke" [radius]="radius"
+        [semicircle]="semicircle" [rounded]="rounded" [responsive]="responsive" [clockwise]="clockwise"
+        [color]="gradient ? 'url(#gradient)' : color" [background]="background" [duration]="duration"
+        [animation]="animation" [animationDelay]="animationDelay">
+      </round-progress>
+      <h5>{{Less_AVGResult[i]}} %</h5>
+      <br>
+    </div>
     <br>
 
-    <div>
-      <div *ngFor="let element of Less_Know; let i = index" class="progress-wrapper">
-        <h3>{{element}}</h3>
-        <round-progress [current]="Less_AVGResult[i]" [max]="max" [stroke]="stroke" [radius]="radius" [semicircle]="semicircle"
-          [rounded]="rounded" [responsive]="responsive" [clockwise]="clockwise" [color]="gradient ? 'url(#gradient)' : color"
-          [background]="background" [duration]="duration" [animation]="animation" [animationDelay]="animationDelay">
-        </round-progress>
-        <h5>{{Less_AVGResult[i]}} %</h5>
-      </div><br>
-    </div>
 
   </div>
 </ion-content>
-

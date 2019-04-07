@@ -10,6 +10,7 @@ import { Storage } from '@ionic/storage';
 import { LoginPage } from '../login/login';
 import { SmartAudioProvider } from '../../providers/smart-audio/smart-audio';
 import { LocalNotifications } from '@ionic-native/local-notifications';
+import { TabsPage } from '../tabs/tabs';
 
 
 @Component({
@@ -23,7 +24,7 @@ export class HomePage {
 
   Stu_ID: any;
   SStu_ID: any;
-  SStu_Fname:any;
+  SStu_Fname: any;
   currentDate: any;
   SendDate: any;
   Today: any
@@ -53,17 +54,19 @@ export class HomePage {
   time: any
   runTimer: any
   hasStarted: any
-  hasFinished: any
-  remainingTime: any
+  hasFinished: any = false;
+  remainingTime: any = 500;
   displayTime: any
+  refreshTime: any = 300;
 
   countHr: number;
   countMin: number;
+  countSec:number;
   countResult: number;
-  
+
 
   loading: any;
-  SendLogLogout:any;
+  SendLogLogout: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public testapiProvider: TestapiProvider, public smartAudio: SmartAudioProvider,
@@ -74,12 +77,8 @@ export class HomePage {
     //this.tabBarElement = document.querySelector("ion-tabbar")
     //this.tabBarElement = document.getElementsByClassName('tabs').item(1);
 
-   
 
-    this.loading = loadingCtrl.create({
-      content: 'Please wait...',
-      spinner: 'hide'
-    })
+
     /*
     setTimeout(() => {
       this.StartClock();
@@ -89,6 +88,19 @@ export class HomePage {
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad HomePage');
+
+
+
+  }
+  ionViewWillEnter() {
+    if(this.loading){
+      this.loading.dismiss();
+      this.loading = null;
+    }
+    this.loading = this.loadingCtrl.create({
+      content: 'Please wait...',
+      spinner: 'hide'
+    })
 
     this.loading.present();
     this.storage.get('stufname').then((val) => {
@@ -104,7 +116,6 @@ export class HomePage {
       this.CheckAssessment();
 
     });
-
 
   }
 
@@ -123,10 +134,10 @@ export class HomePage {
     var YYYY = this.currentDate.getFullYear()
     var mm = this.currentDate.getMonth() + 1
     var dd = this.currentDate.getDate()
-    if( mm < 10){
+    if (mm < 10) {
       mm = "0" + mm
     }
-    if( dd < 10){
+    if (dd < 10) {
       dd = "0" + dd
     }
     this.Today = YYYY + "-" + mm + "-" + dd
@@ -155,6 +166,7 @@ export class HomePage {
         //Parse data JSON into number
         let assHr: string, assHr2: string, assHr3: number
         let assMin: string, assMin2: string, assMin3: number
+        let assSec: string, assSec2: string, assSec3: number
         this.storage.set('assid', this.Ass_ID[0])
         assHr = JSON.stringify(this.Ass_Time[0])
         assHr2 = assHr.slice(1, 3)
@@ -167,9 +179,10 @@ export class HomePage {
 
         this.countHr = assHr3 - this.HrTime
         this.countMin = assMin3 - this.MinTime
-        console.log("countdown time", this.countHr, this.countMin)
+        this.countSec = 0 - this.SecTime 
+        console.log("countdown time", this.countHr, this.countMin,this.countSec)
 
-        this.countResult = ((this.countHr * 60) + this.countMin) * 60
+        this.countResult = (((this.countHr * 60) + this.countMin) * 60) + this.countSec;
         console.log("Remaining Start", this.countResult)
       }
       else {
@@ -187,7 +200,7 @@ export class HomePage {
       text: 'Single ILocalNotification'
       //data: { secret: key }
     });
-    
+
   }
 
   //Countdown timer
@@ -207,7 +220,8 @@ export class HomePage {
 
     if (!this.timeInSeconds) {
       //Initial time to countdown
-      this.timeInSeconds = 60;//this.countResult; //1500
+      //this.timeInSeconds = 60;//this.countResult; //1500
+      this.timeInSeconds = this.countResult;
     }
     this.time = this.timeInSeconds;
     this.runTimer = false;
@@ -216,10 +230,10 @@ export class HomePage {
     this.remainingTime = this.timeInSeconds
 
     this.displayTime = this.getSecondsAsDigitalClock(this.remainingTime)
-    
+
   }
 
-  
+
   startTimer() {
     this.runTimer = true;
     this.hasStarted = true;
@@ -236,16 +250,21 @@ export class HomePage {
     setTimeout(() => {
       if (!this.runTimer) { return; }
       this.remainingTime--;
+      console.log(this.remainingTime)
       this.displayTime = this.getSecondsAsDigitalClock(this.remainingTime)
       if (this.remainingTime > 0) {
         this.timerTick();
       }
-      else {
+      /*else {
         this.hasFinished = true;
+      }*/
+      else if(this.remainingTime<=0){
+        this.hasFinished = true;
+        this.timerTick();
       }
-      /*else if(this.remainingTime<300){
-        this.hasFinished = true;
-      } */
+      if (this.remainingTime == -300) {
+        this.navCtrl.setRoot(TabsPage)
+      }
     }, 1000);
   }
 

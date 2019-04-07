@@ -24,6 +24,11 @@ page-result {
     color: #ffffff;
   }
 
+  h4 {
+    font-size: 16px;
+    color: #ffffff;
+  }
+
   .ios-arrow-dropright-circle {
     color: red !important;
   }
@@ -169,7 +174,23 @@ page-result {
     -webkit-box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.103);
     box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.103);
 
-
-
   }
+  .butt2 {
+    margin-top: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    //display: block;
+    position: relative;
+    color: #f78710;
+    background-color: #f78710;
+    width: 40%;
+    border-top-right-radius: 20px !important;
+    border-top-left-radius: 20px !important;
+    border-bottom-right-radius: 20px !important;
+    border-bottom-left-radius: 20px !important;
+
+    -webkit-box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.103);
+    box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.103);
+  }
+
 }

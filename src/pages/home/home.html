@@ -25,44 +25,56 @@
    <h3> Lesson: Data Modeling </h3>
    -->
 
-   <div class="course1">
-    
-     <h1> Hi {{SStu_Fname}} !</h1>
-     <h2>Welcome to Pattana</h2>
-     <h3>a Course Learning Outcomes Assessment System</h3>
-   </div>
+  <div class="course1">
 
- <ng-container *ngIf="hasFinished==true; then hidbutton; else showbutton" ></ng-container>
- <ng-template #showbutton>
-     <div class="table-a" padding>
-         <button color="orange" ion-button class="start" (click)='readytoquiz();clickSound();'> START </button>     
-     </div>
- </ng-template>
- <ng-template #hidbutton>
-     <div class="table-a" padding>
-         <button color="secondary" ion-button class="start"> START </button>
-     </div>
- </ng-template>
+    <h1> Hi {{SStu_Fname}} !</h1>
+    <h2>Welcome to Pattana</h2>
+    <h3>a Course Learning Outcomes Assessment System</h3>
+  </div>
 
- 
- <div class="avai-font" >
-   
-   <h4>Avaliable in</h4>
-   <h1 text-center>{{displayTime}}</h1>
- </div>
-
- <ion-item *ngFor="let element of Ass_Time; let i = index" class="timetable">
-   <!--<ng-container *ngIf="countResult>0; then showClock; else hidClock"></ng-container>
-   <ng-template #showClock>-->
-     <ion-label>
-       <h6> Assessment : {{i+1}} will start at {{Ass_Time[i]}}</h6>
-     </ion-label>
-     <ion-item>
-       <h6 text-center>{{displayTime}}</h6>
-     </ion-item>
+  <ng-container *ngIf="hasFinished==false; then hidbutton; else showbutton"></ng-container>
+  <ng-template #showbutton>
+    <div class="table-a" padding>
+      <button color="secondary" ion-button class="start" (click)='readytoquiz();clickSound();'> START </button>
+    </div>
+  </ng-template>
+  <ng-template #hidbutton>
+    <div class="table-a" padding>
+      <button color="grey" ion-button class="start"> START </button>
+    </div>
+  </ng-template>
 
 
- </ion-item>
+  <div class="avai-font">
+
+    <h4>Avaliable in</h4>
+    <ng-container *ngIf="hasFinished==true; then invalidtime; else validtime"></ng-container>
+    <ng-template #validtime>
+      <h1 text-center>{{displayTime}}</h1>
+    </ng-template>
+    <ng-template #invalidtime>
+      <h1 class='invalidtime' text-center>!!The past assessment will close in 5 minutes!!</h1>
+    </ng-template>
+  </div>
+  <ng-container *ngIf="Ass_Exist==true; then showassess; else hideassess"></ng-container>
+  <ng-template #showassess>
+    <ion-item *ngFor="let element of Ass_Time; let i = index" class="timetable">
+      <!--<ng-container *ngIf="countResult>0; then showClock; else hidClock"></ng-container>
+         <ng-template #showClock>-->
+      <ion-label>
+        <h6> Assessment : {{i+1}} will start at {{Ass_Time[i]}}</h6>
+      </ion-label>
+      <ion-item>
+        <h6 text-center>{{displayTime}}</h6>
+      </ion-item>
+    </ion-item>
+  </ng-template>
+  <ng-template #hideassess>
+    <h6 text-center>There is no assessment today</h6>
+  </ng-template>
+
+
+
 
 
 </ion-content>

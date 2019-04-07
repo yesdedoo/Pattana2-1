@@ -49,7 +49,10 @@ page-showlessonfeed {
     }
     .nottoday
     {
-        margin-left: 10%;
+        margin-left: auto;
+        margin-right: auto;
+        position: relative  !important;
+        text-align: center !important;
     }
    
     

@@ -29,8 +29,8 @@
 
     </ion-list>
   </ion-card>-->
-  <button *ngFor="let element of Course; let i = index" ion-item (click)='ShowLessonFeedList(i)'>
-      <ion-icon name="ios-arrow-dropright" item-start></ion-icon>
+  <button  class="butt" no-lines *ngFor="let element of Course; let i = index" ion-item (click)='ShowLessonFeedList(i)'>
+     
       {{element}}
     </button>
 

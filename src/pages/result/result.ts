@@ -225,6 +225,7 @@ export class ResultPage {
       buttons: [{
         text: this.JCourse[0],
         icon: 'arrow-dropright-circle',
+      
         handler: () => {
           console.log('Course[0] clicked');
           this.InsertedCourse(this.JCourse_ID[0]);

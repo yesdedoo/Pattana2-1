@@ -95,6 +95,7 @@ export class HomePage {
 
   }
   ionViewWillEnter() {
+    clearTimeout(this.decreaseTime)
     if(this.loading){
       this.loading.dismiss();
       this.loading = null;

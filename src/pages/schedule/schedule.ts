@@ -54,7 +54,7 @@ export class SchedulePage {
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController,
-    public testapiProvider: TestapiProvider,public storage:Storage) {
+    public testapiProvider: TestapiProvider, public storage: Storage) {
 
 
 
@@ -62,6 +62,10 @@ export class SchedulePage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SchedulePage');
+
+  }
+
+  ionViewWillEnter() {
     this.storage.ready().then(() => this.storage.get('stuid')
       .then(res => {
         console.log('stuid got:', res);
@@ -73,9 +77,8 @@ export class SchedulePage {
 
     );
 
-
-
   }
+
   ShowCourse() {
     this.CourseInfo = from(this.testapiProvider.GetCourse(this.Stu_IDStorage));
     this.CourseInfo.subscribe(val => {
@@ -142,11 +145,10 @@ export class SchedulePage {
 
   }
 
-  ShowLessonFeedList(index)
-  {
+  ShowLessonFeedList(index) {
     console.log(index)
-    var CourseID = this.Course_ID[index]  
-    this.navCtrl.push(LessonfeedlistsPage,{'courseid':CourseID,'coursename':this.Course_Name[index],'stuid':this.Stu_IDStorage});
+    var CourseID = this.Course_ID[index]
+    this.navCtrl.push(LessonfeedlistsPage, { 'courseid': CourseID, 'coursename': this.Course_Name[index], 'stuid': this.Stu_IDStorage });
   }
 
 }

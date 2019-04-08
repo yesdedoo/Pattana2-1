@@ -298,6 +298,7 @@ export class HomePage {
 
   Logout() {
     this.SendLogLogout = from(this.testapiProvider.PushLogLogout(this.Stu_ID))
+    this.storage.set('stuid','')
     //this.navCtrl.setRoot(LoginPage, { animate: true, animation: 'transition', direction: 'back', duration: 500 })
     this.navCtrl.push(LoginPage,{ animate: true, animation: 'transition', direction: 'back', duration: 500 });
   }

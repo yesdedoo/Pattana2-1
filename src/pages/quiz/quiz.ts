@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, LoadingController } from 'ionic-angular';
+import { NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
 import { RankPage } from '../rank/rank';
 
 //Slide
@@ -78,6 +78,7 @@ export class QuizPage {
   musicChecker: boolean = true;
 
 
+
   constructor(public navCtrl: NavController, public navParams: NavParams, public testapiProvider: TestapiProvider,
     public loadingCtrl: LoadingController, public storage: Storage, public smartAudio: SmartAudioProvider) {
 
@@ -89,6 +90,7 @@ export class QuizPage {
       content: 'Please wait...',
       spinner: 'circles'
     });
+
 
 
     this.storage.ready().then(() => this.storage.get('today')
@@ -136,7 +138,7 @@ export class QuizPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad QuizPage');
-    this.slides.lockSwipes(true);
+    //this.slides.lockSwipes(true);
 
   }
 
@@ -220,13 +222,15 @@ export class QuizPage {
         }
 
       }
+
+
       setTimeout(() => {
         this.loading.dismiss();
         console.log("Merged choice", this.ArrChoice)
 
       }, 1000);
 
-    }, 2000);
+    }, 5000);
 
 
   }
@@ -288,10 +292,10 @@ export class QuizPage {
               this.realScore = 0;
               this.responseTime = 0
               this.correctSound();
-              setTimeout(() => {
-                this.GotoNextSlide();  
-              }, 1000);
-              
+
+
+              this.GotoNextSlide();
+
 
               break;
             }
@@ -310,9 +314,9 @@ export class QuizPage {
               this.realScore = 0;
               this.responseTime = 0
               this.correctSound();
-              setTimeout(() => {
-                this.GotoNextSlide();  
-              }, 1000);
+
+              this.GotoNextSlide();
+
               break;
             }
             case 2: {
@@ -330,9 +334,9 @@ export class QuizPage {
               this.realScore = 0;
               this.responseTime = 0
               this.correctSound();
-              setTimeout(() => {
-                this.GotoNextSlide();  
-              }, 1000);
+
+              this.GotoNextSlide();
+
               break;
             }
             case 3: {
@@ -351,9 +355,9 @@ export class QuizPage {
               this.realScore = 0;
               this.responseTime = 0
               this.correctSound();
-              setTimeout(() => {
-                this.GotoNextSlide();  
-              }, 1000);
+
+              this.GotoNextSlide();
+
               break;
             }
 
@@ -374,9 +378,9 @@ export class QuizPage {
               this.ShowScore = this.ShowScore + this.realScore;
               this.responseTime = 0
               this.incorrectSound();
-              setTimeout(() => {
-                this.GotoNextSlide();  
-              }, 1000);
+
+              this.GotoNextSlide();
+
 
               break;
             }
@@ -386,9 +390,9 @@ export class QuizPage {
               this.ShowScore = this.ShowScore + this.realScore;
               this.responseTime = 0
               this.incorrectSound();
-              setTimeout(() => {
-                this.GotoNextSlide();  
-              }, 1000);
+
+              this.GotoNextSlide();
+
               break;
             }
             case 2: {
@@ -397,9 +401,9 @@ export class QuizPage {
               this.ShowScore = this.ShowScore + this.realScore;
               this.responseTime = 0
               this.incorrectSound();
-              setTimeout(() => {
-                this.GotoNextSlide();  
-              }, 1000);
+
+              this.GotoNextSlide();
+
               break;
             }
             case 3: {
@@ -408,9 +412,9 @@ export class QuizPage {
               this.ShowScore = this.ShowScore + this.realScore;
               this.responseTime = 0
               this.incorrectSound();
-              setTimeout(() => {
-                this.GotoNextSlide();  
-              }, 1000);
+
+              this.GotoNextSlide();
+
               break;
             }
 
@@ -434,12 +438,12 @@ export class QuizPage {
     this.Timer = setInterval(() => {  // <-----
       console.log("QUESTION TIME: " + this.responseTime);
       this.responseTime++
-      this.minuteTimer = Math.abs(this.responseTime - 60);
+      //this.minuteTimer = Math.abs(this.responseTime - 60);
       if (this.responseTime >= 60) {
 
-          this.responseTime = 0;
-          this.GotoNextSlide();
-        
+        this.responseTime = 0;
+        this.GotoNextSlide();
+
       }
     }, 1000);
 
@@ -447,9 +451,11 @@ export class QuizPage {
 
   GotoNextSlide() {
 
-    this.slides.lockSwipes(false);
-    this.slides.slideNext();
-    this.slides.lockSwipes(true);
+
+    //setTimeout(() => {
+    this.slides.slideNext(5000);
+    //}, 1000);
+    //this.slides.lockSwipes(true);
 
   }
 

@@ -64,7 +64,6 @@ export class SchedulePage {
     console.log('ionViewDidLoad SchedulePage');
 
   }
-
   ionViewWillEnter() {
     this.storage.ready().then(() => this.storage.get('stuid')
       .then(res => {
@@ -78,6 +77,7 @@ export class SchedulePage {
     );
 
   }
+
 
   ShowCourse() {
     this.CourseInfo = from(this.testapiProvider.GetCourse(this.Stu_IDStorage));
@@ -93,28 +93,17 @@ export class SchedulePage {
       var conditionLength = this.Course_ID.length
       for (var j = 0; j < conditionLength; j++) {
         let temp: string
-        temp = "Course : " + this.Course_Code[j] + " " + this.Course_Name[j]
-        this.Course.push(temp)
+        temp = this.Course_Code[j] + " " + this.Course_Name[j]
+        if(this.Course.indexOf(temp)==-1){
+          this.Course.push(temp)
+
+        }
         console.log(this.Course[j])
 
       }
       console.log(this.Course)
     })
   }
-  /*
-  ShowFeedback() {
-    this.SendFBRequest = from(this.testapiProvider.GetFeedback())
-    this.SendFBRequest.subscribe(val => {
-      this.FBId = val["FBId"]
-      this.FBName = val["FBName"]
-      this.FBDate = val["FBDate"]
-
-
-      console.log("FB", this.FBId, this.FBName, this.FBDate)
-
-
-    })
-  }*/
 
   AlertFeedback() {
     let CID: any;

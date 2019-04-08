@@ -58,12 +58,13 @@ export class HomePage {
   remainingTime: any = 500;
   displayTime: any
   refreshTime: any = 300;
+  refreshCheck: boolean = false;
 
-  decreaseTime:any;
+  decreaseTime: any;
 
   countHr: number;
   countMin: number;
-  countSec:number;
+  countSec: number;
   countResult: number;
 
 
@@ -90,13 +91,13 @@ export class HomePage {
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad HomePage');
-
-
-
+  }
+  ionViewWillLeave() {
+    clearTimeout(this.decreaseTime)
   }
   ionViewWillEnter() {
     clearTimeout(this.decreaseTime)
-    if(this.loading){
+    if (this.loading) {
       this.loading.dismiss();
       this.loading = null;
     }
@@ -182,8 +183,8 @@ export class HomePage {
 
         this.countHr = assHr3 - this.HrTime
         this.countMin = assMin3 - this.MinTime
-        this.countSec = 0 - this.SecTime 
-        console.log("countdown time", this.countHr, this.countMin,this.countSec)
+        this.countSec = 0 - this.SecTime
+        console.log("countdown time", this.countHr, this.countMin, this.countSec)
 
         this.countResult = (((this.countHr * 60) + this.countMin) * 60) + this.countSec;
         console.log("Remaining Start", this.countResult)
@@ -193,6 +194,8 @@ export class HomePage {
       }
 
       this.StartClock();
+
+
     })
   }
 
@@ -221,11 +224,11 @@ export class HomePage {
   }
   initTimer() {
 
-    if (!this.timeInSeconds) {
-      //Initial time to countdown
-      //this.timeInSeconds = 60;//this.countResult; //1500
-      this.timeInSeconds = this.countResult;
-    }
+    //if (!this.timeInSeconds) {
+    //Initial time to countdown
+    //this.timeInSeconds = 60;//this.countResult; //1500
+    this.timeInSeconds = this.countResult;
+    //}
     this.time = this.timeInSeconds;
     this.runTimer = false;
     this.hasStarted = false;
@@ -261,7 +264,7 @@ export class HomePage {
       /*else {
         this.hasFinished = true;
       }*/
-      else if(this.remainingTime<=0){
+      else if (this.remainingTime <= 0) {
         this.hasFinished = true;
         this.timerTick();
       }
@@ -288,14 +291,15 @@ export class HomePage {
   //End of countdown timer
 
   readytoquiz() {
-    this.Notification();
+    //this.Notification();
     this.navCtrl.push(QuizPage, { "Stu_ID": this.Stu_ID, "Today": this.Today }, { animate: true, direction: 'forward' });
 
   }
 
   Logout() {
     this.SendLogLogout = from(this.testapiProvider.PushLogLogout(this.Stu_ID))
-    this.navCtrl.setRoot(LoginPage, { animate: true, animation: 'transition', direction: 'back', duration: 500 })
+    //this.navCtrl.setRoot(LoginPage, { animate: true, animation: 'transition', direction: 'back', duration: 500 })
+    this.navCtrl.push(LoginPage,{ animate: true, animation: 'transition', direction: 'back', duration: 500 });
   }
 
   clickSound() {

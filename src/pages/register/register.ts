@@ -147,8 +147,8 @@ export class RegisterPage {
           duration: 2000
         });
         this.SuccessToast.present()
-
-        this.navCtrl.push(LoginPage, { animate: true, animation: 'transition', direction: 'back', duration: 300 })
+        this.navCtrl.pop();
+        //this.navCtrl.push(LoginPage, { animate: true, animation: 'transition', direction: 'back', duration: 300 })
   
       }
 

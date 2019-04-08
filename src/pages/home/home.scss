@@ -36,7 +36,13 @@ page-home {
   .fabbutt{
     z-index: inherit;  
   }
-
+  .assessname{
+    text-align: center;
+    font-size: 20px;
+    
+    
+  }
+  
   
 
   .toolbar-background {
@@ -123,12 +129,12 @@ page-home {
 
   h6 {
     font-size: 16px;
-    color: #f78710;
+    color: #ffffff;
 
   }
 
   .timetable {
-    background-color: #ffffff;
+    background-color: #f78710;
   }
 
 
@@ -197,7 +203,7 @@ page-home {
   }
 
   .invalidtime {
-    font-size: 18px;
+    font-size: 27px;
     color: #ff0000;
   }
 

@@ -17,21 +17,25 @@
 
 <ion-content style="background-image: url('assets/imgs/CloudResult.png')">
 
+  <button class="butt2" alt="" (click)="presentActionSheet()">
+    <h4>Join Course</h4>
+  </button>
+
   <br>
-      <button class="butt" no-lines *ngFor="let element of Course; let i = index" ion-item (click)='ShowResult(i)'>
-        <h2>{{element}}</h2>
-      </button>
-      <br>
-    
-    <!--<ion-item>
+  <div *ngFor="let element of Course; let i = index">
+    <button class="butt" no-lines ion-item (click)='ShowResult(i)'>
+      <h2>{{element}}</h2>
+    </button>
+    <br>
+
+  </div>
+  <br>
+
+  <!--<ion-item>
         <ion-label>Join Course</ion-label>
         <ion-select  (cancel)="onCancel()" (change)="abrirLocal()">
             <ion-option *ngFor="let element of JCourse" >{{element}}</ion-option>
         </ion-select>
     </ion-item>-->
-    <button class="butt2" alt=""  (click)="presentActionSheet()">
-      <h4>Join Course</h4>
-    </button>
-  
 
 </ion-content>

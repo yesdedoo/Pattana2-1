@@ -60,7 +60,7 @@
       <h1 text-center>{{displayTime}}</h1>
     </ng-template>
     <ng-template #invalidtime>
-      <h1 class='invalidtime' text-center>!!The past assessment will close in 5 minutes!!</h1>
+      <h1 class='invalidtime' text-center>!Questions will close in 5 minutes!</h1>
     </ng-template>
   </div>
   <ng-container *ngIf="Ass_Exist==true; then showassess; else hideassess"></ng-container>
@@ -69,7 +69,11 @@
       <!--<ng-container *ngIf="countResult>0; then showClock; else hidClock"></ng-container>
          <ng-template #showClock>-->
       <ion-label>
-        <h6> Assessment : {{i+1}} will start at {{Ass_Time[i]}}</h6>
+        <div assesslabel>
+          <h6 class="assessname"> 
+            <b>Assessment : {{i+1}} will start at <b style="color:rgb(255, 0, 0)">{{Ass_Time[i]}}</b></b>
+          </h6>
+        </div>        
       </ion-label>
       <ion-item>
         <h6 text-center>{{displayTime}}</h6>
@@ -77,11 +81,10 @@
     </ion-item>
   </ng-template>
   <ng-template #hideassess>
-    <h6 text-center>There is no assessment today</h6>
+    <h1>
+      <b style="color: rgb(255, 0, 0)">There is no assessment today</b>
+    </h1>
   </ng-template>
-
-
-
 
 
 </ion-content>

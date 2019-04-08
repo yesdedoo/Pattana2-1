@@ -6,6 +6,7 @@ import { ResulthistpercPage } from '../resulthistperc/resulthistperc';
 //REST API
 import { from } from 'rxjs/observable/from';
 import { TestapiProvider } from '../../providers/testapi/testapi';
+import { TabsPage } from '../tabs/tabs';
 
 
 /**
@@ -78,9 +79,6 @@ export class ResultPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ResultPage');
-    
-  }
-  ionViewWillEnter(){
     this.GetCourse();
     this.GetJoinCourse();
 
@@ -114,7 +112,7 @@ export class ResultPage {
       var conditionLength = this.Course_ID.length
       for (var j = 0; j < conditionLength; j++) {
         let temp: string
-        temp = "Course : " + this.Course_Code[j] + " " + this.Course_Name[j]
+        temp =  this.Course_Code[j] + " " + this.Course_Name[j]
         this.Course.push(temp)
         console.log(this.Course[j])
 
@@ -147,83 +145,6 @@ export class ResultPage {
     })
   }
   
-  /*JoinCourse() {
-    let CID: any;
-    if (this.prompt) {
-      this.prompt.dismiss();
-      this.prompt = null;
-    }
-
-    this.prompt = this.alertCtrl.create({
-      title: 'Join Course',
-      message: "Enter a ID of the course that you receieved from the instructor",
-      inputs: [
-        {
-          name: 'CID',
-          placeholder: 'Course ID'
-        },
-      ],
-      buttons: [
-        {
-          text: 'Cancel',
-          handler: data => {
-            console.log('Cancel clicked');
-          }
-        },
-        {
-          text: 'Confirm',
-          handler: data => {
-            console.log('Saved clicked');
-            CID = data.CID
-            console.log(CID)
-            //JoinCourseAPI function()
-            this.InsertedCourse(CID);
-            switch (this.ToastChecker) {
-              case 0: {
-                this.SuccessToast = this.toastCtrl.create({
-                  message: 'Join Course successful.',
-                  duration: 3000
-                });
-
-                this.SuccessToast.present();
-                break;
-              }
-              case 1: {
-                this.RepeatCOSToast = this.toastCtrl.create({
-                  message: 'This course was already joined by this student.',
-                  duration: 3000
-                });
-
-                this.RepeatCOSToast.present();
-                break;
-              }
-              case 2: {
-                this.NoCourseToast = this.toastCtrl.create({
-                  message: 'This course is not available in the system.',
-                  duration: 3000
-                });
-
-                this.NoCourseToast.present();
-                break;
-              }
-              case 3: {
-                this.EmptyInputToast = this.toastCtrl.create({
-                  message: 'Empty course input.',
-                  duration: 3000
-                });
-
-                this.EmptyInputToast.present();
-                break;
-              }
-
-            }
-          }
-        }
-      ]
-    });
-    this.prompt.present();
-
-  }*/
   async presentActionSheet(){
     const actionSheet = await this.actionSheetController.create({
       buttons: [{
@@ -233,6 +154,8 @@ export class ResultPage {
         handler: () => {
           console.log('Course[0] clicked');
           this.InsertedCourse(this.JCourse_ID[0]);
+          this.navCtrl.setRoot(this.navCtrl.getActive().component,{'Stu_ID':this.Stu_ID});
+          //this.navCtrl.setRoot(TabsPage)
         }
       }, {
         text: 'Cancel',

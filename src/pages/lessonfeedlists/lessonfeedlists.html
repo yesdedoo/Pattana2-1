@@ -21,28 +21,28 @@
       <div ngSwitch="{{Feed_Type[i]}}">
         <div *ngSwitchCase="0">
           <button no-lines class="NoneButt" ion-item (click)='ShowLessFeed(i)'>
-      
+
             {{element}}
           </button>
           <br>
         </div>
         <div *ngSwitchCase="1">
           <button no-lines class="DangerButt" ion-item (click)='ShowLessFeed(i)'>
-           
+
             {{element}}
           </button>
           <br>
         </div>
         <div *ngSwitchCase="2">
-          <button  no-lines class="RemindButt" ion-item (click)='ShowLessFeed(i)'>
-           
+          <button no-lines class="RemindButt" ion-item (click)='ShowLessFeed(i)'>
+
             {{element}}
           </button>
           <br>
         </div>
         <div *ngSwitchCase="3">
           <button no-lines class="ImproveButt" ion-item (click)='ShowLessFeed(i)'>
-            
+
             {{element}}
           </button>
           <br>

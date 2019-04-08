@@ -20,11 +20,11 @@
 
 
     <div *ngFor="let element of Less_Know; let i = index" class="progress-wrapper">
-       
+
       <br>
       <div class="ele" alt="">
-      <h3>{{element}}</h3>
-    </div>
+        <h3>{{element}}</h3>
+      </div>
       <round-progress [current]="Less_AVGResult[i]" [max]="max" [stroke]="stroke" [radius]="radius"
         [semicircle]="semicircle" [rounded]="rounded" [responsive]="responsive" [clockwise]="clockwise"
         [color]="gradient ? 'url(#gradient)' : color" [background]="background" [duration]="duration"

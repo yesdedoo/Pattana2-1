@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, AlertController } from 'ionic-angular';
+import { NavController, NavParams, AlertController, Platform, ViewController } from 'ionic-angular';
 import { CalendarComponentOptions } from 'ion2-calendar';
 
 //REST
@@ -51,20 +51,32 @@ export class SchedulePage {
   //Storage Variable
   Stu_IDStorage: any;
 
+  
+  // Property used to store the callback of the event handler to unsubscribe to it when leaving this page
+  public unregisterBackButtonAction: any;
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController,
-    public testapiProvider: TestapiProvider, public storage: Storage) {
+    public testapiProvider: TestapiProvider, public storage: Storage, public platform: Platform,
+    public viewCtrl:ViewController) {
 
 
 
   }
+  initializeBackButtonCustomHandler(): void {
+    this.unregisterBackButtonAction = this.platform.registerBackButtonAction(function (event) {
+      console.log('Prevent Back Button Page Change');
+    }, 101); // Priority 101 will override back button handling (we set in app.component.ts) as it is bigger then priority 100 configured in app.component.ts file */
+  }
+
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SchedulePage');
 
   }
   ionViewWillEnter() {
+    this.initializeBackButtonCustomHandler();
+    this.viewCtrl.showBackButton(false);
     this.storage.ready().then(() => this.storage.get('stuid')
       .then(res => {
         console.log('stuid got:', res);
@@ -94,7 +106,7 @@ export class SchedulePage {
       for (var j = 0; j < conditionLength; j++) {
         let temp: string
         temp = this.Course_Code[j] + " " + this.Course_Name[j]
-        if(this.Course.indexOf(temp)==-1){
+        if (this.Course.indexOf(temp) == -1) {
           this.Course.push(temp)
 
         }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, LoadingController } from 'ionic-angular';
+import { NavController, NavParams, LoadingController, Platform, ViewController } from 'ionic-angular';
 import { QuizPage } from '../quiz/quiz';
 //import { PhonegapLocalNotification } from '@ionic-native/phonegap-local-notification';
 
@@ -67,20 +67,23 @@ export class HomePage {
   countSec: number;
   countResult: number;
 
-
   loading: any;
   SendLogLogout: any;
 
+  // Property used to store the callback of the event handler to unsubscribe to it when leaving this page
+  public unregisterBackButtonAction: any;
+
+
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public testapiProvider: TestapiProvider, public smartAudio: SmartAudioProvider,
-    public storage: Storage, public loadingCtrl: LoadingController, public localnotification: LocalNotifications) {
+    public storage: Storage, public loadingCtrl: LoadingController,
+    public localnotification: LocalNotifications, public platform: Platform,
+    public viewCtrl: ViewController) {
 
     //this.tabBarElement = document.querySelector('.tabbar#show-tabbar')
     //this.tabBarElement = document.querySelector('.tabs')
     //this.tabBarElement = document.querySelector("ion-tabbar")
     //this.tabBarElement = document.getElementsByClassName('tabs').item(1);
-
-
 
     /*
     setTimeout(() => {
@@ -89,13 +92,19 @@ export class HomePage {
     }, 3000);*/
 
   }
+  initializeBackButtonCustomHandler(): void {
+    this.unregisterBackButtonAction = this.platform.registerBackButtonAction(function (event) {
+      console.log('Prevent Back Button Page Change');
+    }, 101); // Priority 101 will override back button handling (we set in app.component.ts) as it is bigger then priority 100 configured in app.component.ts file */
+  }
+
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad HomePage');
   }
-  ionViewWillLeave() {
-    clearTimeout(this.decreaseTime)
-  }
   ionViewWillEnter() {
+    this.initializeBackButtonCustomHandler();
+    this.viewCtrl.showBackButton(false);
     clearTimeout(this.decreaseTime)
     if (this.loading) {
       this.loading.dismiss();
@@ -298,9 +307,10 @@ export class HomePage {
 
   Logout() {
     this.SendLogLogout = from(this.testapiProvider.PushLogLogout(this.Stu_ID))
-    this.storage.set('stuid','')
+    this.storage.clear();
     //this.navCtrl.setRoot(LoginPage, { animate: true, animation: 'transition', direction: 'back', duration: 500 })
-    this.navCtrl.push(LoginPage,{ animate: true, animation: 'transition', direction: 'back', duration: 500 });
+    //this.navCtrl.push(LoginPage, { animate: true, animation: 'transition', direction: 'back', duration: 500 });
+    location.reload();
   }
 
   clickSound() {

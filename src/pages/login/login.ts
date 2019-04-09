@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { NavController, ToastController, AlertController, Platform } from 'ionic-angular';
+import { NavController, ToastController, AlertController, Platform, ViewController } from 'ionic-angular';
 import { UsernameValidator } from '../../providers/username/username';
 import { Storage } from '@ionic/storage';
 
@@ -40,7 +40,7 @@ export class LoginPage {
   username: string;
   password: string;
   Stu_ID: any;
-  Stu_Fname:any;
+  Stu_Fname: any;
 
   FailToast: any;
   EmptyToast: any;
@@ -49,10 +49,14 @@ export class LoginPage {
   submitAttempt: boolean = false;
 
   requestSendEmail: any;
+  // Property used to store the callback of the event handler to unsubscribe to it when leaving this page
+  public unregisterBackButtonAction: any;
+
 
   constructor(public navCtrl: NavController, public formBuilder: FormBuilder, public localNotification: LocalNotifications,
     public testapiProvider: TestapiProvider, public storage: Storage, public toastCtrl: ToastController, public androidPermission: AndroidPermissions,
-    public platform: Platform, public smartAudio: SmartAudioProvider) {
+    public platform: Platform, public smartAudio: SmartAudioProvider,
+    public viewCtrl: ViewController) {
 
     //var permissions = cordova.plugins.Permissions
     this.PermText = "AndroidPermission: ";
@@ -66,17 +70,23 @@ export class LoginPage {
 
   }
 
-
-  /*registcomplete() {
-    this.navCtrl.push(LoginPage,{animate:true,direction:'transitions'})
-  }*/
-
+  initializeBackButtonCustomHandler(): void {
+    this.unregisterBackButtonAction = this.platform.registerBackButtonAction(function (event) {
+      console.log('Prevent Back Button Page Change');
+    }, 101); // Priority 101 will override back button handling (we set in app.component.ts) as it is bigger then priority 100 configured in app.component.ts file */
+  }
+  ionViewWillEnter() {
+    this.viewCtrl.showBackButton(false);
+    this.initializeBackButtonCustomHandler();
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad Login2Page');
+    //
     this.storage.clear();
-
   }
+
+
 
   clickSound() {
     this.smartAudio.play('clickSound');
@@ -118,7 +128,7 @@ export class LoginPage {
         console.log(val)
         this.Stu_ID = val["Stu_ID"];
         this.Stu_Fname = val["Stu_FNAME"];
-        this.storage.set('stufname',this.Stu_Fname);
+        this.storage.set('stufname', this.Stu_Fname);
 
         console.log("Stu_ID: ", this.Stu_ID)
         if (val["exist"] == true) {

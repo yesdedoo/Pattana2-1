@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
+import { NavController, NavParams, AlertController, LoadingController, Platform, ViewController } from 'ionic-angular';
 import { CardPage } from '../card/card';
 import { Storage } from '@ionic/storage';
 //REST
@@ -30,7 +30,7 @@ export class RankPage {
 
   ParseSC: number;
   DecimalSC: any;
-  loading:any;
+  loading: any;
   Today: any;
 
   //REST variables
@@ -49,9 +49,13 @@ export class RankPage {
   Ass_IDStorage: any;
   Stu_IDStorage: any;
 
+  // Property used to store the callback of the event handler to unsubscribe to it when leaving this page
+  public unregisterBackButtonAction: any;
+
+
   constructor(public alertCtrl: AlertController, private navCtrl: NavController, public navParams: NavParams,
     public testapiProvider: TestapiProvider, public storage: Storage, public loadingCtrl: LoadingController,
-    public smartAudio:SmartAudioProvider) {
+    public smartAudio: SmartAudioProvider, public platform: Platform, public viewCtrl: ViewController) {
 
     this.ScoreCount = navParams.get('scorecount');
     this.NOOfQues = navParams.get('quesNO');
@@ -61,11 +65,13 @@ export class RankPage {
     this.Today = navParams.get('today');
     this.loading = this.loadingCtrl.create({
       content: 'Please wait...',
-      spinner:'hide'
+      spinner: 'hide'
     });
 
 
   }
+
+
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad RankPage');
@@ -91,7 +97,7 @@ export class RankPage {
         //this.GetRanking();
       }).then(() => console.log("Assstorage: ", this.Ass_IDStorage))
     );
-         
+
     this.loading.present();
     setTimeout(() => {
       this.GetRanking();
@@ -101,9 +107,15 @@ export class RankPage {
 
 
   }
-
-  ionViewWillEnter(){
+  initializeBackButtonCustomHandler(): void {
+    this.unregisterBackButtonAction = this.platform.registerBackButtonAction(function (event) {
+      console.log('Prevent Back Button Page Change');
+    }, 101); // Priority 101 will override back button handling (we set in app.component.ts) as it is bigger then priority 100 configured in app.component.ts file */
+  }
+  ionViewWillEnter() {
     this.smartAudio.stop('bg7Sound');
+    this.viewCtrl.showBackButton(false);
+    this.initializeBackButtonCustomHandler();
   }
 
   GetRanking() {

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, LoadingController, AlertController, ToastController, ActionSheetController } from 'ionic-angular';
+import { NavController, NavParams, LoadingController, AlertController, ToastController, ActionSheetController, Platform, ViewController } from 'ionic-angular';
 import { ResulthistpercPage } from '../resulthistperc/resulthistperc';
 
 
@@ -61,12 +61,18 @@ export class ResultPage {
   NoCourseToast: any;
   EmptyInputToast: any;
   prompt: any;
-  loading:any;
+  loading: any;
+
+  // Property used to store the callback of the event handler to unsubscribe to it when leaving this page
+  public unregisterBackButtonAction: any;
+
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public testapiProvider: TestapiProvider, public loadingCtrl: LoadingController,
-    public alertCtrl: AlertController, public toastCtrl: ToastController,public actionSheetController:ActionSheetController) {
+    public alertCtrl: AlertController, public toastCtrl: ToastController,
+    public actionSheetController: ActionSheetController, public platform: Platform,
+    public viewCtrl:ViewController) {
 
     this.Stu_ID = this.navParams.get('Stu_ID');
     this.SentStu_ID = this.Stu_ID[0]
@@ -76,6 +82,19 @@ export class ResultPage {
 
   }
 
+  initializeBackButtonCustomHandler(): void {
+    this.unregisterBackButtonAction = this.platform.registerBackButtonAction(function (event) {
+      console.log('Prevent Back Button Page Change');
+    }, 101); // Priority 101 will override back button handling (we set in app.component.ts) as it is bigger then priority 100 configured in app.component.ts file */
+  }
+  ionViewWillEnter() {
+    this.viewCtrl.showBackButton(false);
+    this.initializeBackButtonCustomHandler();
+  }
+
+
+
+
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ResultPage');
@@ -83,7 +102,7 @@ export class ResultPage {
     this.GetJoinCourse();
 
   }
-  GetCourse(){
+  GetCourse() {
     this.CourseInfo = from(this.testapiProvider.GetCourse(this.Stu_ID));
     this.CourseInfo.subscribe(val => {
 
@@ -112,7 +131,7 @@ export class ResultPage {
       var conditionLength = this.Course_ID.length
       for (var j = 0; j < conditionLength; j++) {
         let temp: string
-        temp =  this.Course_Code[j] + " " + this.Course_Name[j]
+        temp = this.Course_Code[j] + " " + this.Course_Name[j]
         this.Course.push(temp)
         console.log(this.Course[j])
 
@@ -140,21 +159,21 @@ export class ResultPage {
 
       }
       console.log(this.JCourse)
-      
+
 
     })
   }
-  
-  async presentActionSheet(){
+
+  async presentActionSheet() {
     const actionSheet = await this.actionSheetController.create({
       buttons: [{
         text: this.JCourse[0],
         icon: 'arrow-dropright-circle',
-      
+
         handler: () => {
           console.log('Course[0] clicked');
           this.InsertedCourse(this.JCourse_ID[0]);
-          this.navCtrl.setRoot(this.navCtrl.getActive().component,{'Stu_ID':this.Stu_ID});
+          this.navCtrl.setRoot(this.navCtrl.getActive().component, { 'Stu_ID': this.Stu_ID });
           //this.navCtrl.setRoot(TabsPage)
         }
       }, {
@@ -172,9 +191,9 @@ export class ResultPage {
   InsertedCourse(courseID) {
     if (this.RepeatCOSToast) {
       this.RepeatCOSToast.dismiss();
-      this.RepeatCOSToast = null;      
+      this.RepeatCOSToast = null;
     }
-    if(this.loading){
+    if (this.loading) {
       this.loading.dismiss();
       this.loading = null;
     }
@@ -212,7 +231,7 @@ export class ResultPage {
         this.RepeatCOSToast.present();
       }
 
-      
+
     })
   }
 

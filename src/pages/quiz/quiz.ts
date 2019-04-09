@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
+import { NavController, NavParams, LoadingController, AlertController, Platform, ViewController } from 'ionic-angular';
 import { RankPage } from '../rank/rank';
 
 //Slide
@@ -76,11 +76,15 @@ export class QuizPage {
 
   loading: any;
   musicChecker: boolean = true;
+  // Property used to store the callback of the event handler to unsubscribe to it when leaving this page
+  public unregisterBackButtonAction: any;
+
 
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public testapiProvider: TestapiProvider,
-    public loadingCtrl: LoadingController, public storage: Storage, public smartAudio: SmartAudioProvider) {
+    public loadingCtrl: LoadingController, public storage: Storage, public smartAudio: SmartAudioProvider,
+    public platform: Platform, public viewCtrl: ViewController) {
 
     //var Yanap = window.cordova
     this.ScoreCount = 0;
@@ -117,7 +121,15 @@ export class QuizPage {
 
   }
 
+  initializeBackButtonCustomHandler(): void {
+    this.unregisterBackButtonAction = this.platform.registerBackButtonAction(function (event) {
+      console.log('Prevent Back Button Page Change');
+    }, 101); // Priority 101 will override back button handling (we set in app.component.ts) as it is bigger then priority 100 configured in app.component.ts file */
+  }
+
   ionViewWillEnter() {
+    this.viewCtrl.showBackButton(false);
+    this.initializeBackButtonCustomHandler();
 
     this.GetQuestion();
     setTimeout(() => {
@@ -141,6 +153,7 @@ export class QuizPage {
     //this.slides.lockSwipes(true);
 
   }
+
 
 
   finishquiz() {

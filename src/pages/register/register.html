@@ -4,14 +4,21 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-
+<ion-fab slot="fixed">
+  <button class="returnbutt" color="danger" ion-fab (click)="ReturnToLogin();">
+    <ion-icon name="arrow-round-back"></ion-icon>
+  </button>
+</ion-fab>
 
 <ion-content padding style="background-image: url('assets/imgs/Cloud.png')">
 
-  <div class="div1" ion-fixed>
-    <br><br><br>
-    <h1>Register</h1>
-  </div>
+  <ion-header>
+    <div class="div1" ion-fixed>
+      <br><br><br>
+      <h1>Register</h1>
+    </div>
+
+  </ion-header>
 
   <div class="fixScroll" ion-fixed>
 
@@ -19,69 +26,57 @@
 
       <form [formGroup]="slideOneForm">
 
-        <ion-item no-lines>
-          <ion-label floating no-lines>Username</ion-label>
-          <ion-input no-lines
-            [class.invalid]="!slideOneForm.controls.username.valid && (slideOneForm.controls.username.dirty || submitAttempt)"
+        <ion-item no-lines class="inputform">
+          <ion-label no-lines><b>Email</b></ion-label>
+          <ion-input no-lines placeholder="exam@ple.com"
+            [class.invalid]="!slideOneForm.controls.username.valid  || submitAttempt"
             formControlName="username" (keyup)="validate('username')" type="text" [(ngModel)]="username"></ion-input>
         </ion-item>
 
-        <!--<ion-item no-lines *ngIf="slideOneForm.controls.username.pending">
-          <p>Checking username...</p>
-        </ion-item>
-  
-        <ion-item no-lines
-          *ngIf="!slideOneForm.controls.username.valid && !slideOneForm.controls.username.pending && (slideOneForm.controls.username.dirty || submitAttempt)">
-          <p>Sorry, that username can not be used!</p>
-        </ion-item>-->
-
         <ion-item no-lines
           *ngIf="!slideOneForm.controls.username.valid  && (slideOneForm.controls.username.dirty || submitAttempt)">
-          <div class="alertDialog">
+          <ion-label class="alertDialog">
             <p>Please enter at least 6 characters.</p>
-          </div>
+          </ion-label>
         </ion-item>
 
-        <ion-item no-lines>
-          <ion-label floating no-lines>First Name</ion-label>
-          <ion-input no-lines
-            [class.invalid]="!slideOneForm.controls.firstName.valid && (slideOneForm.controls.firstName.dirty || submitAttempt)"
+        <ion-item no-lines class="inputform">
+          <ion-label no-lines><b>First Name</b></ion-label>
+          <ion-input no-lines placeholder="At least 10 characters"
+            [class.invalid]="!slideOneForm.controls.firstName.valid || submitAttempt"
             formControlName="firstName" (keyup)="validate('firstname')" type="text" [(ngModel)]="firstname"></ion-input>
         </ion-item>
-        <ion-item no-lines>
-          <ion-label floating no-lines>Last Name</ion-label>
-          <ion-input no-lines
-            [class.invalid]="!slideOneForm.controls.lastName.valid && (slideOneForm.controls.lastName.dirty || submitAttempt)"
+        <ion-item no-lines class="inputform">
+          <ion-label no-lines><b>Last Name</b></ion-label>
+          <ion-input no-lines placeholder="At least 10 characters"
+            [class.invalid]="!slideOneForm.controls.lastName.valid || submitAttempt"
             formControlName="lastName" (keyup)="validate('lastname')" type="text" [(ngModel)]="lastname"></ion-input>
         </ion-item>
-        <ion-item no-lines>
-          <ion-label floating no-lines>Telephone (0123456789)</ion-label>
-          <ion-input no-lines formControlName="telephone" (keyup)="validate('telephone')" type="tel"
-            [(ngModel)]="telephone"></ion-input>
+        <ion-item no-lines class="inputform">
+          <ion-label no-lines><b>Telephone</b></ion-label>
+          <ion-input no-lines placeholder="0812345678" formControlName="telephone" 
+          [class.invalid]="!slideOneForm.controls.telephone.valid || submitAttempt" (keyup)="validate('telephone')"
+            type="tel" [(ngModel)]="telephone"></ion-input>
         </ion-item>
 
 
       </form>
 
       <form [formGroup]="PasswordForm">
-        <ion-item no-lines>
-          <ion-label floating>Password</ion-label>
-          <ion-input formControlName="password" type="Password" [(ngModel)]="password" [formGroup]="PasswordForm">
+        <ion-item no-lines class="inputform">
+          <ion-label><b>Password</b></ion-label>
+          <ion-input formControlName="password" placeholder="At least 6 characters" type="Password"
+          [class.invalid]="!PasswordForm.controls.password.valid || submitAttempt"
+            [(ngModel)]="password" [formGroup]="PasswordForm">
           </ion-input>
         </ion-item>
 
-        <ion-item no-lines>
-          <ion-label floating>
-            Enter Password again
-          </ion-label>
-          <ion-input formControlName="confirmPassword" [(ngModel)]="repassword" type="Password"
-            [formGroup]="PasswordForm">
+        <ion-item no-lines >
+          <ion-label><b>Repassword</b></ion-label>
+          <ion-input formControlName="confirmPassword" [class.invalid]="!PasswordForm.controls.confirmPassword.valid || submitAttempt"
+           placeholder="Must be same as above" [(ngModel)]="repassword"
+            type="Password" [formGroup]="PasswordForm">
           </ion-input>
-          <!--
-          <div *ngIf="PasswordForm.controls.confirmPassword.errors?.MatchPassword" style="color: red">
-            New password and Confirm password did not match
-          </div>
-          -->
         </ion-item>
 
         <div class="alert alert-danger" [formGroup]="PasswordForm"
@@ -89,9 +84,7 @@
           <div class="alertDialog">
             <p>Password not match </p>
           </div>
-
         </div>
-
       </form>
 
     </ion-list>

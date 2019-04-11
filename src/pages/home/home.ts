@@ -277,7 +277,7 @@ export class HomePage {
         this.hasFinished = true;
         this.timerTick();
       }
-      if (this.remainingTime == -300) {
+      if (this.remainingTime == -3600) {
         clearTimeout(this.decreaseTime);
         this.navCtrl.setRoot(TabsPage)
       }

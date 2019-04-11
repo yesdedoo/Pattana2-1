@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { NavController, ToastController } from 'ionic-angular';
+import { NavController, ToastController, Platform } from 'ionic-angular';
 import { LoginPage } from '../login/login';
 import { UsernameValidator } from '../../providers/username/username';
 import { PasswordProvider } from '../../providers/password/password';
@@ -52,10 +52,9 @@ export class RegisterPage {
   ispassword: boolean = false;
   istelephone: boolean = false;
 
-
   constructor(public navCtrl: NavController, public formBuilder: FormBuilder,
     public testapiProvider: TestapiProvider, public smartAudio: SmartAudioProvider,
-    public toastCtrl: ToastController) {
+    public toastCtrl: ToastController, public platform: Platform) {
 
 
 
@@ -63,7 +62,7 @@ export class RegisterPage {
       firstName: ['', Validators.compose([Validators.minLength(10), Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
       lastName: ['', Validators.compose([Validators.minLength(10), Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
       username: ['', Validators.compose([Validators.required, Validators.minLength(10), Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')]), UsernameValidator.checkUsername],
-      telephone: ['', Validators.compose([Validators.minLength(10), Validators.maxLength(12), Validators.required])]
+      telephone: ['', Validators.compose([Validators.minLength(10), Validators.maxLength(12),Validators.pattern('[0-9]*'), Validators.required])]
 
     });
     this.PasswordForm = formBuilder.group({
@@ -74,6 +73,7 @@ export class RegisterPage {
         validator: PasswordProvider.MatchPassword //Pwd validation
       });
   }
+
 
   validate(data) {
     if (data == 'username') {
@@ -91,6 +91,12 @@ export class RegisterPage {
     else if (data == 'password') {
       this.ispassword = true;
     }
+  }
+
+  ReturnToLogin() {
+    console.log("Return to Login")
+    location.reload();
+
   }
 
   register() {
@@ -122,7 +128,7 @@ export class RegisterPage {
     }
     else {
 
-      if (this.firstname.length < 6 || this.lastname.length < 6 || this.username.length < 10||this.telephone.length!=10) {
+      if (this.firstname.length < 6 || this.lastname.length < 6 || this.username.length < 10 || this.telephone.length != 10) {
         this.FailToast = this.toastCtrl.create({
           message: 'Register failed, input invalid',
           duration: 2000
@@ -130,14 +136,14 @@ export class RegisterPage {
         this.FailToast.present()
 
       }
-      else if(this.password.length<6||this.password!=this.repassword){
+      else if (this.password.length < 6 || this.password != this.repassword) {
         this.FailToast = this.toastCtrl.create({
           message: 'Register failed, 1st password & 2nd password are not equal or less than 6',
           duration: 2000
         });
         this.FailToast.present()
       }
-      else{
+      else {
         this.SendRegister = from(this.testapiProvider.PostRegister(this.firstname, this.lastname, this.username, this.password, this.telephone))
         this.SendRegister.subscribe(val => {
           console.log(val)
@@ -149,7 +155,7 @@ export class RegisterPage {
         this.SuccessToast.present()
         this.navCtrl.pop();
         //this.navCtrl.push(LoginPage, { animate: true, animation: 'transition', direction: 'back', duration: 300 })
-  
+
       }
 
     }

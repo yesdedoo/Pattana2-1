@@ -2,13 +2,10 @@ page-register {
 
   ion-content {
     background-size: cover;
+    padding-top:20%;
 
   }
-
-  ion-item {
-    margin-top: 2px !important;
-  }
-
+ 
   .item-inner {
     border-bottom-color: transparent !important;
     box-shadow: none !important;
@@ -22,14 +19,8 @@ page-register {
   ion-item {
     border-bottom-color: transparent !important;
     box-shadow: none !important;
+    
   }
-
-
-
-  /*.lista {
-    border-top: 50px;
-    border-bottom: 50px;
-  }*/
 
   h1 {
     font-size: 20px !important;
@@ -53,7 +44,7 @@ page-register {
 
 
   ion-list {
-
+    margin: 0% !important;
     border-top-right-radius: 5px !important;
     border-top-left-radius: 5px !important;
     border-bottom-right-radius: 5px !important;
@@ -67,19 +58,9 @@ page-register {
     //text-align: center;
   }
 
-
-  .swiper-slide {
-    display: block;
-  }
-
-  ion-label,
-  .select-text {
-    margin-left: 50px !important;
-  }
-
-
+ 
+  
   ion-input,
-  ion-select,
   ion-textarea {
     background-color: #f2f2f2;
     height: 40px;
@@ -99,37 +80,18 @@ page-register {
 
   .alertDialog {
     text-align: center;
+    margin:0;
   }
 
   .invalid {
     border: 1px solid #ea6153;
   }
 
-  .Com2 {
-
-    position: relative;
-    text-align: center;
-
-
-
-    border-top-right-radius: 5px !important;
-    border-top-left-radius: 5px !important;
-    border-bottom-right-radius: 5px !important;
-    border-bottom-left-radius: 5px !important;
-
-
-
-  }
-
+ 
   h2 {
-
-
     font-size: 10px;
-
     color: #ffffff;
   }
-
-
 
   h1 {
     font-size: 20px;
@@ -143,7 +105,6 @@ page-register {
     width: 85%;
 
   }
-
 
 
   input {
@@ -162,30 +123,16 @@ page-register {
     margin-bottom: 10px;
   }
 
-  .inform {
-    position: relative;
-    text-align: center;
-    background-color: white;
-    border-top-right-radius: 10px !important;
-    border-top-left-radius: 10px !important;
-    border-bottom-right-radius: 10px !important;
-    border-bottom-left-radius: 10px !important;
-
-    -webkit-box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.103);
-    box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.103);
-
-  }
-
   .div1 {
     text-align: center;
-    margin-left: 40%
+    margin-left: 40%;
+    margin-bottom:20%;
   }
 
   .register {
     width: 40%;
     height: 45px;
     margin-left: 30%;
-
 
     border-top-right-radius: 20px !important;
     border-top-left-radius: 20px !important;
@@ -194,17 +141,26 @@ page-register {
     -webkit-box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.103);
     box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.103);
   }
-
-  img {
-    width: 30%;
-    text-align: center;
+  
+  ion-fab{
+    margin-top: 5%;
+    margin-left: 5%;
+  }
+  
+  .returnbutt{
+    position:absolute;
+    z-index:-1;
 
   }
+ 
+  .alearText{
+    height: 5% !important;
+    margin: 0px;
+    padding: 0px;
+  }
 
-  .inform2 {
-    position: relative;
-    text-align: center;
-
+  .inputform{
+    margin-bottom:5%;
   }
 
 

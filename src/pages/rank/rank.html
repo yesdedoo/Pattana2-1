@@ -8,69 +8,76 @@
 <ion-content padding style="background-image: url('assets/imgs/CloudRank.png')">
 
   <br>
-    <div class="word">
-      <h3>Hoorey! </h3>
-    </div>
-    <div class="score" padding>
-      <h4>{{ScoreCount}} / {{NOOfQues}} </h4>
-    </div>
-    <h2 class="yourscore">Your score is:  </h2> <h6>{{DecimalSC}}</h6>
-    
-  
-  
-    <ion-card>
-  
-      <ion-card-header>
-        <b>Student rank</b>
-      </ion-card-header>
-  
-      <ion-card-content>
-        <div *ngFor="let element of RankSlot; let i = index">
-  
-          <ng-container *ngIf="RankName[i];then ShowScore;else EmptyScore"></ng-container>
-          <ng-template #ShowScore>
-            <div class="ranking" >
-              <ion-grid>
-                <ion-row>
-                  <ion-col>
-                    <h5>{{i+1}}.{{RankName[i]}}</h5>
-                  </ion-col>
-                  
-                  <ion-col class="rankscore" style="text-align:right">
-                    <h5>{{RankScore[i]}}</h5>
-                  </ion-col>
-  
-                </ion-row>
-              </ion-grid>
-  
-            </div>
-          </ng-template>
-          <ng-template #EmptyScore>
-            <div class="ranking" >
-              <ion-grid>
-                <ion-row>
-                  <ion-col>
-                    <h5>{{i+1}}.- - - -</h5>
-  
-                  </ion-col>
-                </ion-row>
-              </ion-grid>
-              
-            </div>
-  
-          </ng-template>
-        </div>
-        <br>
-  
-      </ion-card-content>
-  
-    </ion-card>
-    <div class="gotofb">
-      <button color="orange" ion-button class="GoHome" (click)='clickhome()'> Home </button> <br>
-    </div>
-  
-  
-  
-  
-  
-  </ion-content>
+  <div class="word">
+    <h3>Hoorey! </h3>
+  </div>
+  <div class="score" padding>
+    <ion-item class="assessmentAlert">
+      <ion-label>
+        <h4>
+          <b>{{ScoreCount}} / {{NOOfQues}}</b>
+        </h4>
+      </ion-label>
+    </ion-item>
+  </div>
+  <h2 class="yourscore">Your score is: </h2>
+  <h6>{{DecimalSC}}</h6>
+
+
+
+  <ion-card>
+
+    <ion-card-header>
+      <b>Student rank</b>
+    </ion-card-header>
+
+    <ion-card-content>
+      <div *ngFor="let element of RankSlot; let i = index">
+
+        <ng-container *ngIf="RankName[i];then ShowScore;else EmptyScore"></ng-container>
+        <ng-template #ShowScore>
+          <div class="ranking">
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <h5>{{i+1}}.{{RankName[i]}}</h5>
+                </ion-col>
+
+                <ion-col class="rankscore" style="text-align:right">
+                  <h5>{{RankScore[i]}}</h5>
+                </ion-col>
+
+              </ion-row>
+            </ion-grid>
+
+          </div>
+        </ng-template>
+        <ng-template #EmptyScore>
+          <div class="ranking">
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <h5>{{i+1}}.- - - -</h5>
+
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+
+          </div>
+
+        </ng-template>
+      </div>
+      <br>
+
+    </ion-card-content>
+
+  </ion-card>
+  <div class="gotofb">
+    <button color="orange" ion-button class="GoHome" (click)='clickhome()'> Home </button> <br>
+  </div>
+
+
+
+
+
+</ion-content>

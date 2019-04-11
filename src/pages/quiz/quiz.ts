@@ -50,6 +50,7 @@ export class QuizPage {
   Choice_Crr: any = [];
   Choice_Quesid: any = [];
   ArrChoice = [];
+  correctC: any = [];
 
   //Marking Score 
   MarkingResult = { "MQuesNO": 0, "MResult": 0 };
@@ -213,6 +214,9 @@ export class QuizPage {
         this.Choice_Name[i] = tempCNAME[i]
         this.Choice_Crr[i] = tempCCRR[i]
         this.Choice_Quesid[i] = tempCQID[i]
+
+        this.correctC[i] = this.Choice_Crr[i].indexOf(1)
+        console.log(this.correctC[i])
 
       }, 1000);
 
@@ -387,6 +391,19 @@ export class QuizPage {
           switch (IndexChoice) {
             case 0: {
               this.buttonToChange1[IndexQues].style.backgroundColor = this.ButtonColorWrong
+              switch (this.correctC[IndexQues]) {
+                case 1:
+                  this.buttonToChange2[IndexQues].style.backgroundColor = this.ButtonColorCorrect;
+                  break;
+                case 2:
+                  this.buttonToChange3[IndexQues].style.backgroundColor = this.ButtonColorCorrect;
+                  break;
+                case 3:
+                  this.buttonToChange4[IndexQues].style.backgroundColor = this.ButtonColorCorrect;
+                  break;
+
+              }
+              this.buttonToChange1[IndexQues].style.backgroundColor = this.ButtonColorWrong
               this.SendMarkResult = from(this.testapiProvider.PostMarkingResult(this.MarkingResult["MResult"], this.Ques_ID[IndexQues], this.Today, this.SentStu_ID, this.realScore, this.Ques_Ass[IndexQues]))
               this.ShowScore = this.ShowScore + this.realScore;
               this.responseTime = 0
@@ -399,6 +416,18 @@ export class QuizPage {
             }
             case 1: {
               this.buttonToChange2[IndexQues].style.backgroundColor = this.ButtonColorWrong
+              switch (this.correctC[IndexQues]) {
+                case 0:
+                  this.buttonToChange1[IndexQues].style.backgroundColor = this.ButtonColorCorrect;
+                  break;
+                case 2:
+                  this.buttonToChange3[IndexQues].style.backgroundColor = this.ButtonColorCorrect;
+                  break;
+                case 3:
+                  this.buttonToChange4[IndexQues].style.backgroundColor = this.ButtonColorCorrect;
+                  break;
+              }
+
               this.SendMarkResult = from(this.testapiProvider.PostMarkingResult(this.MarkingResult["MResult"], this.Ques_ID[IndexQues], this.Today, this.SentStu_ID, this.realScore, this.Ques_Ass[IndexQues]))
               this.ShowScore = this.ShowScore + this.realScore;
               this.responseTime = 0
@@ -410,6 +439,19 @@ export class QuizPage {
             }
             case 2: {
               this.buttonToChange3[IndexQues].style.backgroundColor = this.ButtonColorWrong
+              switch (this.correctC[IndexQues]) {
+                case 0:
+                  this.buttonToChange1[IndexQues].style.backgroundColor = this.ButtonColorCorrect;
+                  break;
+                case 1:
+                  this.buttonToChange2[IndexQues].style.backgroundColor = this.ButtonColorCorrect;
+                  break;
+                case 3:
+                  this.buttonToChange4[IndexQues].style.backgroundColor = this.ButtonColorCorrect;
+                  break;
+
+              }
+
               this.SendMarkResult = from(this.testapiProvider.PostMarkingResult(this.MarkingResult["MResult"], this.Ques_ID[IndexQues], this.Today, this.SentStu_ID, this.realScore, this.Ques_Ass[IndexQues]))
               this.ShowScore = this.ShowScore + this.realScore;
               this.responseTime = 0
@@ -421,6 +463,19 @@ export class QuizPage {
             }
             case 3: {
               this.buttonToChange4[IndexQues].style.backgroundColor = this.ButtonColorWrong
+              switch (this.correctC[IndexQues]) {
+                case 1:
+                  this.buttonToChange2[IndexQues].style.backgroundColor = this.ButtonColorCorrect;
+                  break;
+                case 2:
+                  this.buttonToChange3[IndexQues].style.backgroundColor = this.ButtonColorCorrect;
+                  break;
+                case 0:
+                  this.buttonToChange1[IndexQues].style.backgroundColor = this.ButtonColorCorrect;
+                  break;
+
+              }
+
               this.SendMarkResult = from(this.testapiProvider.PostMarkingResult(this.MarkingResult["MResult"], this.Ques_ID[IndexQues], this.Today, this.SentStu_ID, this.realScore, this.Ques_Ass[IndexQues]))
               this.ShowScore = this.ShowScore + this.realScore;
               this.responseTime = 0

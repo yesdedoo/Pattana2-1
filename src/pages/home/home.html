@@ -1,36 +1,12 @@
-<!--<ion-header>
-    <ion-navbar primary>
-      <ion-title>
-          <img class="logo"   src="assets/imgs/Logo2.png">
-      </ion-title>
-
-
-
-  
-      <ion-buttons end>
-        <button (click)="Notification()" ion-button icon-only>
-            <ion-icon name="notifications"></ion-icon>
-        </button>
-        <button (click)="Logout();clickSound();" ion-button icon-only>
-            <ion-icon name="log-out" ></ion-icon>
-          </button>
-      </ion-buttons>
-    </ion-navbar>
-  </ion-header>
--->
 <ion-content style="background-image: url('assets/imgs/bgHome.png')">
 
-  <div class="fab" >
-    <ion-fab slot="fixed" >
+  <div class="fab">
+    <ion-fab slot="fixed">
       <button class="fabbutt" color="danger" ion-fab (click)="Logout()">
-        <ion-icon  name="log-out"></ion-icon>
+        <ion-icon name="log-out"></ion-icon>
       </button>
     </ion-fab>
   </div>
-  <!--<div class="course1">
-   <h1> Course: Database </h1>
-   <h3> Lesson: Data Modeling </h3>
-   -->
 
   <div class="course1">
 
@@ -60,7 +36,11 @@
       <h1 text-center>{{displayTime}}</h1>
     </ng-template>
     <ng-template #invalidtime>
-      <h1 class='invalidtime' text-center>!Questions will close in 5 minutes!</h1>
+      <ion-item class="assessmentAlert">
+        <ion-label class="invalidtime">
+          <b>!Questions will close in a Hour!</b>
+        </ion-label>
+      </ion-item>
     </ng-template>
   </div>
   <ng-container *ngIf="Ass_Exist==true; then showassess; else hideassess"></ng-container>
@@ -70,10 +50,10 @@
          <ng-template #showClock>-->
       <ion-label>
         <div assesslabel>
-          <h6 class="assessname"> 
+          <h6 class="assessname">
             <b>Assessment : {{i+1}} will start at <b style="color:rgb(255, 0, 0)">{{Ass_Time[i]}}</b></b>
           </h6>
-        </div>        
+        </div>
       </ion-label>
       <ion-item>
         <h6 text-center>{{displayTime}}</h6>
@@ -81,9 +61,11 @@
     </ion-item>
   </ng-template>
   <ng-template #hideassess>
-    <h1>
-      <b style="color: rgb(255, 0, 0)">There is no assessment today</b>
-    </h1>
+    <ion-item class="assessmentAlert">
+      <ion-label class="invalidtime">
+        <b>There is no assessment today</b>
+      </ion-label>
+    </ion-item>
   </ng-template>
 
 

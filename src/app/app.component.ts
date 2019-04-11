@@ -35,7 +35,7 @@ export class MyApp {
 
         if (activeView != null) {
           if (nav.canGoBack()) { //check can we go back?
-            //nav.pop();
+            nav.pop();
 
           } else if (typeof activeView.instance.backButtonAction === 'function') {
             activeView.instance.backButtonAction();

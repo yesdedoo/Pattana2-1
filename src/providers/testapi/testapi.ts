@@ -22,6 +22,8 @@ export class TestapiProvider {
   restApiRegister = 'http://35.247.168.241:5002/register'
   restApiLogin = 'http://35.247.168.241:5002/login'
   restApiLogout = 'http://35.247.168.241:5002/logout'
+  restApiVerifying = 'http://35.247.168.241:5002/verifying'
+  restApiPhoneverify = 'http://35.247.168.241:5002/phoneverifying'
   //Port 5003
   restApiCourse = 'http://35.247.168.241:5003/course'
   restApiJoinCourse = 'http://35.247.168.241:5003/joincourse'
@@ -314,6 +316,33 @@ export class TestapiProvider {
     });
 
   }
+  //SMS Phone verify
+  PhoneVerifying(Telephone){
+    var data = {phoneData : {tel:Telephone}}
+    return new Promise(resolve =>{
+      fetch(this.restApiPhoneverify,{
+        method:'POST',
+        body:JSON.stringify(data),
+        headers:{
+          'Content-Type': 'application/json'
+        }
+      })
+    });
+  }
+  CodeVerifying(Token,Telephone){
+    var data = {verifyData : {token:Token,tel:Telephone}}
+    return new Promise(resolve =>{
+      fetch(this.restApiVerifying,{
+        method:'POST',
+        body:JSON.stringify(data),
+        headers:{
+          'Content-Type': 'application/json'
+        }
+      })
+    });
+  }
+
+
 
 
 

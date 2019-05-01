@@ -31,6 +31,8 @@ import { NativeAudio } from '@ionic-native/native-audio/ngx';
 import { SmartAudioProvider } from '../providers/smart-audio/smart-audio';
 import { LessonfeedlistsPage } from '../pages/lessonfeedlists/lessonfeedlists';
 import { ShowlessonfeedPage } from '../pages/showlessonfeed/showlessonfeed';
+import { CoursemenuPage } from '../pages/coursemenu/coursemenu';
+import { SummarytablePage } from '../pages/summarytable/summarytable';
 
 
 @NgModule({
@@ -49,7 +51,9 @@ import { ShowlessonfeedPage } from '../pages/showlessonfeed/showlessonfeed';
     RankPage,
     CardPage,
     LessonfeedlistsPage,
-    ShowlessonfeedPage
+    ShowlessonfeedPage,
+    CoursemenuPage,
+    SummarytablePage
     
   ],
   imports: [
@@ -76,7 +80,9 @@ import { ShowlessonfeedPage } from '../pages/showlessonfeed/showlessonfeed';
     RankPage,
     CardPage,
     LessonfeedlistsPage,
-    ShowlessonfeedPage
+    ShowlessonfeedPage,
+    CoursemenuPage,
+    SummarytablePage
 
     
   ],

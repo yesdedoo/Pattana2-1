@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { NavController, ToastController, Platform } from 'ionic-angular';
+import { NavController, ToastController, Platform, AlertController } from 'ionic-angular';
 import { LoginPage } from '../login/login';
 import { UsernameValidator } from '../../providers/username/username';
 import { PasswordProvider } from '../../providers/password/password';
@@ -33,6 +33,8 @@ export class RegisterPage {
   slideOneForm: FormGroup;
   PasswordForm: FormGroup;
   SendRegister: any;
+  SendPhoneVerify:any;
+  SendTokenVerify:any;
   submitAttempt: boolean = false;
 
   username: string;
@@ -52,9 +54,11 @@ export class RegisterPage {
   ispassword: boolean = false;
   istelephone: boolean = false;
 
+  verifyAlert:any;
+
   constructor(public navCtrl: NavController, public formBuilder: FormBuilder,
     public testapiProvider: TestapiProvider, public smartAudio: SmartAudioProvider,
-    public toastCtrl: ToastController, public platform: Platform) {
+    public toastCtrl: ToastController, public platform: Platform,public alertCtrl:AlertController) {
 
 
 
@@ -165,7 +169,44 @@ export class RegisterPage {
     this.smartAudio.play('clickSound');
   }
 
+  verifyingPhone() {
+    if(this.verifyAlert){
+      this.verifyAlert.dismiss();
+      this.verifyAlert=null;
+    }
+    if(this.telephone!=null){
+      this.SendPhoneVerify = from(this.testapiProvider.PhoneVerifying(this.telephone));
+    }
+    
 
+    this.verifyAlert = this.alertCtrl.create({
+      title: 'Verifying Code',
+      inputs: [
+        {
+          name: 'verifyingcode',
+          placeholder: 'Verifying Code Here'
+        }
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: data => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Verify',
+          handler: data => {
+           
+            this.SendTokenVerify = from(this.testapiProvider.CodeVerifying(data.verifyingcode,this.telephone));
+            console.log('Verify clicked')
+          }
+        }
+      ]
+    });
+    this.verifyAlert.present();
+  }
 
 
   ionViewDidLoad() {

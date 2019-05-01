@@ -29,8 +29,8 @@
         <ion-item no-lines class="inputform">
           <ion-label no-lines><b>Email</b></ion-label>
           <ion-input no-lines placeholder="exam@ple.com"
-            [class.invalid]="!slideOneForm.controls.username.valid  || submitAttempt"
-            formControlName="username" (keyup)="validate('username')" type="text" [(ngModel)]="username"></ion-input>
+            [class.invalid]="!slideOneForm.controls.username.valid  || submitAttempt" formControlName="username"
+            (keyup)="validate('username')" type="text" [(ngModel)]="username"></ion-input>
         </ion-item>
 
         <ion-item no-lines
@@ -43,14 +43,14 @@
         <ion-item no-lines class="inputform">
           <ion-label no-lines><b>First Name</b></ion-label>
           <ion-input no-lines placeholder="At least 10 characters"
-            [class.invalid]="!slideOneForm.controls.firstName.valid || submitAttempt"
-            formControlName="firstName" (keyup)="validate('firstname')" type="text" [(ngModel)]="firstname"></ion-input>
+            [class.invalid]="!slideOneForm.controls.firstName.valid || submitAttempt" formControlName="firstName"
+            (keyup)="validate('firstname')" type="text" [(ngModel)]="firstname"></ion-input>
         </ion-item>
         <ion-item no-lines class="inputform">
           <ion-label no-lines><b>Last Name</b></ion-label>
           <ion-input no-lines placeholder="At least 10 characters"
-            [class.invalid]="!slideOneForm.controls.lastName.valid || submitAttempt"
-            formControlName="lastName" (keyup)="validate('lastname')" type="text" [(ngModel)]="lastname"></ion-input>
+            [class.invalid]="!slideOneForm.controls.lastName.valid || submitAttempt" formControlName="lastName"
+            (keyup)="validate('lastname')" type="text" [(ngModel)]="lastname"></ion-input>
         </ion-item>
         <ion-item no-lines class="inputform">
           <ion-label no-lines><b>Telephone</b></ion-label>
@@ -58,6 +58,9 @@
           [class.invalid]="!slideOneForm.controls.telephone.valid || submitAttempt" (keyup)="validate('telephone')"
             type="tel" [(ngModel)]="telephone"></ion-input>
         </ion-item>
+        <button class="verifyphoneButt" color="secondary" ion-button (click)='verifyingPhone();clickSound()'>
+          Verify phone number
+        </button>
 
 
       </form>
@@ -66,16 +69,16 @@
         <ion-item no-lines class="inputform">
           <ion-label><b>Password</b></ion-label>
           <ion-input formControlName="password" placeholder="At least 6 characters" type="Password"
-          [class.invalid]="!PasswordForm.controls.password.valid || submitAttempt"
-            [(ngModel)]="password" [formGroup]="PasswordForm">
+            [class.invalid]="!PasswordForm.controls.password.valid || submitAttempt" [(ngModel)]="password"
+            [formGroup]="PasswordForm">
           </ion-input>
         </ion-item>
 
-        <ion-item no-lines >
+        <ion-item no-lines>
           <ion-label><b>Repassword</b></ion-label>
-          <ion-input formControlName="confirmPassword" [class.invalid]="!PasswordForm.controls.confirmPassword.valid || submitAttempt"
-           placeholder="Must be same as above" [(ngModel)]="repassword"
-            type="Password" [formGroup]="PasswordForm">
+          <ion-input formControlName="confirmPassword"
+            [class.invalid]="!PasswordForm.controls.confirmPassword.valid || submitAttempt"
+            placeholder="Must be same as above" [(ngModel)]="repassword" type="Password" [formGroup]="PasswordForm">
           </ion-input>
         </ion-item>
 

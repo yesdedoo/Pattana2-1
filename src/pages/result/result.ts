@@ -7,6 +7,7 @@ import { ResulthistpercPage } from '../resulthistperc/resulthistperc';
 import { from } from 'rxjs/observable/from';
 import { TestapiProvider } from '../../providers/testapi/testapi';
 import { TabsPage } from '../tabs/tabs';
+import { CoursemenuPage } from '../coursemenu/coursemenu';
 
 
 /**
@@ -239,7 +240,8 @@ export class ResultPage {
   ShowResult(index) {
     console.log(index)
     var CourseID = this.Course_ID[index]
-    this.navCtrl.push(ResulthistpercPage, { 'courseid': CourseID, 'coursename': this.Course_Name[index], 'stuid': this.Stu_ID });
+    //this.navCtrl.push(ResulthistpercPage, { 'courseid': CourseID, 'coursename': this.Course_Name[index], 'stuid': this.Stu_ID });
+    this.navCtrl.push(CoursemenuPage, { 'courseid': CourseID, 'coursename': this.Course_Name[index], 'stuid': this.Stu_ID });
   }
 
 

@@ -1,13 +1,32 @@
 page-summarytable {
 
+  ion-content {
+    background-size: cover;
+    position: relative;
+    text-align: center;
 
-  .displayChart {}
+
+  }
+
 
   .toolbar-background {
     background-color: #f78710;
   }
-  p{
+
+  p {
     font-size: 16px;
     color: #ffffff;
+  }
+
+  .GridButt {
+    position: relative;
+    text-align: center;
+    border-top: 20%;
+  }
+
+  .Butt {
+    width: 70%;
+    background-color: #f78710;
+
   }
 }

@@ -16,10 +16,51 @@
 
 
 <ion-content style="background-image: url('assets/imgs/bgCourse.png')">
+  <br>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <div class="GridButt">
+          <button ion-button shape="round" size="small" class="Butt" (click)="DateChart()">
+            <p style="font-size: 12px">Date</p>
+          </button>
+        </div>
 
-  <canvas id="displayChart" #myChart></canvas>
-  
-  <button (click)='GoTohome()'>
+      </ion-col>
+      <ion-col>
+        <div class="GridButt">
+          <button ion-button shape="round" size="small" class="Butt" (click)="LessonChart()">
+            <p style="font-size: 12px">Lesson</p>
+          </button>
+        </div>
+
+      </ion-col>
+      <ion-col>
+        <div class="GridButt">
+          <button ion-button shape="round" size="small" class="Butt" (click)="CLOChart()">
+            <p style="font-size: 12px">CLO</p>
+          </button>
+        </div>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-card>
+    <ion-card-content>
+      <ion-item>
+        <ion-label>Display Selection</ion-label>
+        <ion-select [(ngModel)]="ChartDisplay" (change)="displaySelectedType()">
+          <ion-option value="day" selected>Day</ion-option>
+          <ion-option value="month">Month</ion-option>
+        </ion-select>
+      </ion-item>
+      <canvas id="displayChart" #myChart></canvas>
+    </ion-card-content>
+  </ion-card>
+
+
+  <button>
     Home
   </button>
 

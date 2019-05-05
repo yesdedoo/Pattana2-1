@@ -36,6 +36,6 @@ export class CoursemenuPage {
     this.navCtrl.push(ResulthistpercPage, { 'courseid': this.Course_ID, 'coursename': this.Course_Name, 'stuid': this.Stu_ID });
   }
   GoToSummary(){
-    this.navCtrl.push(SummarytablePage);
+    this.navCtrl.push(SummarytablePage,{'courseid':this.Course_ID,'stuid': this.Stu_ID});
   }
 }

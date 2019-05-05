@@ -50,7 +50,7 @@
     <ion-card-content>
       <ion-item>
         <ion-label>Display Selection</ion-label>
-        <ion-select [(ngModel)]="ChartDisplay" (change)="displaySelectedType()">
+        <ion-select [(ngModel)]="ChartDisplay" interface="popover">
           <ion-option value="day" selected>Day</ion-option>
           <ion-option value="month">Month</ion-option>
         </ion-select>
@@ -60,7 +60,7 @@
   </ion-card>
 
 
-  <button>
+  <button ion-button (click)="Test1()">
     Home
   </button>
 

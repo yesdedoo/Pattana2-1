@@ -70,10 +70,6 @@ export class SummarytablePage {
       spinner: 'hide'
     });
 
-
-    // Get the modal
-    this.modal = document.querySelector('#myModal');
-
     // Get the button that opens the modal
     this.btn = document.querySelector('#myModal');
     
@@ -85,6 +81,9 @@ export class SummarytablePage {
     this.loading.present()
     this.GetChartData();
 
+    // Get the modal
+    this.modal = document.getElementsByClassName("modal")[0];
+    console.log(this.modal)
 
   }
 
@@ -315,7 +314,10 @@ export class SummarytablePage {
     });
     this.displayShowQues.present();
   }
-  ModalShowQues(){
+  DisplayModalShowQues(){
     this.modal.style.display = "block";
+  }
+  HideModalShowQues(){
+    this.modal.style.display = "none";
   }
 }

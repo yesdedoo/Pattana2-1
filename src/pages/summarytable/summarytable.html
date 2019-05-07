@@ -60,7 +60,7 @@
     </ion-card-content>
   </ion-card>
   <!-- The Modal -->
-  <div id="myModal" class="modal">
+  <div class="modal" (click)="HideModalShowQues()">
 
     <!-- Modal content -->
     <div class="modal-content">
@@ -77,7 +77,7 @@
             <div *ngFor="let element of DayList; let i = index">
               <ion-col>
                 <button ion-button shape="round" size="small" class="Butt"
-                  (click)="ShowQuestion(DayListR[i]);ModalShowQues()">
+                  (click)="ShowQuestion(DayListR[i]);DisplayModalShowQues()">
                   <p style="font-size: 12px; color: white">{{element}}</p>
                 </button>
               </ion-col>

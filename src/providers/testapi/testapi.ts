@@ -30,6 +30,7 @@ export class TestapiProvider {
   restApiLesson = 'http://35.247.168.241:5003/lesson'
   restApiRanking = 'http://35.247.168.241:5003/ranking'
   restApiCreateChart = 'http://35.247.168.241:5003/createchart'
+  restApiShowQuestion = 'http://35.247.168.241:5003/showques'
   //Port 5004
   restApiShowFeedback = 'http://35.247.168.241:5004/showfeedback'
   restApiLessonFeed = 'http://35.247.168.241:5004/lessonFeed' 
@@ -362,6 +363,24 @@ export class TestapiProvider {
     });
   }
 
+  GetShowQuestion(Stu_ID,Course_ID,Date){
+    var data = { showquesData: {stuid:Stu_ID,courseid: Course_ID,date:Date} }
+    //To check the existing account
+    return new Promise(resolve => {
+      fetch(this.restApiShowQuestion, {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+          .then(r=>{
+            this.data = r.json()
+            resolve(this.data)
+          })
+          .catch(err => console.log(err))
+    });
+  }
 
 
 

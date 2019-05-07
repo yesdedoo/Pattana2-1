@@ -22,7 +22,7 @@
       <ion-col>
         <div class="GridButt">
           <button ion-button shape="round" size="small" class="Butt" (click)="DateChart()">
-            <p style="font-size: 12px">Date</p>
+            <p style="font-size: 12px">Score</p>
           </button>
         </div>
 
@@ -56,6 +56,37 @@
         </ion-select>
       </ion-item>
       <canvas id="displayChart" #myChart></canvas>
+
+    </ion-card-content>
+  </ion-card>
+  <!-- The Modal -->
+  <div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+      <p>Some text in the Modal..</p>
+    </div>
+
+  </div>
+  <ion-card>
+    <ion-card-content>
+      <ion-label>Test</ion-label>
+      <div style="text-align: center">
+        <ion-grid>
+          <ion-row>
+            <div *ngFor="let element of DayList; let i = index">
+              <ion-col>
+                <button ion-button shape="round" size="small" class="Butt"
+                  (click)="ShowQuestion(DayListR[i]);ModalShowQues()">
+                  <p style="font-size: 12px; color: white">{{element}}</p>
+                </button>
+              </ion-col>
+            </div>
+          </ion-row>
+        </ion-grid>
+
+      </div>
+
     </ion-card-content>
   </ion-card>
 

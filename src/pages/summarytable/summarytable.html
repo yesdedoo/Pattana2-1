@@ -48,7 +48,7 @@
 
   <ion-card>
     <ion-card-content>
-      <ion-item>
+      <ion-item class="SelectDisplay">
         <ion-label>Display Selection</ion-label>
         <ion-select [(ngModel)]="ChartDisplay" interface="popover">
           <ion-option value="day" selected>Day</ion-option>
@@ -59,18 +59,9 @@
 
     </ion-card-content>
   </ion-card>
-  <!-- The Modal -->
-  <div class="modal" (click)="HideModalShowQues()">
 
-    <!-- Modal content -->
-    <div class="modal-content">
-      <p>Some text in the Modal..</p>
-    </div>
-
-  </div>
   <ion-card>
     <ion-card-content>
-      <ion-label>Test</ion-label>
       <div style="text-align: center">
         <ion-grid>
           <ion-row>
@@ -89,6 +80,41 @@
 
     </ion-card-content>
   </ion-card>
+  <!-- The Modal -->
+  <div class="modal" (click)="HideModalShowQues()">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+      <ion-grid class="modal-table">
+        <ion-row class="modal-row" style="background-color:orange">
+          <ion-col col-6 class="modal-col">
+            <b style="color: white">Question</b>
+          </ion-col>
+          <ion-col col-3 class="modal-col">
+            <b style="color: white">Answer</b>
+          </ion-col>
+          <ion-col col-3 class="modal-col"> 
+            <b style="color: white">Correct Answer</b>
+          </ion-col>
+        </ion-row>
+        <div *ngFor="let element of QuesID; let i = index">
+          <ion-row class="modal-row">
+            <ion-col col-6 class="modal-col" text-wrap>
+              {{QuesName[i]}}
+            </ion-col>
+            <ion-col col-3 class="modal-col" text-wrap>
+              {{QuesAns[i]}}
+            </ion-col>
+            <ion-col col-3 class="modal-col" text-wrap>
+              {{QuesCrr[i]}}
+            </ion-col>
+          </ion-row>
+        </div>
+      </ion-grid>
+
+    </div>
+
+  </div>
 
 
   <button ion-button (click)="Test1()">

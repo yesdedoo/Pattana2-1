@@ -45,10 +45,10 @@ export class SummarytablePage {
   LOList: any;
   LOAVG: any;
   //ShowQues
-  QuesID: any;
-  QuesName: any;
-  QuesAns: any;
-  QuesCrr: any;
+  QuesID: any = [];
+  QuesName: any = [];
+  QuesAns: any = [];
+  QuesCrr: any = [];
 
 
   //Previous page pushed data
@@ -62,7 +62,7 @@ export class SummarytablePage {
   btn:any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public testapiProvider: TestapiProvider,
-    public loadingCtrl: LoadingController, public alertCtrl: AlertController) {
+    public loadingCtrl: LoadingController) {
     this.Course_ID = navParams.get('courseid');
     this.Stu_ID = navParams.get('stuid');
     this.loading = this.loadingCtrl.create({
@@ -303,17 +303,7 @@ export class SummarytablePage {
       this.QuesCrr = val['QuesCrr'];
     })
   }
-  AlertShowQues() {
-    if (this.displayShowQues) {
-      this.displayShowQues = null;
-    }
-    this.displayShowQues = this.alertCtrl.create({
-      title: 'Low battery',
-      subTitle: '10% of battery remaining',
-      buttons: ['Dismiss']
-    });
-    this.displayShowQues.present();
-  }
+  
   DisplayModalShowQues(){
     this.modal.style.display = "block";
   }

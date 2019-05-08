@@ -30,6 +30,19 @@ page-summarytable {
 
   }
 
+  .SelectDisplay{
+      font-size: 12px;
+  }
+
+  .modal-row{
+    background-color: lightgrey;
+    border: 1px solid;
+  }
+  .modal-col{
+    border-right: 1px solid;
+    border-left: 1px solid;  
+  }
+
   /* The Modal (background) */
   .modal {
     display: none;

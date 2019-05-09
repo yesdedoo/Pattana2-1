@@ -5,7 +5,7 @@ import { Chart } from 'chart.js';
 //REST API
 import { from } from 'rxjs/observable/from';
 import { TestapiProvider } from '../../providers/testapi/testapi';
-import { v } from '@angular/core/src/render3';
+
 
 
 /**
@@ -23,9 +23,13 @@ import { v } from '@angular/core/src/render3';
 export class SummarytablePage {
 
   @ViewChild('myChart') barCanvas;
+  @ViewChild('myChart2') barCanvas2;
+  @ViewChild('myChart3') barCanvas3;
 
   mixChart: any;
-  ChartDisplay: any = "day";
+  mixChart2: any;
+  mixChart3: any;
+  ChartDisplay: any = "week";
   loading: any;
   displayShowQues: any;
 
@@ -37,9 +41,12 @@ export class SummarytablePage {
   DaySAVG: any;
   DayList: any;
   DayListR: any = [];
-  MonthCAVG: any;
-  MonthSAVG: any;
-  MonthList: any;
+  YearCAVG: any;
+  YearSAVG: any;
+  YearList: any;
+  WeekCAVG: any;
+  WeekSAVG: any;
+  WeekList: any;
   LEList: any;
   LEAVG: any;
   LOList: any;
@@ -58,8 +65,8 @@ export class SummarytablePage {
   DateChartShow: boolean = true;
 
   //Modal
-  modal:any;
-  btn:any;
+  modal: any;
+  btn: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public testapiProvider: TestapiProvider,
     public loadingCtrl: LoadingController) {
@@ -72,25 +79,24 @@ export class SummarytablePage {
 
     // Get the button that opens the modal
     this.btn = document.querySelector('#myModal');
-    
-   
+
+
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad SummarytablePage');
+  ionViewWillEnter() {
     this.loading.present()
     this.GetChartData();
 
     // Get the modal
     this.modal = document.getElementsByClassName("modal")[0];
     console.log(this.modal)
+  }
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad SummarytablePage');
 
   }
 
-  GoTohome() {
-    //this.navCtrl.push(HomePage)
-    //this.navCtrl.push(TabsPage)
-  }
 
   GetChartData() {
     this.ChartInfo = from(this.testapiProvider.GetChartInfo(this.Stu_ID, this.Course_ID));
@@ -100,23 +106,30 @@ export class SummarytablePage {
       this.DaySAVG = val['DaySAVG'];
       this.DayList = val['DayList'];
       this.DayListR = val['DayListR'];
-      this.MonthCAVG = val['MonthCAVG'];
-      this.MonthSAVG = val['MonthSAVG'];
-      this.MonthList = val['MonthList'];
+      this.YearCAVG = val['MonthCAVG'];
+      this.YearSAVG = val['MonthSAVG'];
+      this.YearList = val['MonthList'];
+      this.WeekCAVG = val['WeekSAVG'];
+      this.WeekSAVG = val['WeekCAVG'];
+      this.WeekList = val['WeekList'];
       this.LEList = val['LEList'];
       this.LEAVG = val['LEAVG'];
       this.LOList = val['LOList'];
       this.LOAVG = val['LOAVG'];
       this.loading.dismiss();
 
+      this.DateChart();
+      this.LessonChart();
+      this.CLOChart();
+
     })
 
-    this.DateChart();
+    
+
+
+
   }
 
-  Test1() {
-    console.log(this.ChartDisplay);
-  }
 
   DateChart() {
     if (this.mixChart) {
@@ -124,7 +137,7 @@ export class SummarytablePage {
     }
     this.DateChartShow = true;
     //Day Chart
-    if (this.ChartDisplay == "day") {
+    if (this.ChartDisplay == "week") {
       this.mixChart = new Chart(this.barCanvas.nativeElement, {
 
         type: 'bar',
@@ -165,16 +178,16 @@ export class SummarytablePage {
 
 
     }
-    else {
+    else if(this.ChartDisplay == "year"){
       this.mixChart = new Chart(this.barCanvas.nativeElement, {
 
         type: 'bar',
         data: {
-          labels: this.MonthList,
+          labels: this.YearList,
           datasets: [
             {
               label: 'Course Average',
-              data: this.MonthCAVG,
+              data: this.YearCAVG,
 
               // Changes this dataset to become a line
               type: 'line',
@@ -185,7 +198,47 @@ export class SummarytablePage {
               backgroundColor: "transparent"
             }, {
               label: 'Student Average',
-              data: this.MonthSAVG,
+              data: this.YearSAVG,
+              backgroundColor:
+                'rgba(135, 211, 124, 1)'
+              ,
+              borderColor:
+                'rgba(41, 241, 195, 1)'
+              ,
+              borderWidth: 1
+            }]
+        },
+        options: {
+          title: {
+            display: true,
+            text: 'Year Chart'
+          }
+        }
+
+      });
+
+    }
+    else if(this.ChartDisplay == "month"){
+      this.mixChart = new Chart(this.barCanvas.nativeElement, {
+
+        type: 'bar',
+        data: {
+          labels: this.WeekList,
+          datasets: [
+            {
+              label: 'Course Average',
+              data: this.WeekCAVG,
+
+              // Changes this dataset to become a line
+              type: 'line',
+              pointBackgroundColor: 'rgba(214, 69, 65, 1)',
+              borderColor: [
+                'rgba(25, 181, 254, 1)'
+              ],
+              backgroundColor: "transparent"
+            }, {
+              label: 'Student Average',
+              data: this.WeekSAVG,
               backgroundColor:
                 'rgba(135, 211, 124, 1)'
               ,
@@ -211,32 +264,21 @@ export class SummarytablePage {
 
   LessonChart() {
     this.DateChartShow = false;
-    this.mixChart.destroy();
-    this.mixChart = new Chart(this.barCanvas.nativeElement, {
 
-      type: 'bar',
+    this.mixChart2 = new Chart(this.barCanvas2.nativeElement, {
+
+      type: 'radar',
       data: {
         labels: this.LEList,
         datasets: [
           {
-            label: 'Line Dataset',
-            data: this.DayCAVG,
-
-            // Changes this dataset to become a line
-            type: 'line',
-            pointBackgroundColor: 'rgba(214, 69, 65, 1)',
-            borderColor: [
-              'rgba(25, 181, 254, 1)'
-            ],
-            backgroundColor: "transparent"
-          }, {
-            label: '# of Votes',
+            label: 'AVG Score',
             data: this.LEAVG,
             backgroundColor:
-              'rgba(213, 184, 255, 1)'
+              'rgba(213, 184, 255, 0.5)'
             ,
             borderColor:
-              'rgba(190, 144, 212,1)'
+              'rgba(190, 144, 212, 0.5)'
             ,
             borderWidth: 1
           }]
@@ -253,32 +295,21 @@ export class SummarytablePage {
   }
   CLOChart() {
     this.DateChartShow = false;
-    this.mixChart.destroy();
-    this.mixChart = new Chart(this.barCanvas.nativeElement, {
 
-      type: 'bar',
+    this.mixChart3 = new Chart(this.barCanvas3.nativeElement, {
+
+      type: 'radar',
       data: {
         labels: this.LOList,
         datasets: [
           {
-            label: 'Line Dataset',
-            data: this.DayCAVG,
-
-            // Changes this dataset to become a line
-            type: 'line',
-            pointBackgroundColor: 'rgba(214, 69, 65, 1)',
-            borderColor: [
-              'rgba(25, 181, 254, 1)'
-            ],
-            backgroundColor: "transparent"
-          }, {
-            label: '# of Votes',
+            label: 'AVG Score',
             data: this.LOAVG,
             backgroundColor:
-              'rgba(254, 241, 96, 1)'
+              'rgba(240, 0, 0, 0.5)'
             ,
             borderColor:
-              'rgba(245, 230, 83, 1)'
+              'rgba(245, 0, 0, 0.5)'
             ,
             borderWidth: 1
           }]
@@ -303,11 +334,27 @@ export class SummarytablePage {
       this.QuesCrr = val['QuesCrr'];
     })
   }
-  
-  DisplayModalShowQues(){
+
+  DisplayModalShowQues() {
     this.modal.style.display = "block";
   }
-  HideModalShowQues(){
+  HideModalShowQues() {
     this.modal.style.display = "none";
+  }
+  
+  DisplayClick(Type){
+    switch (Type) {
+      case 1:
+        this.ChartDisplay = "week"
+        break;
+      case 2:
+        this.ChartDisplay = "month"
+        break;
+      case 3:
+        this.ChartDisplay = "year"
+        break;
+            
+    }
+    this.DateChart();
   }
 }

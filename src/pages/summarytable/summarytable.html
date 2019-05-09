@@ -21,65 +21,86 @@
     <ion-row>
       <ion-col>
         <div class="GridButt">
-          <button ion-button shape="round" size="small" class="Butt" (click)="DateChart()">
-            <p style="font-size: 12px">Score</p>
+          <button ion-button shape="round" size="small" class="Butt" (click)="DisplayClick(1)">
+            <p style="font-size: 12px">Week</p>
           </button>
         </div>
 
       </ion-col>
       <ion-col>
         <div class="GridButt">
-          <button ion-button shape="round" size="small" class="Butt" (click)="LessonChart()">
-            <p style="font-size: 12px">Lesson</p>
+          <button ion-button shape="round" size="small" class="Butt" (click)="DisplayClick(2)">
+            <p style="font-size: 12px">Month</p>
           </button>
         </div>
 
       </ion-col>
       <ion-col>
         <div class="GridButt">
-          <button ion-button shape="round" size="small" class="Butt" (click)="CLOChart()">
-            <p style="font-size: 12px">CLO</p>
+          <button ion-button shape="round" size="small" class="Butt" (click)="DisplayClick(3)">
+            <p style="font-size: 12px">Year</p>
           </button>
         </div>
 
       </ion-col>
     </ion-row>
   </ion-grid>
-
   <ion-card>
     <ion-card-content>
-      <ion-item class="SelectDisplay">
-        <ion-label>Display Selection</ion-label>
-        <ion-select [(ngModel)]="ChartDisplay" interface="popover">
-          <ion-option value="day" selected>Day</ion-option>
-          <ion-option value="month">Month</ion-option>
-        </ion-select>
-      </ion-item>
-      <canvas id="displayChart" #myChart></canvas>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <canvas id="displayChart" #myChart></canvas>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <div *ngIf="ChartDisplay == 'week'">
+            <ion-card>
+              <ion-card-content>
+                <div style="text-align: center">
+                  <ion-grid>
+                    <ion-row>
+                      <div *ngFor="let element of DayList; let i = index">
+                        <ion-col>
+                          <button ion-button shape="round" size="small" class="Butt"
+                            (click)="ShowQuestion(DayListR[i]);DisplayModalShowQues()">
+                            <p style="font-size: 12px; color: white">{{element}}</p>
+                          </button>
+                        </ion-col>
+                      </div>
+                    </ion-row>
+                  </ion-grid>
+                </div>
+              </ion-card-content>
+            </ion-card>
+          </div>
+        </ion-row>
+
+      </ion-grid>
 
     </ion-card-content>
   </ion-card>
 
   <ion-card>
-    <ion-card-content>
-      <div style="text-align: center">
-        <ion-grid>
-          <ion-row>
-            <div *ngFor="let element of DayList; let i = index">
-              <ion-col>
-                <button ion-button shape="round" size="small" class="Butt"
-                  (click)="ShowQuestion(DayListR[i]);DisplayModalShowQues()">
-                  <p style="font-size: 12px; color: white">{{element}}</p>
-                </button>
-              </ion-col>
-            </div>
-          </ion-row>
-        </ion-grid>
-
-      </div>
-
-    </ion-card-content>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <div id="displayChartRadar">
+            <canvas #myChart2></canvas>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <div id="displayChartRadar">
+            <canvas #myChart3></canvas>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </ion-card>
+
+
   <!-- The Modal -->
   <div class="modal" (click)="HideModalShowQues()">
 
@@ -87,27 +108,32 @@
     <div class="modal-content">
       <ion-grid class="modal-table">
         <ion-row class="modal-row" style="background-color:orange">
-          <ion-col col-6 class="modal-col">
+          <ion-col col-9 class="modal-col">
             <b style="color: white">Question</b>
           </ion-col>
           <ion-col col-3 class="modal-col">
             <b style="color: white">Answer</b>
           </ion-col>
-          <ion-col col-3 class="modal-col"> 
-            <b style="color: white">Correct Answer</b>
-          </ion-col>
         </ion-row>
         <div *ngFor="let element of QuesID; let i = index">
           <ion-row class="modal-row">
-            <ion-col col-6 class="modal-col" text-wrap>
-              {{QuesName[i]}}
+            <ion-col col-9 style="text-align:left;" class="modal-col" text-wrap>
+              &emsp;{{QuesName[i]}}
             </ion-col>
-            <ion-col col-3 class="modal-col" text-wrap>
-              {{QuesAns[i]}}
-            </ion-col>
-            <ion-col col-3 class="modal-col" text-wrap>
-              {{QuesCrr[i]}}
-            </ion-col>
+            <div *ngIf="QuesCrr[i]==100;then ColorDiv else BlankDiv;"></div>
+            <ng-template #ColorDiv>
+              <ion-col col-3 class="modal-col" style="background-color:greenyellow" text-wrap>
+                {{QuesAns[i]}}
+              </ion-col>
+            </ng-template>
+            <ng-template #BlankDiv>
+              <ion-col col-3 class="modal-col" style="background-color:red" text-wrap>
+                {{QuesAns[i]}}
+              </ion-col>
+            </ng-template>
+
+
+
           </ion-row>
         </div>
       </ion-grid>
@@ -116,9 +142,5 @@
 
   </div>
 
-
-  <button ion-button (click)="Test1()">
-    Home
-  </button>
 
 </ion-content>

@@ -33,6 +33,7 @@ import { LessonfeedlistsPage } from '../pages/lessonfeedlists/lessonfeedlists';
 import { ShowlessonfeedPage } from '../pages/showlessonfeed/showlessonfeed';
 import { CoursemenuPage } from '../pages/coursemenu/coursemenu';
 import { SummarytablePage } from '../pages/summarytable/summarytable';
+import { ProgressBarModule } from "angular-progress-bar"
 
 
 @NgModule({
@@ -62,6 +63,7 @@ import { SummarytablePage } from '../pages/summarytable/summarytable';
     HttpClientModule,
     IonicModule.forRoot(MyApp, {tabsHideOnSubPages: "true"}),
     RoundProgressModule,
+    ProgressBarModule,
     IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],

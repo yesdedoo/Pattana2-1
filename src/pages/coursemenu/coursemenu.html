@@ -24,4 +24,22 @@
   <button class="butt" (click)='GoToSummary()'>
     <h4>Summary</h4>
   </button>
+  <ion-card class="progressdiv">
+    <br>
+    <h1><b>Participation</b></h1>
+    <div style="text-align:center">
+        <round-progress [current]="APAssProgress" [max]="max" [stroke]="stroke" [radius]="radius" [semicircle]="semicircle"
+        [rounded]="rounded" [responsive]="responsive" [clockwise]="clockwise"
+        [color]="gradient ? 'url(#gradient)' : color" [background]="background" [duration]="duration"
+        [animation]="animation" [animationDelay]="animationDelay">
+      </round-progress>
+      <h1>{{APAssProgress}} %</h1><br>
+      <h2>{{APDo}} / {{APAll}} </h2>
+      <h2>From Total Questions</h2>
+      <br>
+    </div>
+    
+  </ion-card>
+
+
 </ion-content>

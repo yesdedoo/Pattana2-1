@@ -1,93 +1,101 @@
 page-rank {
 
-  ion-content  {
-      background-size: cover;
-      position: relative;
-  }
-
-  .yourscore{
-      position: relative;
-      text-align: center
-  }
-
-
-  .word{
-      position: relative;
-      text-align: center;
-      
-  }
-  .score
-  {   height: 60px;
-       width: 100px;
-       margin-left: 35%;
-      position: relative;
-      text-align: center;
-      
-
-      
-  }
-  h1{
-      font-size: 16px !important; 
-      color: #f78710 !important;
-      
-  }
-  h2{
-      font-size: 20px;
-      color: #f78710;
-  }
-  h3{
-      font-size: 42px;
-      color: #2d56df;
-  }
-  h4{
-      font-size: 28px;
-      color: #ffffff;
-  }
-  h5{
-      font-size: 18px !important; 
-      color:  #f78710 !important;
-  }
-  h6{
-    font-size: 42px !important; 
-    color:  #2d56df !important;
+  ion-content {
+    background-size: cover;
     position: relative;
-      text-align: center
-}
-b{
-  color: #3b3b3a;
-}
-  .gotofb
-  {
-      
-      position: relative;
-      text-align: center;
   }
-  .Feedback
-  {
-      height: 45px;
-      -webkit-box-shadow: 0 10px 30px 0 rgb(255, 255, 255);
-      box-shadow: 0 10px 30px 0  rgba(0, 0, 0, 0.247);
-      color: #f78710  !important;
-      width: 50%;
-      border-top-right-radius: 10px !important;
-      border-top-left-radius: 10px !important;
-      border-bottom-left-radius: 10px !important; 
-      border-bottom-right-radius: 10px !important; 
+
+  .yourscore {
+    position: relative;
+    text-align: center
   }
-  .ranking
-  {
-      font-size: 20px;
-     
-      
+
+
+  .word {
+    position: relative;
+    text-align: center;
+
   }
-  .rankscore{
+
+  .score {
+    height: 60px;
+    width: 100px;
+    margin-left: 35%;
+    position: relative;
+    text-align: center;
+
+
+
+  }
+
+  h1 {
+    font-size: 16px !important;
+    color: #f78710 !important;
+
+  }
+
+  h2 {
+    font-size: 20px;
+    color: #f78710;
+  }
+
+  h3 {
+    font-size: 42px;
+    color: #2d56df;
+  }
+
+  h4 {
+    font-size: 28px;
+    color: #ffffff;
+  }
+
+  h5 {
+    font-size: 18px !important;
+    color: #f78710 !important;
+  }
+
+  h6 {
+    font-size: 42px !important;
+    color: #2d56df !important;
+    position: relative;
+    text-align: center
+  }
+
+  b {
+    color: #3b3b3a;
+  }
+
+  .gotofb {
+
+    position: relative;
+    text-align: center;
+  }
+
+  .Feedback {
+    height: 45px;
+    -webkit-box-shadow: 0 10px 30px 0 rgb(255, 255, 255);
+    box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.247);
+    color: #f78710 !important;
+    width: 50%;
+    border-top-right-radius: 10px !important;
+    border-top-left-radius: 10px !important;
+    border-bottom-left-radius: 10px !important;
+    border-bottom-right-radius: 10px !important;
+  }
+
+  .ranking {
+    font-size: 20px;
+
+
+  }
+
+  .rankscore {
     float: right;
   }
-  
-  
-  .me
-  {
-      background-color:#f78710;
+
+
+  .me {
+    background-color: #f78710;
   }
 
   .GoHome {
@@ -110,8 +118,9 @@ b{
     border-bottom-left-radius: 20px !important;
 
     -webkit-box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.103);
-    box-shadow: 0 10px 30px 0  rgba(0, 0, 0, 0.103);
-}
+    box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.103);
+  }
+
   //Spinner
   .lds-roller {
     display: inline-block;
@@ -229,7 +238,54 @@ b{
     -webkit-box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.103);
     box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.103);
   }
-  
 
- 
+  /* The Modal (background) */
+  .modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+  }
+
+  /* Modal Content/Box */
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 90%;
+    /* Could be more or less, depending on screen size */
+  }
+
+  /* The Close Button */
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+
 }

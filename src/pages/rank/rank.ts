@@ -35,12 +35,16 @@ export class RankPage {
 
   //REST variables
   SendRankingRequest: any;
+  RankShowQuesRequest: any;
   RankStu_ID: any;
   RankName: any = [];
   RankScore: any = [];
   OwnRank: any;
   OwnName: any;
   OwnScore: any;
+  Quesname: any = [];
+  QuesAns: any = [];
+  QuesCrr: any = [];
 
   RankSlot = [0, 1, 2, 3, 4];
 
@@ -48,6 +52,10 @@ export class RankPage {
   TodayStorage: any;
   Ass_IDStorage: any;
   Stu_IDStorage: any;
+
+  //Modal
+  modal: any;
+  btn: any;
 
   // Property used to store the callback of the event handler to unsubscribe to it when leaving this page
   public unregisterBackButtonAction: any;
@@ -75,7 +83,9 @@ export class RankPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad RankPage');
-
+    // Get the modal
+    this.modal = document.getElementsByClassName("modal")[0];
+    console.log(this.modal)
     //this.GetRanking();
 
     this.storage.ready().then(() => this.storage.get('stuid')
@@ -129,13 +139,31 @@ export class RankPage {
       this.OwnRank = val["OwnRank"]
       this.OwnName = val["OwnName"]
       this.OwnScore = val["OwnScore"]
+      
 
       console.log("REST Rank", this.RankStu_ID, this.RankName, this.RankScore)
       //console.log("REST Ownrank", this.OwnRank, this.OwnName, this.OwnScore)
 
 
     })
+    this.GetRankShowQues()
 
+  }
+
+  GetRankShowQues(){
+    this.RankShowQuesRequest = from(this.testapiProvider.GetRankShowQues(this.Stu_IDStorage,this.Today))
+    this.RankShowQuesRequest.subscribe(val=>{
+      this.Quesname = val["QuesName"];
+      this.QuesAns = val["QuesAns"];
+      this.QuesCrr = val["QuesCrr"];
+    })
+  }
+
+  DisplayModalShowQues() {
+    this.modal.style.display = "block";
+  }
+  HideModalShowQues() {
+    this.modal.style.display = "none";
   }
 
 

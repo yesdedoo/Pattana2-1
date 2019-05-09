@@ -32,12 +32,14 @@ export class TestapiProvider {
   restApiCreateChart = 'http://35.247.168.241:5003/createchart'
   restApiShowQuestion = 'http://35.247.168.241:5003/showques'
   restApiCourseProgress = 'http://35.247.168.241:5003/courseprogress'
+  restApiRankShowQues = 'http://35.247.168.241:5003/rankshowques'
   //Port 5004
   restApiShowFeedback = 'http://35.247.168.241:5004/showfeedback'
   restApiLessonFeed = 'http://35.247.168.241:5004/lessonFeed' 
   restApiMarkingResult = 'http://35.247.168.241:5004/marking'
 
   ///////////////////////////
+  
 
 
   constructor(public http: HttpClient) {
@@ -388,6 +390,25 @@ export class TestapiProvider {
     //To check the existing account
     return new Promise(resolve => {
       fetch(this.restApiCourseProgress, {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+          .then(r=>{
+            this.data = r.json()
+            resolve(this.data)
+          })
+          .catch(err => console.log(err))
+    });
+  }
+
+  GetRankShowQues(Stu_ID,Date){
+    var data = { rankshowquesData: {stuid:Stu_ID,date: Date} }
+    //To check the existing account
+    return new Promise(resolve => {
+      fetch(this.restApiRankShowQues, {
         method: 'POST',
         body: JSON.stringify(data),
         headers: {

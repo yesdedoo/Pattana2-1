@@ -40,7 +40,7 @@ export class QuizPage {
   Ques_ID: any = [];
   Ques_Name: any;
   Ques_FB: any;
-  Ques_Ass: any;
+  Ques_Ass: any = [];
 
   ShowQues: any = []
 

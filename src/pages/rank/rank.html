@@ -58,22 +58,60 @@
               <ion-row>
                 <ion-col>
                   <h5>{{i+1}}.- - - -</h5>
-
                 </ion-col>
               </ion-row>
             </ion-grid>
-
           </div>
-
         </ng-template>
       </div>
       <br>
-
     </ion-card-content>
-
   </ion-card>
+
+  <!-- The Modal -->
+  <div class="modal" (click)="HideModalShowQues()">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+      <ion-grid class="modal-table">
+        <ion-row class="modal-row" style="background-color:orange">
+          <ion-col col-9 class="modal-col">
+            <b style="color: white">Question</b>
+          </ion-col>
+          <ion-col col-3 class="modal-col">
+            <b style="color: white">Answer</b>
+          </ion-col>
+        </ion-row>
+        <div *ngFor="let element of QuesName; let i = index">
+          <ion-row class="modal-row">
+            <ion-col col-9 style="text-align:left;" class="modal-col" text-wrap>
+              &emsp;{{QuesName[i]}}
+            </ion-col>
+            <div *ngIf="QuesCrr[i]==100;then ColorDiv else BlankDiv;"></div>
+            <ng-template #ColorDiv>
+              <ion-col col-3 class="modal-col" style="background-color:greenyellow" text-wrap>
+                {{QuesAns[i]}}
+              </ion-col>
+            </ng-template>
+            <ng-template #BlankDiv>
+              <ion-col col-3 class="modal-col" style="background-color:red" text-wrap>
+                {{QuesAns[i]}}
+              </ion-col>
+            </ng-template>
+
+          </ion-row>
+
+        </div>
+      </ion-grid>
+      <div class="gotofb">
+        <button color="orange" ion-button class="GoHome" (click)='clickhome()'> Home </button> <br>
+      </div>
+
+    </div>
+
+  </div>
   <div class="gotofb">
-    <button color="orange" ion-button class="GoHome" (click)='clickhome()'> Home </button> <br>
+    <button color="orange" ion-button class="GoHome" (click)='DisplayModalShowQues()'> See Detail </button> <br>
   </div>
 
 

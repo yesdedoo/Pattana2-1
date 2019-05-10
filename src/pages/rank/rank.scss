@@ -272,6 +272,15 @@ page-rank {
     /* Could be more or less, depending on screen size */
   }
 
+  .modal-row{
+    background-color: lightgrey;
+    border: 1px solid;
+  }
+  .modal-col{
+    border-right: 1px solid;
+    border-left: 1px solid;  
+  }
+
   /* The Close Button */
   .close {
     color: #aaa;

@@ -85,17 +85,17 @@
         <div *ngFor="let element of QuesName; let i = index">
           <ion-row class="modal-row">
             <ion-col col-9 style="text-align:left;" class="modal-col" text-wrap>
-              &emsp;{{QuesName[i]}}
+              &emsp;{{element}}
             </ion-col>
             <div *ngIf="QuesCrr[i]==100;then ColorDiv else BlankDiv;"></div>
             <ng-template #ColorDiv>
-              <ion-col col-3 class="modal-col" style="background-color:greenyellow" text-wrap>
-                {{QuesAns[i]}}
+              <ion-col col-3 class="modal-col" style="background-color:rgb(35, 224, 28)" text-wrap>
+                <p style="color:white">{{QuesAns[i]}}</p>
               </ion-col>
             </ng-template>
             <ng-template #BlankDiv>
               <ion-col col-3 class="modal-col" style="background-color:red" text-wrap>
-                {{QuesAns[i]}}
+                <p style="color:white">{{QuesAns[i]}}</p>
               </ion-col>
             </ng-template>
 
@@ -111,7 +111,7 @@
 
   </div>
   <div class="gotofb">
-    <button color="orange" ion-button class="GoHome" (click)='DisplayModalShowQues()'> See Detail </button> <br>
+    <button color="orange" ion-button class="GoHome" style="width:80%" (click)='DisplayModalShowQues()'> See Detail </button> <br>
   </div>
 
 

@@ -42,7 +42,7 @@ export class RankPage {
   OwnRank: any;
   OwnName: any;
   OwnScore: any;
-  Quesname: any = [];
+  QuesName: any = [];
   QuesAns: any = [];
   QuesCrr: any = [];
 
@@ -111,6 +111,7 @@ export class RankPage {
     this.loading.present();
     setTimeout(() => {
       this.GetRanking();
+      this.GetRankShowQues()
       this.loading.dismiss();
 
     }, 1000);
@@ -146,14 +147,15 @@ export class RankPage {
 
 
     })
-    this.GetRankShowQues()
+    
 
   }
 
   GetRankShowQues(){
     this.RankShowQuesRequest = from(this.testapiProvider.GetRankShowQues(this.Stu_IDStorage,this.Today))
     this.RankShowQuesRequest.subscribe(val=>{
-      this.Quesname = val["QuesName"];
+      console.log(val)
+      this.QuesName = val["QuesName"];
       this.QuesAns = val["QuesAns"];
       this.QuesCrr = val["QuesCrr"];
     })

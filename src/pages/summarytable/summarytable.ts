@@ -56,6 +56,8 @@ export class SummarytablePage {
   QuesName: any = [];
   QuesAns: any = [];
   QuesCrr: any = [];
+  CrrAlert: any;
+  
 
 
   //Previous page pushed data
@@ -68,8 +70,10 @@ export class SummarytablePage {
   modal: any;
   btn: any;
 
+
+
   constructor(public navCtrl: NavController, public navParams: NavParams, public testapiProvider: TestapiProvider,
-    public loadingCtrl: LoadingController) {
+    public loadingCtrl: LoadingController, public alertCtrl:AlertController) {
     this.Course_ID = navParams.get('courseid');
     this.Stu_ID = navParams.get('stuid');
     this.loading = this.loadingCtrl.create({
@@ -356,5 +360,18 @@ export class SummarytablePage {
             
     }
     this.DateChart();
+  }
+  DisplayCrrAns(CrrIndex){
+    if(this.CrrAlert){
+      this.CrrAlert.dismiss();
+      this.CrrAlert = null;
+    }
+    this.CrrAlert = this.alertCtrl.create({
+      title:"The Correct Answer for this Question is :",
+      message:this.QuesAns[CrrIndex],
+      buttons: ['Dismiss']
+
+    })
+    this.CrrAlert.present();
   }
 }

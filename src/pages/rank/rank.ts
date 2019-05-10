@@ -45,6 +45,7 @@ export class RankPage {
   QuesName: any = [];
   QuesAns: any = [];
   QuesCrr: any = [];
+  CrrAlert: any;
 
   RankSlot = [0, 1, 2, 3, 4];
 
@@ -172,6 +173,19 @@ export class RankPage {
   clickhome() {
     //this.navCtrl.push(HomePage)
     this.navCtrl.setRoot(TabsPage)
+  }
+  DisplayCrrAns(CrrIndex){
+    if(this.CrrAlert){
+      this.CrrAlert.dismiss();
+      this.CrrAlert = null;
+    }
+    this.CrrAlert = this.alertCtrl.create({
+      title:"The Correct Answer for this Question is :",
+      message:this.QuesAns[CrrIndex],
+      buttons: ['Dismiss']
+
+    })
+    this.CrrAlert.present();
   }
 
 

@@ -22,7 +22,7 @@
       <ion-col>
         <div class="GridButt">
           <button ion-button shape="round" size="small" class="Butt" (click)="DisplayClick(1)">
-            <p style="font-size: 12px">Week</p>
+            <p style="font-size: 12px">Day</p>
           </button>
         </div>
 
@@ -30,7 +30,7 @@
       <ion-col>
         <div class="GridButt">
           <button ion-button shape="round" size="small" class="Butt" (click)="DisplayClick(2)">
-            <p style="font-size: 12px">Month</p>
+            <p style="font-size: 12px">Week</p>
           </button>
         </div>
 
@@ -38,7 +38,7 @@
       <ion-col>
         <div class="GridButt">
           <button ion-button shape="round" size="small" class="Butt" (click)="DisplayClick(3)">
-            <p style="font-size: 12px">Year</p>
+            <p style="font-size: 12px">Month</p>
           </button>
         </div>
 
@@ -122,13 +122,16 @@
             </ion-col>
             <div *ngIf="QuesCrr[i]==100;then ColorDiv else BlankDiv;"></div>
             <ng-template #ColorDiv>
-              <ion-col col-3 class="modal-col" style="background-color:rgb(35, 224, 28)" text-wrap>
-                {{QuesAns[i]}}
+              <ion-col col-3 class="modal-col" style="background-color: white;text-align: center" text-wrap>
+                
+                <!--Basic: auto-select the icon based on the platform -->
+                <ion-icon style="zoom: 2.0;color: green" name="md-checkmark-circle" (click)="DisplayCrrAns(i)"></ion-icon>
               </ion-col>
             </ng-template>
             <ng-template #BlankDiv>
-              <ion-col col-3 class="modal-col" style="background-color:red" text-wrap>
-                {{QuesAns[i]}}
+              <ion-col col-3 class="modal-col" style="background-color:white;text-align: center" text-wrap>
+                <ion-icon style="zoom: 2.0;color: red" name="md-close-circle" (click)="DisplayCrrAns(i)"></ion-icon>
+                
               </ion-col>
             </ng-template>
 

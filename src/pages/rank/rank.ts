@@ -180,8 +180,7 @@ export class RankPage {
       this.CrrAlert = null;
     }
     this.CrrAlert = this.alertCtrl.create({
-      title:"The Correct Answer for this Question is :",
-      message:this.QuesAns[CrrIndex],
+      title:"The Correct Answer for this Question is : "+this.QuesAns[CrrIndex],
       buttons: ['Dismiss']
 
     })

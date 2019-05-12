@@ -29,7 +29,7 @@ export class SummarytablePage {
   mixChart: any;
   mixChart2: any;
   mixChart3: any;
-  ChartDisplay: any = "week";
+  ChartDisplay: any = "day";
   loading: any;
   displayShowQues: any;
 
@@ -41,12 +41,16 @@ export class SummarytablePage {
   DaySAVG: any;
   DayList: any;
   DayListR: any = [];
-  YearCAVG: any;
-  YearSAVG: any;
-  YearList: any;
   WeekCAVG: any;
   WeekSAVG: any;
   WeekList: any;
+  MonthCAVG: any;
+  MonthSAVG: any;
+  MonthList: any;
+  YearCAVG: any;
+  YearSAVG: any;
+  YearList: any;
+  
   LEList: any;
   LEAVG: any;
   LOList: any;
@@ -110,12 +114,15 @@ export class SummarytablePage {
       this.DaySAVG = val['DaySAVG'];
       this.DayList = val['DayList'];
       this.DayListR = val['DayListR'];
-      this.YearCAVG = val['MonthCAVG'];
-      this.YearSAVG = val['MonthSAVG'];
-      this.YearList = val['MonthList'];
+      this.MonthCAVG = val['MonthCAVG'];
+      this.MonthSAVG = val['MonthSAVG'];
+      this.MonthList = val['MonthList'];
       this.WeekCAVG = val['WeekSAVG'];
       this.WeekSAVG = val['WeekCAVG'];
       this.WeekList = val['WeekList'];
+      this.YearCAVG = val['YearCAVG'];
+      this.YearSAVG = val['YearSAVG'];
+      this.YearList = val['YearList'];
       this.LEList = val['LEList'];
       this.LEAVG = val['LEAVG'];
       this.LOList = val['LOList'];
@@ -141,7 +148,7 @@ export class SummarytablePage {
     }
     this.DateChartShow = true;
     //Day Chart
-    if (this.ChartDisplay == "week") {
+    if (this.ChartDisplay == "day") {
       this.mixChart = new Chart(this.barCanvas.nativeElement, {
 
         type: 'bar',
@@ -182,16 +189,16 @@ export class SummarytablePage {
 
 
     }
-    else if(this.ChartDisplay == "year"){
+    else if(this.ChartDisplay == "week"){
       this.mixChart = new Chart(this.barCanvas.nativeElement, {
 
         type: 'bar',
         data: {
-          labels: this.YearList,
+          labels: this.MonthList,
           datasets: [
             {
               label: 'Course Average',
-              data: this.YearCAVG,
+              data: this.MonthCAVG,
 
               // Changes this dataset to become a line
               type: 'line',
@@ -202,7 +209,7 @@ export class SummarytablePage {
               backgroundColor: "transparent"
             }, {
               label: 'Student Average',
-              data: this.YearSAVG,
+              data: this.MonthSAVG,
               backgroundColor:
                 'rgba(135, 211, 124, 1)'
               ,
@@ -215,7 +222,7 @@ export class SummarytablePage {
         options: {
           title: {
             display: true,
-            text: 'Year Chart'
+            text: 'Week Chart'
           }
         }
 
@@ -260,8 +267,51 @@ export class SummarytablePage {
         }
 
       });
+      
 
     }
+    else if(this.ChartDisplay == "year"){
+      this.mixChart = new Chart(this.barCanvas.nativeElement, {
+
+        type: 'bar',
+        data: {
+          labels: this.YearList,
+          datasets: [
+            {
+              label: 'Course Average',
+              data: this.YearCAVG,
+
+              // Changes this dataset to become a line
+              type: 'line',
+              pointBackgroundColor: 'rgba(214, 69, 65, 1)',
+              borderColor: [
+                'rgba(25, 181, 254, 1)'
+              ],
+              backgroundColor: "transparent"
+            }, {
+              label: 'Student Average',
+              data: this.YearSAVG,
+              backgroundColor:
+                'rgba(135, 211, 124, 1)'
+              ,
+              borderColor:
+                'rgba(41, 241, 195, 1)'
+              ,
+              borderWidth: 1
+            }]
+        },
+        options: {
+          title: {
+            display: true,
+            text: 'Year Chart'
+          }
+        }
+
+      });
+      
+
+    }
+    
 
 
   }
@@ -349,12 +399,15 @@ export class SummarytablePage {
   DisplayClick(Type){
     switch (Type) {
       case 1:
-        this.ChartDisplay = "week"
+        this.ChartDisplay = "day"
         break;
       case 2:
-        this.ChartDisplay = "month"
+        this.ChartDisplay = "week"
         break;
       case 3:
+        this.ChartDisplay = "month"
+        break;
+      case 4:
         this.ChartDisplay = "year"
         break;
             
@@ -367,8 +420,7 @@ export class SummarytablePage {
       this.CrrAlert = null;
     }
     this.CrrAlert = this.alertCtrl.create({
-      title:"The Correct Answer for this Question is :",
-      message:this.QuesAns[CrrIndex],
+      title:"The Correct Answer for this Question is : "+this.QuesAns[CrrIndex],      
       buttons: ['Dismiss']
 
     })

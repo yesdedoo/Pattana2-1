@@ -43,6 +43,14 @@
         </div>
 
       </ion-col>
+      <ion-col>
+        <div class="GridButt">
+          <button ion-button shape="round" size="small" class="Butt" (click)="DisplayClick(4)">
+            <p style="font-size: 12px">Year</p>
+          </button>
+        </div>
+
+      </ion-col>
     </ion-row>
   </ion-grid>
   <ion-card>
@@ -54,7 +62,7 @@
           </ion-col>
         </ion-row>
         <ion-row>
-          <div *ngIf="ChartDisplay == 'week'">
+          <div *ngIf="ChartDisplay == 'day'">
             <ion-card>
               <ion-card-content>
                 <div style="text-align: center">
@@ -123,15 +131,16 @@
             <div *ngIf="QuesCrr[i]==100;then ColorDiv else BlankDiv;"></div>
             <ng-template #ColorDiv>
               <ion-col col-3 class="modal-col" style="background-color: white;text-align: center" text-wrap>
-                
+
                 <!--Basic: auto-select the icon based on the platform -->
-                <ion-icon style="zoom: 2.0;color: green" name="md-checkmark-circle" (click)="DisplayCrrAns(i)"></ion-icon>
+                <ion-icon style="zoom: 2.0;color: green" name="md-checkmark-circle" (click)="DisplayCrrAns(i)">
+                </ion-icon>
               </ion-col>
             </ng-template>
             <ng-template #BlankDiv>
               <ion-col col-3 class="modal-col" style="background-color:white;text-align: center" text-wrap>
                 <ion-icon style="zoom: 2.0;color: red" name="md-close-circle" (click)="DisplayCrrAns(i)"></ion-icon>
-                
+
               </ion-col>
             </ng-template>
 

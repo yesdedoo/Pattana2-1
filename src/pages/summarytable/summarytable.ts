@@ -32,6 +32,7 @@ export class SummarytablePage {
   ChartDisplay: any = "day";
   loading: any;
   displayShowQues: any;
+  IndexOfShowQues:any;
 
   //REST API
   //Chart
@@ -97,6 +98,7 @@ export class SummarytablePage {
 
     // Get the modal
     this.modal = document.getElementsByClassName("modal")[0];
+    this.IndexOfShowQues = this.DayListR[0];
     console.log(this.modal)
   }
 
@@ -133,6 +135,7 @@ export class SummarytablePage {
       this.LessonChart();
       this.CLOChart();
 
+      this.IndexOfShowQues = this.DayListR[0];
     })
 
     
@@ -207,7 +210,7 @@ export class SummarytablePage {
           labels: this.MonthList,
           datasets: [
             {
-              label: 'Course Average',
+              label: 'Course AVG Score',
               data: this.MonthCAVG,
 
               // Changes this dataset to become a line
@@ -218,7 +221,7 @@ export class SummarytablePage {
               ],
               backgroundColor: "transparent"
             }, {
-              label: 'Student Average',
+              label: 'Student AVG Score',
               data: this.MonthSAVG,
               backgroundColor:
                 'rgba(135, 211, 124, 1)'
@@ -257,7 +260,7 @@ export class SummarytablePage {
           labels: this.WeekList,
           datasets: [
             {
-              label: 'Course Average',
+              label: 'Course AVG Score',
               data: this.WeekCAVG,
 
               // Changes this dataset to become a line
@@ -268,7 +271,7 @@ export class SummarytablePage {
               ],
               backgroundColor: "transparent"
             }, {
-              label: 'Student Average',
+              label: 'Student AVG Score',
               data: this.WeekSAVG,
               backgroundColor:
                 'rgba(135, 211, 124, 1)'
@@ -308,7 +311,7 @@ export class SummarytablePage {
           labels: this.YearList,
           datasets: [
             {
-              label: 'Course Average',
+              label: 'Course AVG Score',
               data: this.YearCAVG,
 
               // Changes this dataset to become a line
@@ -319,7 +322,7 @@ export class SummarytablePage {
               ],
               backgroundColor: "transparent"
             }, {
-              label: 'Student Average',
+              label: 'Student AVG Score',
               data: this.YearSAVG,
               backgroundColor:
                 'rgba(135, 211, 124, 1)'
@@ -419,6 +422,9 @@ export class SummarytablePage {
 
   }
   ShowQuestion(Date) {
+    if(!Date){
+      Date = this.DayList[0];
+    }
     this.QuesInfo = from(this.testapiProvider.GetShowQuestion(this.Stu_ID, this.Course_ID, Date));
     this.QuesInfo.subscribe(val => {
       console.log(val);

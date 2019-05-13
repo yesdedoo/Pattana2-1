@@ -62,10 +62,27 @@
           </ion-col>
         </ion-row>
         <ion-row>
-          <div *ngIf="ChartDisplay == 'day'">
-            <ion-card>
-              <ion-card-content>
-                <div style="text-align: center">
+          <div *ngIf="ChartDisplay == 'day'" style="width:100%;">
+            <div style="width:100%;">
+              <div style="text-align: center;width: 100%;background-color: sandybrown">
+                <ion-grid>
+                  <ion-row>
+                    <ion-col>
+                      <ion-item style="width:100%;">
+                        <ion-label>
+                          Select a Day
+                        </ion-label>
+                        <ion-select [(ngModel)]="IndexOfShowQues" placeholder="Day" interface="popover"
+                          style="width:100%;">
+                          <div *ngFor="let element of DayList; let i = index">
+                            <ion-option selected="{{i==0}}" value={{DayListR[i]}}>{{element}}</ion-option>
+                          </div>
+                        </ion-select>
+                      </ion-item>
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+                <!--
                   <ion-grid>
                     <ion-row>
                       <div *ngFor="let element of DayList; let i = index">
@@ -78,9 +95,22 @@
                       </div>
                     </ion-row>
                   </ion-grid>
-                </div>
-              </ion-card-content>
-            </ion-card>
+                  -->
+              </div>
+              <div>
+                <ion-item>
+                  <div style="text-align:center">
+                    <button ion-button shape="round" size="small" class="DisButt"
+                      (click)="ShowQuestion(IndexOfShowQues);DisplayModalShowQues()">
+                      <p style="font-size: 12px;color: white">Show Questions</p>
+                    </button>
+                  </div>
+                </ion-item>
+              </div>
+            </div>
+
+
+
           </div>
         </ion-row>
 
@@ -110,7 +140,7 @@
 
 
   <!-- The Modal -->
-  <div class="modal" (click)="HideModalShowQues()">
+  <div class="modal">
 
     <!-- Modal content -->
     <div class="modal-content">
@@ -140,16 +170,18 @@
             <ng-template #BlankDiv>
               <ion-col col-3 class="modal-col" style="background-color:white;text-align: center" text-wrap>
                 <ion-icon style="zoom: 2.0;color: red" name="md-close-circle" (click)="DisplayCrrAns(i)"></ion-icon>
-
               </ion-col>
             </ng-template>
 
-
-
           </ion-row>
         </div>
-      </ion-grid>
 
+      </ion-grid>
+      <div text-align:center>
+        <button ion-button shape="round" size="small" class="DisButt" (click)="HideModalShowQues()">
+          <p style="font-size: 12px">Dismiss</p>
+        </button>
+      </div>
     </div>
 
   </div>

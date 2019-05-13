@@ -18,7 +18,7 @@
 <ion-content style="background-image: url('assets/imgs/bgCourse.png')">
   <br>
   <ion-card>
-    <ion-card-content>
+    <ion-card-content style="background-color:rgb(235, 225, 200)">
       <div style="text-align:left">
         <p>&emsp;<b style="font-size: 120%;">{{Course_Name}}: </b>&ensp;{{Course_Desc}}</p>
       </div>
@@ -28,7 +28,7 @@
   </ion-card>
 
   <ion-card>
-    <ion-card-content>
+    <ion-card-content style="background-color:tomato;">
       <ion-grid>
         <ion-row style="background-color:sandybrown">
           <b>
@@ -36,7 +36,7 @@
           </b>
         </ion-row>
         <div *ngFor="let element of Less_ID; let i = index">
-          <ion-row>
+          <ion-row style="border-top: 2px solid sandybrown;">
             <ion-item>
               <ion-label text-wrap>
                 {{i+1}}:&ensp;{{Less_Name[i]}}
@@ -49,9 +49,9 @@
     </ion-card-content>
   </ion-card>
   <ion-card>
-    <ion-card-content>
+    <ion-card-content style="background-color:rgb(40, 175, 80);">
       <ion-grid>
-        <ion-row style="background-color:sandybrown">
+        <ion-row style="background-color:rgb(130, 225, 90)">
           <div style="text-align:center">
             <b>
               <h1>CLO</h1>
@@ -60,7 +60,7 @@
 
         </ion-row>
         <div *ngFor="let element of CLO_ID; let i = index">
-          <ion-row>
+          <ion-row style="border-top: 2px solid rgb(130, 225, 90);">
             <ion-item>
               <ion-label text-wrap>
                 {{i+1}}:&ensp;{{CLO_Name[i]}}

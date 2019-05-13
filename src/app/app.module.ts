@@ -34,6 +34,7 @@ import { ShowlessonfeedPage } from '../pages/showlessonfeed/showlessonfeed';
 import { CoursemenuPage } from '../pages/coursemenu/coursemenu';
 import { SummarytablePage } from '../pages/summarytable/summarytable';
 import { ProgressBarModule } from "angular-progress-bar"
+import { CoursedetailPage } from '../pages/coursedetail/coursedetail';
 
 
 @NgModule({
@@ -54,7 +55,8 @@ import { ProgressBarModule } from "angular-progress-bar"
     LessonfeedlistsPage,
     ShowlessonfeedPage,
     CoursemenuPage,
-    SummarytablePage
+    SummarytablePage,
+    CoursedetailPage
     
   ],
   imports: [
@@ -84,7 +86,8 @@ import { ProgressBarModule } from "angular-progress-bar"
     LessonfeedlistsPage,
     ShowlessonfeedPage,
     CoursemenuPage,
-    SummarytablePage
+    SummarytablePage,
+    CoursedetailPage
 
     
   ],

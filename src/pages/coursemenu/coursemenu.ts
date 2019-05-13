@@ -2,10 +2,12 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { ResulthistpercPage } from '../resulthistperc/resulthistperc';
 import { SummarytablePage } from '../summarytable/summarytable';
+import { CoursedetailPage } from '../coursedetail/coursedetail';
 
 //REST API
 import { from } from 'rxjs/observable/from';
 import { TestapiProvider } from '../../providers/testapi/testapi';
+
 
 /**
  * Generated class for the CoursemenuPage page.
@@ -24,6 +26,7 @@ export class CoursemenuPage {
 
   Course_ID:any;
   Course_Name:any;
+  Course_Desc:any;
   Stu_ID:any;
 
   //Progress bar
@@ -54,6 +57,7 @@ export class CoursemenuPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public testapiProvider:TestapiProvider) {
     this.Course_ID = navParams.get('courseid')
     this.Course_Name = navParams.get('coursename')
+    this.Course_Desc = navParams.get('coursedesc')
     this.Stu_ID = navParams.get('stuid')
   }
 
@@ -72,9 +76,12 @@ export class CoursemenuPage {
   }
 
   GoToCourseDetail(){
-    this.navCtrl.push(ResulthistpercPage, { 'courseid': this.Course_ID, 'coursename': this.Course_Name, 'stuid': this.Stu_ID });
+    this.navCtrl.push(CoursedetailPage, { 'courseid': this.Course_ID,'coursename':this.Course_Name,'stuid': this.Stu_ID });
   }
   GoToSummary(){
     this.navCtrl.push(SummarytablePage,{'courseid':this.Course_ID,'stuid': this.Stu_ID});
+  }
+  GoToProgressReport(){
+    this.navCtrl.push(ResulthistpercPage, { 'courseid': this.Course_ID, 'coursename': this.Course_Name, 'stuid': this.Stu_ID });
   }
 }

@@ -36,7 +36,8 @@ export class ResultPage {
   Course_ID: any;
   Course_Code: any;
   Course_Name: any;
-  Course_Exist: boolean
+  Course_Desc: any;
+  Course_Exist: boolean;
 
   //Display Course in Joining
 
@@ -113,8 +114,9 @@ export class ResultPage {
       this.Course_ID = val["Course_ID"]
       this.Course_Code = val["Course_Code"]
       this.Course_Name = val["Course_Name"]
+      this.Course_Desc = val["Course_Desc"]
       this.Course_Exist = val["Exist"]
-      console.log(this.Course_Code, this.Course_ID, this.Course_Name)
+      console.log(this.Course_Code, this.Course_ID, this.Course_Name,this.Course_Desc)
 
       /*
       var PCID = JSON.stringify(this.Course_ID)
@@ -243,7 +245,7 @@ export class ResultPage {
     console.log(index)
     var CourseID = this.Course_ID[index]
     //this.navCtrl.push(ResulthistpercPage, { 'courseid': CourseID, 'coursename': this.Course_Name[index], 'stuid': this.Stu_ID });
-    this.navCtrl.push(CoursemenuPage, { 'courseid': CourseID, 'coursename': this.Course_Name[index], 'stuid': this.Stu_ID });
+    this.navCtrl.push(CoursemenuPage, { 'courseid': CourseID, 'coursename': this.Course_Name[index],'coursedesc':this.Course_Desc ,'stuid': this.Stu_ID });
   }
 
 

@@ -1,0 +1,73 @@
+page-coursedetail {
+
+    ion-content {
+        background-size: cover;
+        position: relative;
+        text-align: center;
+    
+    
+      }
+    
+      .toolbar-background {
+        background-color: #f78710;
+      }
+    
+      p {
+        font-size: 16px;
+        color: #ffffff;
+      }
+    
+      .butt {
+        background-color: rgb(255, 255, 255);
+        margin-left: 5%;
+        width: 90%;
+        border-top-right-radius: 5px !important;
+        border-top-left-radius: 5px !important;
+        border-bottom-right-radius: 5px !important;
+        border-bottom-left-radius: 5px !important;
+    
+        -webkit-box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.103);
+        box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.103);
+    
+    
+    
+      }
+    
+      h4 {
+        font-size: 16px;
+        color: #3b3b3a;
+        position: relative;
+        text-align: left;
+        padding-left: 5%;
+      }
+    
+      ion-header {
+        margin-bottom: 100px;
+      }
+    
+      .progressdiv {
+        margin: 20px auto;
+        background-color: #ffffff;
+        font-size: 20px;
+        position: relative !important;
+        text-align: center !important;
+        z-index: -1;
+        width: 70%;
+    
+        border-top-right-radius: 5px !important;
+        border-top-left-radius: 5px !important;
+        border-bottom-right-radius: 5px !important;
+        border-bottom-left-radius: 5px !important;
+    
+        -webkit-box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.103);
+        box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.103);
+      }
+    
+      round-progress {
+        margin-left: auto;
+        margin-right: auto;
+        position: relative;
+        padding: 5%;
+        z-index: 10;
+      }
+}

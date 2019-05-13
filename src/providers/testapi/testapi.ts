@@ -33,6 +33,7 @@ export class TestapiProvider {
   restApiShowQuestion = 'http://35.247.168.241:5003/showques'
   restApiCourseProgress = 'http://35.247.168.241:5003/courseprogress'
   restApiRankShowQues = 'http://35.247.168.241:5003/rankshowques'
+  restApiCourseDescription = 'http://35.247.168.241:5003/coursedesc'
   //Port 5004
   restApiShowFeedback = 'http://35.247.168.241:5004/showfeedback'
   restApiLessonFeed = 'http://35.247.168.241:5004/lessonFeed' 
@@ -409,6 +410,25 @@ export class TestapiProvider {
     //To check the existing account
     return new Promise(resolve => {
       fetch(this.restApiRankShowQues, {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+          .then(r=>{
+            this.data = r.json()
+            resolve(this.data)
+          })
+          .catch(err => console.log(err))
+    });
+  }
+
+  GetCourseDesc(Course_ID){
+    var data = { coursedescData: {courseid:Course_ID} }
+    //To check the existing account
+    return new Promise(resolve => {
+      fetch(this.restApiCourseDescription, {
         method: 'POST',
         body: JSON.stringify(data),
         headers: {

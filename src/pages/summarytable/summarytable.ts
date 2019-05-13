@@ -156,7 +156,7 @@ export class SummarytablePage {
           labels: this.DayList,
           datasets: [
             {
-              label: 'Course Average',
+              label: 'Course AVG Score',
               data: this.DayCAVG,
 
               // Changes this dataset to become a line
@@ -167,7 +167,7 @@ export class SummarytablePage {
               ],
               backgroundColor: "transparent"
             }, {
-              label: 'Student Average',
+              label: 'Student AVG Score',
               data: this.DaySAVG,
               backgroundColor:
                 'rgba(135, 211, 124, 1)'
@@ -182,7 +182,17 @@ export class SummarytablePage {
           title: {
             display: true,
             text: 'Day Chart'
-          }
+          },
+          scales: {
+            yAxes: [{
+             display: true,
+             ticks: {
+              min: 0,
+              max: 100,
+              stepSize: 25
+             }
+            }]
+           }
         }
 
       });
@@ -223,7 +233,17 @@ export class SummarytablePage {
           title: {
             display: true,
             text: 'Week Chart'
-          }
+          },
+          scales: {
+            yAxes: [{
+             display: true,
+             ticks: {
+              min: 0,
+              max: 100,
+              stepSize: 25
+             }
+            }]
+           }
         }
 
       });
@@ -263,7 +283,17 @@ export class SummarytablePage {
           title: {
             display: true,
             text: 'Month Chart'
-          }
+          },
+          scales: {
+            yAxes: [{
+             display: true,
+             ticks: {
+              min: 0,
+              max: 100,
+              stepSize: 25
+             }
+            }]
+           }
         }
 
       });
@@ -304,7 +334,17 @@ export class SummarytablePage {
           title: {
             display: true,
             text: 'Year Chart'
-          }
+          },
+          scales: {
+            yAxes: [{
+             display: true,
+             ticks: {
+              min: 0,
+              max: 100,
+              stepSize: 25
+             }
+            }]
+           }
         }
 
       });
@@ -420,7 +460,7 @@ export class SummarytablePage {
       this.CrrAlert = null;
     }
     this.CrrAlert = this.alertCtrl.create({
-      title:"The Correct Answer for this Question is : "+this.QuesAns[CrrIndex],      
+      title:"The Correct Answer is : "+"&emsp;"+this.QuesAns[CrrIndex],      
       buttons: ['Dismiss']
 
     })

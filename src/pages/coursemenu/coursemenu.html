@@ -8,7 +8,7 @@
 
   <ion-navbar primary>
     <ion-title>
-      <p>Course Menu</p>
+      <p>{{Course_Name}}</p>
     </ion-title>
   </ion-navbar>
 
@@ -21,15 +21,19 @@
     <h4>Course Detail</h4>
   </button>
   <br><br>
+  <button class="butt" (click)='GoToProgressReport()'>
+    <h4>Progress Report</h4>
+  </button>
+  <br><br>
   <button class="butt" (click)='GoToSummary()'>
-    <h4>Summary</h4>
+    <h4>Summary Report</h4>
   </button>
   <ion-card class="progressdiv">
     <br>
     <h1><b>Participation</b></h1>
     <div style="text-align:center">
-        <round-progress [current]="APAssProgress" [max]="max" [stroke]="stroke" [radius]="radius" [semicircle]="semicircle"
-        [rounded]="rounded" [responsive]="responsive" [clockwise]="clockwise"
+      <round-progress [current]="APAssProgress" [max]="max" [stroke]="stroke" [radius]="radius"
+        [semicircle]="semicircle" [rounded]="rounded" [responsive]="responsive" [clockwise]="clockwise"
         [color]="gradient ? 'url(#gradient)' : color" [background]="background" [duration]="duration"
         [animation]="animation" [animationDelay]="animationDelay">
       </round-progress>
@@ -38,7 +42,7 @@
       <h2>From Total Questions</h2>
       <br>
     </div>
-    
+
   </ion-card>
 
 

@@ -29,7 +29,7 @@
       </ion-col>
       <ion-col>
         <div class="GridButt">
-          <button ion-button shape="round" size="small" class="Butt" (click)="DisplayClick(2)">
+          <button ion-button shape="round" size="small" class="Butt" (click)="DisplayClick(3)">
             <p style="font-size: 12px">Week</p>
           </button>
         </div>
@@ -37,7 +37,7 @@
       </ion-col>
       <ion-col>
         <div class="GridButt">
-          <button ion-button shape="round" size="small" class="Butt" (click)="DisplayClick(3)">
+          <button ion-button shape="round" size="small" class="Butt" (click)="DisplayClick(2)">
             <p style="font-size: 12px">Month</p>
           </button>
         </div>
@@ -53,12 +53,14 @@
       </ion-col>
     </ion-row>
   </ion-grid>
-  <ion-card>
+  <ion-card id="cardchart">
     <ion-card-content>
       <ion-grid>
         <ion-row>
           <ion-col>
-            <canvas id="displayChart" #myChart></canvas>
+            <div id="mixchartCSS">
+              <canvas id="displayChart" width="400" height="300" #myChart></canvas>
+            </div>
           </ion-col>
         </ion-row>
         <ion-row>
@@ -163,13 +165,22 @@
               <ion-col col-3 class="modal-col" style="background-color: white;text-align: center" text-wrap>
 
                 <!--Basic: auto-select the icon based on the platform -->
-                <ion-icon style="zoom: 2.0;color: green" name="md-checkmark-circle" (click)="DisplayCrrAns(i)">
-                </ion-icon>
+                <div class="div-col"> 
+                  <ion-icon style="zoom: 2.0;color: green" name="md-checkmark-circle" (click)="DisplayCrrAns(i)">
+                  </ion-icon>
+                </div>
+
+
+
               </ion-col>
             </ng-template>
             <ng-template #BlankDiv>
               <ion-col col-3 class="modal-col" style="background-color:white;text-align: center" text-wrap>
-                <ion-icon style="zoom: 2.0;color: red" name="md-close-circle" (click)="DisplayCrrAns(i)"></ion-icon>
+
+                <div class="div-col">
+                  <ion-icon style="zoom: 2.0;color: red" name="md-close-circle" (click)="DisplayCrrAns(i)"></ion-icon>
+                </div>
+
               </ion-col>
             </ng-template>
 

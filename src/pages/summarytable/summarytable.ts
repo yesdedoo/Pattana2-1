@@ -45,9 +45,15 @@ export class SummarytablePage {
   WeekCAVG: any;
   WeekSAVG: any;
   WeekList: any;
-  MonthCAVG: any;
-  MonthSAVG: any;
-  MonthList: any;
+  NWeekCAVG: any = [];
+  NWeekSAVG: any = [];
+  NWeekList: any = [];
+  MonthCAVG: any = [];
+  MonthSAVG: any = [];
+  MonthList: any = [];
+  NMonthList: any = [];
+  NMonthCAVG: any = [];
+  NMonthSAVG: any = [];
   YearCAVG: any;
   YearSAVG: any;
   YearList: any;
@@ -129,6 +135,13 @@ export class SummarytablePage {
       this.LEAVG = val['LEAVG'];
       this.LOList = val['LOList'];
       this.LOAVG = val['LOAVG'];
+
+      this.NMonthList = this.MonthList.slice(this.MonthList.length-12,this.MonthList.length)
+      this.NMonthCAVG = this.MonthCAVG.slice(this.MonthCAVG.length-12,this.MonthCAVG.length)
+      this.NMonthSAVG = this.MonthSAVG.slice(this.MonthSAVG.length-12,this.MonthSAVG.length)
+      this.NWeekList = this.WeekList.slice(this.WeekList.length-4,this.WeekList.length)
+      this.NWeekCAVG = this.WeekCAVG.slice(this.WeekCAVG.length-4,this.WeekCAVG.length)
+      this.NWeekSAVG = this.WeekSAVG.slice(this.WeekSAVG.length-4,this.WeekSAVG.length)
       this.loading.dismiss();
 
       this.DateChart();
@@ -186,6 +199,8 @@ export class SummarytablePage {
             display: true,
             text: 'Day Chart'
           },
+          responsive: true, 
+          maintainAspectRatio: false,
           scales: {
             yAxes: [{
              display: true,
@@ -207,11 +222,11 @@ export class SummarytablePage {
 
         type: 'bar',
         data: {
-          labels: this.MonthList,
+          labels: this.NMonthList,
           datasets: [
             {
               label: 'Course AVG Score',
-              data: this.MonthCAVG,
+              data: this.NMonthCAVG,
 
               // Changes this dataset to become a line
               type: 'line',
@@ -222,7 +237,7 @@ export class SummarytablePage {
               backgroundColor: "transparent"
             }, {
               label: 'Student AVG Score',
-              data: this.MonthSAVG,
+              data: this.NMonthSAVG,
               backgroundColor:
                 'rgba(135, 211, 124, 1)'
               ,
@@ -235,7 +250,7 @@ export class SummarytablePage {
         options: {
           title: {
             display: true,
-            text: 'Week Chart'
+            text: 'Month Chart'
           },
           scales: {
             yAxes: [{
@@ -257,11 +272,11 @@ export class SummarytablePage {
 
         type: 'bar',
         data: {
-          labels: this.WeekList,
+          labels: this.NWeekList,
           datasets: [
             {
               label: 'Course AVG Score',
-              data: this.WeekCAVG,
+              data: this.NWeekCAVG,
 
               // Changes this dataset to become a line
               type: 'line',
@@ -272,7 +287,7 @@ export class SummarytablePage {
               backgroundColor: "transparent"
             }, {
               label: 'Student AVG Score',
-              data: this.WeekSAVG,
+              data: this.NWeekSAVG,
               backgroundColor:
                 'rgba(135, 211, 124, 1)'
               ,
@@ -285,7 +300,7 @@ export class SummarytablePage {
         options: {
           title: {
             display: true,
-            text: 'Month Chart'
+            text: 'Week Chart'
           },
           scales: {
             yAxes: [{
@@ -445,15 +460,19 @@ export class SummarytablePage {
   DisplayClick(Type){
     switch (Type) {
       case 1:
+        this.mixChart.destroy()
         this.ChartDisplay = "day"
         break;
       case 2:
+        this.mixChart.destroy()
         this.ChartDisplay = "week"
         break;
       case 3:
+        this.mixChart.destroy()
         this.ChartDisplay = "month"
         break;
       case 4:
+        this.mixChart.destroy()
         this.ChartDisplay = "year"
         break;
             
